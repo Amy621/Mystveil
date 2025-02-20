@@ -1,0 +1,153 @@
+===============================================================================
+                            IMPORTANT FUNCTIONS
+===============================================================================
+
+Project Name: InventorySystem
+Author: Jaxon Schauer
+Date: 9/7/2023
+Version: 1.0
+
+-------------------------------------------------------------------------------
+
+TABLE OF CONTENTS:
+1. Setup
+2. AddItem
+3. RemoveItem
+4. InventoryFull
+5. GetInventory
+
+-------------------------------------------------------------------------------
+SETUP INSTRUCTIONS:
+
+1. **Prerequisites**:
+    -install package Text Mesh Pro
+2. **Quick Setup**:
+    -Add inventoryController to scene
+    -Unpack the InventoryController: Right click object, hover over prefab, press "unpack".
+    -Ensure you only have one InventoryController.
+    -Start adding inventories and items!
+3. **Customize:
+    -Once initialized, each inventory has its own specific customizable options. 
+    -Changing these options allows for significant flexibility supporting implementation such as armor slots.
+4. **Start Coding**
+    -Feel free to modify code.
+    -To access any aspect of the InventorySystem you must add "using InventorySystem" to import the namespace.
+    -You can efficiently access the InventoryController with InventoryController.instance.functionName();
+    -Review tests file to see many important functions in use
+-------------------------------------------------------------------------------
+IMPORTANT Functions in InventoryController:
+
+FUNCTION AddItem:
+
+Namespace:
+- InventorySystem
+
+Purpose:
+- Adds an item to the lowest inventory slot available.
+
+Signature:
+- public void addItem(string inventoryName, string itemType, amount = 1)
+
+Parameters:
+- inventoryName: Finds the inventory to add the item to.
+- itemType: Finds a version of the item and makes a deep copy to pass into inventory.
+- amount: Determines how many items will be added
+
+Return Value:
+- Returns void.
+
+Exceptions:
+- Checks if the Inventory exists in the inventoryController and if the item exists in the inventoryControllers. Throws error and returns if not.
+
+Overload:
+- Has one overload 
+
+Example Usage:
+- InventoryController.instance.addItem("ExampleInventory", "ExampleItem");
+-------------------------------------------------------------------------------
+FUNCTION RemoveItem
+
+Namespace:
+- InventorySystem
+
+Purpose:
+- Removes an items in intuitive way
+
+Signature:
+- public void RemoveItem(string inventoryName,string itemType, int amount)
+
+Parameters:
+- inventoryName: Finds the inventory to remove the item from.
+- itemType: Finds a version of the item and makes a deep copy to pass into inventory.
+- amount: Determines how many items will be added
+
+Return Value:
+- Returns void.
+
+Exceptions:
+- Checks if the Inventory exists in the inventoryController and if the item exists in the inventoryControllers. Throws error and returns if not.
+
+Overload:
+- Has one overload thats takes the input of item, allowing an item to erase itself
+
+Example Usage:
+- RemoveItem("ExampleInventory", "ExampleItem",10);
+-------------------------------------------------------------------------------
+FUNCTION GetInventory:
+
+Namespace:
+- InventorySystem
+
+Purpose:
+- Gives access to all functions inside the ivnentory class 
+
+Signature:
+- public Inventory GetInventory(string inventoryName)
+
+Parameters:
+- iventoryName: used to access the inventory wanted
+
+Return Value:
+- Returns the type Inventory
+
+Exceptions:
+- Checks if the Inventory exists in the inventoryController. Throws error and returns if not.
+
+Overload:
+-None
+
+Example Usage:
+- public void RemoveItemPos(string inventoryName, int position, int amount)
+-------------------------------------------------------------------------------
+FUNCTION InventoryFull:
+
+Namespace:
+- InventorySystem
+
+Purpose:
+- Checks if a specified inventory has space for an item.
+
+Signature:
+- public void RemoveItemPos(string inventoryName, InventoryItem item, int amount = 1)
+
+Parameters:
+- inventoryName: Finds the inventory to check if full.
+- itemType: Checks whether or not this item has space in inventory.
+
+Return Value:
+- Returns void.
+
+Exceptions:
+- Checks if the Inventory exists in the inventoryController and if the item exists in the inventoryControllers. Throws error and returns if not.
+
+Overload:
+- Has one overload thats takes the input of item, allowing an item to remove itself
+
+Example Usage:
+- public void RemoveItemPos(string inventoryName, int position, int amount)
+-------------------------------------------------------------------------------
+There is much more to see inside in the InventoryController, InventoryManagerUI, Inventory, Slot, and DragItem classes. These are well documented/commented
+in InventorySystem code. Please explore and learn how these work to unlock a high level of flexibility. 
+
+End of Document
+
