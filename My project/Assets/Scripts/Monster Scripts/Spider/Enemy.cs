@@ -50,23 +50,23 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    [Header("Animation Triggers")]
+    public string deathTriggerName = "death";
+    public string damageTriggerName = "damage";
+
     public void TakeDamage(int damageAmount) 
     {
-        Debug.Log("In Take Damage!!!");
         enemyHP -= damageAmount;
-
         Debug.Log("Current health: " + enemyHP);
 
         if (enemyHP <= 0)
         {
-            //Play Death Animation
-            animator.SetTrigger("death");
+            animator.SetTrigger(deathTriggerName);
             GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
         }
         else
         {
-            //Play Damage Animation
-            animator.SetTrigger("damage");
+            animator.SetTrigger(damageTriggerName);
         }
     }
 }
