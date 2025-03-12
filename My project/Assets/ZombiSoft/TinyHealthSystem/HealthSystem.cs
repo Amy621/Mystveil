@@ -49,7 +49,7 @@ public class HealthSystem : MonoBehaviour
 	//==============================================================
 	// Awake
 	//==============================================================
-  	void Start()
+	void Start()
 	{
 		UpdateGraphics();
 		timeleft = regenUpdateInterval; 
@@ -193,7 +193,10 @@ public class HealthSystem : MonoBehaviour
 	{
 		// Player gets hurt. Do stuff.. play anim, sound..
 
+			if (PopupText.Instance != null)
+	{
 		PopupText.Instance.Popup("Ouch!", 1f, 1f); // Demo stuff!
+	} // Demo stuff!
 
 		if (hitPoint < 1) // Health is Zero!!
 		{
@@ -209,8 +212,19 @@ public class HealthSystem : MonoBehaviour
 	//==============================================================
 	IEnumerator PlayerDied()
 	{
+
+	if (PopupText.Instance != null)
+	{
+		if (PopupText.Instance != null)
+		{
+			PopupText.Instance.Popup("You have died!", 1f, 1f); // Demo stuff!
+		}
+	}
 		// Player is dead. Do stuff.. play anim, sound..
 		PopupText.Instance.Popup("You have died!", 1f, 1f); // Demo stuff!
+
+		// Stop the application
+		Application.Quit();
 
 		yield return null;
 	}
