@@ -10,6 +10,7 @@ public class Dialogue_Script : MonoBehaviour
     public string[] lines;
     public float textSpeed;
     private int index;
+    
     void Start()
     {
         textComponent.text = string.Empty;
@@ -20,13 +21,17 @@ public class Dialogue_Script : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space)){
-            if(textComponent.text == lines[index]) NextLine();
-            else{
+            if(textComponent.text == lines[index])
+            {
+                NextLine();
+            }
+            else
+            {
                 StopAllCoroutines();
                 textComponent.text = lines[index];
-        }
+            }
         
-    }
+        }
     }
 
     void StartDialogue(){
