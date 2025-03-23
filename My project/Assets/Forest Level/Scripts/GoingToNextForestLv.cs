@@ -23,18 +23,21 @@ public class GoingToNextForestLv : MonoBehaviour
         
         gridGenerator = FindObjectOfType(typeof(GenerateGrid)) as GenerateGrid;
 
-        if (ForestBase.curLevel  == ForestBase.numLevels) {
+        if (ForestBase.curLevel == ForestBase.numLevels) {
             Debug.Log("Back to town");
             MoveToScene("Town");
+            ForestBase.onDestroy();
         } else if (ForestBase.curLevel + 1 == ForestBase.numLevels) {
             Debug.Log("Boss battle");
             ForestBase.curLevel++;
             GameObject.Find("Player").transform.position = ForestBase.playerSpawn;
-            gridGenerator.GenerateLevel();
+            ForestBase.onDestroy();
+            gridGenerator.GenerateBossLevel();
         } else {
             Debug.Log("Next level");
             ForestBase.curLevel++;
             GameObject.Find("Player").transform.position = ForestBase.playerSpawn;
+            ForestBase.onDestroy();
             gridGenerator.GenerateLevel();
         }
     }
