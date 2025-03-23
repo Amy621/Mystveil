@@ -41,10 +41,13 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
             if(myTag != SlotTag.None && item.myItem.itemTag != myTag){ Debug.Log("cant place "+item+" here. this slot is "+myTag+" and you cant place "+item.myItem.itemTag);return; }//check if item is equippable in slot
             if(myItem.myItem == item.myItem && myItem.myItem.stackable) //if item is already in slot, stack
             {
+                
                 Debug.Log("stacking " + item.amount + " of " +item.myItem+ " in " +this + " which already has " + myItem.amount + " of " + myItem.myItem);
                 myItem.amount += item.amount;
-                Inventory.carriedItem = null; //clear carried item
+                //Inventory.carriedItem = null; //clear carried item
+                //Destroy(Inventory.carriedItem); 
                 Debug.Log(this +" now has " + myItem.amount + " of " + myItem.myItem);
+                return;
             }
         }
 

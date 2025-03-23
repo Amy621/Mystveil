@@ -68,13 +68,26 @@ public class Inventory : MonoBehaviour
             if(item.activeSlot.myTag != SlotTag.None && item.activeSlot.myTag != carriedItem.myItem.itemTag) 
             { Debug.Log(carriedItem + " cant be placed in " + item.activeSlot.myTag);return;} //cur carried item cant be placed in equipment slot
             Debug.Log("placing " + carriedItem.amount + " of " + carriedItem +" in " + item.activeSlot); //debug log to show where item is being placed
+            
             item.activeSlot.SetItem(carriedItem); //place carried item in slot ///////////
+
+            if(carriedItem != null && carriedItem.myItem == item.myItem){ //stack
+                carriedItem.canvasGroup.blocksRaycasts = false;
+                carriedItem.transform.SetParent(null);
+                Destroy(carriedItem); 
+                carriedItem = null;
+                Debug.Log("stacked");
+                return;
+            }
+            
         }
         else
         {
             item.activeSlot.myItem = null; //remove item from previous slot
         }
         carriedItem = item;
+        if(item == null) Debug.Log(" item is null"); 
+        else Debug.Log("item not null");
         carriedItem.canvasGroup.blocksRaycasts = false; //disable raycasting for carried item
         item.transform.SetParent(curCarryingTransform); //set carried item to follow cursor
         if(carriedItem != null)

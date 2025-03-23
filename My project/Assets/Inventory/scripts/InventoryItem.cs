@@ -46,8 +46,8 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     {
         if(myItem != null && myItem.stackable)
         {
-            amountText.gameObject.SetActive(true);
-            amountText.SetText(amount.ToString());
+            //amountText.gameObject.SetActive(true);
+            //amountText.SetText(amount.ToString());
         }
     }
 }
