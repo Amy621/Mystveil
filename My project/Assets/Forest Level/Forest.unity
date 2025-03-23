@@ -905,6 +905,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1217361046}
+  - component: {fileID: 1217361047}
   - component: {fileID: 1217361045}
   m_Layer: 0
   m_Name: WorldController
@@ -925,8 +926,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ece1c01869a0c54d8dda8941aab7a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numLevels: 0
-  curLevel: 1
   grassFloorObject: {fileID: 146614, guid: 9154d83fdcda70f4f84028ccd30286a2, type: 3}
   nonWalkFloorObject: {fileID: 138554, guid: 115e19f45cfeb3648b9618a720e2f288, type: 3}
   bossMonster: {fileID: 185334, guid: e630370e466d57648b32da531956bf10, type: 3}
@@ -945,7 +944,7 @@ MonoBehaviour:
   treeBorderSpawn: {fileID: 146544, guid: cc890b11e6968444bbb9050c8b78e8eb, type: 3}
   mushroomSpawn: {fileID: 121492, guid: 2dc72da8b5d1d5e42b5be6a6f0c2c4d4, type: 3}
   logSpawn: {fileID: 114594, guid: e0bcb36554be1124b8a89d63037350be, type: 3}
-  toNextArea: {fileID: 5648161583812302662, guid: bd0a643282ab31549a3ffbb0a17e16fe, type: 3}
+  toNextArea: {fileID: 133318, guid: 5f426072c3298254381d5794d96f2239, type: 3}
 --- !u!4 &1217361046
 Transform:
   m_ObjectHideFlags: 0
@@ -961,6 +960,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1217361047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217361044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9652d3e92b2b01d42bcd9b8f6625a40d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridGenerator: {fileID: 0}
 --- !u!1 &1232777088
 GameObject:
   m_ObjectHideFlags: 0

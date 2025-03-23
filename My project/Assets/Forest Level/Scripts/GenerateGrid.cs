@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class GenerateGrid : MonoBehaviour
 {
-    // level parameters
-    public int numLevels;
-    public int curLevel = 1;
-
     // floor/ground parameters
     public GameObject grassFloorObject;
     public GameObject nonWalkFloorObject;
@@ -45,15 +41,6 @@ public class GenerateGrid : MonoBehaviour
     public GameObject mushroomSpawn;
     public GameObject logSpawn;
     public GameObject toNextArea;
-
-    // Creating the world
-    void Start()
-    {
-        // getting number of levels
-        numLevels = Random.Range(3, 6);
-
-        GenerateLevel();
-    }
 
     public void GenerateLevel() {
         for(int x = 0; x < worldSizeX; x++) 
@@ -156,6 +143,8 @@ public class GenerateGrid : MonoBehaviour
         nextSceneRockPosition,
         Quaternion.identity);
 
+        SphereCollider collider = nextAreaRock.AddComponent(typeof(SphereCollider)) as SphereCollider;
+        collider.isTrigger = true;
         nextAreaRock.AddComponent<GoingToNextForestLv>();
     }
 

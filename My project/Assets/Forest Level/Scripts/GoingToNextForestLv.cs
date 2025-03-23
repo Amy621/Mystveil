@@ -1,30 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GoingToNextForestLv : MonoBehaviour
 {
     public ChangeScene sceneChanger;
     public GenerateGrid gridGenerator;
-    private Collider objectCollider;
-
-    void Start() {
-        objectCollider = GetComponent<Collider>();
-        Debug.Log(objectCollider);
+    
+    // This method will be called when another object enters the collider's trigger zone
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if the object that collided is the player (or any other object you want to check)
+        if (other.CompareTag("Player"))  // Ensure your player object has the "Player" tag
+        {
+           ChangeForest();
+        }
     }
 
-    public void onTriggerEnter(Collider other) {
-        if (gridGenerator.curLevel  == gridGenerator.numLevels) {
+    public void ChangeForest() {
+        Debug.Log("Chaning forest to...");
+        
+        gridGenerator = FindObjectOfType(typeof(GenerateGrid)) as GenerateGrid;
+
+        if (ForestBase.curLevel  == ForestBase.numLevels) {
             Debug.Log("Back to town");
-            sceneChanger.MoveToScene(2);
-        } else if (gridGenerator.curLevel + 1 == gridGenerator.numLevels) {
+            MoveToScene("Town");
+        } else if (ForestBase.curLevel + 1 == ForestBase.numLevels) {
             Debug.Log("Boss battle");
-            gridGenerator.curLevel++;
+            ForestBase.curLevel++;
+            GameObject.Find("Player").transform.position = ForestBase.playerSpawn;
             gridGenerator.GenerateLevel();
         } else {
             Debug.Log("Next level");
-            gridGenerator.curLevel++;
+            ForestBase.curLevel++;
+            GameObject.Find("Player").transform.position = ForestBase.playerSpawn;
             gridGenerator.GenerateLevel();
         }
+    }
+
+    public void MoveToScene(string sceneName)
+    {
+        // Load the scene based on the provided scene name
+        SceneManager.LoadScene(sceneName);
     }
 }
