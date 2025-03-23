@@ -925,8 +925,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ece1c01869a0c54d8dda8941aab7a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numLevels: 0
+  curLevel: 1
   grassFloorObject: {fileID: 146614, guid: 9154d83fdcda70f4f84028ccd30286a2, type: 3}
   nonWalkFloorObject: {fileID: 138554, guid: 115e19f45cfeb3648b9618a720e2f288, type: 3}
+  bossMonster: {fileID: 185334, guid: e630370e466d57648b32da531956bf10, type: 3}
+  monsterSpider: {fileID: 7063527205222082993, guid: 79b8c597e50c64691a6e84478d65fd6b, type: 3}
+  collectableHerb: {fileID: 145914, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
   grassSpawn: {fileID: 113636, guid: 29fa604a71af93f4ea5a436c6de8cb99, type: 3}
   flower1Spawn: {fileID: 151234, guid: 390c2bf1514a09e49a2aa0361d9e314c, type: 3}
   flower2Spawn: {fileID: 185154, guid: bd797f8b461dda044840c3a0bd197fe7, type: 3}
@@ -940,6 +945,7 @@ MonoBehaviour:
   treeBorderSpawn: {fileID: 146544, guid: cc890b11e6968444bbb9050c8b78e8eb, type: 3}
   mushroomSpawn: {fileID: 121492, guid: 2dc72da8b5d1d5e42b5be6a6f0c2c4d4, type: 3}
   logSpawn: {fileID: 114594, guid: e0bcb36554be1124b8a89d63037350be, type: 3}
+  toNextArea: {fileID: 5648161583812302662, guid: bd0a643282ab31549a3ffbb0a17e16fe, type: 3}
 --- !u!4 &1217361046
 Transform:
   m_ObjectHideFlags: 0
@@ -1413,7 +1419,7 @@ Transform:
   m_GameObject: {fileID: 1494806343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.050003, y: 0.45000005, z: 26.64}
+  m_LocalPosition: {x: 13.880002, y: 0.45000005, z: 54.13}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1549,7 +1555,7 @@ GameObject:
   - component: {fileID: 1591514697}
   - component: {fileID: 1591514696}
   m_Layer: 0
-  m_Name: Directional Light (1)
+  m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1657,7 +1663,7 @@ Transform:
   m_GameObject: {fileID: 1631918524}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 23.2, y: 0, z: 26.5}
+  m_LocalPosition: {x: 14.03, y: 0, z: 53.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1976,5 +1982,5 @@ SceneRoots:
   - {fileID: 1591514697}
   - {fileID: 1568666117}
   - {fileID: 1198836602}
-  - {fileID: 687087401}
   - {fileID: 1217361046}
+  - {fileID: 687087401}

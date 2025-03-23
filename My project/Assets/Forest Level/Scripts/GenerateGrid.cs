@@ -4,17 +4,33 @@ using UnityEngine;
 
 public class GenerateGrid : MonoBehaviour
 {
+    // level parameters
+    public int numLevels;
+    public int curLevel = 1;
+
     // floor/ground parameters
     public GameObject grassFloorObject;
     public GameObject nonWalkFloorObject;
-    private int worldSizeX = 50;
-    private int worldSizeZ = 50;
+    private int worldSizeX = 30;
+    private int worldSizeZ = 35;
     private int borderLength = 5;
     private int gridOffset = 3;
     private List<Vector3> floorPositions = new List<Vector3>();
     private List<Vector3> borderPositions = new List<Vector3>();
+    private Vector3 nextSceneRockPosition;
 
-    // Creating objects to spawn
+    // Creating 1v1 boss battle enemy
+    // TO-DO: make a list and randomly choose one boss monster
+    public GameObject bossMonster;
+
+    // Creating pockets of collectables and monsters to spawn
+    // TO-DO: make a list of monsters and collectables to randomize
+    public GameObject monsterSpider;
+    public GameObject collectableHerb;
+    private int numMonsterAreas;
+    private int numCollectableAreas;
+
+    // Creating objects to spawn (non-collectable)
     public GameObject grassSpawn;
     public GameObject flower1Spawn;
     public GameObject flower2Spawn;
@@ -28,39 +44,119 @@ public class GenerateGrid : MonoBehaviour
     public GameObject treeBorderSpawn;
     public GameObject mushroomSpawn;
     public GameObject logSpawn;
+    public GameObject toNextArea;
 
     // Creating the world
     void Start()
     {
+        // getting number of levels
+        numLevels = Random.Range(3, 6);
+
+        GenerateLevel();
+    }
+
+    public void GenerateLevel() {
         for(int x = 0; x < worldSizeX; x++) 
         {
-            for(int z = 0; z < worldSizeZ; z++) 
-            {
-                Vector3 pos = new Vector3(x * gridOffset,
-                0,
-                z * gridOffset);
+            // make the border
+            if (x <= 2) {
+                for (int z = 0; z < worldSizeZ; z++) {
+                    Vector3 pos = new Vector3(x * gridOffset,
+                    0,
+                    z * gridOffset);
 
-                if(z < borderLength || z > worldSizeZ - borderLength || x < borderLength || x > worldSizeX - borderLength) {
                     GameObject nonWalkFloor = Instantiate(nonWalkFloorObject,
                     pos,
                     Quaternion.identity) as GameObject;
 
                     borderPositions.Add(nonWalkFloor.transform.position);
-
-                    nonWalkFloor.transform.SetParent(this.transform);
-                } else {
-                    GameObject floor = Instantiate(grassFloorObject,
-                    pos,
-                    Quaternion.identity) as GameObject;
-
-                    floorPositions.Add(floor.transform.position);
-
-                    floor.transform.SetParent(this.transform);
                 }
+            }
+            // make the player spawn area
+            else if (x <= 5) {
+                for (int z = 0; z < worldSizeZ; z++) {
+                    Vector3 pos = new Vector3(x * gridOffset,
+                    0,
+                    z * gridOffset);
+
+                    if (z < 15 || z > 20) {
+                        GameObject nonWalkFloor = Instantiate(nonWalkFloorObject,
+                        pos,
+                        Quaternion.identity) as GameObject;
+
+                        borderPositions.Add(nonWalkFloor.transform.position);
+                    } else {
+                        GameObject floor = Instantiate(grassFloorObject,
+                        pos,
+                        Quaternion.identity) as GameObject;
+
+                        floor.transform.SetParent(this.transform);
+                    }
+                } 
+            }
+            // make the level area
+            else {
+                for(int z = 0; z < worldSizeZ; z++) {
+                    Vector3 pos = new Vector3(x * gridOffset,
+                    0,
+                    z * gridOffset);
+
+                    // making the borders less straight line and more random
+                    int offsetRandom = Random.Range(0, 2);
+
+                    // adding in the next scene rock
+                    // if (x == 25 && z == 15) {
+                    //     nextSceneRockPosition = pos;
+                    // }
+                    if (x == 6 && z == 17) {
+                        nextSceneRockPosition = pos;
+                    }
+                    if(z < borderLength + offsetRandom || z > worldSizeZ - borderLength - offsetRandom || x < borderLength + offsetRandom || x > worldSizeX - borderLength - offsetRandom) {
+                        GameObject nonWalkFloor = Instantiate(nonWalkFloorObject,
+                        pos,
+                        Quaternion.identity) as GameObject;
+
+                        borderPositions.Add(nonWalkFloor.transform.position);
+
+                        nonWalkFloor.transform.SetParent(this.transform);
+                    } else {
+                        GameObject floor = Instantiate(grassFloorObject,
+                        pos,
+                        Quaternion.identity) as GameObject;
+
+                        floorPositions.Add(floor.transform.position);
+
+                        floor.transform.SetParent(this.transform);
+                    }
+                }
+
             }
         }
 
+        SpawnNextSceneRock();
+
+        // spawning the objects (non-interactable)
         SpawnObjects();
+    }
+
+    // public void GenerateBossLevel() {
+
+    // }
+
+    // private void SpawnCollectables() {
+
+    // }
+
+    // private void SpawnMonsters() {
+
+    // }
+
+    private void SpawnNextSceneRock() {
+        GameObject nextAreaRock = Instantiate(toNextArea,
+        nextSceneRockPosition,
+        Quaternion.identity);
+
+        nextAreaRock.AddComponent<GoingToNextForestLv>();
     }
 
     private void SpawnObjects() {
@@ -70,13 +166,13 @@ public class GenerateGrid : MonoBehaviour
             Quaternion.identity);
         }
 
-        for(int c = 0; c < 700; c++) {
+        for(int c = 0; c < 120; c++) {
             GameObject toPlaceGrass = Instantiate(grassSpawn,
             ObjectSpawnLocation(),
             Quaternion.identity);
         }
 
-        for(int c = 0; c < 100; c++) {
+        for(int c = 0; c < 10; c++) {
             GameObject toPlaceFlower1 = Instantiate(flower1Spawn,
             ObjectSpawnLocation(),
             Quaternion.identity);
@@ -106,7 +202,7 @@ public class GenerateGrid : MonoBehaviour
             Quaternion.identity);
         }
 
-        for(int c = 0; c < 10; c++) {
+        for(int c = 0; c < 1; c++) {
             GameObject toPlaceRock1 = Instantiate(rock1Spawn,
             ObjectSpawnLocation(),
             Quaternion.identity);
