@@ -4,6 +4,7 @@ public class MeleeAttackBehavior : StateMachineBehaviour
 {
     Transform player;
     HealthSystem playerHealth;
+    Rigidbody spiderRigidbody;
 
     public float attackDamage = 10f;
     public float attackInterval = 1f;
@@ -14,6 +15,7 @@ public class MeleeAttackBehavior : StateMachineBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<HealthSystem>();
+        spiderRigidbody = animator.GetComponent<Rigidbody>();
         lastAttackTime = Time.time - attackInterval;
         hasAttacked = false;
     }
@@ -22,7 +24,11 @@ public class MeleeAttackBehavior : StateMachineBehaviour
     {
         if (!player || !playerHealth) return;
 
-        animator.transform.LookAt(player);
+        // Only rotate the spider, don't move it
+        Vector3 directionToPlayer = (player.position - animator.transform.position).normalized;
+        directionToPlayer.y = 0; // Keep the rotation only on the Y axis
+        animator.transform.rotation = Quaternion.LookRotation(directionToPlayer);
+        
         float distance = Vector3.Distance(animator.transform.position, player.position);
 
         if (distance > 4)
@@ -33,7 +39,7 @@ public class MeleeAttackBehavior : StateMachineBehaviour
         {
             animator.SetBool("isMeleeAttacking", true);
 
-            if (!hasAttacked && stateInfo.normalizedTime % 1 >= 0.5f)
+            if (!hasAttacked && stateInfo.normalizedTime >= 0.5f && stateInfo.normalizedTime < 0.6f)
             {
                 if (Time.time >= lastAttackTime + attackInterval)
                 {

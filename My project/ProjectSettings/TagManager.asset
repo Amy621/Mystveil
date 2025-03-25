@@ -8,6 +8,7 @@ TagManager:
   - ManaSprite
   - HealthSprite
   - WayPoints
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [Header("Health Settings")]
     public int maxHP = 100;
-    private int currentHP;
+    public int currentHP;
 
     [Header("Projectile Settings")]
     public GameObject projectile;
@@ -39,6 +39,12 @@ public class Enemy : MonoBehaviour
         currentHP = maxHP;
         enemyCollider = GetComponent<Collider>();
         navAgent = GetComponent<NavMeshAgent>();
+        
+        // Add health bar if it doesn't exist
+        if (GetComponent<EnemyHealthBar>() == null)
+        {
+            gameObject.AddComponent<EnemyHealthBar>();
+        }
     }
 
     void Update()
@@ -56,13 +62,6 @@ public class Enemy : MonoBehaviour
         Rigidbody rb = instantiatedProjectile.GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * 10f, ForceMode.Impulse);
         rb.AddForce(transform.up * 12f, ForceMode.Impulse);
-        StartCoroutine(DisappearProjectile(instantiatedProjectile, projectileDisappearDelay));
-    }
-
-    IEnumerator DisappearProjectile(GameObject projectileObject, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        if (projectileObject) Destroy(projectileObject);
     }
 
     public void Claw()

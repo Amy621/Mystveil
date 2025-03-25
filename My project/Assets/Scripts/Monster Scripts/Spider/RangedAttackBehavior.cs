@@ -10,12 +10,14 @@ public class RangedAttackBehavior : StateMachineBehaviour
     public float attackDamage = 5f;
     public float attackInterval = 2f;
     private float lastAttackTime;
+    private bool hasAttacked;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<HealthSystem>();
         lastAttackTime = Time.time - attackInterval;
+        hasAttacked = false;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -39,10 +41,15 @@ public class RangedAttackBehavior : StateMachineBehaviour
         {
             animator.SetBool("isRangedAttacking", true);
 
-            if (Time.time >= lastAttackTime + attackInterval)
+            // Only deal damage once per attack animation when we reach the halfway point
+            if (!hasAttacked && stateInfo.normalizedTime >= 0.5f && stateInfo.normalizedTime < 0.6f)
             {
-                playerHealth.TakeDamage(attackDamage);
-                lastAttackTime = Time.time;
+                if (Time.time >= lastAttackTime + attackInterval)
+                {
+                    playerHealth.TakeDamage(attackDamage);
+                    lastAttackTime = Time.time;
+                    hasAttacked = true;
+                }
             }
         }
     }
