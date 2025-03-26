@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,14 +21,16 @@ public class Inventory : MonoBehaviour
     [Header("Debug")]
     [SerializeField] Button giveItemButton; //button to give item for testing
 
+    public GameObject obj;
 
+    private bool isActive = false;
 
     void Awake()
     {
         //itempos = new Dictionary<InventoryItem, List<InventorySlot>>(); //initialize item positions
         Singleton = this; //init single inventory
         giveItemButton.onClick.AddListener(delegate { SpawnInventoryItem(); });
-
+        obj.SetActive(isActive);
     }
 
     //spawn an item in the inventory for testing
@@ -57,6 +60,24 @@ public class Inventory : MonoBehaviour
         {
             carriedItem.transform.position = Input.mousePosition;
         }
+
+        if(Input.GetKeyDown(KeyCode.I)){
+            Debug.Log("EEEEEEEEEEEEE");
+
+            if(carriedItem != null){
+                for(int i = 0; i < inventorySlots.Length; i++){
+                    if(inventorySlots[i].myItem == null){
+                        inventorySlots[i].SetItem(carriedItem);
+                        carriedItem = null;
+                        break;
+                    }
+                }
+            }
+
+            isActive = !isActive;
+            obj.SetActive(isActive);
+        }
+
     }
 
     //set carried item to be the item in the slot
