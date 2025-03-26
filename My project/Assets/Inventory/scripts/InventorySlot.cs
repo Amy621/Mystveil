@@ -18,24 +18,17 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
             if(myItem == null && Inventory.carriedItem != null) //place carried into empty slot
                 SetItem(Inventory.carriedItem);
             else if(myItem != null)
-                Inventory.Singleton.SetCarriedItem(myItem); 
-            /*
-            if(Inventory.carriedItem == null) return; //no item to place
-            //non-equippable items cant be in equipment slot
-            if(myTag != SlotTag.None && Inventory.carriedItem.myItem.itemTag != myTag) return;
-            if(myItem == null || myItem.myItem == Inventory.carriedItem.myItem){
-                SetItem(Inventory.carriedItem);
-                myItem.amount++;
-            }
-            */
+            Inventory.Singleton.SetCarriedItem(myItem); 
+            
         }
     }
 
-    public void SetItem(InventoryItem item) //assumes slot is empty
+    public void SetItem(InventoryItem item) //place "item" in slot
     {
+        bool isEmpty = myItem == null;
         if(item != null) 
             Debug.Log("setting " + item + " in slot " + this);
-        if(myItem != null)
+        if(!isEmpty) //slot contains an item
         {
             Debug.Log("this slot already contains " + myItem);
             if(myTag != SlotTag.None && item.myItem.itemTag != myTag){ Debug.Log("cant place "+item+" here. this slot is "+myTag+" and you cant place "+item.myItem.itemTag);return; }//check if item is equippable in slot
@@ -43,16 +36,14 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
             {
                 
                 Debug.Log("stacking " + item.amount + " of " +item.myItem+ " in " +this + " which already has " + myItem.amount + " of " + myItem.myItem);
-                myItem.amount += item.amount;
-                //Inventory.carriedItem = null; //clear carried item
-                //Destroy(Inventory.carriedItem); 
+                myItem.amount = myItem.amount + item.amount;
+                myItem.SetText();
                 Debug.Log(this +" now has " + myItem.amount + " of " + myItem.myItem);
                 return;
             }
         }
 
-
-        Inventory.carriedItem = null;
+        
 
         item.activeSlot.myItem = null; //remove item from previous slot
         
@@ -61,12 +52,14 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         myItem.activeSlot = this;
         myItem.transform.SetParent(transform);
         myItem.canvasGroup.blocksRaycasts = true; //enable raycasting for item
+        myItem.SetText();
+        if(isEmpty)
+            Inventory.carriedItem = null;
 
         if(myItem != null)
             Debug.Log(this + " now contains " + myItem.amount + " of " + myItem.myItem);
         else    
             Debug.Log(this + " is now empty");
-        myItem.SetText(); //update text to show amount of item in slot
         if(Inventory.carriedItem != null) 
             Debug.Log("now carrying " + Inventory.carriedItem.amount + " of " + Inventory.carriedItem); //debug log to show carried item
         //else

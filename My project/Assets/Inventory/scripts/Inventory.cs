@@ -12,7 +12,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] InventorySlot[] inventorySlots; //slots for equippable items
 
     [SerializeField] Transform curCarryingTransform; //no clue, transform is a ui thing idk
-    [SerializeField] InventoryItem itemPrefab; 
+    [SerializeField] InventoryItem itemPrefab;
 
     [Header("Item List")]
     [SerializeField] Item[] items; //all items in the game
@@ -25,8 +25,8 @@ public class Inventory : MonoBehaviour
     void Awake()
     {
         //itempos = new Dictionary<InventoryItem, List<InventorySlot>>(); //initialize item positions
-       Singleton = this; //init single inventory
-       giveItemButton.onClick.AddListener(delegate{SpawnInventoryItem();});
+        Singleton = this; //init single inventory
+        giveItemButton.onClick.AddListener(delegate { SpawnInventoryItem(); });
 
     }
 
@@ -34,14 +34,15 @@ public class Inventory : MonoBehaviour
     public void SpawnInventoryItem(Item item = null)
     {
         Item itm = item;
-        if(itm == null){
+        if (itm == null)
+        {
             int random = Random.Range(0, items.Length);
             itm = items[random]; //get a random item from the list
         }
 
-        for(int i = 0; i < inventorySlots.Length; i++)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
-            if(inventorySlots[i].myItem == null) //find an empty slot
+            if (inventorySlots[i].myItem == null) //find an empty slot
             {
                 Debug.Log("placing " + itm + " in slot " + i);
                 Instantiate(itemPrefab, inventorySlots[i].transform).Initialize(itm, inventorySlots[i]); //create item in slot
@@ -52,7 +53,7 @@ public class Inventory : MonoBehaviour
 
     void Update() //item follow cursor
     {
-        if(carriedItem != null)
+        if (carriedItem != null)
         {
             carriedItem.transform.position = Input.mousePosition;
         }
@@ -62,72 +63,59 @@ public class Inventory : MonoBehaviour
     public void SetCarriedItem(InventoryItem item) //"item" is the item in the slot to be carried
     {
 
-        
+        Debug.Log("check hello1");
         if(carriedItem != null)
+            Debug.Log("what");
+        if (carriedItem != null)
         {
-            if(item.activeSlot.myTag != SlotTag.None && item.activeSlot.myTag != carriedItem.myItem.itemTag) 
-            { Debug.Log(carriedItem + " cant be placed in " + item.activeSlot.myTag);return;} //cur carried item cant be placed in equipment slot
-            Debug.Log("placing " + carriedItem.amount + " of " + carriedItem +" in " + item.activeSlot); //debug log to show where item is being placed
-            
+            Debug.Log(item.activeSlot);
+            if (item.activeSlot.myTag != SlotTag.None && item.activeSlot.myTag != carriedItem.myItem.itemTag)
+            { Debug.Log(carriedItem + " cant be placed in " + item.activeSlot.myTag); return; } //cur carried item cant be placed in equipment slot
+
+            Debug.Log("placing " + carriedItem.amount + " of " + carriedItem + " in " + item.activeSlot); //debug log to show where item is being placed
+
             item.activeSlot.SetItem(carriedItem); //place carried item in slot ///////////
 
-            if(carriedItem != null && carriedItem.myItem == item.myItem){ //stack
-                carriedItem.canvasGroup.blocksRaycasts = false;
+            if (carriedItem != null && carriedItem.myItem == item.myItem && carriedItem.myItem.stackable)
+            { //stack
+                carriedItem.activeSlot.myItem = null;
                 carriedItem.transform.SetParent(null);
-                Destroy(carriedItem); 
+                Destroy(carriedItem);
                 carriedItem = null;
                 Debug.Log("stacked");
                 return;
             }
-            
+
         }
         else
         {
-            item.activeSlot.myItem = null; //remove item from previous slot
+            Debug.Log("Hello2");
+            //item.activeSlot.myItem = null; //remove item from previous slot
         }
-        carriedItem = item;
-        if(item == null) Debug.Log(" item is null"); 
-        else Debug.Log("item not null");
-        carriedItem.canvasGroup.blocksRaycasts = false; //disable raycasting for carried item
-        item.transform.SetParent(curCarryingTransform); //set carried item to follow cursor
-        if(carriedItem != null)
-            Debug.Log("now carrying " + carriedItem.amount + " of " + carriedItem.myItem); //debug log to show carried item
-        /*
+        Debug.Log("debug check3.");
         
-        if(carriedItem != null) //switch if carrying an item already
+        if (item == null) 
         {
-
-            if(item.activeSlot.myTag != SlotTag.None && item.activeSlot.myTag == carriedItem.myItem.itemTag) 
-            { //if the item is equippable, check if it can be placed in the slot
-
-                //EquipEquipment(item.activeSlot.myTag, carriedItem); //equip carried item to the slot
-                //carriedItem.SetActiveSlot(item.activeSlot); //set carried item to the new slot
-                carriedItem = item; //carry removed equipment
-            }
-            else if(item.activeSlot.myTag == SlotTag.None) 
-            {
-                carriedItem.transform.SetParent(item.activeSlot.transform); 
-            }
-            item.activeSlot.SetItem(carriedItem); //place carried item in the slot
+            Debug.Log("D4");
+            carriedItem = null;
+            Debug.Log("carried item is null");
         }
-
-        //unequip item if it was in an equipment slot
-        if(item.activeSlot.myTag != SlotTag.None)
+        else //slot not empty
         {
-            EquipEquipment(item.activeSlot.myTag, null);
+            carriedItem = item;
+            Debug.Log("carried item not null");
+            carriedItem.canvasGroup.blocksRaycasts = false; //disable raycasting for carried item
+            carriedItem.transform.SetParent(curCarryingTransform); //set carried item to follow cursor
+            Debug.Log("now carrying " + carriedItem.amount + " of " + carriedItem.myItem); //debug log to show carried item
         }
-
-        carriedItem = item;
-        carriedItem.canvasGroup.blocksRaycasts = false; 
-        item.transform.SetParent(curCarryingTransform); //set carried item to follow cursor
-        */
     }
 
-    
-    public void EquipEquipment(SlotTag tagm, InventoryItem item = null){
-        
 
-        
+    public void EquipEquipment(SlotTag tagm, InventoryItem item = null)
+    {
+
+
+
         //apply stats
     }
 }

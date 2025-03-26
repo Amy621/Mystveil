@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6705647402853677541, guid: 80f1a97a0f8a24857911f99017ddb93c, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot
+      value: Inventory Slot Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8922758743767659143, guid: 80f1a97a0f8a24857911f99017ddb93c, type: 3}
       propertyPath: m_Pivot.x
@@ -93,7 +93,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4969486299047278559, guid: 80f1a97a0f8a24857911f99017ddb93c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80f1a97a0f8a24857911f99017ddb93c, type: 3}

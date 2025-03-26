@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: basket
   m_EditorClassIdentifier: 
   sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  itemTag: 0
+  itemTag: 1
+  stackable: 1
   prefab: {fileID: 100000, guid: 49ee445f40b44e64c8636da0a61c42a8, type: 3}

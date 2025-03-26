@@ -29,8 +29,9 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         myItem = item;
         itemIcon.sprite = item.sprite;
         if(myItem.stackable)
-            amountText = GetComponent<TextMeshProUGUI>();
+            amountText = GetComponentInChildren<TextMeshProUGUI>();
         amount = 1;
+        SetText();
     }
 
     //left mouse click carries item
@@ -39,15 +40,15 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         if(eventData.button == PointerEventData.InputButton.Left)
         {
             Debug.Log("clicked on item " + myItem);
-            Inventory.Singleton.SetCarriedItem(this); /////////////////
+            Inventory.Singleton.SetCarriedItem(this); 
         }
     }
     public void SetText()
     {
-        if(myItem != null && myItem.stackable)
+        if(myItem != null)
         {
-            //amountText.gameObject.SetActive(true);
-            //amountText.SetText(amount.ToString());
+            amountText.gameObject.SetActive(true);
+            amountText.SetText(amount.ToString());
         }
     }
 }
