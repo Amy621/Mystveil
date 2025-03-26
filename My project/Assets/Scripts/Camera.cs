@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class Camera_pan : MonoBehaviour
 {
@@ -44,6 +44,39 @@ public class Camera_pan : MonoBehaviour
             Vector3 desiredPos = player.position + offset;
             desiredPos.y = Mathf.Max(desiredPos.y, minHeight);
             transform.position = Vector3.Lerp(transform.position, desiredPos, panSpeed * Time.deltaTime);
+        }
+    }
+}*/
+
+using UnityEngine;
+
+public class Camera_pan : MonoBehaviour
+{
+    public float panSpeed = 6f;
+    public Transform player; 
+    public Vector3 offset = new Vector3(0f, 15f, -1f); // Adjusted for top-down view (Y-axis height)
+    public float minHeight = 5f; // Minimum camera height to prevent clipping
+    private Camera _camera;
+
+    private void Awake()
+    {
+        _camera = GetComponentInChildren<Camera>();
+        // Ensure near clipping plane is appropriate for camera height
+        _camera.nearClipPlane = -30f; // Prevents nearby clipping
+    }
+
+    void Update()
+    {
+        FollowPlayer(); // Only follow the player, remove manual panning
+    }
+
+    void FollowPlayer()
+    {
+        if (player != null)
+        {
+            Vector3 desiredPos = player.position + offset;
+            desiredPos.y = Mathf.Max(desiredPos.y, minHeight); // Ensure the camera does not go below min height
+            transform.position = Vector3.Lerp(transform.position, desiredPos, panSpeed * Time.deltaTime); // Smooth follow
         }
     }
 }
