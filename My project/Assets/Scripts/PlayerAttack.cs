@@ -1,47 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
+
+
 {
-    private GameObject attackArea = default;
-    private bool attacking = false;
+    public int attackDamage = 20;
+    public float attackRange = 2f;
+    public LayerMask enemyLayers;
 
-    // how long an attack lasts
-    private float timeToAttack = 0.25f;
-    private float timer = 0f;
+    public Animator animator;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        attackArea = transform.GetChild(0).gameObject;
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Attack();
         }
+    }
 
-        if(attacking)
+    void Attack()
+    {
+        animator.SetTrigger("attack");
+
+        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, attackRange, enemyLayers);
+
+        foreach (Collider enemy in hitEnemies)
         {
-            timer += Time.deltaTime;
-
-            if(timer >= timeToAttack)
-            {
-                timer = 0;
-                attacking = false;
-                attackArea.SetActive(attacking);
-            }
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
     }
 
-    private void Attack()
+    void OnDrawGizmosSelected()
     {
-        Debug.Log("Attack!!!");
-        attacking = true;
-        attackArea.SetActive(attacking);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
