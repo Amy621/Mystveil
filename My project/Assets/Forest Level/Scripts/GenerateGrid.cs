@@ -20,15 +20,24 @@ public class GenerateGrid : MonoBehaviour
     private Vector3 nextSceneRockPosition;
 
     // Creating 1v1 boss battle enemy
-    // TO-DO: make a list and randomly choose one boss monster
-    public GameObject bossMonster;
+    public GameObject bossEnemy;
+    private List<GameObject> bossEnemyList;
     private int bossLevelSizeX = 25;
     private int bossLevelSizeZ = 25;
 
     // Creating pockets of collectables and monsters to spawn
-    // TO-DO: make a list of monsters and collectables to randomize
-    public GameObject monsterSpider;
-    public GameObject collectableHerb;
+    public GameObject Spider;
+    private List<GameObject> monsterList;
+
+    public GameObject Moonpetal_Blossom;
+    public GameObject Shadowberry;
+    public GameObject Whisperwood;
+    public GameObject Sunstone_Seed;
+    public GameObject Emberleaf;
+    public GameObject Starlight_Berry;
+    
+    private List<GameObject> collectableList;
+
     private int numMonsterAreas;
     private int numCollectableAreas;
 
@@ -150,6 +159,9 @@ public class GenerateGrid : MonoBehaviour
         // spawn in the player
         GameObject.Find("Player").transform.position = playerSpawn;
 
+        // spawn collectable items
+        SpawnCollectables();
+
         // spawn the obj that will be used to go to the next level / scene
         SpawnNextSceneRock();
 
@@ -210,13 +222,36 @@ public class GenerateGrid : MonoBehaviour
         
     }
 
-    // private void SpawnCollectables() {
+    private void SpawnCollectables() {
+        numCollectableAreas = Random.Range(1, 3);
+        
+        // how many collectable item areas total of this level
+        for (int i = 0; i < numCollectableAreas; i++) {
+            int randCollectableIndex = Random.Range(0, collectableList.Count - 1);
+            int randNumOfCollectable = Random.Range(2, 6);
 
-    // }
+            // how many collectables per area
+            for(int j = 0; j < randNumOfCollectable; j++) {
+                GameObject collectable = Instantiate(collectableList[randCollectableIndex],
+                getCollectableSpawnLocation(randNumOfCollectable),
+                Quaternion.identity);
+                allItems.Add(collectable);
+            }
+        }
+        
+    }
+
+    // creating an area for the items to spawn and removing from the list of possible vec3 positions
+    private Vector3 getCollectableSpawnLocation(int num) {
+
+    }
 
     // private void SpawnMonsters() {
 
     // }
+
+    // private void SpawnBossMonster() {
+    //}
 
     private void SpawnNextSceneRock() {
         nextSceneRockPosition = new Vector3 (
@@ -244,30 +279,30 @@ public class GenerateGrid : MonoBehaviour
         }
 
         for(int c = 0; c < 10; c++) {
-            GameObject toPlaceFlower1 = Instantiate(flower1Spawn,
-            SpawnGrass(),
-            Quaternion.identity);
-            allItems.Add(toPlaceFlower1);
+            // GameObject toPlaceFlower1 = Instantiate(flower1Spawn,
+            // SpawnGrass(),
+            // Quaternion.identity);
+            // allItems.Add(toPlaceFlower1);
 
-            GameObject toPlaceFlower2 = Instantiate(flower2Spawn,
-            SpawnGrass(),
-            Quaternion.identity);
-            allItems.Add(toPlaceFlower2);
+            // GameObject toPlaceFlower2 = Instantiate(flower2Spawn,
+            // SpawnGrass(),
+            // Quaternion.identity);
+            // allItems.Add(toPlaceFlower2);
 
-            GameObject toPlaceFlower3 = Instantiate(flower3Spawn,
-            SpawnGrass(),
-            Quaternion.identity);
-            allItems.Add(toPlaceFlower3);
+            // GameObject toPlaceFlower3 = Instantiate(flower3Spawn,
+            // SpawnGrass(),
+            // Quaternion.identity);
+            // allItems.Add(toPlaceFlower3);
 
-            GameObject toPlaceFlower4 = Instantiate(flower4Spawn,
-            SpawnGrass(),
-            Quaternion.identity);
-            allItems.Add(toPlaceFlower4);
+            // GameObject toPlaceFlower4 = Instantiate(flower4Spawn,
+            // SpawnGrass(),
+            // Quaternion.identity);
+            // allItems.Add(toPlaceFlower4);
 
-            GameObject toPlaceFlower5 = Instantiate(flower5Spawn,
-            SpawnGrass(),
-            Quaternion.identity);
-            allItems.Add(toPlaceFlower5);
+            // GameObject toPlaceFlower5 = Instantiate(flower5Spawn,
+            // SpawnGrass(),
+            // Quaternion.identity);
+            // allItems.Add(toPlaceFlower5);
 
             GameObject toPlaceTree1 = Instantiate(tree1Spawn,
             ObjectSpawnLocation(),
@@ -337,6 +372,7 @@ public class GenerateGrid : MonoBehaviour
         return newPos;
     }
 
+    // randomize the object spawn within the 3x3 grid tile
     private Vector3 ObjectSpawnLocation() {
         int rndIndex = Random.Range(0, floorPositions.Count);
         int rndSquareX = Random.Range(0, 3);
