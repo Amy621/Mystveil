@@ -30,13 +30,11 @@ public class GoingToNextForestLv : MonoBehaviour
         } else if (ForestBase.curLevel + 1 == ForestBase.numLevels) {
             Debug.Log("Boss battle");
             ForestBase.curLevel++;
-            GameObject.Find("Player").transform.position = ForestBase.playerSpawn;
             ForestBase.onDestroy();
             gridGenerator.GenerateBossLevel();
         } else {
             Debug.Log("Next level");
             ForestBase.curLevel++;
-            GameObject.Find("Player").transform.position = ForestBase.playerSpawn;
             ForestBase.onDestroy();
             gridGenerator.GenerateLevel();
         }

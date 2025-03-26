@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GenerateGrid : MonoBehaviour
 {
+    // generating player spawn
+    private Vector3 playerSpawn;
+
     // floor/ground parameters
     public GameObject grassFloorObject;
     public GameObject nonWalkFloorObject;
@@ -50,8 +53,13 @@ public class GenerateGrid : MonoBehaviour
         return allItems;
     }
 
+    public Vector3 getPlayerSpawnCoords() {
+        return playerSpawn;
+    }
+
     public void GenerateLevel() {
         Debug.Log("Inside generate level");
+
         for(int x = 0; x < worldSizeX; x++) 
         {
             // make the border
@@ -89,6 +97,10 @@ public class GenerateGrid : MonoBehaviour
                         Quaternion.identity) as GameObject;
                         allItems.Add(floor);
 
+                        if (x == 4 && z == 17) {
+                            playerSpawn = pos;
+                        }
+
                         grassPositions.Add(floor.transform.position);
 
                         floor.transform.SetParent(this.transform);
@@ -106,12 +118,7 @@ public class GenerateGrid : MonoBehaviour
                     int offsetRandom = Random.Range(0, 2);
 
                     // adding in the next scene rock
-                    // if (x == 25 && z == 15) {
-                    //     nextSceneRockPosition = pos;
-                    // }
-
-                    // temp position to make sure it works
-                    if (x == 6 && z == 17) {
+                    if (x == 25 && z == 15) {
                         nextSceneRockPosition = pos;
                     }
 
@@ -140,6 +147,9 @@ public class GenerateGrid : MonoBehaviour
             }
         }
 
+        // spawn in the player
+        GameObject.Find("Player").transform.position = playerSpawn;
+
         // spawn the obj that will be used to go to the next level / scene
         SpawnNextSceneRock();
 
@@ -156,12 +166,7 @@ public class GenerateGrid : MonoBehaviour
                 z * gridOffset);
 
                 // adding in the next scene rock
-                // if (x == 25 && z == 15) {
-                //     nextSceneRockPosition = pos;
-                // }
-
-                // temp position to make sure it works
-                if (x == 6 && z == 9) {
+                if (x == 20 && z == 10) {
                     nextSceneRockPosition = pos;
                 }
 
@@ -180,6 +185,10 @@ public class GenerateGrid : MonoBehaviour
                     Quaternion.identity) as GameObject;
                     allItems.Add(floor);
 
+                    if (x == 7 && z == 17) {
+                        playerSpawn = pos;
+                    }
+
                     floor.transform.SetParent(this.transform);
                 }
             }
@@ -194,6 +203,9 @@ public class GenerateGrid : MonoBehaviour
             allItems.Add(borderTree);
         }
 
+        // spawn in the player
+        GameObject.Find("Player").transform.position = playerSpawn;
+
         SpawnNextSceneRock();
         
     }
@@ -207,6 +219,12 @@ public class GenerateGrid : MonoBehaviour
     // }
 
     private void SpawnNextSceneRock() {
+        nextSceneRockPosition = new Vector3 (
+            nextSceneRockPosition.x,
+            nextSceneRockPosition.y + 1,
+            nextSceneRockPosition.z + 1
+        );
+
         GameObject nextAreaRock = Instantiate(toNextArea,
         nextSceneRockPosition,
         Quaternion.identity);

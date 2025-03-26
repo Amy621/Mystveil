@@ -8,7 +8,6 @@ public class ForestBase : MonoBehaviour
     public static int numLevels;
     public static int curLevel = 1;
     public GenerateGrid gridGenerator;
-    public static Vector3 playerSpawn;
     public static List<GameObject> currentObjs;
 
     // Start is called before the first frame update
@@ -22,8 +21,6 @@ public class ForestBase : MonoBehaviour
         gridGenerator.GenerateLevel();
 
         currentObjs = gridGenerator.getAllObjects();
-
-        playerSpawn = GameObject.Find("Player").transform.position;
     }
 
     public static void onDestroy() 
