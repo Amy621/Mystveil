@@ -21,13 +21,13 @@ public class GenerateGrid : MonoBehaviour
 
     // Creating 1v1 boss battle enemy
     public GameObject bossEnemy;
-    private List<GameObject> bossEnemyList;
+    private List<GameObject> bossEnemyList = new List<GameObject>();
     private int bossLevelSizeX = 25;
     private int bossLevelSizeZ = 25;
 
     // Creating pockets of collectables and monsters to spawn
     public GameObject Spider;
-    private List<GameObject> monsterList;
+    private List<GameObject> monsterList = new List<GameObject>();
 
     public GameObject Moonpetal_Blossom;
     public GameObject Shadowberry;
@@ -36,24 +36,18 @@ public class GenerateGrid : MonoBehaviour
     public GameObject Emberleaf;
     public GameObject Starlight_Berry;
     
-    private List<GameObject> collectableList;
+    private List<GameObject> collectableList = new List<GameObject>();
 
     private int numMonsterAreas;
     private int numCollectableAreas;
 
     // Creating objects to spawn (non-collectable)
     public GameObject grassSpawn;
-    public GameObject flower1Spawn;
-    public GameObject flower2Spawn;
-    public GameObject flower3Spawn;
-    public GameObject flower4Spawn;
-    public GameObject flower5Spawn;
     public GameObject rock1Spawn;
     public GameObject rock2Spawn;
     public GameObject tree1Spawn;
     public GameObject tree2Spawn;
     public GameObject treeBorderSpawn;
-    public GameObject mushroomSpawn;
     public GameObject logSpawn;
     public GameObject toNextArea;
     private List<GameObject> allItems = new List<GameObject>();
@@ -223,27 +217,54 @@ public class GenerateGrid : MonoBehaviour
     }
 
     private void SpawnCollectables() {
-        numCollectableAreas = Random.Range(1, 3);
+        // adding in the collectable objects to the list
+        collectableList.Add(Moonpetal_Blossom);
+        collectableList.Add(Shadowberry);
+        collectableList.Add(Whisperwood);
+        collectableList.Add(Sunstone_Seed);
+        collectableList.Add(Emberleaf);
+        collectableList.Add(Starlight_Berry);
+
+
+        numCollectableAreas = Random.Range(3, 7);
         
         // how many collectable item areas total of this level
         for (int i = 0; i < numCollectableAreas; i++) {
             int randCollectableIndex = Random.Range(0, collectableList.Count - 1);
             int randNumOfCollectable = Random.Range(2, 6);
+            int index = Random.Range(0, floorPositions.Count - 1);
+
+            // store all the coords possible
+            List<string> possibleCoords = new List<string>();
+
+            for (int m = 0; m <= 3; m++) {
+                for (int n = 0; n <= 3; n++) {
+                    possibleCoords.Add(m + "," + n);
+                }
+            }
 
             // how many collectables per area
             for(int j = 0; j < randNumOfCollectable; j++) {
+                int randIndex = Random.Range(0, possibleCoords.Count - 1);
+                string rawString = possibleCoords[randIndex];
+
+                Vector3 newPos = new Vector3 (
+                    floorPositions[index].x - int.Parse(rawString.Split(',')[0]),
+                    floorPositions[index].y,
+                    floorPositions[index].z - int.Parse(rawString.Split(',')[1])
+                );
+
+                possibleCoords.RemoveAt(randIndex);
+
                 GameObject collectable = Instantiate(collectableList[randCollectableIndex],
-                getCollectableSpawnLocation(randNumOfCollectable),
+                newPos,
                 Quaternion.identity);
                 allItems.Add(collectable);
             }
+
+            floorPositions.RemoveAt(index);
         }
         
-    }
-
-    // creating an area for the items to spawn and removing from the list of possible vec3 positions
-    private Vector3 getCollectableSpawnLocation(int num) {
-
     }
 
     // private void SpawnMonsters() {
@@ -279,31 +300,6 @@ public class GenerateGrid : MonoBehaviour
         }
 
         for(int c = 0; c < 10; c++) {
-            // GameObject toPlaceFlower1 = Instantiate(flower1Spawn,
-            // SpawnGrass(),
-            // Quaternion.identity);
-            // allItems.Add(toPlaceFlower1);
-
-            // GameObject toPlaceFlower2 = Instantiate(flower2Spawn,
-            // SpawnGrass(),
-            // Quaternion.identity);
-            // allItems.Add(toPlaceFlower2);
-
-            // GameObject toPlaceFlower3 = Instantiate(flower3Spawn,
-            // SpawnGrass(),
-            // Quaternion.identity);
-            // allItems.Add(toPlaceFlower3);
-
-            // GameObject toPlaceFlower4 = Instantiate(flower4Spawn,
-            // SpawnGrass(),
-            // Quaternion.identity);
-            // allItems.Add(toPlaceFlower4);
-
-            // GameObject toPlaceFlower5 = Instantiate(flower5Spawn,
-            // SpawnGrass(),
-            // Quaternion.identity);
-            // allItems.Add(toPlaceFlower5);
-
             GameObject toPlaceTree1 = Instantiate(tree1Spawn,
             ObjectSpawnLocation(),
             Quaternion.identity);
@@ -326,11 +322,6 @@ public class GenerateGrid : MonoBehaviour
             Quaternion.identity);
             allItems.Add(toPlaceRock2);
 
-            GameObject toPlaceMushroom = Instantiate(mushroomSpawn,
-            ObjectSpawnLocation(),
-            Quaternion.identity);
-            allItems.Add(toPlaceMushroom);
-
             GameObject toPlaceLog = Instantiate(logSpawn,
             ObjectSpawnLocation(),
             Quaternion.identity);
@@ -338,7 +329,7 @@ public class GenerateGrid : MonoBehaviour
             allItems.Add(toPlaceLog);
         }
 
-        for(int c = 0; c < 200; c++) {
+        for(int c = 0; c < 50; c++) {
             GameObject toPlaceGrass = Instantiate(grassSpawn,
             SpawnGrass(),
             Quaternion.identity);
