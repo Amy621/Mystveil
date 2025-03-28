@@ -191,7 +191,7 @@ public class GenerateGrid : MonoBehaviour
                     Quaternion.identity) as GameObject;
                     allItems.Add(floor);
 
-                    if (x == 7 && z == 17) {
+                    if (x == 7 && z == 10) {
                         playerSpawn = pos;
                     }
 
