@@ -153,6 +153,9 @@ public class GenerateGrid : MonoBehaviour
         // spawn in the player
         GameObject.Find("Player").transform.position = playerSpawn;
 
+        // spawn monsters
+        SpawnMonsters();
+
         // spawn collectable items
         SpawnCollectables();
 
@@ -267,9 +270,30 @@ public class GenerateGrid : MonoBehaviour
         
     }
 
-    // private void SpawnMonsters() {
+    private void SpawnMonsters() {
+        monsterList.Add(Spider);
 
-    // }
+        numMonsterAreas = Random.Range(2, 8);
+
+        // how many collectable item areas total of this level
+        for (int i = 0; i < numMonsterAreas; i++) {
+            // int randCollectableIndex = Random.Range(0, collectableList.Count - 1);
+            int index = Random.Range(0, floorPositions.Count - 1);
+
+            Vector3 newPos = new Vector3 (
+                floorPositions[index].x - 1.5f,
+                floorPositions[index].y,
+                floorPositions[index].z - 1.5f
+            );
+
+            GameObject monster = Instantiate(monsterList[0],
+            newPos,
+            Quaternion.identity);
+            allItems.Add(monster);
+
+            floorPositions.RemoveAt(index);
+        }
+    }
 
     // private void SpawnBossMonster() {
     //}
