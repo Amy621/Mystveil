@@ -11,6 +11,7 @@ public class PatrolBehavior : StateMachineBehaviour
 
     Transform player;
     float ChaseRange = 6;
+    Transform currentWaypoint;
 
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,7 +23,7 @@ public class PatrolBehavior : StateMachineBehaviour
         }
 
         agent = animator.GetComponent<NavMeshAgent>();
-        agent.SetDestination(wayPoints[0].position);
+        GoToNewWaypoint(animator);
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -31,11 +32,11 @@ public class PatrolBehavior : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(agent.remainingDistance <= agent.stoppingDistance) {
-            agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count)].position);
+            GoToNewWaypoint(animator);
         }
 
         timer += Time.deltaTime;
-        if (timer > 6) {
+        if (timer > Random.Range(5, 25)) {
             animator.SetBool("isPatrolling", false);
         }
 
@@ -43,12 +44,73 @@ public class PatrolBehavior : StateMachineBehaviour
         if (distance < ChaseRange) {
             animator.SetBool("isChasing", true);
         }
+
+        CheckForSpiderCollision(animator);
     }
 
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        agent.SetDestination(agent.transform.position);
+    }
+
+    void CheckForSpiderCollision(Animator animator)
+    {
+        // Get the BoxCollider of the current spider.
+        BoxCollider boxCollider = animator.GetComponent<BoxCollider>();
+
+        if (boxCollider == null)
+        {
+            Debug.LogError("Spider does not have a BoxCollider!");
+            return;
+        }
+
+        // Get the size and center of the BoxCollider.
+        Vector3 boxSize = boxCollider.size;
+        Vector3 boxCenter = boxCollider.center;
+
+        // Get the transform of the current spider.
+        Transform spiderTransform = animator.transform;
+
+        // Calculate the world-space center of the box.
+        Vector3 worldCenter = spiderTransform.TransformPoint(boxCenter);
+
+        // Calculate the world-space rotation of the box.
+        Quaternion worldRotation = spiderTransform.rotation;
+
+        // Use OverlapBox to detect collisions.
+        Collider[] hitColliders = Physics.OverlapBox(worldCenter, boxSize / 2f, worldRotation); // Divide by 2, as OverlapBox uses half extents.
+
+        foreach (Collider hitCollider in hitColliders)
+        {
+            if (hitCollider.CompareTag("Monster") && hitCollider.gameObject != animator.gameObject)
+            {
+                // Another spider is detected. Turn around.
+                Debug.Log("Another monster detected!");
+                GoToNewWaypoint(animator);
+                break; // Stop checking after turning around.
+            }
+        }
+    }
+
+    void GoToNewWaypoint(Animator animator)
+    {
+        if (wayPoints.Count > 0)
+        {
+            Transform newWaypoint;
+            do
+            {
+                int randomIndex = Random.Range(0, wayPoints.Count - 1);
+                newWaypoint = wayPoints[randomIndex];
+            } while (newWaypoint == currentWaypoint); // Ensure a different waypoint is chosen.
+
+            currentWaypoint = newWaypoint; // Update the current waypoint.
+            agent.SetDestination(currentWaypoint.position);
+        }
+        else
+        {
+            Debug.LogWarning("No waypoints available!");
+        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

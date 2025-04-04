@@ -21,11 +21,11 @@ public class IdleBehavior : StateMachineBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer > 2 && (Random.Range(0, 10) % 2) == 0) {
+        if (timer > Random.Range(2, 35)) {
             animator.SetBool("isLongIdle", true);
         }
         
-        if (timer > 2 && (Random.Range(0, 10) % 2) != 0) {
+        if (timer > Random.Range(2, 35)) {
             animator.SetBool("isPatrolling", true);
         }
 

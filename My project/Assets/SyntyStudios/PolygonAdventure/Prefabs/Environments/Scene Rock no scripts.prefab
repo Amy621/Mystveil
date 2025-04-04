@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2282604387037768749}
   - component: {fileID: 8105173972251708152}
   - component: {fileID: 851285378464419266}
+  - component: {fileID: 7346084462344492294}
   m_Layer: 0
   m_Name: Scene Rock no scripts
   m_TagString: Untagged
@@ -169,6 +170,29 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.2
   m_Center: {x: -0.0000019073486, y: 0, z: 0}
+--- !u!114 &7346084462344492294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577409053495835603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1001 &881169034977601189
 PrefabInstance:
   m_ObjectHideFlags: 0
