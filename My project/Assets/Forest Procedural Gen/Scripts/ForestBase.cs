@@ -29,14 +29,16 @@ public class ForestBase : MonoBehaviour
             Destroy(currentObjs[i]);
         }
         currentObjs.Clear();
+        Debug.Log("FORBASE - Destroyed old level!");
     }
 
     public static void onCreateLevel()
     {
+        Debug.Log("FORBASE - In create level...");
         ForestBase forestBase = FindObjectOfType<ForestBase>();
         if (forestBase != null)
         {
-            forestBase.gridGenerator.GenerateNavMesh();
+            //forestBase.gridGenerator.GenerateNavMesh();
             forestBase.gridGenerator.GenerateLevel();
         }
         else
@@ -47,10 +49,11 @@ public class ForestBase : MonoBehaviour
 
     public static void onCreateBossLevel()
     {
+        Debug.Log("FORBASE - In create boss level...");
         ForestBase forestBase = FindObjectOfType<ForestBase>();
         if (forestBase != null)
         {
-            forestBase.gridGenerator.GenerateNavMesh();
+            //forestBase.gridGenerator.GenerateNavMesh();
             forestBase.gridGenerator.GenerateBossLevel();
         }
         else

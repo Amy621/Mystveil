@@ -28,12 +28,12 @@ public class GoingToNextForestLv : MonoBehaviour
             Debug.Log("Boss battle");
             ForestBase.curLevel++;
             ForestBase.onDestroy();
-            ForestBase.onCreateLevel();
+            ForestBase.onCreateBossLevel();
         } else {
             Debug.Log("Next level");
             ForestBase.curLevel++;
             ForestBase.onDestroy();
-            ForestBase.onCreateBossLevel();
+            ForestBase.onCreateLevel();
         }
     }
 

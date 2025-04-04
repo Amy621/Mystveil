@@ -74,6 +74,7 @@ public class GenerateGrid : MonoBehaviour
         {
             // make the border
             if (x <= 2) {
+                Debug.Log("making the border before player spawn...");
                 for (int z = 0; z < worldSizeZ; z++) {
                     Vector3 pos = new Vector3(x * gridOffset,
                     0,
@@ -89,6 +90,7 @@ public class GenerateGrid : MonoBehaviour
             }
             // make the player spawn area
             else if (x <= 5) {
+                Debug.Log("making the player spawn area...");
                 for (int z = 0; z < worldSizeZ; z++) {
                     Vector3 pos = new Vector3(x * gridOffset,
                     0,
@@ -119,6 +121,7 @@ public class GenerateGrid : MonoBehaviour
             }
             // make the level area
             else {
+                Debug.Log("making the rest of the level...");
                 for(int z = 0; z < worldSizeZ; z++) {
                     Vector3 pos = new Vector3(x * gridOffset,
                     0,
@@ -158,23 +161,28 @@ public class GenerateGrid : MonoBehaviour
         }
 
         // spawn in the player
+        Debug.Log("spawning the player...");
         GameObject.Find("Player").transform.position = playerSpawn;
 
         // generate navmesh
-        GenerateNavMesh();
+        // GenerateNavMesh();
 
         // spawn monsters
+        Debug.Log("spawning monsters...");
         SpawnMonsters();
 
-        GenerateWaypoints();
+        // GenerateWaypoints();
 
         // spawn collectable items
+        Debug.Log("spawning collectables...");
         SpawnCollectables();
 
         // spawn the obj that will be used to go to the next level / scene
+        Debug.Log("spawning the rock used for going to next scene...");
         SpawnNextSceneRock();
 
         // spawning the objects (non-interactable)
+        Debug.Log("spawning all other objects...");
         SpawnObjects();
     }
 
