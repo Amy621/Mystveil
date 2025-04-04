@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public Transform projectilePoint;
     public float projectileDisappearDelay;
 
+    public Item dropItem;
     public GameObject clawmark;
     public Transform clawmarkPoint;
     public float clawDisappearDelay;
@@ -62,6 +63,8 @@ public class Enemy : MonoBehaviour
             //Play Death Animation
             animator.SetTrigger("death");
             GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+
+            Inventory.Singleton.SpawnInventoryItem(dropItem, 1);
         }
         else
         {

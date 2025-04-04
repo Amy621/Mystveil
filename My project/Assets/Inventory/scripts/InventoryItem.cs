@@ -40,7 +40,14 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         if(eventData.button == PointerEventData.InputButton.Left)
         {
             Debug.Log("clicked on item " + myItem);
-            Inventory.Singleton.SetCarriedItem(this); 
+            if(Input.GetKey(KeyCode.LeftShift)){
+                //shift click
+                Inventory.Singleton.Combine(activeSlot);
+            }
+            else{
+                Inventory.Singleton.SetCarriedItem(this); 
+            }
+            
         }
     }
     public void SetText()

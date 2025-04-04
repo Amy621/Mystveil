@@ -5295,6 +5295,7 @@ MonoBehaviour:
   projectile: {fileID: 3049335455091704345, guid: df6c5ae69b6e0d54d84b5009f2daac3e, type: 3}
   projectilePoint: {fileID: 1610945424}
   projectileDisappearDelay: 3
+  dropItem: {fileID: 0}
   clawmark: {fileID: 4801079045816333367, guid: 66e5e662f67225244b33afe81bfc336a, type: 3}
   clawmarkPoint: {fileID: 23336819}
   clawDisappearDelay: 1
@@ -10899,8 +10900,8 @@ RectTransform:
   m_GameObject: {fileID: 652992714}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.0060495, y: 1.0060495, z: 1.0060495}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 161164478}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10949,7 +10950,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15d0b523654ddc74bbd97875261194cb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d946f8f71ef844b1a17c3f47b5a6d3b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12868,7 +12869,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15d0b523654ddc74bbd97875261194cb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fecfb4fabb20d4aa2bcab6cf70fab083, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19638,8 +19639,8 @@ RectTransform:
   m_GameObject: {fileID: 1224407663}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2652, y: 1.2652, z: 1.2652}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 551914632}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19688,7 +19689,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15d0b523654ddc74bbd97875261194cb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8897f776080654b5c872a492ce2fcc51, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21265,8 +21266,8 @@ RectTransform:
   m_GameObject: {fileID: 1305049121}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.1856, y: 1.1856, z: 1.1856}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1017278382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21315,7 +21316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15d0b523654ddc74bbd97875261194cb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4edaac1416e5d46b6afb603d88d52bd3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

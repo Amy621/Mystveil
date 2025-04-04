@@ -15,10 +15,15 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             Debug.Log("clicked on slot");
-            if(myItem == null && Inventory.carriedItem != null) //place carried into empty slot
-                SetItem(Inventory.carriedItem);
-            else if(myItem != null)
-            Inventory.Singleton.SetCarriedItem(myItem); 
+            if(Input.GetKey(KeyCode.LeftShift)){
+                //shift click
+                Inventory.Singleton.Combine(this);
+            }else{
+                if(myItem == null && Inventory.carriedItem != null) //place carried into empty slot
+                    SetItem(Inventory.carriedItem);
+                else if(myItem != null)
+                Inventory.Singleton.SetCarriedItem(myItem); 
+            }
             
         }
     }
@@ -50,7 +55,7 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         //set cur slot
         myItem = item;
         myItem.activeSlot = this;
-        myItem.transform.SetParent(transform);
+        myItem.transform.SetParent(this.transform);
         myItem.canvasGroup.blocksRaycasts = true; //enable raycasting for item
         myItem.SetText();
         if(isEmpty)
