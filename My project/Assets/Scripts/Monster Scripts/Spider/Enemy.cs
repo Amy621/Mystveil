@@ -1,75 +1,146 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    public int enemyHP = 100;
+    [Header("Health Settings")]
+    public int maxHP = 100;
+    private int currentHP;
 
+    [Header("Projectile Settings")]
     public GameObject projectile;
     public Transform projectilePoint;
-    public float projectileDisappearDelay;
+    public float projectileDisappearDelay = 3f;
 
-    public Item dropItem;
+    [Header("Claw Settings")]
     public GameObject clawmark;
     public Transform clawmarkPoint;
-    public float clawDisappearDelay;
+    public float clawDisappearDelay = 2f;
 
-    public Animator animator;
+    [Header("Animation Settings")]
+    public Animator animator; 
 
-    public void Shoot() 
+    [Header("Audio Settings")]
+    public AudioSource audioSource;
+    public AudioClip damageClip;
+    public AudioClip deathClip;   // Enemy death sound
+
+    [Header("Death Effect Settings")]
+    public GameObject deathPrefab;  // Explosion prefab asset
+    // Separate explosion sound (the deathPrefab sound)
+    public AudioClip explosionClip; 
+
+    private Collider enemyCollider;
+    private NavMeshAgent navAgent;
+
+    void Start()
     {
-        GameObject instantiatedProjectile = Instantiate(projectile, projectilePoint.position, Quaternion.identity);
-        Rigidbody rb = instantiatedProjectile.GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward *10f, ForceMode.Impulse);
-        rb.AddForce(transform.up *12f, ForceMode.Impulse);
-
-        StartCoroutine(DisappearProjectile(instantiatedProjectile, projectileDisappearDelay));
+        currentHP = maxHP;
+        enemyCollider = GetComponent<Collider>();
+        navAgent = GetComponent<NavMeshAgent>();
     }
 
-    private IEnumerator DisappearProjectile(GameObject projectileObject, float delay)
+    void Update()
     {
-        yield return new WaitForSeconds(delay);
-        if (projectileObject != null)
+        // For testing purposes: press F to damage the enemy.
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            Destroy(projectileObject);
+            TakeDamage(20);
         }
     }
 
-    public void Claw() 
+    public void Shoot()
+    {
+        GameObject instantiatedProjectile = Instantiate(projectile, projectilePoint.position, Quaternion.identity);
+        Rigidbody rb = instantiatedProjectile.GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * 10f, ForceMode.Impulse);
+        rb.AddForce(transform.up * 12f, ForceMode.Impulse);
+        StartCoroutine(DisappearProjectile(instantiatedProjectile, projectileDisappearDelay));
+    }
+
+    IEnumerator DisappearProjectile(GameObject projectileObject, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (projectileObject) Destroy(projectileObject);
+    }
+
+    public void Claw()
     {
         GameObject instantiatedClawmark = Instantiate(clawmark, clawmarkPoint.position, clawmarkPoint.rotation);
         StartCoroutine(DisappearClawmark(instantiatedClawmark, clawDisappearDelay));
     }
 
-    private IEnumerator DisappearClawmark(GameObject clawmarkObject, float delay)
+    IEnumerator DisappearClawmark(GameObject clawmarkObject, float delay)
     {
         yield return new WaitForSeconds(delay);
-        if (clawmarkObject != null)
-        {
-            Destroy(clawmarkObject);
-        }
+        if (clawmarkObject) Destroy(clawmarkObject);
     }
 
-    public void TakeDamage(int damageAmount) 
+    public void TakeDamage(int damageAmount)
     {
-        Debug.Log("In Take Damage!!!");
-        enemyHP -= damageAmount;
+        currentHP -= damageAmount;
 
-        Debug.Log("Current health: " + enemyHP);
-
-        if (enemyHP <= 0)
+        // Play damage sound if assigned
+        if (damageClip != null && audioSource != null)
         {
-            //Play Death Animation
-            animator.SetTrigger("death");
-            GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
+            audioSource.PlayOneShot(damageClip);
+        }
 
-            Inventory.Singleton.SpawnInventoryItem(dropItem, 1);
+        if (currentHP <= 0)
+        {
+            // Trigger death animation
+            if (animator != null)
+            {
+                animator.SetTrigger("death");
+            }
+            // Disable movement and collision
+            if (navAgent != null)
+            {
+                navAgent.enabled = false;
+            }
+            if (enemyCollider != null)
+            {
+                enemyCollider.enabled = false;
+            }
+
+            // First, play the enemy's death sound immediately
+            if (audioSource != null && deathClip != null)
+            {
+                audioSource.PlayOneShot(deathClip);
+            }
+
+            // Then, spawn the explosion effect (and its sound) after a short delay
+            StartCoroutine(SpawnExplosion());
+
+            // Destroy the enemy after a delay (e.g., 3 seconds) 
+            Destroy(gameObject, 3f);
         }
         else
         {
-            //Play Damage Animation
-            animator.SetTrigger("damage");
+            // Trigger damage animation if still alive
+            if (animator != null)
+            {
+                animator.SetTrigger("damage");
+            }
+        }
+    }
+
+    IEnumerator SpawnExplosion()
+    {
+        // Wait a brief moment so the death sound has time to play first
+        yield return new WaitForSeconds(2.7f);
+
+        if (deathPrefab != null)
+        {
+            GameObject effectInstance = Instantiate(deathPrefab, transform.position, transform.rotation);
+            // Play the explosion sound (if assigned) at the explosion time
+            if (audioSource != null && explosionClip != null)
+            {
+                audioSource.PlayOneShot(explosionClip);
+            }
+            // Destroy the explosion effect after some time (e.g., 3 seconds)
+            Destroy(effectInstance, 3f);
         }
     }
 }

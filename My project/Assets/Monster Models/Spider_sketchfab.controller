@@ -224,6 +224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860acd463305f7045be79a17763139d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamage: 5
+  attackInterval: 2
 --- !u!114 &-4256695016590968167
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,6 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe41d6d397d368d4f954d46caeef8a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamage: 10
+  attackInterval: 1
 --- !u!1101 &-3373481795080488043
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
