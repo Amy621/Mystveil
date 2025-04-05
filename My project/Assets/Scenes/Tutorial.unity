@@ -4488,6 +4488,7 @@ MonoBehaviour:
   projectile: {fileID: 3049335455091704345, guid: df6c5ae69b6e0d54d84b5009f2daac3e, type: 3}
   projectilePoint: {fileID: 1497769681}
   projectileDisappearDelay: 3
+  dropItem: {fileID: 0}
   clawmark: {fileID: 4801079045816333367, guid: 66e5e662f67225244b33afe81bfc336a, type: 3}
   clawmarkPoint: {fileID: 899042830}
   clawDisappearDelay: 1
@@ -21650,6 +21651,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1502664445}
     m_Modifications:
+    - target: {fileID: 168066, guid: 4fd72ede44298284b89704ad0b9dedad, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 180246, guid: 4fd72ede44298284b89704ad0b9dedad, type: 3}
       propertyPath: m_Name
       value: Character_Warrior_White
