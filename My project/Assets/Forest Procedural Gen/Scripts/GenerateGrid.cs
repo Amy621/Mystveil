@@ -11,6 +11,7 @@ public class GenerateGrid : MonoBehaviour
 
     // floor/ground parameters
     public GameObject grassFloorObject;
+    public GameObject spawnFloorObject;
     public GameObject nonWalkFloorObject;
     private int worldSizeX = 30;
     private int worldSizeZ = 35;
@@ -44,6 +45,7 @@ public class GenerateGrid : MonoBehaviour
     public GameObject Starlight_Berry;
     
     private List<GameObject> collectableList = new List<GameObject>();
+    public string collectableTag = "Collectable";
 
     private int numMonsterAreas;
     private int numCollectableAreas;
@@ -67,14 +69,29 @@ public class GenerateGrid : MonoBehaviour
         return playerSpawn;
     }
 
-    public void GenerateLevel() {
-        Debug.Log("Inside generate level");
+    public void Destroy() {
+        for(int i = 0; i < allItems.Count; i++) {
+            Destroy(allItems[i]);
+        }
+        Debug.Log("now in clearing functions!");
+        allItems.Clear();
+
+        floorPositions.Clear();
+        borderPositions.Clear();
+        grassPositions.Clear();
+    }
+
+    public void GenerateLevel(bool isFirstLevel) {
+        Debug.Log("in generate level!");
+
+        if(!isFirstLevel) {
+            Destroy();
+        }
 
         for(int x = 0; x < worldSizeX; x++) 
         {
             // make the border
             if (x <= 2) {
-                Debug.Log("making the border before player spawn...");
                 for (int z = 0; z < worldSizeZ; z++) {
                     Vector3 pos = new Vector3(x * gridOffset,
                     0,
@@ -86,11 +103,11 @@ public class GenerateGrid : MonoBehaviour
 
                     allItems.Add(nonWalkFloor);
                     borderPositions.Add(nonWalkFloor.transform.position);
+                    nonWalkFloor.transform.SetParent(this.transform);
                 }
             }
             // make the player spawn area
             else if (x <= 5) {
-                Debug.Log("making the player spawn area...");
                 for (int z = 0; z < worldSizeZ; z++) {
                     Vector3 pos = new Vector3(x * gridOffset,
                     0,
@@ -103,36 +120,51 @@ public class GenerateGrid : MonoBehaviour
                         allItems.Add(nonWalkFloor);
 
                         borderPositions.Add(nonWalkFloor.transform.position);
+                        nonWalkFloor.transform.SetParent(this.transform);
                     } else {
-                        GameObject floor = Instantiate(grassFloorObject,
-                        pos,
-                        Quaternion.identity) as GameObject;
-                        allItems.Add(floor);
-
-                        if (x == 4 && z == 17) {
+                        // player spawn
+                        if (x == 5 && z == 18) {
+                            GameObject spawnFloor = Instantiate(spawnFloorObject,
+                            pos,
+                            Quaternion.identity) as GameObject;
+                            allItems.Add(spawnFloor);
+                            
                             playerSpawn = pos;
+
+                            spawnFloor.transform.SetParent(this.transform);
+
+                        } else {
+                            GameObject floor = Instantiate(grassFloorObject,
+                            pos,
+                            Quaternion.identity) as GameObject;
+                            allItems.Add(floor);
+
+                            grassPositions.Add(floor.transform.position);
+                            floor.transform.SetParent(this.transform);
                         }
-
-                        grassPositions.Add(floor.transform.position);
-
-                        floor.transform.SetParent(this.transform);
                     }
                 } 
             }
             // make the level area
             else {
-                Debug.Log("making the rest of the level...");
                 for(int z = 0; z < worldSizeZ; z++) {
                     Vector3 pos = new Vector3(x * gridOffset,
                     0,
                     z * gridOffset);
 
+                    bool isNextToNextSceneRock = false;
+
                     // making the borders less straight line and more random
-                    int offsetRandom = Random.Range(0, 2);
+                    int offsetRandom = Random.Range(0, 1);
 
                     // adding in the next scene rock
                     if (x == 25 && z == 15) {
                         nextSceneRockPosition = pos;
+                        isNextToNextSceneRock = true;
+                    }
+
+                    if ((x == 25 || x == 24) && z < 17 && z > 13) {
+                        isNextToNextSceneRock = true;
                     }
 
                     if(z < borderLength + offsetRandom || z > worldSizeZ - borderLength - offsetRandom || x < borderLength + offsetRandom || x > worldSizeX - borderLength - offsetRandom) {
@@ -150,28 +182,41 @@ public class GenerateGrid : MonoBehaviour
                         Quaternion.identity) as GameObject;
                         allItems.Add(floor);
 
-                        floorPositions.Add(floor.transform.position);
-                        grassPositions.Add(floor.transform.position);
+                        // check if is front of the next scene rock, can't spawn stuff in front or on it
+                        if (isNextToNextSceneRock) {
+                            grassPositions.Add(floor.transform.position);
+                            floor.transform.SetParent(this.transform);
+                            isNextToNextSceneRock = false;
+                        // ensure monsters don't spawn right next to you
+                        } else if (x > 5 && x < 8) {
+                            grassPositions.Add(floor.transform.position);
+                            floor.transform.SetParent(this.transform);
+                        } else {
+                            floorPositions.Add(floor.transform.position);
+                            grassPositions.Add(floor.transform.position);
 
-                        floor.transform.SetParent(this.transform);
+                            floor.transform.SetParent(this.transform);
+                        }
                     }
                 }
 
             }
         }
 
-        // spawn in the player
-        Debug.Log("spawning the player...");
-        GameObject.Find("Player").transform.position = playerSpawn;
+        GameObject player = GameObject.Find("Player");
+
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = playerSpawn;
+        player.GetComponent<CharacterController>().enabled = true;
 
         // generate navmesh
-        // GenerateNavMesh();
+        GenerateNavMesh();
 
         // spawn monsters
         Debug.Log("spawning monsters...");
         SpawnMonsters();
 
-        // GenerateWaypoints();
+        GenerateWaypoints();
 
         // spawn collectable items
         Debug.Log("spawning collectables...");
@@ -187,6 +232,8 @@ public class GenerateGrid : MonoBehaviour
     }
 
     public void GenerateBossLevel() {
+        Destroy();
+
         for(int x = 0; x < bossLevelSizeX; x++) 
         {
             for(int z = 0; z < bossLevelSizeZ; z++) {
@@ -199,11 +246,6 @@ public class GenerateGrid : MonoBehaviour
                     nextSceneRockPosition = pos;
                 }
 
-                // adding in the player spawn
-                if (x == 7 && z == 10) {
-                    playerSpawn = pos;
-                }
-
                 if(z < borderLength || z > bossLevelSizeZ - borderLength || x < borderLength || x > bossLevelSizeX - borderLength) {
                     GameObject nonWalkFloor = Instantiate(nonWalkFloorObject,
                     pos,
@@ -214,12 +256,23 @@ public class GenerateGrid : MonoBehaviour
 
                     nonWalkFloor.transform.SetParent(this.transform);
                 } else {
-                    GameObject floor = Instantiate(grassFloorObject,
-                    pos,
-                    Quaternion.identity) as GameObject;
-                    allItems.Add(floor);
+                    // adding in the player spawn
+                    if (x == 7 && z == 10) {
+                        playerSpawn = pos;
+                        GameObject spawnFloor = Instantiate(spawnFloorObject,
+                        pos,
+                        Quaternion.identity) as GameObject;
 
-                    floor.transform.SetParent(this.transform);
+                        allItems.Add(spawnFloor);
+                        spawnFloor.transform.SetParent(this.transform);
+                    } else {
+                        GameObject floor = Instantiate(grassFloorObject,
+                        pos,
+                        Quaternion.identity) as GameObject;
+
+                        allItems.Add(floor);
+                        floor.transform.SetParent(this.transform);
+                    }
                 }
             }
 
@@ -236,7 +289,11 @@ public class GenerateGrid : MonoBehaviour
         }
 
         // spawn in the player
-        GameObject.Find("Player").transform.position = playerSpawn;
+        GameObject player = GameObject.Find("Player");
+
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = playerSpawn;
+        player.GetComponent<CharacterController>().enabled = true;
 
         SpawnNextSceneRock();
         
@@ -309,6 +366,8 @@ public class GenerateGrid : MonoBehaviour
                 Quaternion.identity);
                 allItems.Add(collectable);
 
+                collectable.tag = collectableTag;
+
                 collectable.transform.SetParent(this.transform);
             }
 
@@ -334,15 +393,19 @@ public class GenerateGrid : MonoBehaviour
 
                 allItems.Add(waypoint);
 
+                SphereCollider sphereCollider = waypoint.GetComponent<SphereCollider>();
+                Debug.Log(sphereCollider);
+                if (sphereCollider != null) {
+                    sphereCollider.enabled = false;
+                    sphereCollider.isTrigger = true;
+                }
+
                 Renderer renderer = waypoint.GetComponent<Renderer>();
                 if (renderer != null) {
                     renderer.enabled = false;
-                } else {
                     MeshFilter meshfilter = waypoint.GetComponent<MeshFilter>();
-                    if (meshfilter != null) {
-                        Destroy(meshfilter);
-                    }
-                }
+                    Destroy(meshfilter);
+                } 
             } else {
                 Debug.LogError("Waypoint prefab is not assigned!");
             }
@@ -365,10 +428,12 @@ public class GenerateGrid : MonoBehaviour
                 floorPositions[index].z - 1.5f
             );
 
-            GameObject monster = Instantiate(monsterList[0],
+            GameObject monster = Instantiate(monsterList[Random.Range(0, monsterList.Count - 1)],
             newPos,
             Quaternion.identity);
             allItems.Add(monster);
+
+            monster.tag = monsterTag;
 
             monster.transform.SetParent(this.transform);
 
@@ -389,13 +454,14 @@ public class GenerateGrid : MonoBehaviour
         GameObject nextAreaRock = Instantiate(toNextArea,
         nextSceneRockPosition,
         Quaternion.identity);
-        allItems.Add(nextAreaRock);
 
         nextAreaRock.transform.SetParent(this.transform);
 
         SphereCollider collider = nextAreaRock.AddComponent(typeof(SphereCollider)) as SphereCollider;
         collider.isTrigger = true;
         nextAreaRock.AddComponent<GoingToNextForestLv>();
+
+        allItems.Add(nextAreaRock);
     }
 
     private void SpawnObjects() {

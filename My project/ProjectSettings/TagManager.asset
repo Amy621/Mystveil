@@ -8,6 +8,9 @@ TagManager:
   - ManaSprite
   - HealthSprite
   - WayPoints
+  - Minimap
+  - Collectable
+  - NextScene
   layers:
   - Default
   - TransparentFX

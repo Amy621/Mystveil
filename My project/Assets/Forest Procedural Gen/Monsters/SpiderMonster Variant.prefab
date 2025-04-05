@@ -17,6 +17,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: c9d98b7e97e644008a0fc6cbded09b6a, type: 3}
     - target: {fileID: 3108881185351535893, guid: 79b8c597e50c64691a6e84478d65fd6b, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 851210822445219171, guid: 96c16751baed1494690847d323ffda00, type: 3}
+    - target: {fileID: 3108881185351535893, guid: 79b8c597e50c64691a6e84478d65fd6b, type: 3}
       propertyPath: deathPrefab
       value: 
       objectReference: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}

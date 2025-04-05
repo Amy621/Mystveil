@@ -19,20 +19,20 @@ public class GoingToNextForestLv : MonoBehaviour
 
     public void ChangeForest() {
         Debug.Log("Changing forest to...");
+        Debug.Log("current level: " + ForestBase.curLevel);
         
         if (ForestBase.curLevel == ForestBase.numLevels) {
             Debug.Log("Back to town");
             MoveToScene("Town");
-            ForestBase.onDestroy();
         } else if (ForestBase.curLevel + 1 == ForestBase.numLevels) {
             Debug.Log("Boss battle");
             ForestBase.curLevel++;
-            ForestBase.onDestroy();
+            Debug.Log("adding to current level: " + ForestBase.curLevel);
             ForestBase.onCreateBossLevel();
         } else {
             Debug.Log("Next level");
             ForestBase.curLevel++;
-            ForestBase.onDestroy();
+            Debug.Log("adding to current level: " + ForestBase.curLevel);
             ForestBase.onCreateLevel();
         }
     }

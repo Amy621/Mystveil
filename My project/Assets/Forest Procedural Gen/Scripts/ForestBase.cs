@@ -8,7 +8,6 @@ public class ForestBase : MonoBehaviour
     public static int numLevels;
     public static int curLevel = 1;
     public GenerateGrid gridGenerator;
-    public static List<GameObject> currentObjs;
 
     // Start is called before the first frame update
     void Start()
@@ -18,28 +17,18 @@ public class ForestBase : MonoBehaviour
         Debug.Log("Number of levels: " + numLevels);
 
         gridGenerator = FindObjectOfType(typeof(GenerateGrid)) as GenerateGrid;
-        gridGenerator.GenerateLevel();
-
-        currentObjs = gridGenerator.getAllObjects();
-    }
-
-    public static void onDestroy() 
-    {
-        for(int i = 0; i < currentObjs.Count; i++) {
-            Destroy(currentObjs[i]);
-        }
-        currentObjs.Clear();
-        Debug.Log("FORBASE - Destroyed old level!");
+        gridGenerator.GenerateLevel(true);
     }
 
     public static void onCreateLevel()
     {
         Debug.Log("FORBASE - In create level...");
         ForestBase forestBase = FindObjectOfType<ForestBase>();
+        Debug.Log(forestBase);
         if (forestBase != null)
         {
-            //forestBase.gridGenerator.GenerateNavMesh();
-            forestBase.gridGenerator.GenerateLevel();
+            forestBase.gridGenerator.GenerateNavMesh();
+            forestBase.gridGenerator.GenerateLevel(false);
         }
         else
         {
@@ -53,7 +42,7 @@ public class ForestBase : MonoBehaviour
         ForestBase forestBase = FindObjectOfType<ForestBase>();
         if (forestBase != null)
         {
-            //forestBase.gridGenerator.GenerateNavMesh();
+            forestBase.gridGenerator.GenerateNavMesh();
             forestBase.gridGenerator.GenerateBossLevel();
         }
         else
