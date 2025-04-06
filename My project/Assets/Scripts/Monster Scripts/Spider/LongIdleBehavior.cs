@@ -26,7 +26,7 @@ public class LongIdleBehavior : StateMachineBehaviour
             animator.SetBool("isLongIdle", false);
         }
 
-        if (timer > 4.28)
+        if (timer > stateInfo.length)
             animator.SetBool("isLongIdle", false);
     }
 

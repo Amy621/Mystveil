@@ -1709,6 +1709,17 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
+--- !u!114 &1217361050 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+  m_PrefabInstance: {fileID: 3945784397306382215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217361044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180177a94502160418f9484e1b3d5bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1232777088
 GameObject:
   m_ObjectHideFlags: 0
@@ -2703,9 +2714,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Bambant
+      value: 
+      objectReference: {fileID: 2217097468135323642, guid: 23e02f24a58b44140b162440442da156, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Phoenix
+      value: 
+      objectReference: {fileID: 319509309063009722, guid: feef2941d68cb7b4c98ebcaa108d371d, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Werewolf
+      value: 
+      objectReference: {fileID: 2615712240609506234, guid: 2e1f85c45cb6c1f4fa8f8a868ff530cb, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: WellSpider
+      value: 
+      objectReference: {fileID: 6517917130861804418, guid: 89e2fcb9d1d3de64e8ee44f7692ed7fd, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: toNextArea
       value: 
       objectReference: {fileID: 7577409053495835603, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: CorpseFlower
+      value: 
+      objectReference: {fileID: 7312613196272549119, guid: 2acff99c1dfb64f44bee7d280ae8da03, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: waypointPrefab
       value: 
@@ -2714,6 +2745,14 @@ PrefabInstance:
       propertyPath: spawnFloorObject
       value: 
       objectReference: {fileID: 161474, guid: 66d5df05d84e531478fe461e0dbd561a, type: 3}
+    - target: {fileID: 5683517390231247286, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: gridGenerator
+      value: 
+      objectReference: {fileID: 1217361050}
+    - target: {fileID: 5683517390231247286, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: miniMapScript
+      value: 
+      objectReference: {fileID: 681197583}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2728,10 +2767,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 1591514697}
   - {fileID: 576272405}
+  - {fileID: 1396402102}
   - {fileID: 3945784397306382215}
   - {fileID: 760406981}
   - {fileID: 1568666117}
+  - {fileID: 651020379}
   - {fileID: 1198836602}
   - {fileID: 687087401}
-  - {fileID: 651020379}
-  - {fileID: 1396402102}

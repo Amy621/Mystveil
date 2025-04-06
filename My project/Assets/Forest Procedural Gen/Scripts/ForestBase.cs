@@ -7,7 +7,8 @@ public class ForestBase : MonoBehaviour
     // level parameters
     public static int numLevels;
     public static int curLevel = 1;
-    public GenerateGrid gridGenerator;
+    [SerializeField] private GenerateGrid gridGenerator;
+    [SerializeField] private MiniMap miniMapScript;
 
     // Start is called before the first frame update
     void Start()
@@ -15,10 +16,8 @@ public class ForestBase : MonoBehaviour
         // getting number of levels
         numLevels = Random.Range(3, 6);
         Debug.Log("Number of levels: " + numLevels);
-
-        gridGenerator = FindObjectOfType(typeof(GenerateGrid)) as GenerateGrid;
         gridGenerator.GenerateLevel(true);
-    }
+     }
 
     public static void onCreateLevel()
     {
@@ -29,6 +28,7 @@ public class ForestBase : MonoBehaviour
         {
             forestBase.gridGenerator.GenerateNavMesh();
             forestBase.gridGenerator.GenerateLevel(false);
+            forestBase.miniMapScript.ResetMiniMap();
         }
         else
         {
@@ -44,6 +44,7 @@ public class ForestBase : MonoBehaviour
         {
             forestBase.gridGenerator.GenerateNavMesh();
             forestBase.gridGenerator.GenerateBossLevel();
+            forestBase.miniMapScript.ResetMiniMap();
         }
         else
         {

@@ -20,15 +20,37 @@ public class MiniMap : MonoBehaviour
 
     private RectTransform miniMapRectTransform;
 
+    private bool isLevelRebuilding = false;
+    private float cleanupDelayTimer = 0f;
+    private float cleanupDelayDuration = 0.2f;
+
     void Start()
     {
+        Debug.Log("MINI -- in start");
+        FindTaggedObjects();
+        SpawnIcons();
+    }
+
+    void FindTaggedObjects()
+    {
+        Debug.Log("MINI -- finding tagged objects");
         monsters = GameObject.FindGameObjectsWithTag("Monster").ToList();
         collectables = GameObject.FindGameObjectsWithTag("Collectable").ToList();
         nextScene = GameObject.FindGameObjectWithTag("NextScene");
-        miniMapRectTransform = GetComponent<RectTransform>();
+        Debug.Log("MINI -- Next scene object found: " + nextScene);
+    }
+
+    void SpawnIcons()
+    {
+        Debug.Log("MINI -- spawning icons");
+        if (miniMapRectTransform == null)
+        {
+            miniMapRectTransform = GetComponent<RectTransform>();
+        }
         SpawnMonsterIcons();
         SpawnCollectableIcons();
-        SpawnNextSceneIcon(); // Call the new spawn function
+        SpawnNextSceneIcon();
+        Debug.Log("MINI -- finished spawning the icons!!");
     }
 
     void SpawnMonsterIcons()
@@ -100,12 +122,17 @@ public class MiniMap : MonoBehaviour
 
         if (nextScene != null)
         {
+            Debug.Log("MINI -- creating new next scene icon for this level");
             GameObject iconGO = Instantiate(nextSceneIconPrefab, transform);
+            Debug.Log(iconGO);
             Image iconImage = iconGO.GetComponent<Image>();
+            Debug.Log(iconImage);
             MiniMapIcon iconScript = iconGO.GetComponent<MiniMapIcon>();
+            Debug.Log(iconScript);
 
             if (iconImage != null && iconScript != null)
             {
+                Debug.Log("MINI -- Setting the next scene icon instance");
                 iconScript.SetTarget(nextScene.transform);
                 UpdateIconPosition(iconImage.rectTransform, nextScene.transform.position);
                 nextSceneIconInstance = iconGO; // Store the instance for potential later use
@@ -147,39 +174,82 @@ public class MiniMap : MonoBehaviour
             }
         }
 
-        // Clean up destroyed monsters and their icons
-        int monstersRemoved = monsters.RemoveAll(monster => monster == null);
-        if (monstersRemoved > 0)
-        {
-            CleanUpIcons(monsters);
-        }
+        if (isLevelRebuilding) {
+            cleanupDelayTimer += Time.deltaTime;
+            if (cleanupDelayTimer >= cleanupDelayDuration) {
+                isLevelRebuilding = false;
+                cleanupDelayTimer = 0f;
+            }
+        } else {
+            // Clean up destroyed monsters and their icons
+            int monstersRemoved = monsters.RemoveAll(monster => monster == null);
+            if (monstersRemoved > 0)
+            {
+                Debug.Log("MINI -- cleaning up monster icons!");
+                CleanUpIcons(monsters);
+            }
 
-        // Clean up destroyed collectables and their icons
-        int collectablesRemoved = collectables.RemoveAll(collectable => collectable == null);
-        if (collectablesRemoved > 0)
-        {
-            CleanUpIcons(collectables);
-        }
+            // Clean up destroyed collectables and their icons
+            int collectablesRemoved = collectables.RemoveAll(collectable => collectable == null);
+            if (collectablesRemoved > 0)
+            {
+                Debug.Log("MINI -- cleaning up collectable icons!");
+                CleanUpIcons(collectables);
+            }
 
-        // Check if the next scene object was destroyed
-        if (nextScene != null && nextSceneIconInstance != null && nextScene == null)
-        {
-            Destroy(nextSceneIconInstance);
-            nextSceneIconInstance = null;
+            // Check and handle the Next Scene icon
+            // if (nextScene == null && nextSceneIconInstance != null)
+            // {
+            //     // The Next Scene object has been destroyed, so destroy its icon
+            //     Debug.Log("MINI -- cleaning up next scene icon since its target was destroyed!");
+            //     Destroy(nextSceneIconInstance);
+            // }
+            // else if (nextScene != null && nextSceneIconInstance == null)
+            // {
+            //     // The Next Scene object exists, but its icon hasn't been created yet, so spawn it
+            //     SpawnNextSceneIcon();
+            // }
+            // If nextScene is not null and nextSceneIconInstance is not null, the icon should already exist and be updated.
         }
-        else if (nextScene != null && nextSceneIconInstance == null)
+    }
+
+    // This function will destroy all monster and collectable tagged items that are children
+    // and then call the Start function to reinstate them.
+    public void ResetMiniMap()
+    {
+        Debug.Log("MINI -- resetting the minimap");
+        // Destroy all monster icons
+        foreach (Transform child in transform)
         {
-            SpawnNextSceneIcon(); // Re-spawn if it was destroyed and the target exists
+            MiniMapIcon iconScript = child.GetComponent<MiniMapIcon>();
+            if (iconScript != null && iconScript.target != null)
+            {
+                if (iconScript.target.CompareTag("Monster") || iconScript.target.CompareTag("Collectable") || iconScript.target.CompareTag("NextScene"))
+                {
+                    Destroy(child.gameObject);
+                }
+            }
         }
+        Debug.Log("MINI -- clearing the lists and then calling start");
+        // Clear the lists of tracked objects
+        monsters.Clear();
+        collectables.Clear();
+        nextScene = null;
+        nextSceneIconInstance = null;
+
+        // Re-initialize by calling Start
+        isLevelRebuilding = true;
+        Start();
     }
 
     public void CleanUpIcons(List<GameObject> trackedObjects)
     {
+        Debug.Log("MINI -- inside cleaning up icons...");
         List<Transform> iconsToRemove = new List<Transform>();
         foreach (Transform child in transform)
         {
             MiniMapIcon iconScript = child.GetComponent<MiniMapIcon>();
-            if (iconScript != null && (iconScript.target == null || !trackedObjects.Contains(iconScript.target.gameObject)))
+            if (iconScript != null && iconScript.target == null)
             {
                 iconsToRemove.Add(child);
             }
@@ -187,17 +257,8 @@ public class MiniMap : MonoBehaviour
 
         foreach (Transform icon in iconsToRemove)
         {
+            Debug.Log(icon);
             Destroy(icon.gameObject);
-        }
-
-        // Optionally, clear the lists here if the scene is changing completely
-        if (trackedObjects == monsters)
-        {
-            monsters.Clear();
-        }
-        else if (trackedObjects == collectables)
-        {
-            collectables.Clear();
         }
     }
 

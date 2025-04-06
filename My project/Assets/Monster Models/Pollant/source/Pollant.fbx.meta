@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 7c4ac3e5858ec854a85aa4058bf5e338
+guid: 331ed4a3a0d2b224580f030dec539970
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pollant_mat
+    second: {fileID: 2100000, guid: 56902865fb314f24a9ffb94af6e2afc7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -33,40 +38,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Spider_Tpose
-      takeName: Spider_Tpose
-      internalID: -4318911614599161448
-      firstFrame: 1
-      lastFrame: 5
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Spider_Walk
-      takeName: Spider_Walk
-      internalID: 8375986166197498128
-      firstFrame: 10
-      lastFrame: 34
+      name: Pollant_Idle_120
+      takeName: Pollant_Idle_120
+      internalID: 5396767303360642519
+      firstFrame: 0
+      lastFrame: 120
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -89,13 +65,13 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 10
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Spider_Idle
-      takeName: Spider_Idle
-      internalID: 1093246620068816649
-      firstFrame: 40
-      lastFrame: 90
+      name: Pollant_Walk_40
+      takeName: Pollant_Walk_40
+      internalID: -1070182507424018815
+      firstFrame: 0
+      lastFrame: 80
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -118,13 +94,13 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 40
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Spider_Idle_long
-      takeName: Spider_Idle_long
-      internalID: 1526765685201458245
-      firstFrame: 100
-      lastFrame: 250
+      name: Pollant_AttackRange_40
+      takeName: Pollant_AttackRange_40
+      internalID: -3243376248236530856
+      firstFrame: 0
+      lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -149,11 +125,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Spider_Damage
-      takeName: Spider_Damage
-      internalID: -256784162486639082
-      firstFrame: 260
-      lastFrame: 285
+      name: Pollant_Hurt_30
+      takeName: Pollant_Hurt_30
+      internalID: -2504279666056375301
+      firstFrame: 0
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -178,69 +154,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Spider_Attack_1
-      takeName: Spider_Attack_1
-      internalID: -4563379944364502377
-      firstFrame: 290
-      lastFrame: 327
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Spider_Attack_2
-      takeName: Spider_Attack_2
-      internalID: 3253511446467843788
-      firstFrame: 340
-      lastFrame: 375
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Spider_Death
-      takeName: Spider_Death
-      internalID: 3988323045870148651
-      firstFrame: 380
-      lastFrame: 415
+      name: Pollant_Faint_70
+      takeName: Pollant_Faint_70
+      internalID: 7561955674931591145
+      firstFrame: 0
+      lastFrame: 70
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

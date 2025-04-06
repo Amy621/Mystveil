@@ -26,13 +26,20 @@ public class GenerateGrid : MonoBehaviour
     private NavMeshSurface navMeshSurface;
 
     // Creating 1v1 boss battle enemy
-    public GameObject bossEnemy;
+    //public GameObject Hecuba;
+    public GameObject Phoenix;
+    //public GameObject Dragon;
+    public GameObject WellSpider;
+    public GameObject Werewolf;
+    public GameObject CorpseFlower;
     private List<GameObject> bossEnemyList = new List<GameObject>();
+    private Vector3 bossPosition;
     private int bossLevelSizeX = 25;
     private int bossLevelSizeZ = 25;
 
     // Creating pockets of collectables and monsters to spawn
     public GameObject Spider;
+    public GameObject Bambant;
     private List<GameObject> monsterList = new List<GameObject>();
     public GameObject waypointPrefab;
     public string monsterTag = "Monster";
@@ -265,6 +272,16 @@ public class GenerateGrid : MonoBehaviour
 
                         allItems.Add(spawnFloor);
                         spawnFloor.transform.SetParent(this.transform);
+                    // getting boss spawn location
+                    } else if (x == 13 && z == 13) {
+                        GameObject floor = Instantiate(grassFloorObject,
+                        pos,
+                        Quaternion.identity) as GameObject;
+
+                        allItems.Add(floor);
+                        floor.transform.SetParent(this.transform);
+
+                        bossPosition = pos;
                     } else {
                         GameObject floor = Instantiate(grassFloorObject,
                         pos,
@@ -295,6 +312,8 @@ public class GenerateGrid : MonoBehaviour
         player.transform.position = playerSpawn;
         player.GetComponent<CharacterController>().enabled = true;
 
+        SpawnBossMonster();
+
         SpawnNextSceneRock();
         
     }
@@ -305,13 +324,11 @@ public class GenerateGrid : MonoBehaviour
             navMeshSurface = GetComponent<NavMeshSurface>();
             Debug.Log(navMeshSurface);
             navMeshSurface.BuildNavMesh();
-            Debug.Log("building nav mesh!");
         }
 
         if (navMeshSurface != null)
         {
             navMeshSurface.UpdateNavMesh(navMeshSurface.navMeshData);
-            Debug.Log("updating nav mesh!");
         }
         else
         {
@@ -335,9 +352,9 @@ public class GenerateGrid : MonoBehaviour
         
         // how many collectable item areas total of this level
         for (int i = 0; i < numCollectableAreas; i++) {
-            int randCollectableIndex = Random.Range(0, collectableList.Count - 1);
+            int randCollectableIndex = Random.Range(0, collectableList.Count);
             int randNumOfCollectable = Random.Range(2, 6);
-            int index = Random.Range(0, floorPositions.Count - 1);
+            int index = Random.Range(0, floorPositions.Count);
 
             // store all the coords possible
             List<string> possibleCoords = new List<string>();
@@ -350,7 +367,7 @@ public class GenerateGrid : MonoBehaviour
 
             // how many collectables per area
             for(int j = 0; j < randNumOfCollectable; j++) {
-                int randIndex = Random.Range(0, possibleCoords.Count - 1);
+                int randIndex = Random.Range(0, possibleCoords.Count);
                 string rawString = possibleCoords[randIndex];
 
                 Vector3 newPos = new Vector3 (
@@ -394,7 +411,6 @@ public class GenerateGrid : MonoBehaviour
                 allItems.Add(waypoint);
 
                 SphereCollider sphereCollider = waypoint.GetComponent<SphereCollider>();
-                Debug.Log(sphereCollider);
                 if (sphereCollider != null) {
                     sphereCollider.enabled = false;
                     sphereCollider.isTrigger = true;
@@ -414,13 +430,14 @@ public class GenerateGrid : MonoBehaviour
 
     private void SpawnMonsters() {
         monsterList.Add(Spider);
+        monsterList.Add(Bambant);
 
         numMonsterAreas = Random.Range(2, 8);
 
         // how many collectable item areas total of this level
         for (int i = 0; i < numMonsterAreas; i++) {
-            // int randCollectableIndex = Random.Range(0, collectableList.Count - 1);
-            int index = Random.Range(0, floorPositions.Count - 1);
+            // int randCollectableIndex = Random.Range(0, collectableList.Count);
+            int index = Random.Range(0, floorPositions.Count);
 
             Vector3 newPos = new Vector3 (
                 floorPositions[index].x - 1.5f,
@@ -428,10 +445,16 @@ public class GenerateGrid : MonoBehaviour
                 floorPositions[index].z - 1.5f
             );
 
-            GameObject monster = Instantiate(monsterList[Random.Range(0, monsterList.Count - 1)],
+            GameObject monster = Instantiate(monsterList[Random.Range(0, monsterList.Count)],
             newPos,
             Quaternion.identity);
             allItems.Add(monster);
+
+            // for testing
+            // GameObject monster = Instantiate(monsterList[1],
+            // newPos,
+            // Quaternion.identity);
+            // allItems.Add(monster);
 
             monster.tag = monsterTag;
 
@@ -441,8 +464,30 @@ public class GenerateGrid : MonoBehaviour
         }
     }
 
-    // private void SpawnBossMonster() {
-    //}
+    private void SpawnBossMonster() {
+        //bossEnemyList.Add(Phoenix);
+        bossEnemyList.Add(Werewolf);
+        bossEnemyList.Add(WellSpider);
+        bossEnemyList.Add(CorpseFlower);
+
+        // select the boss for the boss level
+        int index = Random.Range(0, bossEnemyList.Count);
+
+        Vector3 newPos = new Vector3 (
+            bossPosition.x,
+            bossPosition.y + 8,
+            bossPosition.z
+        );
+
+        GameObject monster = Instantiate(bossEnemyList[2],
+        newPos,
+        Quaternion.identity);
+        allItems.Add(monster);
+
+        monster.tag = monsterTag;
+
+        monster.transform.SetParent(this.transform);
+    }
 
     private void SpawnNextSceneRock() {
         nextSceneRockPosition = new Vector3 (
