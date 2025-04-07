@@ -9,7 +9,7 @@ public class GenerateGrid : MonoBehaviour
     // generating player spawn
     private Vector3 playerSpawn;
 
-    // floor/ground parameters
+    [Header("Floor/Ground Settings")]
     public GameObject grassFloorObject;
     public GameObject spawnFloorObject;
     public GameObject nonWalkFloorObject;
@@ -25,10 +25,10 @@ public class GenerateGrid : MonoBehaviour
     //navmesh
     private NavMeshSurface navMeshSurface;
 
-    // Creating 1v1 boss battle enemy
-    //public GameObject Hecuba;
+    [Header("All 1v1 Enemy Prefabs")]
+    public GameObject Hecuba;
     public GameObject Phoenix;
-    //public GameObject Dragon;
+    public GameObject Dragon;
     public GameObject WellSpider;
     public GameObject Werewolf;
     public GameObject CorpseFlower;
@@ -37,13 +37,19 @@ public class GenerateGrid : MonoBehaviour
     private int bossLevelSizeX = 25;
     private int bossLevelSizeZ = 25;
 
-    // Creating pockets of collectables and monsters to spawn
+    [Header("All Overworld Enemy Prefabs")]
+    public GameObject Hare;
     public GameObject Spider;
+    public GameObject CyborgSpider;
     public GameObject Bambant;
+    public GameObject Pollant;
+    public GameObject Dionaeant;
+    public GameObject Stranterry;
     private List<GameObject> monsterList = new List<GameObject>();
     public GameObject waypointPrefab;
     public string monsterTag = "Monster";
 
+    [Header("All Collectable Prefabs")]
     public GameObject Moonpetal_Blossom;
     public GameObject Shadowberry;
     public GameObject Whisperwood;
@@ -57,7 +63,7 @@ public class GenerateGrid : MonoBehaviour
     private int numMonsterAreas;
     private int numCollectableAreas;
 
-    // Creating objects to spawn (non-collectable)
+    [Header("All Non-collectable Item Prefabs")]
     public GameObject grassSpawn;
     public GameObject rock1Spawn;
     public GameObject rock2Spawn;
@@ -429,8 +435,19 @@ public class GenerateGrid : MonoBehaviour
     }
 
     private void SpawnMonsters() {
+        // TODO: bugfix idk why the hare specifically is breaking :(
+        // TODO: not bug, but fix the ants state machines so its not just
+        // a repeat of the spider's since some of them only
+        // have ranged/melee... make a different state machine
+        // also make the hare state machine
+
+        //monsterList.Add(Hare);
         monsterList.Add(Spider);
+        monsterList.Add(CyborgSpider);
         monsterList.Add(Bambant);
+        monsterList.Add(Pollant);
+        monsterList.Add(Dionaeant);
+        monsterList.Add(Stranterry);
 
         numMonsterAreas = Random.Range(2, 8);
 
@@ -445,16 +462,11 @@ public class GenerateGrid : MonoBehaviour
                 floorPositions[index].z - 1.5f
             );
 
-            GameObject monster = Instantiate(monsterList[Random.Range(0, monsterList.Count)],
+            // Random.Range(0, monsterList.Count)
+            GameObject monster = Instantiate(monsterList[0],
             newPos,
             Quaternion.identity);
             allItems.Add(monster);
-
-            // for testing
-            // GameObject monster = Instantiate(monsterList[1],
-            // newPos,
-            // Quaternion.identity);
-            // allItems.Add(monster);
 
             monster.tag = monsterTag;
 
@@ -465,7 +477,11 @@ public class GenerateGrid : MonoBehaviour
     }
 
     private void SpawnBossMonster() {
-        //bossEnemyList.Add(Phoenix);
+        // TODO: bugfix where flying bosses like the dragon and phoenix
+        // get stuck in the ground bc the wing animation goes through the ground
+        // somehow make them float / static and still have a box collider for the
+        // script to run
+
         bossEnemyList.Add(Werewolf);
         bossEnemyList.Add(WellSpider);
         bossEnemyList.Add(CorpseFlower);

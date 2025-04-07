@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1265778217598727647, guid: 33a2dcb6c920058418708d7da7a97ef8, type: 3}
+      propertyPath: maxHP
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265778217598727647, guid: 33a2dcb6c920058418708d7da7a97ef8, type: 3}
       propertyPath: clawmark
       value: 
       objectReference: {fileID: 383282716996331230, guid: 43ce3df570e46884f97019ea0b31f15e, type: 3}
@@ -26,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6888678902052531593, guid: 33a2dcb6c920058418708d7da7a97ef8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6888678902052531593, guid: 33a2dcb6c920058418708d7da7a97ef8, type: 3}
       propertyPath: m_LocalPosition.z

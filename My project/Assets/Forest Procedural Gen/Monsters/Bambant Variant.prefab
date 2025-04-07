@@ -53,6 +53,10 @@ PrefabInstance:
       value: Bambant Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2143886295636952426, guid: c8f63c6949b0ce5498b179469b205ddc, type: 3}
+      propertyPath: maxHP
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2143886295636952426, guid: c8f63c6949b0ce5498b179469b205ddc, type: 3}
       propertyPath: clawmark
       value: 
       objectReference: {fileID: 851210822445219171, guid: 96c16751baed1494690847d323ffda00, type: 3}
@@ -60,6 +64,26 @@ PrefabInstance:
       propertyPath: projectile
       value: 
       objectReference: {fileID: 851210822445219171, guid: 96c16751baed1494690847d323ffda00, type: 3}
+    - target: {fileID: 2143886295636952426, guid: c8f63c6949b0ce5498b179469b205ddc, type: 3}
+      propertyPath: deathPrefab
+      value: 
+      objectReference: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
+    - target: {fileID: 2143886295636952426, guid: c8f63c6949b0ce5498b179469b205ddc, type: 3}
+      propertyPath: explosionClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5832d58e24d3145279a20d357602b02c, type: 3}
+    - target: {fileID: 4827060940179342192, guid: c8f63c6949b0ce5498b179469b205ddc, type: 3}
+      propertyPath: m_Speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827060940179342192, guid: c8f63c6949b0ce5498b179469b205ddc, type: 3}
+      propertyPath: m_Radius
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827060940179342192, guid: c8f63c6949b0ce5498b179469b205ddc, type: 3}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

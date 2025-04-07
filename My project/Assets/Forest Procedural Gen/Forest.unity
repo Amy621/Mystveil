@@ -2714,6 +2714,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Hare
+      value: 
+      objectReference: {fileID: 6851065177295947361, guid: 2176f0fba44762a4da44c4b01c370224, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Dragon
+      value: 
+      objectReference: {fileID: 4483094767719646549, guid: c560db2efd07ac94ea7fb5ac49d6914f, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Hecuba
+      value: 
+      objectReference: {fileID: 1654259286604882892, guid: c30732706b578c0478b515e572baf988, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: Bambant
       value: 
       objectReference: {fileID: 2217097468135323642, guid: 23e02f24a58b44140b162440442da156, type: 3}
@@ -2722,9 +2734,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 319509309063009722, guid: feef2941d68cb7b4c98ebcaa108d371d, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Pollant
+      value: 
+      objectReference: {fileID: 979611114234332388, guid: 9049ff5e10e23214b83e738cf7674574, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: Werewolf
       value: 
       objectReference: {fileID: 2615712240609506234, guid: 2e1f85c45cb6c1f4fa8f8a868ff530cb, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Dionaeant
+      value: 
+      objectReference: {fileID: 3224831612347486579, guid: 6915f9fd12ca3f4468abec49255ed9e4, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Stranterry
+      value: 
+      objectReference: {fileID: 3794567830541398488, guid: fe238e213a1e9994d910576d3114ade5, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: WellSpider
       value: 
@@ -2737,6 +2761,10 @@ PrefabInstance:
       propertyPath: CorpseFlower
       value: 
       objectReference: {fileID: 7312613196272549119, guid: 2acff99c1dfb64f44bee7d280ae8da03, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: CyborgSpider
+      value: 
+      objectReference: {fileID: 5397620819738880905, guid: ec6edce434dbaf74d84c9f6bdca5f918, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: waypointPrefab
       value: 

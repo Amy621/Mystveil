@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2713269437545871297, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2713269437545871297, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -64,8 +64,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: CorpseFlower Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5870519439556844532, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
+      propertyPath: maxHP
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870519439556844532, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 4118029481167503644}
+    - target: {fileID: 5870519439556844532, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
+      propertyPath: clawmark
+      value: 
+      objectReference: {fileID: 383282716996331230, guid: 43ce3df570e46884f97019ea0b31f15e, type: 3}
+    - target: {fileID: 5870519439556844532, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 851210822445219171, guid: 96c16751baed1494690847d323ffda00, type: 3}
+    - target: {fileID: 5870519439556844532, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
+      propertyPath: deathPrefab
+      value: 
+      objectReference: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
+    - target: {fileID: 5870519439556844532, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
+      propertyPath: explosionClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5832d58e24d3145279a20d357602b02c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
+--- !u!95 &4118029481167503644 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8264417074987913368, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
+  m_PrefabInstance: {fileID: 5446882147543585156}
+  m_PrefabAsset: {fileID: 0}
