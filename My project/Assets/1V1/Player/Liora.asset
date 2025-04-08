@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Liora
   description: 
-  playerImage: {fileID: 0}
+  playerImage: {fileID: 21300000, guid: e9dc515abcdc1df4d94627f77085f887, type: 3}
   healthPoints: 200
   manaPoints: 100
   attackPoints: 20
@@ -23,4 +23,7 @@ MonoBehaviour:
   specialDefensePoints: 20
   speed: 20
   charisma: 5
-  spells: []
+  spells:
+  - moveBase: {fileID: 11400000, guid: d000290c9e582e341b6b7bd7a22713c7, type: 2}
+  - moveBase: {fileID: 11400000, guid: b672eb08ffae55f4ab67f5cddd8f16c3, type: 2}
+  - moveBase: {fileID: 11400000, guid: f356ffa9f51107c4eb329e01d4562fbb, type: 2}

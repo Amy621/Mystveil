@@ -14,16 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Spiderwort Weaver
   description: A common spider that prowls the woods.
-  monsterIconImage: {fileID: 0}
-  bossImage: {fileID: 0}
+  monsterIconImage: {fileID: 21300000, guid: f661f0230b5ba204fa26727844282880, type: 3}
+  bossImage: {fileID: 21300000, guid: f661f0230b5ba204fa26727844282880, type: 3}
   healthPoints: 100
   attackPoints: 5
-  defensePoints: 0
-  specialAttackPoints: 0
-  specialDefensePoints: 0
-  speed: 0
-  moves: []
-  dropStat: 
+  defensePoints: 5
+  specialAttackPoints: 5
+  specialDefensePoints: 5
+  speed: 5
+  moves:
+  - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
+  dropStat: ATK 1
   monsterDrop1: 
   monsterDrop2: 
   monsterDrop3: 

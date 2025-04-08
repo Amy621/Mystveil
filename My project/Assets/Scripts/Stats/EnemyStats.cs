@@ -61,8 +61,13 @@ public class EnemyStats : ScriptableObject
 public class LearnableMove
 {
     [SerializeField] MonsterMoves moveBase;
+    int level;
 
     public MonsterMoves Base {
         get { return moveBase; }
+    }
+
+    public int Level {
+        get { return level; }
     }
 }
