@@ -36,6 +36,7 @@ public class EnemyStats : ScriptableObject
     [SerializeField] string monsterDrop1;
     [SerializeField] string monsterDrop2;
     [SerializeField] string monsterDrop3;
+    [SerializeField] string monsterDrop4;
 
     public string Name { get {return name;}  }
     public string Description { get { return description; }}
@@ -55,6 +56,7 @@ public class EnemyStats : ScriptableObject
     public string MonsterDrop1 { get { return monsterDrop1; }}
     public string MonsterDrop2 { get { return monsterDrop2; }}
     public string MonsterDrop3 { get { return monsterDrop3; }}
+    public string MonsterDrop4 { get { return monsterDrop4; }}
 }
 
 [System.Serializable]

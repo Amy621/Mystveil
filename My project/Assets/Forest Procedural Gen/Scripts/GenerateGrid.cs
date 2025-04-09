@@ -37,6 +37,8 @@ public class GenerateGrid : MonoBehaviour
     private int bossLevelSizeX = 25;
     private int bossLevelSizeZ = 25;
 
+    public string bossMonsterTag = "BossMonster";
+
     [Header("All Overworld Enemy Prefabs")]
     public GameObject Hare;
     public GameObject Spider;
@@ -495,12 +497,12 @@ public class GenerateGrid : MonoBehaviour
             bossPosition.z
         );
 
-        GameObject monster = Instantiate(bossEnemyList[2],
+        GameObject monster = Instantiate(bossEnemyList[index],
         newPos,
         Quaternion.identity);
         allItems.Add(monster);
 
-        monster.tag = monsterTag;
+        monster.tag = bossMonsterTag;
 
         monster.transform.SetParent(this.transform);
     }

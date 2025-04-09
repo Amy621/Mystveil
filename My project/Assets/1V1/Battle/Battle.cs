@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,9 +14,12 @@ public class Battle : MonoBehaviour
     [SerializeField] EnemyHud enemyHud;
     [SerializeField] BattleDialogueBox dialogBox;
 
+    public event Action<bool> OnBattleOver;
+
     BattleState state;
     int currentAction;
     int currentMove;
+    private bool isShowingError = false;
 
     private void Start()
     {
@@ -76,10 +80,14 @@ public class Battle : MonoBehaviour
         if (isDefeated)
         {
             yield return dialogBox.TypeDialog($"{enemyUnit.Enemy.Base.Name} was defeated!");
+            // enemy faint animation goes here
+
+            yield return new WaitForSeconds(2f);
+            OnBattleOver(true);
         } else { StartCoroutine(EnemyMove()); }
     }
 
-    private void Update()
+    public void HandleUpdate()
     {
         // if(state == BattleState.PlayerAction) { HandleActionSelection(); }
         // else if (state == BattleState.PlayerMove) { HandleMoveSelection(); }
@@ -175,7 +183,7 @@ public class Battle : MonoBehaviour
 
     void HandleMoveSelectionClick(int moveIndex)
     {
-        if (state == BattleState.PlayerMove)
+        if (state == BattleState.PlayerMove && !isShowingError)
         {
             currentMove = moveIndex;
             var spell = playerUnit.Player.Spells[currentMove];
@@ -200,10 +208,10 @@ public class Battle : MonoBehaviour
         yield return dialogBox.TypeDialog("Not enough mana to cast!");
 
         yield return new WaitForSeconds(1f);
-
         dialogBox.SetDialog("");
-
-        PlayerMove();
+        dialogBox.EnableMoveSelector(true);
+        dialogBox.EnableDialogText(false);
+        isShowingError = false;
     }
 
     IEnumerator EnemyMove()
@@ -221,6 +229,10 @@ public class Battle : MonoBehaviour
         if (isFainted)
         {
             yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} Fainted!");
+            // add player faint animation here
+
+            yield return new WaitForSeconds(2f);
+            OnBattleOver(false);
         } else { PlayerAction(); }
     }
 

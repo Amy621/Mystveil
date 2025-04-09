@@ -35,4 +35,13 @@ public class MonsterMoves : ScriptableObject
     public int Accuracy {
         get { return accuracy; }
     }
+
+    public bool IsSpecial {
+        get {
+            if (type == "SPECIAL")
+                return true;
+            else 
+                return false;
+        }
+    }
 }

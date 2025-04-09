@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcda90c83557204db396376b0f2a66f, type: 3}
+  m_Name: LunarFenrir
+  m_EditorClassIdentifier: 
+  name: Lunar Fenrir
+  description: A lone wolf that has lived through many moons. People have learned
+    to never traverse the forest on the night of a full moon else face the wrath
+    of this creature.
+  monsterIconImage: {fileID: 0}
+  bossImage: {fileID: 0}
+  healthPoints: 0
+  attackPoints: 0
+  defensePoints: 0
+  specialAttackPoints: 0
+  specialDefensePoints: 0
+  speed: 0
+  moves: []
+  dropStat: 'ATK: 1'
+  monsterDrop1: Fur Puff
+  monsterDrop2: Monster Flesh
+  monsterDrop3: Crystalline Shard
+  monsterDrop4: 

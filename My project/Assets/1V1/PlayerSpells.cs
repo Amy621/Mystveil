@@ -11,7 +11,7 @@ public class PlayerSpells : ScriptableObject
     [TextArea]
     [SerializeField] string description;
 
-    // Physical Attack or Special Attack
+    // Physical Attack or Special Attack or Status
     [SerializeField] string type;
 
     [SerializeField] int power;
@@ -42,5 +42,14 @@ public class PlayerSpells : ScriptableObject
 
     public int ManaPoints {
         get { return mp; }
+    }
+
+    public bool IsSpecial {
+        get {
+            if (type == "SPECIAL")
+                return true;
+            else 
+                return false;
+        }
     }
 }

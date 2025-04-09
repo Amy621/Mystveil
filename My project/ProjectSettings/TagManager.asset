@@ -11,6 +11,7 @@ TagManager:
   - Minimap
   - Collectable
   - NextScene
+  - BossMonster
   layers:
   - Default
   - TransparentFX
