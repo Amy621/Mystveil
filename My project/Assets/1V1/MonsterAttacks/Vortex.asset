@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
   m_Name: Vortex
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  type: 
-  power: 0
-  accuracy: 0
+  name: Vortex
+  description: The user creates a swirling vortex of water that pulls in and damages
+    the target.
+  nextEvolveMove: {fileID: 11400000, guid: 0687ebadd51302c408bc0201c85f0ba5, type: 2}
+  type: SPECIAL
+  power: 80
+  accuracy: 100

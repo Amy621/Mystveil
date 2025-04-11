@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
   m_Name: Binding Thread
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  type: 
-  power: 0
-  accuracy: 0
+  name: Binding Thread
+  description: The user emits sticky, magical threads that ensnare and restrict movement.
+  nextEvolveMove: {fileID: 11400000, guid: ec74602afcfc19f4a9ba586bc101483e, type: 2}
+  type: SPECIAL
+  power: 45
+  accuracy: 100

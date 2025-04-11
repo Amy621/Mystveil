@@ -11,6 +11,8 @@ public class MonsterMoves : ScriptableObject
     [TextArea]
     [SerializeField] string description;
 
+    [SerializeField] MonsterMoves nextEvolveMove;
+
     // Physical Attack or Special Attack
     [SerializeField] string type;
     [SerializeField] int power;
@@ -22,6 +24,10 @@ public class MonsterMoves : ScriptableObject
 
     public string Description {
         get { return description; }
+    }
+
+    public MonsterMoves NextEvo {
+        get { return nextEvolveMove; }
     }
 
     public string Type {

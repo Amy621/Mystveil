@@ -26,12 +26,10 @@ public class GenerateGrid : MonoBehaviour
     private NavMeshSurface navMeshSurface;
 
     [Header("All 1v1 Enemy Prefabs")]
-    public GameObject Hecuba;
-    public GameObject Phoenix;
-    public GameObject Dragon;
-    public GameObject WellSpider;
-    public GameObject Werewolf;
-    public GameObject CorpseFlower;
+    public GameObject GuardianOfTheWell;
+    public GameObject LunarFenrir;
+    public GameObject RootboundTyrant;
+    public GameObject ShadowMirror;
     private List<GameObject> bossEnemyList = new List<GameObject>();
     private Vector3 bossPosition;
     private int bossLevelSizeX = 25;
@@ -40,13 +38,16 @@ public class GenerateGrid : MonoBehaviour
     public string bossMonsterTag = "BossMonster";
 
     [Header("All Overworld Enemy Prefabs")]
-    public GameObject Hare;
-    public GameObject Spider;
-    public GameObject CyborgSpider;
-    public GameObject Bambant;
-    public GameObject Pollant;
+    public GameObject CottonTail;
+    public GameObject Webweaver;
+    public GameObject AsterEye;
     public GameObject Dionaeant;
     public GameObject Stranterry;
+    public GameObject Bantboo;
+    public GameObject Pollant;
+    public GameObject Briarheart;
+    public GameObject Odosapling;
+    public GameObject Vilebloom;
     private List<GameObject> monsterList = new List<GameObject>();
     public GameObject waypointPrefab;
     public string monsterTag = "Monster";
@@ -437,19 +438,16 @@ public class GenerateGrid : MonoBehaviour
     }
 
     private void SpawnMonsters() {
-        // TODO: bugfix idk why the hare specifically is breaking :(
-        // TODO: not bug, but fix the ants state machines so its not just
-        // a repeat of the spider's since some of them only
-        // have ranged/melee... make a different state machine
-        // also make the hare state machine
-
-        //monsterList.Add(Hare);
-        monsterList.Add(Spider);
-        monsterList.Add(CyborgSpider);
-        monsterList.Add(Bambant);
-        monsterList.Add(Pollant);
+        //monsterList.Add(CottonTail);
+        monsterList.Add(Webweaver);
+        monsterList.Add(AsterEye);
         monsterList.Add(Dionaeant);
         monsterList.Add(Stranterry);
+        monsterList.Add(Bantboo);
+        monsterList.Add(Pollant);
+        // monsterList.Add(Briarheart);
+        // monsterList.Add(Odosapling);
+        // monsterList.Add(Vilebloom);
 
         numMonsterAreas = Random.Range(2, 8);
 
@@ -465,7 +463,7 @@ public class GenerateGrid : MonoBehaviour
             );
 
             // Random.Range(0, monsterList.Count)
-            GameObject monster = Instantiate(monsterList[0],
+            GameObject monster = Instantiate(monsterList[Random.Range(0, monsterList.Count)],
             newPos,
             Quaternion.identity);
             allItems.Add(monster);
@@ -479,21 +477,18 @@ public class GenerateGrid : MonoBehaviour
     }
 
     private void SpawnBossMonster() {
-        // TODO: bugfix where flying bosses like the dragon and phoenix
-        // get stuck in the ground bc the wing animation goes through the ground
-        // somehow make them float / static and still have a box collider for the
-        // script to run
-
-        bossEnemyList.Add(Werewolf);
-        bossEnemyList.Add(WellSpider);
-        bossEnemyList.Add(CorpseFlower);
+        bossEnemyList.Add(GuardianOfTheWell);
+        bossEnemyList.Add(RootboundTyrant);
+        bossEnemyList.Add(LunarFenrir);
+        //bossEnemyList.Add(ShadowMirror);
+        // make a different script for the shadow mirror
 
         // select the boss for the boss level
         int index = Random.Range(0, bossEnemyList.Count);
 
         Vector3 newPos = new Vector3 (
             bossPosition.x,
-            bossPosition.y + 8,
+            bossPosition.y,
             bossPosition.z
         );
 
@@ -503,7 +498,7 @@ public class GenerateGrid : MonoBehaviour
         allItems.Add(monster);
 
         monster.tag = bossMonsterTag;
-
+        monster.AddComponent<LookAtPlayer>();
         monster.transform.SetParent(this.transform);
     }
 

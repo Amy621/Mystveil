@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
   m_Name: Howl
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  type: 
-  power: 0
-  accuracy: 0
+  name: Howl
+  description: A piercing cry that can raise moral.
+  nextEvolveMove: {fileID: 11400000, guid: 895b02c6a74ac704c8e8d1bafc78940d, type: 2}
+  type: SPECIAL
+  power: 45
+  accuracy: 100

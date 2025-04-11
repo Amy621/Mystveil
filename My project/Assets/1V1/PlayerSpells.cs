@@ -11,6 +11,8 @@ public class PlayerSpells : ScriptableObject
     [TextArea]
     [SerializeField] string description;
 
+    [SerializeField] PlayerSpells nextEvolveSpell;
+
     // Physical Attack or Special Attack or Status
     [SerializeField] string type;
 
@@ -26,6 +28,10 @@ public class PlayerSpells : ScriptableObject
 
     public string Description {
         get { return description; }
+    }
+
+    public PlayerSpells nextEvo {
+        get { return nextEvolveSpell; }
     }
 
     public string Type {

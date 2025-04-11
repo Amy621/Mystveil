@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
   m_Name: Splash Zone
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  type: 
-  power: 0
-  accuracy: 0
+  name: Splash Zone
+  description: A burst of water that can both damage enemies and heal the user.
+  nextEvolveMove: {fileID: 11400000, guid: 4e5943086e6c0fc4faa507023f3507b8, type: 2}
+  type: SPECIAL
+  power: 55
+  accuracy: 100

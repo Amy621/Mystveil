@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
   m_Name: Overgrowth Assault
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  type: 
-  power: 0
-  accuracy: 0
+  name: Overgrowth Assault
+  description: The area around the target rapidly sprouts dense vegetation, hindering
+    movement and potentially damaging them.
+  nextEvolveMove: {fileID: 0}
+  type: PHYSICAL
+  power: 75
+  accuracy: 100

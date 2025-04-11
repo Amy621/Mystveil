@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Scratch
   m_EditorClassIdentifier: 
   name: Scratch
-  description: 
+  description: A quick, raking attack with sharp claws, leaving shallow lacerations.
+  nextEvolveMove: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}
   type: PHYSICAL
-  power: 25
+  power: 40
   accuracy: 100

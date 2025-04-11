@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
   m_Name: Necromancy
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  type: 
-  power: 0
-  accuracy: 0
+  name: Necromancy
+  description: A dark, life-draining touch that siphons vitality from the target.
+  nextEvolveMove: {fileID: 0}
+  type: SPECIAL
+  power: 60
+  accuracy: 100

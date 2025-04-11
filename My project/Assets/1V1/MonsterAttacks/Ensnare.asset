@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
   m_Name: Ensnare
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  type: 
-  power: 0
-  accuracy: 0
+  name: Ensnare
+  description: Watery tendrils rise from the ground or lash out to bind and constrict
+    the target.
+  nextEvolveMove: {fileID: 11400000, guid: 5870e4fc5931ead49877681cae9155dc, type: 2}
+  type: PHYSICAL
+  power: 45
+  accuracy: 100

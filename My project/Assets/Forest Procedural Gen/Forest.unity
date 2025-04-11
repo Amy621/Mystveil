@@ -2878,6 +2878,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2217097468135323642, guid: 23e02f24a58b44140b162440442da156, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Bantboo
+      value: 
+      objectReference: {fileID: 2217097468135323642, guid: 23e02f24a58b44140b162440442da156, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: Phoenix
       value: 
       objectReference: {fileID: 319509309063009722, guid: feef2941d68cb7b4c98ebcaa108d371d, type: 3}
@@ -2886,6 +2890,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 979611114234332388, guid: 9049ff5e10e23214b83e738cf7674574, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: AsterEye
+      value: 
+      objectReference: {fileID: 5397620819738880905, guid: ec6edce434dbaf74d84c9f6bdca5f918, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: Werewolf
       value: 
       objectReference: {fileID: 2615712240609506234, guid: 2e1f85c45cb6c1f4fa8f8a868ff530cb, type: 3}
@@ -2893,6 +2901,26 @@ PrefabInstance:
       propertyPath: Dionaeant
       value: 
       objectReference: {fileID: 3224831612347486579, guid: 6915f9fd12ca3f4468abec49255ed9e4, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Vilebloom
+      value: 
+      objectReference: {fileID: 2209719044981663562, guid: d4ba42fbac64c9140bb6849f820d6485, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Webweaver
+      value: 
+      objectReference: {fileID: 9142914784956254517, guid: 0944f503952b2a9449e56b423a400296, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Briarheart
+      value: 
+      objectReference: {fileID: 4795570650854471519, guid: c6c4e41c5fc2e884dbc27f62ad006428, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: CottonTail
+      value: 
+      objectReference: {fileID: 6851065177295947361, guid: 2176f0fba44762a4da44c4b01c370224, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Odosapling
+      value: 
+      objectReference: {fileID: 897914681983412173, guid: 000693bf22b754349bd91152400b4458, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: Stranterry
       value: 
@@ -2906,6 +2934,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7577409053495835603, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: LunarFenrir
+      value: 
+      objectReference: {fileID: 7167274764742379470, guid: 37c21f455ce3dcc4284d39d72fe96143, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: CorpseFlower
       value: 
       objectReference: {fileID: 7312613196272549119, guid: 2acff99c1dfb64f44bee7d280ae8da03, type: 3}
@@ -2914,13 +2946,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5397620819738880905, guid: ec6edce434dbaf74d84c9f6bdca5f918, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: ShadowMirror
+      value: 
+      objectReference: {fileID: 5118737223336919839, guid: 68b62b39e87bc9045a5a3cc1765a674f, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: waypointPrefab
       value: 
       objectReference: {fileID: 7881377277137965884, guid: 7189b23596330574f854cceab9541bab, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: RootboundTyrant
+      value: 
+      objectReference: {fileID: 7312613196272549119, guid: 2acff99c1dfb64f44bee7d280ae8da03, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: spawnFloorObject
       value: 
       objectReference: {fileID: 161474, guid: 66d5df05d84e531478fe461e0dbd561a, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: GuardianOfTheWell
+      value: 
+      objectReference: {fileID: 2601236444922581843, guid: 2233e005366a6f24aa65a96ceeac5ce9, type: 3}
     - target: {fileID: 5683517390231247286, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: gridGenerator
       value: 

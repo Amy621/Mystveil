@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
   m_Name: Tidal Wave
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  type: 
-  power: 0
-  accuracy: 0
+  name: Tidal Wave
+  description: A surging wall of water sweeps across the battlefield.
+  nextEvolveMove: {fileID: 0}
+  type: SPECIAL
+  power: 75
+  accuracy: 100
