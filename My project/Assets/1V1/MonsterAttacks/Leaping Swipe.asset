@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Leaping Swipe
   m_EditorClassIdentifier: 
   name: Leaping Swipe
+  levelLearned: 50
   description: The user lunges forward with surprising agility, slashing with its
     claws in a wide arc.
+  effect: 
+  hasEffect: 0
   nextEvolveMove: {fileID: 11400000, guid: a5861f7d957c62d42b3f2d36d5407f28, type: 2}
   type: PHYSICAL
   power: 70

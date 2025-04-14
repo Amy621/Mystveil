@@ -13,8 +13,31 @@ MonoBehaviour:
   m_Name: Titan's Jaws
   m_EditorClassIdentifier: 
   name: Titan's Jaws
+  levelLearned: 0
   description: An enormous, crushing bite capable of shattering stone and bone.
   nextEvolveMove: {fileID: 11400000, guid: 6dab890df7689004f8c5dce7c1d56bf6, type: 2}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 7
+    chance: 10
+    target: 0
+  target: 0
   power: 45
   accuracy: 100
+  alwaysHits: 0

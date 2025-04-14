@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Timber Tackle
   m_EditorClassIdentifier: 
   name: Timber Tackle
+  levelLearned: 25
   description: The user charges forward like a living log, knocking down anything
     in its path.
+  effect: 
+  hasEffect: 0
   nextEvolveMove: {fileID: 11400000, guid: 2807b70f6a32c6348adf3351558d52fb, type: 2}
   type: PHYSICAL
   power: 60

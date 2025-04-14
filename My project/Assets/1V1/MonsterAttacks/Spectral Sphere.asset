@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Spectral Sphere
   m_EditorClassIdentifier: 
   name: Spectral Sphere
+  levelLearned: 75
   description: A hazy orb of ghostly energy that chills and weakens those it touches.
   nextEvolveMove: {fileID: 11400000, guid: 5691c9947ee7c17489a63eefd62267db, type: 2}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
   power: 100
   accuracy: 100

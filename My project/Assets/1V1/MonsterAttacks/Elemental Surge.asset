@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Elemental Surge
   m_EditorClassIdentifier: 
   name: Elemental Surge
+  levelLearned: 50
   description: Channeling the power of the elements, the user unleashes a wave of
     pure energy.
   nextEvolveMove: {fileID: 11400000, guid: 11a1d8806865baa47bfc981f440acfd6, type: 2}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
   power: 70
   accuracy: 100

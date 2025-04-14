@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: The Unbinding
   m_EditorClassIdentifier: 
   name: The Unbinding
+  levelLearned: 50
   description: Broken magical chains surge around the user, telepathically going
     towards their foes and striking.
+  effect: 
+  hasEffect: 0
   nextEvolveMove: {fileID: 0}
   type: PHYSICAL
   power: 75

@@ -13,17 +13,65 @@ MonoBehaviour:
   m_Name: Liora
   m_EditorClassIdentifier: 
   name: Liora
-  description: 
+  description: A newbie witch who wishes to join The Royal Guard and one day become
+    The Court Magician.
   playerImage: {fileID: 21300000, guid: e9dc515abcdc1df4d94627f77085f887, type: 3}
-  healthPoints: 200
-  manaPoints: 100
-  attackPoints: 20
-  defensePoints: 20
-  specialAttackPoints: 20
-  specialDefensePoints: 20
-  speed: 20
+  playerObject: {fileID: 2818523236223774906, guid: 8e0d7064a65fc414ebecd172afd50303, type: 3}
+  healthPoints: 80
+  manaPoints: 600
+  attackPoints: 40
+  defensePoints: 80
+  specialAttackPoints: 100
+  specialDefensePoints: 80
+  speed: 90
   charisma: 5
   spells:
-  - moveBase: {fileID: 11400000, guid: d000290c9e582e341b6b7bd7a22713c7, type: 2}
-  - moveBase: {fileID: 11400000, guid: b672eb08ffae55f4ab67f5cddd8f16c3, type: 2}
-  - moveBase: {fileID: 11400000, guid: f356ffa9f51107c4eb329e01d4562fbb, type: 2}
+  - moveBase: {fileID: 11400000, guid: 8a712b78500b7304396417bd91b61dce, type: 2}
+  - moveBase: {fileID: 11400000, guid: fb16aa942d245e14a82112f0d84b250d, type: 2}
+  - moveBase: {fileID: 11400000, guid: 319450ae130e572468b3129439148e7d, type: 2}
+  - moveBase: {fileID: 11400000, guid: d99c6d3090511ab4e8db1145456476c0, type: 2}
+  - moveBase: {fileID: 11400000, guid: 18715fa389346b14893f6088d1c5110b, type: 2}
+  - moveBase: {fileID: 11400000, guid: 4ea13d4d8970c7c48aced04e5e79ee5f, type: 2}
+  - moveBase: {fileID: 11400000, guid: 3b69daed69d043f40baf911ab06c0339, type: 2}
+  - moveBase: {fileID: 11400000, guid: 365cdc742038e3f43885fe9654778c41, type: 2}
+  - moveBase: {fileID: 11400000, guid: 9ce76e62f72dde44fbdff402831c4d7b, type: 2}
+  - moveBase: {fileID: 11400000, guid: 13d1e522d96785041bcb60598e585943, type: 2}
+  - moveBase: {fileID: 11400000, guid: 6e6f913613a25164b9d64700b3d51fce, type: 2}
+  - moveBase: {fileID: 11400000, guid: 9dd35e1a87f6d6a45b7f4c01666740c4, type: 2}
+  - moveBase: {fileID: 11400000, guid: 79be4067e08a5ff45964609dde17c702, type: 2}
+  - moveBase: {fileID: 11400000, guid: 3e68eaba50ff6b74aad51f59a21cd4f3, type: 2}
+  - moveBase: {fileID: 11400000, guid: c6d07e852277b734b87769f1d8a6c90d, type: 2}
+  - moveBase: {fileID: 11400000, guid: 6bfe8b89d36248944b152ed0f1cbeb3b, type: 2}
+  - moveBase: {fileID: 11400000, guid: 22d17dc9f9beb4b418a0dfc328185c20, type: 2}
+  - moveBase: {fileID: 11400000, guid: 4fa37bf0400e07844bf86ad30069a77f, type: 2}
+  - moveBase: {fileID: 11400000, guid: 425aebea085a0c34d979b0e37848c6a5, type: 2}
+  - moveBase: {fileID: 11400000, guid: 37daa9e597800ba42b8f9ba128ea67d9, type: 2}
+  - moveBase: {fileID: 11400000, guid: c1a48e910e3147f4690c2d146d57c312, type: 2}
+  - moveBase: {fileID: 11400000, guid: 9e0135afca672e0408ca67c6d9a1337d, type: 2}
+  - moveBase: {fileID: 11400000, guid: 8c395c84f628b0e4b9cc2f4110124707, type: 2}
+  - moveBase: {fileID: 11400000, guid: 1b63175a7a24ce84aabd33ffa203d129, type: 2}
+  - moveBase: {fileID: 11400000, guid: b9dd610b7839921438e7832e2af91d62, type: 2}
+  - moveBase: {fileID: 11400000, guid: 6ca0cfc4b1601824cb8b106e5874f88e, type: 2}
+  - moveBase: {fileID: 11400000, guid: 496c85b4ea1fa244480db3330b7c7332, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5e962b46aaa03f840bd84d44f58413c4, type: 2}
+  - moveBase: {fileID: 11400000, guid: f3f0486bf51516e42ba762a4303ebc3f, type: 2}
+  - moveBase: {fileID: 11400000, guid: c603edc08c01d124285b10221db71edf, type: 2}
+  - moveBase: {fileID: 11400000, guid: 3db47b33c4d5e854c855a2b04ed00fe2, type: 2}
+  - moveBase: {fileID: 11400000, guid: cdd5a6757452b2043aa796c442db1c0e, type: 2}
+  - moveBase: {fileID: 11400000, guid: 14bc8830533ebbb4d81d09e40ac4c825, type: 2}
+  - moveBase: {fileID: 11400000, guid: 7086466bc6d99144f820bb4dc15d6b79, type: 2}
+  - moveBase: {fileID: 11400000, guid: a64ed7ae3c8963c4ab6dde3abab898dd, type: 2}
+  - moveBase: {fileID: 11400000, guid: b529cf5b20bb7d541bda5a367fbd8100, type: 2}
+  - moveBase: {fileID: 11400000, guid: 2125c40956fb2f9479b702b7f4768d87, type: 2}
+  - moveBase: {fileID: 11400000, guid: effd51f60a8907644be5b133f1a8b09a, type: 2}
+  - moveBase: {fileID: 11400000, guid: c23571b52c4e87741bb75312637ce7e4, type: 2}
+  - moveBase: {fileID: 11400000, guid: 415bb3f9ce0582d4393adfb010a23011, type: 2}
+  - moveBase: {fileID: 11400000, guid: 89273518df4b6f646898dc75b75c7aa8, type: 2}
+  - moveBase: {fileID: 11400000, guid: c199f5ccca8481341b44e087f7b59416, type: 2}
+  - moveBase: {fileID: 11400000, guid: 0352befd4069a9745ad97982d95d81a7, type: 2}
+  - moveBase: {fileID: 11400000, guid: 264db602d5d12554790cec7a00fe6d16, type: 2}
+  - moveBase: {fileID: 11400000, guid: ff522efd4a5ea0047b9b5c207752c11b, type: 2}
+  - moveBase: {fileID: 11400000, guid: 813e318b96c7e6446850d297d961fc6d, type: 2}
+  - moveBase: {fileID: 11400000, guid: 2e711caa23938434bbc2cff9402265b6, type: 2}
+  - moveBase: {fileID: 11400000, guid: 55f74748ecf80a64a82633969d106b01, type: 2}
+  - moveBase: {fileID: 11400000, guid: d31a461169b2a224c9bf0447298391aa, type: 2}

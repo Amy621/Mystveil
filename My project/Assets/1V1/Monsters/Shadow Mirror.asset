@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fcda90c83557204db396376b0f2a66f, type: 3}
-  m_Name: LunarFenrir
+  m_Name: Shadow Mirror
   m_EditorClassIdentifier: 
-  name: Lunar Fenrir
-  description: A lone wolf that has lived through many moons. People have learned
-    to never traverse the forest on the night of a full moon else face the wrath
-    of this creature.
+  name: Shadow Mirror
+  description: No one knows why the mirror shows up within the forest. Maybe it is
+    a curse left from a mad witch in the past. Shadowy tendrils erupt from its surface
+    and have the ability to reflect certain memories...
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
+  monster: {fileID: 5118737223336919839, guid: 68b62b39e87bc9045a5a3cc1765a674f, type: 3}
   healthPoints: 0
   attackPoints: 0
   defensePoints: 0
@@ -25,8 +26,6 @@ MonoBehaviour:
   specialDefensePoints: 0
   speed: 0
   moves: []
-  dropStat: 'ATK: 1'
-  monsterDrop1: Fur Puff
-  monsterDrop2: Monster Flesh
-  monsterDrop3: Crystalline Shard
-  monsterDrop4: 
+  dropStats: 
+  monsterDrops: []
+  dropRates: []

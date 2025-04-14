@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Bramble Club
   m_EditorClassIdentifier: 
   name: Bramble Club
+  levelLearned: 50
   description: A thorny branch or vine is used as a painful bludgeon.
+  effect: 
+  hasEffect: 0
   nextEvolveMove: {fileID: 11400000, guid: 35137ddb7fef0af45a85cc9de4291e21, type: 2}
   type: PHYSICAL
   power: 75

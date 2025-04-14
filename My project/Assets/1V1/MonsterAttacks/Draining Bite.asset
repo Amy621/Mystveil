@@ -13,8 +13,31 @@ MonoBehaviour:
   m_Name: Draining Bite
   m_EditorClassIdentifier: 
   name: Draining Bite
+  levelLearned: 75
   description: A powerful bite that leeches energy from the victim.
   nextEvolveMove: {fileID: 0}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 30
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+    chance: 100
+    target: 0
+  target: 0
   power: 90
   accuracy: 90
+  alwaysHits: 0

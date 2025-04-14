@@ -13,8 +13,21 @@ MonoBehaviour:
   m_Name: Sunleaf Shuriken
   m_EditorClassIdentifier: 
   name: Sunleaf Shuriken
+  levelLearned: 50
   description: Glowing leaves, sharpened by sunlight, are thrown with deadly accuracy.
   nextEvolveMove: {fileID: 0}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 1
+      maxNum: 3
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects: []
+  target: 0
   power: 45
   accuracy: 100
+  alwaysHits: 0

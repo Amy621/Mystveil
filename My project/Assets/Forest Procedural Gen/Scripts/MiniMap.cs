@@ -35,6 +35,7 @@ public class MiniMap : MonoBehaviour
     {
         Debug.Log("MINI -- finding tagged objects");
         monsters = GameObject.FindGameObjectsWithTag("Monster").ToList();
+        monsters = GameObject.FindGameObjectsWithTag("BossMonster").ToList();
         collectables = GameObject.FindGameObjectsWithTag("Collectable").ToList();
         nextScene = GameObject.FindGameObjectWithTag("NextScene");
         Debug.Log("MINI -- Next scene object found: " + nextScene);

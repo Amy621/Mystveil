@@ -15,17 +15,31 @@ MonoBehaviour:
   name: Hecuba
   description: Hecate's first familiar. A wolf-like dog who often took care of Liora
     when she was younger. Very loyal and polite.
+  isSpecialBoss: 1
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
-  healthPoints: 0
-  attackPoints: 0
-  defensePoints: 0
-  specialAttackPoints: 0
-  specialDefensePoints: 0
-  speed: 0
-  moves: []
-  dropStat: 'SPD: 1'
-  monsterDrop1: Moonwhisper Circlet
-  monsterDrop2: Moonwhisper Cloak
-  monsterDrop3: Moonwhisper Baton
-  monsterDrop4: Moonwhisper Band
+  monster: {fileID: 0}
+  healthPoints: 90
+  attackPoints: 100
+  defensePoints: 70
+  specialAttackPoints: 80
+  specialDefensePoints: 60
+  speed: 85
+  moves:
+  - moveBase: {fileID: 11400000, guid: 63fcdef87df18d9488803d982510bec6, type: 2}
+  - moveBase: {fileID: 11400000, guid: 75ea736dbba44a74ebbc3109eda64ce0, type: 2}
+  - moveBase: {fileID: 11400000, guid: 6fcd178881e77c64a8f6afc1766ca35d, type: 2}
+  - moveBase: {fileID: 11400000, guid: 52751f0b95ab6824fa7606b86d0541fb, type: 2}
+  - moveBase: {fileID: 11400000, guid: f9540671eee3b7f4eae9a2af6ea4ce0d, type: 2}
+  - moveBase: {fileID: 11400000, guid: 13fc6b07efd4bff459aeb541075fc824, type: 2}
+  dropStats: 010000000300000004000000
+  monsterDrops:
+  - {fileID: 11400000, guid: 471bee720234c40c09ddc4bf6371313d, type: 2}
+  - {fileID: 11400000, guid: 1af19b3f8bbc74a2d950463a427a375c, type: 2}
+  - {fileID: 11400000, guid: f11488ec94ab442259fe5e598ee4b270, type: 2}
+  - {fileID: 11400000, guid: 7c1006f53da69471e8a72d5e361ac98e, type: 2}
+  dropRates:
+  - 0.025
+  - 0.025
+  - 0.025
+  - 0.025

@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Tidal Smash
   m_EditorClassIdentifier: 
   name: Tidal Smash
+  levelLearned: 0
   description: A massive wave of water crashes down on the target.
   nextEvolveMove: {fileID: 11400000, guid: ea7f6cbd722feba4cbb353c932538ec4, type: 2}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
   power: 45
   accuracy: 100

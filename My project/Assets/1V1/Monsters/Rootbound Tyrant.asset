@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcda90c83557204db396376b0f2a66f, type: 3}
+  m_Name: Rootbound Tyrant
+  m_EditorClassIdentifier: 
+  name: Rootbound Tyrant
+  description: An Odosapling that stopped dancing and took root a long time ago.
+    Has since grown a second brain. Terrorizes all other plants by stealing the nutrients
+    from the soil.
+  monsterIconImage: {fileID: 21300000, guid: 0de79dc5509504942a6492ae11bc48e5, type: 3}
+  bossImage: {fileID: 21300000, guid: 0de79dc5509504942a6492ae11bc48e5, type: 3}
+  monster: {fileID: 7312613196272549119, guid: 2acff99c1dfb64f44bee7d280ae8da03, type: 3}
+  healthPoints: 110
+  attackPoints: 80
+  defensePoints: 70
+  specialAttackPoints: 65
+  specialDefensePoints: 80
+  speed: 75
+  moves:
+  - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
+  - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}
+  - moveBase: {fileID: 11400000, guid: af44f82b19d8c6c4eb7dd105c4c43b79, type: 2}
+  - moveBase: {fileID: 11400000, guid: a5861f7d957c62d42b3f2d36d5407f28, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5921a59e0821d134c8bb8a7a20c36b9a, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5573fcf90bcbeae459ea39019c1bb9ea, type: 2}
+  - moveBase: {fileID: 11400000, guid: 8a7b689939ae250459e2718fe9aada67, type: 2}
+  - moveBase: {fileID: 11400000, guid: e906caebe16c04d4ebc16ae0b8835801, type: 2}
+  - moveBase: {fileID: 11400000, guid: 11a1d8806865baa47bfc981f440acfd6, type: 2}
+  - moveBase: {fileID: 11400000, guid: 82f568a54f5ef11489102a03626a3e42, type: 2}
+  - moveBase: {fileID: 11400000, guid: 77995860328fbf04190d533af7a7c4b4, type: 2}
+  - moveBase: {fileID: 11400000, guid: b0e69d2779152d446a5ce5b0518de047, type: 2}
+  - moveBase: {fileID: 11400000, guid: 575f5112c995c204ca8492f254843fbb, type: 2}
+  - moveBase: {fileID: 11400000, guid: 2034cff76b6a31f4eb1c1921bcc4f6c7, type: 2}
+  - moveBase: {fileID: 11400000, guid: 2807b70f6a32c6348adf3351558d52fb, type: 2}
+  - moveBase: {fileID: 11400000, guid: 35137ddb7fef0af45a85cc9de4291e21, type: 2}
+  - moveBase: {fileID: 11400000, guid: c216f139b64f3ec40abb0fc2f8c950ba, type: 2}
+  - moveBase: {fileID: 11400000, guid: 724bcab839f65cb4db3da97911e817e8, type: 2}
+  - moveBase: {fileID: 11400000, guid: e54cce667be83004ab64933767261c9d, type: 2}
+  - moveBase: {fileID: 11400000, guid: 618379d0013b0874b970dc5439b7306c, type: 2}
+  - moveBase: {fileID: 11400000, guid: e85e85a4574de7e4784aeedb68f07502, type: 2}
+  - moveBase: {fileID: 11400000, guid: 2f56d2ec73354204f9aa963236d25f9f, type: 2}
+  - moveBase: {fileID: 11400000, guid: a34493baa5d7c8b4b8efb57d752f8009, type: 2}
+  - moveBase: {fileID: 11400000, guid: 78e41291b71eeb744aae30cf663a4d6c, type: 2}
+  - moveBase: {fileID: 11400000, guid: db170528ba26b2043b9954fb2e401f88, type: 2}
+  - moveBase: {fileID: 11400000, guid: cb183e824aa122b43957bedf3e8c441c, type: 2}
+  - moveBase: {fileID: 11400000, guid: 3d837be51d0845d4ba72fdefac3c7baa, type: 2}
+  - moveBase: {fileID: 11400000, guid: 489b2b2cb3b82e240b10634dcd767a26, type: 2}
+  - moveBase: {fileID: 11400000, guid: 7c400768a2c5d9f4bb37e514cf6ec5bd, type: 2}
+  - moveBase: {fileID: 11400000, guid: 3f18353c4d060dc4c870af5b93788ea5, type: 2}
+  dropStats: 0400000000000000
+  monsterDrops:
+  - {fileID: 11400000, guid: c356fbdb332c74792866ee74ea9d4fe1, type: 2}
+  - {fileID: 11400000, guid: b2c7f80ab09bd4340936ba9be7a0dc52, type: 2}
+  - {fileID: 11400000, guid: 82a7919f3bce6402e8a6e318b742d7f5, type: 2}
+  dropRates:
+  - 0.3
+  - 0.2
+  - 0.15

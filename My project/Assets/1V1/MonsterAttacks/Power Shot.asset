@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Power Shot
   m_EditorClassIdentifier: 
   name: Power Shot
+  levelLearned: 25
   description: A concentrated burst of energy, launched with force and precision.
   nextEvolveMove: {fileID: 11400000, guid: e906caebe16c04d4ebc16ae0b8835801, type: 2}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
   power: 55
   accuracy: 100

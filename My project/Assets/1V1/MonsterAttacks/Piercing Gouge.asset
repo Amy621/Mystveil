@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Piercing Gouge
   m_EditorClassIdentifier: 
   name: Piercing Gouge
+  levelLearned: 75
   description: A focused, powerful stab with a claw or horn, designed to penetrate
     vital points.
+  effect: 
+  hasEffect: 0
   nextEvolveMove: {fileID: 11400000, guid: 5921a59e0821d134c8bb8a7a20c36b9a, type: 2}
   type: PHYSICAL
   power: 85

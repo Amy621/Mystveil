@@ -13,8 +13,44 @@ MonoBehaviour:
   m_Name: Nightshade Kiss
   m_EditorClassIdentifier: 
   name: Nightshade Kiss
+  levelLearned: 0
   description: A chilling cold touch similar to the embrace of death.
   nextEvolveMove: {fileID: 0}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 1
+    chance: 15
+    target: 0
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 13
+    restoreMP: 0
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 1
+    chance: 100
+    target: 0
+  target: 0
   power: 65
   accuracy: 100
+  alwaysHits: 0

@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Tidal Wave
   m_EditorClassIdentifier: 
   name: Tidal Wave
+  levelLearned: 50
   description: A surging wall of water sweeps across the battlefield.
   nextEvolveMove: {fileID: 0}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
   power: 75
   accuracy: 100

@@ -13,9 +13,32 @@ MonoBehaviour:
   m_Name: Draining Fang
   m_EditorClassIdentifier: 
   name: Draining Fang
+  levelLearned: 0
   description: The user's fangs sink in, not just causing physical harm but also
     siphoning life force.
   nextEvolveMove: {fileID: 11400000, guid: d393adad7716f784c9940b515185c728, type: 2}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 30
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+    chance: 100
+    target: 0
+  target: 0
   power: 45
   accuracy: 90
+  alwaysHits: 0

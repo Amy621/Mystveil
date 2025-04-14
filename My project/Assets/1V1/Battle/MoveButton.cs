@@ -29,7 +29,6 @@ public class MoveButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHand
 
     public void SetMoveText(string text)
     {
-        Debug.Log(text);
         if (moveText != null)
         {
             moveText.text = text;

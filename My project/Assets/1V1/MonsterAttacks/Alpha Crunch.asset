@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Alpha Crunch
   m_EditorClassIdentifier: 
   name: Alpha Crunch
+  levelLearned: 75
   description: The dominant bite of a leader, imbued with extra force and authority.
+  effect: 
+  hasEffect: 0
   nextEvolveMove: {fileID: 11400000, guid: 43a197c3dfd6db84fb2de46827bd7c64, type: 2}
   type: PHYSICAL
   power: 90

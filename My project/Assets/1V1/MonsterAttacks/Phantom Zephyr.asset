@@ -13,9 +13,36 @@ MonoBehaviour:
   m_Name: Phantom Zephyr
   m_EditorClassIdentifier: 
   name: Phantom Zephyr
+  levelLearned: 75
   description: An air current cuts through the target, swirling in a pattern only
     the user knows.
   nextEvolveMove: {fileID: 11400000, guid: ec6923541557eb34b8ed6480103039c9, type: 2}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts:
+    - stat: 4
+      boost: 1
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts:
+    - stat: 4
+      boost: 1
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+    chance: 100
+    target: 0
+  target: 1
   power: 90
   accuracy: 100
+  alwaysHits: 0

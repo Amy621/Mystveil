@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Unfettered Fury
   description: Unleashing all restraint, the user attacks with devestating power.
+  effect: Recoil on user 1/16 of Max HP
+  hasEffect: 1
   nextEvolveMove: {fileID: 0}
   type: PHYSICAL
   power: 75

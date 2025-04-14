@@ -15,17 +15,32 @@ MonoBehaviour:
   name: Hecate
   description: Liora's mother and a talented shadow mage. Was the previous Court
     Magician before her apprentice Circe.
+  isSpecialBoss: 1
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
-  healthPoints: 0
-  attackPoints: 0
-  defensePoints: 0
-  specialAttackPoints: 0
-  specialDefensePoints: 0
-  speed: 0
-  moves: []
-  dropStat: 'SPA: 1'
-  monsterDrop1: Spirit Weave Headpiece
-  monsterDrop2: Spirit Weave Armor
-  monsterDrop3: Spirit Weave Branchlet
-  monsterDrop4: Spirit Weave Necklace
+  monster: {fileID: 0}
+  healthPoints: 85
+  attackPoints: 45
+  defensePoints: 80
+  specialAttackPoints: 100
+  specialDefensePoints: 90
+  speed: 90
+  moves:
+  - moveBase: {fileID: 11400000, guid: 7377af796ea72d24698ead97349b5e71, type: 2}
+  - moveBase: {fileID: 11400000, guid: 84fd2863da2c60e4fb0b30cff9ce95ca, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5691c9947ee7c17489a63eefd62267db, type: 2}
+  - moveBase: {fileID: 11400000, guid: 33269d058bf829b4ba9fd7f01667108a, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5fe7731bef74e5646af29979146bf72c, type: 2}
+  - moveBase: {fileID: 11400000, guid: 0e051f5c7137a924eaadb694ace66253, type: 2}
+  - moveBase: {fileID: 11400000, guid: 63fcdef87df18d9488803d982510bec6, type: 2}
+  dropStats: 000000000300000001000000
+  monsterDrops:
+  - {fileID: 11400000, guid: 6dcbff11a66254d3dba0a6a3f22ca405, type: 2}
+  - {fileID: 11400000, guid: cb3779e0a045344d99bb1c78bbc5f374, type: 2}
+  - {fileID: 11400000, guid: dcdc456e4c2f64c11973c08c08605082, type: 2}
+  - {fileID: 11400000, guid: fa61258feb203494b943498a9b6ade4f, type: 2}
+  dropRates:
+  - 0.025
+  - 0.025
+  - 0.025
+  - 0.025

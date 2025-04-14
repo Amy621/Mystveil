@@ -15,17 +15,31 @@ MonoBehaviour:
   name: Gale
   description: Hecate's second familiar. A mischevious ferret who enjoys messing
     with people.
+  isSpecialBoss: 1
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
-  healthPoints: 0
-  attackPoints: 0
-  defensePoints: 0
-  specialAttackPoints: 0
-  specialDefensePoints: 0
-  speed: 0
-  moves: []
-  dropStat: 'SPE: 1'
-  monsterDrop1: Shadowsilk Hood
-  monsterDrop2: Shadowsilk Robe
-  monsterDrop3: Shadowsilk Staff
-  monsterDrop4: Shadowsilk Ring
+  monster: {fileID: 0}
+  healthPoints: 85
+  attackPoints: 95
+  defensePoints: 40
+  specialAttackPoints: 80
+  specialDefensePoints: 80
+  speed: 100
+  moves:
+  - moveBase: {fileID: 11400000, guid: 63fcdef87df18d9488803d982510bec6, type: 2}
+  - moveBase: {fileID: 11400000, guid: 1edd8a89cdf39cd4ba36652d06d1a62f, type: 2}
+  - moveBase: {fileID: 11400000, guid: 2e20189b7c67d504d870530e9f337e28, type: 2}
+  - moveBase: {fileID: 11400000, guid: 2de11a62362e7c540b1c289e10a8d9fd, type: 2}
+  - moveBase: {fileID: 11400000, guid: 35e3598613cb1484bb3f40237617a35b, type: 2}
+  - moveBase: {fileID: 11400000, guid: ec6923541557eb34b8ed6480103039c9, type: 2}
+  dropStats: 010000000500000002000000
+  monsterDrops:
+  - {fileID: 11400000, guid: 33b3530328767490e8c0806575c48bbe, type: 2}
+  - {fileID: 11400000, guid: d7422967a6b164b61b186ab8133cf353, type: 2}
+  - {fileID: 11400000, guid: 51ab8432bc5d548fdb47ddac8600df48, type: 2}
+  - {fileID: 11400000, guid: 5b3fb503004dc452da49b46a2fb96bf4, type: 2}
+  dropRates:
+  - 0.025
+  - 0.025
+  - 0.025
+  - 0.025

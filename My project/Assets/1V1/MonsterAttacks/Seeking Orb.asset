@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Seeking Orb
   m_EditorClassIdentifier: 
   name: Seeking Orb
+  levelLearned: 0
   description: A glowing sphere of magic that unerringly tracks its target, detonating
     upon impact.
   nextEvolveMove: {fileID: 0}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
   power: 70
   accuracy: 100

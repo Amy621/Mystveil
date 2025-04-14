@@ -13,8 +13,21 @@ MonoBehaviour:
   m_Name: Spore Cloud
   m_EditorClassIdentifier: 
   name: Spore Cloud
+  levelLearned: 50
   description: A cloud of spores is released, causing sleep.
   nextEvolveMove: {fileID: 0}
-  type: STATUS
+  category: 2
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 4
+  secondaryEffects: []
+  target: 0
   power: 0
   accuracy: 90
+  alwaysHits: 0

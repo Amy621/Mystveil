@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcda90c83557204db396376b0f2a66f, type: 3}
+  m_Name: Cotton-Tail
+  m_EditorClassIdentifier: 
+  name: Cotton-Tail
+  description: A common rabbit. Is easily startled.
+  monsterIconImage: {fileID: 0}
+  bossImage: {fileID: 0}
+  monster: {fileID: 7964420510053311654, guid: ed3091baa4cae9443bf3a35604373cd7, type: 3}
+  healthPoints: 50
+  attackPoints: 20
+  defensePoints: 20
+  specialAttackPoints: 20
+  specialDefensePoints: 20
+  speed: 80
+  moves: []
+  dropStats: 05000000
+  monsterDrops:
+  - {fileID: 11400000, guid: 665b7fc84a181441fa0707ad33d995b4, type: 2}
+  - {fileID: 11400000, guid: 51a32bd3a765e47cf9be86bb9dbdc3e9, type: 2}
+  - {fileID: 11400000, guid: 64876a204f3424ea8b7253897bec8bbe, type: 2}
+  dropRates:
+  - 0.5
+  - 0.29
+  - 0.01

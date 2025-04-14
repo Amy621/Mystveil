@@ -13,8 +13,21 @@ MonoBehaviour:
   m_Name: Guardian's Call
   m_EditorClassIdentifier: 
   name: Guardian's Call
+  levelLearned: 0
   description: The user summons their minions to do their bidding.
   nextEvolveMove: {fileID: 0}
-  type: STATUS
+  category: 2
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 6
+  secondaryEffects: []
+  target: 0
   power: 0
   accuracy: 80
+  alwaysHits: 0

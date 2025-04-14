@@ -13,9 +13,22 @@ MonoBehaviour:
   m_Name: Aetherial Dart
   m_EditorClassIdentifier: 
   name: Aetherial Dart
+  levelLearned: 0
   description: A swift projectile formed from pure magical essence, phasing through
     defenses to strike the spirit.
   nextEvolveMove: {fileID: 0}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    numHit:
+      minNum: 3
+      maxNum: 5
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects: []
+  target: 0
   power: 35
   accuracy: 100
+  alwaysHits: 0

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fettered Rage
   description: The user attacks with reckless abandon.
+  effect: Recoil on user 1/16 of Max HP
+  hasEffect: 1
   nextEvolveMove: {fileID: 11400000, guid: ac948b266964ac04cb9a41965277e125, type: 2}
   type: Physical
   power: 45

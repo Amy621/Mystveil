@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Hydro Grip
   m_EditorClassIdentifier: 
   name: Hydro Grip
+  levelLearned: 50
   description: A powerful grip of water that crushes and suffocates.
   nextEvolveMove: {fileID: 0}
-  type: PHYSICAL
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
   power: 75
   accuracy: 100

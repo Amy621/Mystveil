@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Abyssal Rend
   m_EditorClassIdentifier: 
   name: Abyssal Rend
+  levelLearned: 100
   description: Primal energy from within crackles around the user's claws as it tears
     a gaping wound, as if opening a rift in reality.
+  effect: 
+  hasEffect: 0
   nextEvolveMove: {fileID: 0}
   type: PHYSICAL
   power: 100

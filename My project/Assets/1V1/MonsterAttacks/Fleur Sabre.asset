@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Fleur Sabre
   m_EditorClassIdentifier: 
   name: Fleur Sabre
+  levelLearned: 100
   description: Razor-sharp petals are launched like deadly projectiles.
+  effect: 
+  hasEffect: 0
   nextEvolveMove: {fileID: 0}
   type: PHYSICAL
   power: 105

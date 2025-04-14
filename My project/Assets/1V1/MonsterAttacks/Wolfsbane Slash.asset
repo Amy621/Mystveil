@@ -13,8 +13,31 @@ MonoBehaviour:
   m_Name: Wolfsbane Slash
   m_EditorClassIdentifier: 
   name: Wolfsbane Slash
+  levelLearned: 100
   description: A slashing attack that leaves no chance for survival.
   nextEvolveMove: {fileID: 0}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 7
+    chance: 10
+    target: 0
+  target: 0
   power: 130
   accuracy: 100
+  alwaysHits: 0

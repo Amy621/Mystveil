@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Pilfer
   description: A swift, magical touch that attempts to steal items from the target.
+  effect: Lose a random un-equipped item.
+  hasEffect: 1
   nextEvolveMove: {fileID: 0}
   type: PHYSICAL
   power: 50

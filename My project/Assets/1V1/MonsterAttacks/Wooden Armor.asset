@@ -13,9 +13,16 @@ MonoBehaviour:
   m_Name: Wooden Armor
   m_EditorClassIdentifier: 
   name: Wooden Armor
+  levelLearned: 0
   description: The user's skin hardens and thickens with a layer of wood, increasing
     its defenses.
   nextEvolveMove: {fileID: 11400000, guid: 3f18353c4d060dc4c870af5b93788ea5, type: 2}
-  type: STATUS
+  category: 2
+  effects:
+    boosts:
+    - stat: 1
+      boost: 1
+    multiHit: []
+  target: 1
   power: 0
   accuracy: 90

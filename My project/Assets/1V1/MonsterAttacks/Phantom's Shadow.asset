@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Phantom's Shadow
   m_EditorClassIdentifier: 
   name: Phantom's Shadow
+  levelLearned: 100
   description: The user's shadow detaches and attacks with spectral power.
   nextEvolveMove: {fileID: 0}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
   power: 150
   accuracy: 100

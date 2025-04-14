@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Primal Eruption
   m_EditorClassIdentifier: 
   name: Primal Eruption
+  levelLearned: 100
   description: Raw, untamed elemental power explodes from the mosnter, a chaotic
     display of nature's fury.
   nextEvolveMove: {fileID: 0}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
   power: 100
   accuracy: 100

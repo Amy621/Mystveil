@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Feral Claw
   m_EditorClassIdentifier: 
   name: Feral Claw
+  levelLearned: 25
   description: A vicious, tearing strike that rips through flesh and armor with raw,
     untamed power.
+  effect: 
+  hasEffect: 0
   nextEvolveMove: {fileID: 11400000, guid: af44f82b19d8c6c4eb7dd105c4c43b79, type: 2}
   type: PHYSICAL
   power: 55

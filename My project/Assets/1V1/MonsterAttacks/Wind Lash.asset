@@ -13,9 +13,22 @@ MonoBehaviour:
   m_Name: Wind Lash
   m_EditorClassIdentifier: 
   name: Wind Lash
+  levelLearned: 0
   description: A sharp gust of wind, like an invisible whip, that cuts and buffets
     the target.
   nextEvolveMove: {fileID: 0}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 3
+      maxNum: 5
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects: []
+  target: 0
   power: 45
   accuracy: 100
+  alwaysHits: 0

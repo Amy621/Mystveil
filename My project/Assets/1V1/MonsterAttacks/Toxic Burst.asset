@@ -13,9 +13,32 @@ MonoBehaviour:
   m_Name: Toxic Burst
   m_EditorClassIdentifier: 
   name: Toxic Burst
+  levelLearned: 0
   description: A cloud of poisonous fumes erupt upon use, choking and debilitating
     the user's foes.
   nextEvolveMove: {fileID: 0}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 1
+    chance: 15
+    target: 0
+  target: 0
   power: 90
   accuracy: 90
+  alwaysHits: 0

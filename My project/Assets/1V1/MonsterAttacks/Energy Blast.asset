@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Energy Blast
   m_EditorClassIdentifier: 
   name: Energy Blast
+  levelLearned: 0
   description: A focused beam of raw energy erupts from the user, searing anything
     in its path.
   nextEvolveMove: {fileID: 11400000, guid: 8a7b689939ae250459e2718fe9aada67, type: 2}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
   power: 40
   accuracy: 100

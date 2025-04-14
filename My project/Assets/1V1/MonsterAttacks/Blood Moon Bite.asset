@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Blood Moon Bite
   m_EditorClassIdentifier: 
   name: Blood Moon Bite
+  levelLearned: 100
   description: A bite empowered by lunar energy, potentially causing bleeding or
     other mystical effects.
+  effect: 
+  hasEffect: 0
   nextEvolveMove: {fileID: 0}
   type: PHYSICAL
   power: 105

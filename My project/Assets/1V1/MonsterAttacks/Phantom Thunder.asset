@@ -13,9 +13,32 @@ MonoBehaviour:
   m_Name: Phantom Thunder
   m_EditorClassIdentifier: 
   name: Phantom Thunder
+  levelLearned: 75
   description: A silent yet impactful shockwave of energy that disorients and rattles
     bones.
   nextEvolveMove: {fileID: 11400000, guid: 13fc6b07efd4bff459aeb541075fc824, type: 2}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 5
+    chance: 10
+    target: 0
+  target: 0
   power: 95
   accuracy: 100
+  alwaysHits: 0

@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: Moon Phase
   m_EditorClassIdentifier: 
   name: Moon Phase
+  levelLearned: 75
   description: The strength of this move shifts and changes depending on the current
     phase of the moon.
+  effect: 'Every use cycles through a different phase with different attack power:
+    New Moon, Waxing Crescent, Half Moon, Waxing Gibbous, Full Moon, Waning Gibbous,
+    Half Moon, Waning Crescent. If the move misses then the moon is reset to New
+    Moon.'
+  hasEffect: 1
   nextEvolveMove: {fileID: 0}
   type: PHYSICAL
   power: 0

@@ -13,9 +13,32 @@ MonoBehaviour:
   m_Name: Ensnare
   m_EditorClassIdentifier: 
   name: Ensnare
+  levelLearned: 0
   description: Watery tendrils rise from the ground or lash out to bind and constrict
     the target.
   nextEvolveMove: {fileID: 11400000, guid: 5870e4fc5931ead49877681cae9155dc, type: 2}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 6
+    chance: 10
+    target: 0
+  target: 0
   power: 45
   accuracy: 100
+  alwaysHits: 0

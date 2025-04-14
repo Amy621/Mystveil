@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Water Shield
   m_EditorClassIdentifier: 
   name: Water Shield
+  levelLearned: 50
   description: A shimmering barrier of water forms around the user, deflecting attacks.
+  effect: Invincible to attacks minus status + accuracy for this move is reduced
+    by 50% for the next turn
+  hasEffect: 1
   nextEvolveMove: {fileID: 0}
   type: STATUS
   power: 0

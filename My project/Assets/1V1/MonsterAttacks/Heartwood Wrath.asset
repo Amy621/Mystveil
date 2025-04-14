@@ -13,8 +13,31 @@ MonoBehaviour:
   m_Name: Heartwood Wrath
   m_EditorClassIdentifier: 
   name: Heartwood Wrath
+  levelLearned: 100
   description: A strike imbued with the ancient power of age-old trees.
   nextEvolveMove: {fileID: 0}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 4
+    chance: 10
+    target: 0
+  target: 0
   power: 105
   accuracy: 100
+  alwaysHits: 0

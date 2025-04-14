@@ -13,9 +13,16 @@ MonoBehaviour:
   m_Name: Fragrant Spray
   m_EditorClassIdentifier: 
   name: Fragrant Spray
+  levelLearned: 0
   description: A seemingly harmless mist that relaxes the foes' muscles, lowering
     their will to attack.
   nextEvolveMove: {fileID: 0}
-  type: STATUS
+  category: 2
+  effects:
+    boosts:
+    - stat: 0
+      boost: -1
+    multiHit: []
+  target: 0
   power: 0
   accuracy: 80

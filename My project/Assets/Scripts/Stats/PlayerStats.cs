@@ -14,6 +14,8 @@ public class PlayerStats : ScriptableObject
     // player 2D image for the 1v1
     [SerializeField] Sprite playerImage;
 
+    [SerializeField] GameObject playerObject;
+
     // Stats
     [SerializeField] int healthPoints;
     [SerializeField] int manaPoints;
@@ -46,13 +48,12 @@ public class PlayerStats : ScriptableObject
 public class LearnableSpell
 {
     [SerializeField] PlayerSpells moveBase;
-    int level;
 
     public PlayerSpells Base {
         get { return moveBase; }
     }
 
     public int Level {
-        get { return level; }
+        get { return moveBase.LevelLearned; }
     }
 }

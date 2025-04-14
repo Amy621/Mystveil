@@ -13,8 +13,15 @@ MonoBehaviour:
   m_Name: Ancient Sentinel
   m_EditorClassIdentifier: 
   name: Ancient Sentinel
+  levelLearned: 50
   description: The user summons the spirit of an ancient tree to defend itself.
   nextEvolveMove: {fileID: 0}
-  type: STATUS
+  category: 2
+  effects:
+    boosts:
+    - stat: 1
+      boost: 1
+    multiHit: []
+  target: 1
   power: 0
   accuracy: 90

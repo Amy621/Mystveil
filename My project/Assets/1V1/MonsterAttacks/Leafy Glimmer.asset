@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Leafy Glimmer
   m_EditorClassIdentifier: 
   name: Leafy Glimmer
+  levelLearned: 0
   description: A distracting flurry of leaves that can blind or confuse the target.
   nextEvolveMove: {fileID: 11400000, guid: 489b2b2cb3b82e240b10634dcd767a26, type: 2}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
   power: 45
   accuracy: 100

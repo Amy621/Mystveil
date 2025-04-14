@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Photosynthetic Burst
   m_EditorClassIdentifier: 
   name: Photosynthetic Burst
+  levelLearned: 50
   description: The user absorbs sunlight and releases a burst of energy, damaging
     foes with concentrated light.
   nextEvolveMove: {fileID: 0}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
   power: 75
   accuracy: 100

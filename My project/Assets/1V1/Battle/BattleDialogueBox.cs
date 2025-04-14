@@ -146,7 +146,7 @@ public class BattleDialogueBox : MonoBehaviour
         //         mpTexts[i].text = "MP: -";
         //     }
         // }
-
+       
         for (int i = 0; i < moveButtons.Count; ++i)
         {
             if (i < spells.Count)
@@ -158,7 +158,7 @@ public class BattleDialogueBox : MonoBehaviour
             }
             else
             {
-                moveButtons[i].gameObject.SetActive(false);
+                moveButtons[i].gameObject.SetActive(true);
                 moveButtons[i].SetMoveText("-");
                 powTexts[i].text = "POW: -";
                 mpTexts[i].text = "MP: -";

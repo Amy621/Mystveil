@@ -13,9 +13,34 @@ MonoBehaviour:
   m_Name: Adhesive Shot
   m_EditorClassIdentifier: 
   name: Adhesive Shot
+  levelLearned: 25
   description: A glob of viscous, magically-enhanced goo that slows and hinders the
     target.
   nextEvolveMove: {fileID: 11400000, guid: b3e2f183e1f70c741b02fca48b19514b, type: 2}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts:
+    - stat: 4
+      boost: -1
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+    chance: 20
+    target: 0
+  target: 0
   power: 60
   accuracy: 100
+  alwaysHits: 0

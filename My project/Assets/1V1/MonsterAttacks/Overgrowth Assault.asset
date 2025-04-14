@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Overgrowth Assault
   m_EditorClassIdentifier: 
   name: Overgrowth Assault
+  levelLearned: 50
   description: The area around the target rapidly sprouts dense vegetation, hindering
     movement and potentially damaging them.
+  effect: 
+  hasEffect: 0
   nextEvolveMove: {fileID: 0}
   type: PHYSICAL
   power: 75

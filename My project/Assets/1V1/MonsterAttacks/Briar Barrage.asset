@@ -13,8 +13,21 @@ MonoBehaviour:
   m_Name: Briar Barrage
   m_EditorClassIdentifier: 
   name: Briar Barrage
+  levelLearned: 0
   description: A volley of sharp thorns is launched at the target.
   nextEvolveMove: {fileID: 11400000, guid: a34493baa5d7c8b4b8efb57d752f8009, type: 2}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 1
+      maxNum: 3
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects: []
+  target: 0
   power: 20
   accuracy: 100
+  alwaysHits: 0

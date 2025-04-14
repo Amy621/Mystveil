@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcda90c83557204db396376b0f2a66f, type: 3}
+  m_Name: Guardian of the Well
+  m_EditorClassIdentifier: 
+  name: Guardian of the Well
+  description: A crystalline-colored spider who guards a portal through the multiverse.
+    Has seen many timelines and worlds through their years.
+  monsterIconImage: {fileID: 21300000, guid: f661f0230b5ba204fa26727844282880, type: 3}
+  bossImage: {fileID: 21300000, guid: f661f0230b5ba204fa26727844282880, type: 3}
+  monster: {fileID: 2601236444922581843, guid: 2233e005366a6f24aa65a96ceeac5ce9, type: 3}
+  healthPoints: 120
+  attackPoints: 35
+  defensePoints: 85
+  specialAttackPoints: 90
+  specialDefensePoints: 85
+  speed: 45
+  moves:
+  - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
+  - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}
+  - moveBase: {fileID: 11400000, guid: af44f82b19d8c6c4eb7dd105c4c43b79, type: 2}
+  - moveBase: {fileID: 11400000, guid: a5861f7d957c62d42b3f2d36d5407f28, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5921a59e0821d134c8bb8a7a20c36b9a, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5573fcf90bcbeae459ea39019c1bb9ea, type: 2}
+  - moveBase: {fileID: 11400000, guid: 8a7b689939ae250459e2718fe9aada67, type: 2}
+  - moveBase: {fileID: 11400000, guid: e906caebe16c04d4ebc16ae0b8835801, type: 2}
+  - moveBase: {fileID: 11400000, guid: 11a1d8806865baa47bfc981f440acfd6, type: 2}
+  - moveBase: {fileID: 11400000, guid: 82f568a54f5ef11489102a03626a3e42, type: 2}
+  - moveBase: {fileID: 11400000, guid: 09fb0c81754d48b4ab81bf1cc6867ceb, type: 2}
+  - moveBase: {fileID: 11400000, guid: d393adad7716f784c9940b515185c728, type: 2}
+  - moveBase: {fileID: 11400000, guid: 6d53d788c3e817041a8b60652519928d, type: 2}
+  - moveBase: {fileID: 11400000, guid: ec74602afcfc19f4a9ba586bc101483e, type: 2}
+  - moveBase: {fileID: 11400000, guid: b3e2f183e1f70c741b02fca48b19514b, type: 2}
+  - moveBase: {fileID: 11400000, guid: ec583980c45d3164da82df748b509f0c, type: 2}
+  - moveBase: {fileID: 11400000, guid: cdbeece60f24e4c40bc0f6c1b5454cee, type: 2}
+  - moveBase: {fileID: 11400000, guid: 7831736529afd4a448f54effd3d7b30a, type: 2}
+  - moveBase: {fileID: 11400000, guid: 4e5943086e6c0fc4faa507023f3507b8, type: 2}
+  - moveBase: {fileID: 11400000, guid: 0687ebadd51302c408bc0201c85f0ba5, type: 2}
+  - moveBase: {fileID: 11400000, guid: 15e84c860f6d73b4f862630cccc4e266, type: 2}
+  - moveBase: {fileID: 11400000, guid: 85d66bf0e6336d549950de7ebf041cb6, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5870e4fc5931ead49877681cae9155dc, type: 2}
+  - moveBase: {fileID: 11400000, guid: 632cb77c5c6da4243a4a37c2f9cd4c66, type: 2}
+  - moveBase: {fileID: 11400000, guid: 62384abad694b4d40a011e5ac8a95ded, type: 2}
+  - moveBase: {fileID: 11400000, guid: ea7f6cbd722feba4cbb353c932538ec4, type: 2}
+  - moveBase: {fileID: 11400000, guid: 2da388db26ee2ef4ba77e41abeee7543, type: 2}
+  - moveBase: {fileID: 11400000, guid: 34787f513b1c2ff43955b05e6804f9b7, type: 2}
+  - moveBase: {fileID: 11400000, guid: 588caf0d38a5e1642ad433ac10f910f0, type: 2}
+  - moveBase: {fileID: 11400000, guid: 599bc0fe0e821664b9b99285175ad347, type: 2}
+  dropStats: 0200000003000000
+  monsterDrops:
+  - {fileID: 11400000, guid: 106df780a16854e3a8dc1fd3058fdaaf, type: 2}
+  - {fileID: 11400000, guid: b2c7f80ab09bd4340936ba9be7a0dc52, type: 2}
+  - {fileID: 11400000, guid: 0a3c51c6e24494a9d967982721eda555, type: 2}
+  dropRates:
+  - 0.4
+  - 0.2
+  - 0.1

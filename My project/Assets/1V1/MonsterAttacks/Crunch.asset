@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Crunch
   m_EditorClassIdentifier: 
   name: Crunch
+  levelLearned: 25
   description: A crushing bite that can break through armor and inflect severe damage.
+  effect: 
+  hasEffect: 0
   nextEvolveMove: {fileID: 11400000, guid: 29a62e29478ef3e4bbe54ff0d8ae0c35, type: 2}
   type: PHYSICAL
   power: 60

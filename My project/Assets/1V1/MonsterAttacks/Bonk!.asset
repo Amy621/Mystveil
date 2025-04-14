@@ -10,11 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
-  m_Name: Move
+  m_Name: Bonk!
   m_EditorClassIdentifier: 
-  name: Misty Regeneration
-  description: The monster merges with a misty fog, healing its wounds.
-  nextEvolveMove: {fileID: 0}
-  type: STATUS
-  power: 0
+  name: Bonk!
+  levelLearned: 0
+  description: A sudden force strikes the target's head with a chomical thwack, causing
+    mild disorientation and a ringing sound.
+  nextEvolveMove: {fileID: 11400000, guid: aa997e0f907f0464cade9d4b862b48c0, type: 2}
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    status: 0
+  target: 0
+  power: 40
   accuracy: 100

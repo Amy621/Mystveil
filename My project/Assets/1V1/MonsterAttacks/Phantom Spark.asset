@@ -13,9 +13,32 @@ MonoBehaviour:
   m_Name: Phantom Spark
   m_EditorClassIdentifier: 
   name: Phantom Spark
+  levelLearned: 0
   description: Fleeting sparks of etheral lighting that cause minor shocks and disrupt
     focus.
   nextEvolveMove: {fileID: 11400000, guid: f9540671eee3b7f4eae9a2af6ea4ce0d, type: 2}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 5
+    chance: 10
+    target: 0
+  target: 0
   power: 85
   accuracy: 100
+  alwaysHits: 0

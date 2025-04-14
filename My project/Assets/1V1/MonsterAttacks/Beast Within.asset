@@ -13,9 +13,24 @@ MonoBehaviour:
   m_Name: Beast Within
   m_EditorClassIdentifier: 
   name: Beast Within
+  levelLearned: 50
   description: The user taps into its primal insticts, gaining a temporary boost
     to strength and ferocity.
   nextEvolveMove: {fileID: 0}
-  type: STATUS
+  category: 2
+  effects:
+    boosts:
+    - stat: 0
+      boost: 1
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects: []
+  target: 0
   power: 0
   accuracy: 90
+  alwaysHits: 0

@@ -13,8 +13,31 @@ MonoBehaviour:
   m_Name: Flora Fury
   m_EditorClassIdentifier: 
   name: Flora Fury
+  levelLearned: 0
   description: A whirlwind of leaves, thorns, and pollen assaults the target.
   nextEvolveMove: {fileID: 11400000, guid: e54cce667be83004ab64933767261c9d, type: 2}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 4
+    chance: 10
+    target: 0
+  target: 0
   power: 55
   accuracy: 100
+  alwaysHits: 0

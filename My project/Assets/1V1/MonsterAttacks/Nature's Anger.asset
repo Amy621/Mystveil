@@ -13,9 +13,32 @@ MonoBehaviour:
   m_Name: Nature's Anger
   m_EditorClassIdentifier: 
   name: Nature's Anger
+  levelLearned: 50
   description: The user channels the raw fury of the natural world into a devastating
     attack.
   nextEvolveMove: {fileID: 11400000, guid: 618379d0013b0874b970dc5439b7306c, type: 2}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 4
+    chance: 10
+    target: 0
+  target: 0
   power: 80
   accuracy: 100
+  alwaysHits: 0

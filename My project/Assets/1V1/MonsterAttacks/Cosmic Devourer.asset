@@ -13,9 +13,32 @@ MonoBehaviour:
   m_Name: Cosmic Devourer
   m_EditorClassIdentifier: 
   name: Cosmic Devourer
+  levelLearned: 50
   description: The user opens its maw, and a swirling void within threatens to consume
     its target.
   nextEvolveMove: {fileID: 0}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects:
+  - boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatChanges: 0
+    status: 7
+    chance: 10
+    target: 0
+  target: 0
   power: 75
   accuracy: 100
+  alwaysHits: 0

@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Savage Bite
   m_EditorClassIdentifier: 
   name: Savage Bite
+  levelLearned: 50
   description: A frenzied, tearing bite that leaves ragged wounds.
+  effect: 
+  hasEffect: 0
   nextEvolveMove: {fileID: 11400000, guid: 52c01892d88f4e549848a5e4ce52d6fb, type: 2}
   type: PHYSICAL
   power: 75

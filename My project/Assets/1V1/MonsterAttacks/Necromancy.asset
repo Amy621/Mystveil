@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Necromancy
   m_EditorClassIdentifier: 
   name: Necromancy
+  levelLearned: 100
   description: A dark, life-draining touch that siphons vitality from the target.
   nextEvolveMove: {fileID: 0}
-  type: SPECIAL
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
   power: 60
   accuracy: 100
