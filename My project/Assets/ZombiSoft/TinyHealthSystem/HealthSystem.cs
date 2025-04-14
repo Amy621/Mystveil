@@ -11,6 +11,9 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor.SearchService;
+using Unity.VisualScripting;
+using System;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -193,14 +196,14 @@ public class HealthSystem : MonoBehaviour
 	{
 		// Player gets hurt. Do stuff.. play anim, sound..
 
-			if (PopupText.Instance != null)
-	{
-		PopupText.Instance.Popup("Ouch!", 1f, 1f); // Demo stuff!
-	} // Demo stuff!
+		if (PopupText.Instance != null)
+		{
+			PopupText.Instance.Popup("Ouch!", 1f, 1f); // Demo stuff!
+		} // Demo stuff!
 
 		if (hitPoint < 1) // Health is Zero!!
 		{
-			yield return StartCoroutine(PlayerDied()); // Hero is Dead
+			StartCoroutine(PlayerDied()); // Hero is Dead
 		}
 
 		else
@@ -212,20 +215,22 @@ public class HealthSystem : MonoBehaviour
 	//==============================================================
 	IEnumerator PlayerDied()
 	{
-
-	if (PopupText.Instance != null)
-	{
-		if (PopupText.Instance != null)
 		{
-			PopupText.Instance.Popup("You have died!", 1f, 1f); // Demo stuff!
+			Debug.Log("Player died. Fading out...");
+			int numItems = UnityEngine.Random.Range(1,4); //items to take on death
+			Inventory.Singleton.removeItems(null, numItems);
+			PlayerDeath fadeScript = FindObjectOfType<PlayerDeath>();
+			if (fadeScript != null)
+			{
+				StartCoroutine(fadeScript.FadeOutThenLoad());
+			}
+			else
+			{
+				Debug.LogError("No PlayerDeath script found in scene. Add fade prefab.");
+			}
+			yield return null;
 		}
-	}
-		// Player is dead. Do stuff.. play anim, sound..
-		PopupText.Instance.Popup("You have died!", 1f, 1f); // Demo stuff!
 
-		// Stop the application
-		Application.Quit();
 
-		yield return null;
 	}
 }

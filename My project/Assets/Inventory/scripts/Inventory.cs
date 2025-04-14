@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEditor.Search;
 using UnityEngine;
@@ -178,4 +179,38 @@ public class Inventory : MonoBehaviour
         slot.myItem = null;
     }
 
+    
+    public void removeItems(Item item = null, int numRemove = -1, int slotNum = -1){
+        if(item == null){ //find item(s) to remove
+            List<Item> removed = new List<Item>();
+            int starting = Random.Range(0, inventorySlots.Length-4);
+            for(int i = 0; i < inventorySlots.Length-4 && numRemove > 0;i++){
+                if(inventorySlots[i].myItem != null){
+                    InventorySlot slot = inventorySlots[i];
+                    removed.Add(slot.myItem.myItem);
+                    numRemove--;
+                    //TIFF, UNCOMMENT BELOW WHEN INVENTORY IS MERGED WITH CRAFTING
+                    //if(slot.myItem.myItem.itemTag == ItemTag.Potion || slot.myItem.myItem.itemTag == ItemTag.Armor)
+                    //    numRemove = 0;
+                    if(slot.myItem.amount > 1){
+                        slot.myItem.amount--;
+                        slot.myItem.SetText();
+                    }else{
+                        slot.myItem.transform.SetParent(null);
+                        Destroy(slot.myItem);
+                        slot.myItem = null;
+                    }
+                }
+            }
+            //IMPLEMENT DIALOGUE BOX WITH ITEMS LOST: temporary below
+            string t = "You lost " + removed.Count + " items: ";
+            foreach(Item i in removed){
+                t += i.name + ", ";
+            } 
+            Debug.Log(t);
+            return;
+        }
+    }
 }
+
+
