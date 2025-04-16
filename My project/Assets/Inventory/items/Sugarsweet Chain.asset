@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Sugarsweet Chain
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 4
+  sprite: {fileID: 21300000, guid: 2816ad5a72e894cd2b6c50d655a731e8, type: 3}
+  slotTag: 4
   itemType: 3
   stackable: 0
   craftable: 1
-  descripton: A chain of sugar cubes that the wearer wears around their neck. The
+  description: A chain of sugar cubes that the wearer wears around their neck. The
     sugar cubes can be eaten.
-  recipe: {fileID: 0}
+  recipe: {fileID: 11400000, guid: 0e09c051700f54f4fad9bbb90afd6fb6, type: 2}
+  hp: 0
+  spe: 3
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

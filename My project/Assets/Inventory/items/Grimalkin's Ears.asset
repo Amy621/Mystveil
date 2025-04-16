@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Grimalkin's Ears
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 1
+  sprite: {fileID: 21300000, guid: 1393d2ab0c3aa4576940f2abe4cfc8b7, type: 3}
+  slotTag: 1
   itemType: 3
   stackable: 0
   craftable: 1
-  descripton: A cat-eared headband. People swear that the ears move by themselves.
+  description: A cat-eared headband. People swear that the ears move by themselves.
     Attracts cats and kittens alike.
-  recipe: {fileID: 0}
+  recipe: {fileID: 11400000, guid: 097d4d5754c1546688323adef3f68a08, type: 2}
+  hp: 7
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

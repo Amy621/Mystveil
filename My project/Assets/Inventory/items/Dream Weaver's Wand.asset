@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Dream Weaver's Wand
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 3
+  sprite: {fileID: 21300000, guid: faeb84e25ef35480d8b0bfc31baf0ded, type: 3}
+  slotTag: 3
   itemType: 3
   stackable: 0
   craftable: 1
-  descripton: A pure white wand with cloud-like accessories dangling from the bottom.
-  recipe: {fileID: 0}
+  description: A pure white wand with cloud-like accessories dangling from the bottom.
+  recipe: {fileID: 11400000, guid: 29e34a6ddb2f3452eb1cf84566502819, type: 2}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 9
+  atk: 6
+  mana: 0

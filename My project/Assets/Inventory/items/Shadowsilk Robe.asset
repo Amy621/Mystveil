@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Shadowsilk Robe
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 2
+  sprite: {fileID: 21300000, guid: 9bcf51f436b084162852ec4e6e8b16a3, type: 3}
+  slotTag: 2
   itemType: 3
   stackable: 0
   craftable: 0
-  descripton: A dark, silky-smooth robe that shimmers a deep purple hue under sunlight.
+  description: A dark, silky-smooth robe that shimmers a deep purple hue under sunlight.
   recipe: {fileID: 0}
+  hp: 0
+  spe: 0
+  spd: 1
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

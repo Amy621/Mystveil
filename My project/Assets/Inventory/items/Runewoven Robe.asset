@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Runewoven Robe
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 2
+  sprite: {fileID: 21300000, guid: 0b9da168b5ca145f699e487a8ac41098, type: 3}
+  slotTag: 2
   itemType: 3
   stackable: 0
   craftable: 1
-  descripton: A ombre purple and blue robe made of tiled granny squares. It is said
+  description: A ombre purple and blue robe made of tiled granny squares. It is said
     that each square has a different rune and different charm that protects the user.
-  recipe: {fileID: 0}
+  recipe: {fileID: 11400000, guid: 9b0f0639952624ad2927cb5bda5f66ef, type: 2}
+  hp: 0
+  spe: 0
+  spd: 11
+  def: 8
+  spa: 0
+  atk: 0
+  mana: 0

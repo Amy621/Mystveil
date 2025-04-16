@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e7ffca4a0b94281afee8de05a7f4c1, type: 3}
+  m_Name: Potion of Mending Recipe
+  m_EditorClassIdentifier: 
+  ingredient1: {fileID: 11400000, guid: 892043c11c5a74d03a0f41fe1affb937, type: 2}
+  ingredient2: {fileID: 11400000, guid: 55521f6fb9fe94a1eb15003407aff87d, type: 2}
+  ingredient3: {fileID: 0}
+  amount1: 1
+  amount2: 1
+  amount3: 0

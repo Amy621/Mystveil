@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Glimmering Goop
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 0
+  sprite: {fileID: 21300000, guid: 52ddf987066fc4d2aa541e0727f9fa19, type: 3}
+  slotTag: 0
   itemType: 2
   stackable: 1
   craftable: 0
-  descripton: A glittering sap that was secreted from a plant. Feels cool to the
+  description: A glittering sap that was secreted from a plant. Feels cool to the
     touch.
   recipe: {fileID: 0}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

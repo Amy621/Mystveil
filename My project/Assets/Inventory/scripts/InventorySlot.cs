@@ -67,8 +67,6 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
             Debug.Log(this + " is now empty");
         if(Inventory.carriedItem != null) 
             Debug.Log("now carrying " + Inventory.carriedItem.amount + " of " + Inventory.carriedItem); //debug log to show carried item
-        //else
-            //Debug.Log("no item is being carried"); 
         //equip item if possible
         if(myTag != SlotTag.None) //if slot is equippable, set item to be equiped
         {

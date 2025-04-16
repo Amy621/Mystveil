@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Potion of Great Restoration
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 13e56e0b405a04745a7ad9e2706a8766, type: 3}
+  sprite: {fileID: 21300000, guid: 7f320f58d5d1047439ee57d43bd753b8, type: 3}
   slotTag: 0
   itemType: 1
   stackable: 1
   craftable: 1
-  descripton: A blue liquid with spots of yellow. Restores 50% MP
-  recipe: {fileID: 0}
+  description: A blue liquid with spots of yellow. Restores 50% MP
+  recipe: {fileID: 11400000, guid: 4316e70ae1efb4fa297bff6d473d33b0, type: 2}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

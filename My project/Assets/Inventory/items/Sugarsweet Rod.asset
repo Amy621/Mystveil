@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Sugarsweet Rod
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 3
+  sprite: {fileID: 21300000, guid: 2fc7ed5e28dd4483d8a56fc173367b21, type: 3}
+  slotTag: 3
   itemType: 3
   stackable: 0
   craftable: 1
-  descripton: A orange yellow mid-length rod that turns different colors depending
+  description: A orange yellow mid-length rod that turns different colors depending
     on the spell cast.
-  recipe: {fileID: 0}
+  recipe: {fileID: 11400000, guid: 9682ddded60d34550b90b50219e36927, type: 2}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 3
+  atk: 0
+  mana: 0

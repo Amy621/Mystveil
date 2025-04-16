@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Potion of Restoration
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 13e56e0b405a04745a7ad9e2706a8766, type: 3}
+  sprite: {fileID: 21300000, guid: b0fc6ccadc40f4cc0a03185b7ade11c7, type: 3}
   slotTag: 0
   itemType: 1
   stackable: 1
   craftable: 1
-  descripton: "A light blue liquid that\u2019s cold to the touch. Restores 25% MP"
-  recipe: {fileID: 0}
+  description: "A light blue liquid that\u2019s cold to the touch. Restores 25% MP"
+  recipe: {fileID: 11400000, guid: d4b8221aa544449f696049c30fc73189, type: 2}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

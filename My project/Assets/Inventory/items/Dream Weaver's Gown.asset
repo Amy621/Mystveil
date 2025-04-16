@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Dream Weaver's Gown
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 2
+  sprite: {fileID: 21300000, guid: e7cdcc2f1fd6347469470d59b557910c, type: 3}
+  slotTag: 2
   itemType: 3
   stackable: 0
   craftable: 1
-  descripton: A pinkish purple gown that sparkles no matter the time of day. The
+  description: A pinkish purple gown that sparkles no matter the time of day. The
     ends of the gown float slightly making the user seem like they are floating on
     clouds.
-  recipe: {fileID: 0}
+  recipe: {fileID: 11400000, guid: a4f70e8f2719d47f094e7f5daaeece54, type: 2}
+  hp: 0
+  spe: 0
+  spd: 9
+  def: 6
+  spa: 0
+  atk: 0
+  mana: 0

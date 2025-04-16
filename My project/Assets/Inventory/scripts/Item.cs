@@ -13,8 +13,16 @@ public class Item : ScriptableObject
     public ItemType itemType;
     public bool stackable;
     public bool craftable = false;
-    public string descripton;
+    public string description;
     [Header("If the item can be crafted")]
     public Recipe recipe;
-
+    
+    public int hp = 0;
+    public int spe = 0;
+    public int spd = 0;
+    public int def = 0;
+    public int spa = 0;
+    public int atk = 0;
+    public int mana = 0;
+    
 }

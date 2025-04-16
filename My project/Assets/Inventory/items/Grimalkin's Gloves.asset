@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Grimalkin's Gloves
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 2
+  sprite: {fileID: 21300000, guid: baf965fc66a3b488997ff7493c2a1ea5, type: 3}
+  slotTag: 4
   itemType: 3
   stackable: 0
   craftable: 1
-  descripton: "A puffy glove that surprisingly packs a punch. The toe beans are almost
-    identical to a real cat\u2019s."
-  prefab: {fileID: 0}
+  description: "A puffy glove that surprisingly packs a punch. The toe beans are
+    almost identical to a real cat\u2019s."
+  recipe: {fileID: 11400000, guid: e832935761e72459f84666c9d242f43c, type: 2}
+  hp: 0
+  spe: 0
+  spd: 7
+  def: 4
+  spa: 0
+  atk: 0
+  mana: 0

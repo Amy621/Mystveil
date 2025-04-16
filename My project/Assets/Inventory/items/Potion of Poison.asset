@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Potion of Poison
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 805ef4f46ff5d43e2a3339fe64e2d452, type: 3}
   slotTag: 0
   itemType: 1
   stackable: 1
   craftable: 1
-  descripton: A bubbling purple liquid with a high viscosity. Does 5% of attack to
-    all enemies for a limited amount of time or five turns with the percentage increasing
-    by 2% each turn.
-  recipe: {fileID: 0}
+  description: A bubbling purple liquid with a high viscosity. Does 5% of attack
+    to all enemies for a limited amount of time or five turns with the percentage
+    increasing by 2% each turn.
+  recipe: {fileID: 11400000, guid: f14a54980eaa64420af63c2f9f11c719, type: 2}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

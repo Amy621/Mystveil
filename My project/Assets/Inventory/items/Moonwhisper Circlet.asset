@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Moonwhisper Circlet
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 1
+  sprite: {fileID: 21300000, guid: 6892a2d7778c64f2084634ea102e27ae, type: 3}
+  slotTag: 1
   itemType: 3
   stackable: 0
   craftable: 0
-  descripton: A silvery crown made of branches. Often used as a wedding garment.
+  description: A silvery crown made of branches. Often used as a wedding garment.
   recipe: {fileID: 0}
+  hp: 5
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

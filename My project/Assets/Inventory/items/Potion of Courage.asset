@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Potion of Courage
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f8f8f7135198c44c48929ad55215175b, type: 3}
   slotTag: 0
   itemType: 1
   stackable: 1
   craftable: 1
-  descripton: A reddish orange liquid that is warm to the touch. Increases attack
+  description: A reddish orange liquid that is warm to the touch. Increases attack
     by 20% for a limited amount of time or one turn.
-  recipe: {fileID: 0}
+  recipe: {fileID: 11400000, guid: 2c30930d443004e8988d8af46a96b692, type: 2}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0
