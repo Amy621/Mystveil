@@ -79,6 +79,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        Debug.Log("Enemy taking damage!");
         currentHP -= damageAmount;
 
         // Play damage sound if assigned
@@ -115,6 +116,8 @@ public class Enemy : MonoBehaviour
 
             // Destroy the enemy after a delay (e.g., 3 seconds) 
             Destroy(gameObject, 3f);
+
+            // Add a gaining exp function
         }
         else
         {

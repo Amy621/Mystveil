@@ -604,6 +604,19 @@ public class GenerateGrid : MonoBehaviour
 
             monster.tag = monsterTag;
 
+            int layerIndex = LayerMask.NameToLayer("Enemy");
+
+            // Check if the layer name is valid
+            if (layerIndex != -1)
+            {
+                // Assign the layer to this GameObject
+                monster.layer = layerIndex;
+            }
+            else
+            {
+                Debug.LogError($"Layer not found. Please check your Tag and Layers settings.");
+            }
+
             monster.transform.SetParent(this.transform);
 
             floorPositions.RemoveAt(index);
