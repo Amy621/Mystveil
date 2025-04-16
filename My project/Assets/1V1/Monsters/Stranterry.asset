@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Stranterry
   description: An ant with woody limbs and antenna. They keep extra food and nutrients
     in the jelly-like sap around their strawberry-like abdomen.
+  isSpecialBoss: 0
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
   monster: {fileID: 3794567830541398488, guid: fe238e213a1e9994d910576d3114ade5, type: 3}
@@ -24,6 +25,7 @@ MonoBehaviour:
   specialAttackPoints: 85
   specialDefensePoints: 85
   speed: 60
+  expYield: 55
   moves:
   - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
   - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}

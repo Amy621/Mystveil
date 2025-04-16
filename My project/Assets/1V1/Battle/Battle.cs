@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.EventSystems;
 
-public enum BattleState { Start, PlayerAction, PlayerMove, EnemyMove, BattlePhase, BattleOver, Busy }
+public enum BattleState { Start, PlayerAction, PlayerMove, EnemyMove, BattlePhase, MoveToForget, BattleOver, Busy }
 
 public class Battle : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Battle : MonoBehaviour
     [SerializeField] EnemyUnit enemyUnit;
     [SerializeField] EnemyHud enemyHud;
     [SerializeField] BattleDialogueBox dialogBox;
+    [SerializeField] MoveSelectionUI moveSelectionUI;
+    [SerializeField] MoveInfo moveInfo;
 
     public event Action<bool> OnBattleOver;
 
@@ -23,7 +26,7 @@ public class Battle : MonoBehaviour
     int escapeAttempts;
     bool willDropItems;
 
-    private void Start()
+    public void StartBattle()
     {
         StartCoroutine(SetupBattle());
     }
@@ -135,20 +138,21 @@ public class Battle : MonoBehaviour
 
             if (enemyUnit.Enemy.HP <= 0)
             {
-                yield return dialogBox.TypeDialog($"{enemyUnit.Enemy.Base.Name} was defeated!");
-                // enemy faint animation goes here
-
-                yield return new WaitForSeconds(2f);
-                willDropItems = true;
-                BattleOver(true);
+               yield return HandleEnemyFainted(enemyUnit);
 
             } else { StartCoroutine(EnemyMove()); }
         }
         else 
         {
             yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name}'s spell missed!");
+            yield return new WaitForSeconds(1f);
             StartCoroutine(EnemyMove());
         }
+    }
+
+    public void HandleUpdate()
+    {
+        
     }
 
     void HandleActionSelectionClick(int actionIndex)
@@ -172,11 +176,6 @@ public class Battle : MonoBehaviour
                 StartCoroutine(TryToEscape());
             }
         }
-    }
-
-    public void HandleUpdate()
-    {
-
     }
 
     void HandleMoveHover(int moveIndex)
@@ -289,12 +288,7 @@ public class Battle : MonoBehaviour
 
             if (playerUnit.Player.HP <= 0)
             {
-                yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} fainted!");
-                // add player faint animation here
-
-                yield return new WaitForSeconds(2f);
-                willDropItems = false;
-                BattleOver(false);
+                yield return HandlePlayerFainted(playerUnit);
 
             } else { 
                 // Statuses like burn or psn will hurt the pokemon after the turn
@@ -311,20 +305,11 @@ public class Battle : MonoBehaviour
 
                 if(playerUnit.Player.HP <= 0)
                 {
-                    yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} fainted!");
-                    // add player faint animation here
-
-                    yield return new WaitForSeconds(2f);
-                    willDropItems = false;
-                    BattleOver(false);
-                } else if (enemyUnit.Enemy.HP <= 0)
+                    yield return HandlePlayerFainted(playerUnit);
+                } 
+                else if (enemyUnit.Enemy.HP <= 0)
                 {
-                    yield return dialogBox.TypeDialog($"{enemyUnit.Enemy.Base.Name} was defeated!");
-                    // enemy faint animation goes here
-
-                    yield return new WaitForSeconds(2f);
-                    willDropItems = true;
-                    BattleOver(true);
+                    yield return HandleEnemyFainted(enemyUnit);
                 }
 
                 PlayerAction(); 
@@ -333,6 +318,8 @@ public class Battle : MonoBehaviour
         else 
         {
             yield return dialogBox.TypeDialog($"{enemyUnit.Enemy.Base.Name}'s attack missed!");
+            yield return new WaitForSeconds(1f);
+
             PlayerAction();
         }
 
@@ -511,6 +498,73 @@ public class Battle : MonoBehaviour
             StartCoroutine(EnemyMove());
     }
 
+    IEnumerator HandleEnemyFainted(EnemyUnit enemy)
+    {
+        yield return dialogBox.TypeDialog($"{enemy.Enemy.Base.Name} was defeated!");
+
+        yield return new WaitForSeconds(1f);
+
+        // enemy faint animation goes here
+
+        // Exp Gain
+        int expYield = enemy.Enemy.Base.ExpYield;
+        int enemyLevel = enemy.Enemy.Level;
+        float specialBonus = (enemy.Enemy.Base.IsSpecialBoss) ? 1.5f : 1f;
+
+        int expGain = Mathf.FloorToInt((expYield * enemyLevel * specialBonus) / 7);
+        playerUnit.Player.Exp += expGain;
+        yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} gained {expGain} exp!");
+        yield return playerHud.SetExpSmooth();
+
+        // Check Level Up
+        while (playerUnit.Player.CheckForLevelUp())
+        {
+            playerHud.SetLevel();
+            yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} grew to level {playerUnit.Player.Level}!");  
+
+            // Try to learn a new spell
+            // returns null if there isn't a new spell to learn
+            var newMove = playerUnit.Player.GetLearnableSpelleAtCurrentLevel();
+
+            if (newMove != null && !newMove.Base.IsLearned)
+            {
+                // add another if statement that goes through all the player's current moves
+                // and if the evolve spell for one of them equals newMove, then evolve that current
+                // move and remove it (similar to the forgetting a move but automatic)
+                if (playerUnit.Player.Spells.Count < Player.MaxNumOfMoves)
+                {
+                    playerUnit.Player.LearnSpell(newMove);
+                    newMove.Base.IsLearned = true;
+                    yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} learned {newMove.Base.Name}!");  
+                    dialogBox.SetSpellNames(playerUnit.Player.Spells);
+                }
+                else
+                {
+                    yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} is trying to learn {newMove.Base.Name}!");  
+                    yield return dialogBox.TypeDialog($"But she cannot learn more than {Player.MaxNumOfMoves} moves :(");
+                    // Forget a move
+                    yield return ChooseMoveToForget(playerUnit.Player, newMove.Base);
+                }
+            }
+            
+            yield return playerHud.SetExpSmooth(true);  
+        }
+
+        yield return new WaitForSeconds(2f);
+        willDropItems = true;
+        BattleOver(true);
+    }
+
+    IEnumerator HandlePlayerFainted(PlayerUnit player)
+    {
+        yield return dialogBox.TypeDialog($"{player.Player.Base.Name} fainted!");
+        // add player faint animation here
+
+        yield return new WaitForSeconds(2f);
+        willDropItems = false;
+        BattleOver(false);
+    }
+
     void BattleOver(bool won)
     {
         state = BattleState.BattleOver;
@@ -574,5 +628,17 @@ public class Battle : MonoBehaviour
                 PlayerAction();
             }
         }
+    }
+
+    IEnumerator ChooseMoveToForget(Player player, PlayerSpells newMove)
+    {
+        state = BattleState.Busy;
+        yield return dialogBox.TypeDialog($"Choose a move you want to forget");
+        moveSelectionUI.gameObject.SetActive(true);
+        moveInfo.gameObject.SetActive(true);
+
+        moveSelectionUI.SetMoveData(player.Spells.Select(x => x.Base).ToList(), newMove);
+
+        state = BattleState.MoveToForget;
     }
 }

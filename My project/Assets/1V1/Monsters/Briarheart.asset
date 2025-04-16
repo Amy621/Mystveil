@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Briarheart
   description: 'A tree trunk that came alive from magic residuals. '
+  isSpecialBoss: 0
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
   monster: {fileID: 4795570650854471519, guid: c6c4e41c5fc2e884dbc27f62ad006428, type: 3}
@@ -23,6 +24,7 @@ MonoBehaviour:
   specialAttackPoints: 35
   specialDefensePoints: 70
   speed: 40
+  expYield: 64
   moves:
   - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
   - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}

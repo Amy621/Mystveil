@@ -16,7 +16,7 @@ MonoBehaviour:
   levelLearned: 0
   description: A quick, raking attack with sharp claws, leaving shallow lacerations.
   nextEvolveMove: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}
-  category: 2
+  category: 0
   effects:
     boosts: []
     numHit:
@@ -24,8 +24,9 @@ MonoBehaviour:
       maxNum: 0
     restoreHP: 0
     restoreMP: 0
+    removeAllStatusChanges: 0
     removeAllStatChanges: 0
-    status: 1
+    status: 0
   secondaryEffects: []
   target: 0
   power: 40

@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Aster-Eye
   description: A deadlier type of spider. It's skin is as strong as metal. This spider
     is often seen slicing the limbs off its prey and devouring its flesh.
+  isSpecialBoss: 0
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
   monster: {fileID: 5397620819738880905, guid: ec6edce434dbaf74d84c9f6bdca5f918, type: 3}
@@ -24,6 +25,7 @@ MonoBehaviour:
   specialAttackPoints: 45
   specialDefensePoints: 55
   speed: 50
+  expYield: 64
   moves:
   - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
   - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}

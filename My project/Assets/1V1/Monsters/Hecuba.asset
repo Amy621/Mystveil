@@ -25,6 +25,7 @@ MonoBehaviour:
   specialAttackPoints: 80
   specialDefensePoints: 60
   speed: 85
+  expYield: 300
   moves:
   - moveBase: {fileID: 11400000, guid: 63fcdef87df18d9488803d982510bec6, type: 2}
   - moveBase: {fileID: 11400000, guid: 75ea736dbba44a74ebbc3109eda64ce0, type: 2}

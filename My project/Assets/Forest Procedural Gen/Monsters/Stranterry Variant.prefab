@@ -129,16 +129,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7544162896222118946, guid: 2b15b727283c2c242866b8bc476f042f, type: 3}
       propertyPath: m_Name
-      value: Stranterry
+      value: Stranterry Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 193064366870917861, guid: 2b15b727283c2c242866b8bc476f042f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7203947968849788568, guid: 2b15b727283c2c242866b8bc476f042f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 281269688372070166}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7544162896222118946, guid: 2b15b727283c2c242866b8bc476f042f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7485361269901379883}
   m_SourcePrefab: {fileID: 100100000, guid: 2b15b727283c2c242866b8bc476f042f, type: 3}
+--- !u!1 &3794567830541398488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7544162896222118946, guid: 2b15b727283c2c242866b8bc476f042f, type: 3}
+  m_PrefabInstance: {fileID: 6636972661396936186}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &-7485361269901379883
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794567830541398488}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.447521
+  m_Height: 10.895042
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.2230985, z: -0.015285015}
 --- !u!4 &4603474843130342242 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7203947968849788568, guid: 2b15b727283c2c242866b8bc476f042f, type: 3}

@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Guardian of the Well
   description: A crystalline-colored spider who guards a portal through the multiverse.
     Has seen many timelines and worlds through their years.
+  isSpecialBoss: 0
   monsterIconImage: {fileID: 21300000, guid: f661f0230b5ba204fa26727844282880, type: 3}
   bossImage: {fileID: 21300000, guid: f661f0230b5ba204fa26727844282880, type: 3}
   monster: {fileID: 2601236444922581843, guid: 2233e005366a6f24aa65a96ceeac5ce9, type: 3}
@@ -24,6 +25,7 @@ MonoBehaviour:
   specialAttackPoints: 90
   specialDefensePoints: 85
   speed: 45
+  expYield: 236
   moves:
   - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
   - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}

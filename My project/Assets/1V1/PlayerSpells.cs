@@ -36,7 +36,7 @@ public class PlayerSpells : ScriptableObject
     }
 
     public bool IsLearned {
-        get { return isLearned; }
+        get; set;
     }
 
     public bool HasBranchingEvo {

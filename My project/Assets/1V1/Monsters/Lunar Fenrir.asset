@@ -16,6 +16,7 @@ MonoBehaviour:
   description: A lone wolf that has lived through many moons. People have learned
     to never traverse the forest on the night of a full moon else face the wrath
     of this creature.
+  isSpecialBoss: 0
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
   monster: {fileID: 7167274764742379470, guid: 37c21f455ce3dcc4284d39d72fe96143, type: 3}
@@ -25,6 +26,7 @@ MonoBehaviour:
   specialAttackPoints: 60
   specialDefensePoints: 70
   speed: 90
+  expYield: 236
   moves:
   - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
   - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}

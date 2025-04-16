@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Unity.AI.Navigation;
+using System.Linq;
 
 public class GenerateGrid : MonoBehaviour
 {
     // generating player spawn
     private Vector3 playerSpawn;
+
+    [Header("Border Settings")]
+    public GameObject player;
+    public PlayerStats playerObject;
+    public int playerLevel;
 
     [Header("Floor/Ground Settings")]
     public GameObject grassFloorObject;
@@ -52,19 +58,74 @@ public class GenerateGrid : MonoBehaviour
     public GameObject waypointPrefab;
     public string monsterTag = "Monster";
 
+    [Header("All Monster Scriptable Objects")]
+    public EnemyStats GuardianOfTheWellObject;
+    public EnemyStats LunarFenrirObject;
+    public EnemyStats RootboundTyrantObject;
+    public EnemyStats CottonTailObject;
+    public EnemyStats WebweaverObject;
+    public EnemyStats AsterEyeObject;
+    public EnemyStats DionaeantObject;
+    public EnemyStats StranterryObject;
+    public EnemyStats BantbooObject;
+    public EnemyStats PollantObject;
+    public EnemyStats BriarheartObject;
+    public EnemyStats OdosaplingObject;
+    public EnemyStats VilebloomObject;
+
     [Header("All Collectable Prefabs")]
-    public GameObject Moonpetal_Blossom;
+    public GameObject DragonsBreath;
+    public GameObject DreamLeaf;
+    public GameObject EmberLeaf;
+    public GameObject FairyFlax;
+    public GameObject GrimalkinsClaw;
+    public GameObject HolySanctum;
+    public GameObject MoonBloom;
+    public GameObject MoonpetalBlossom;
+    public GameObject NightWhisper;
+    public GameObject NightshadeBloom;
+    public GameObject RainbowRoot;
+    public GameObject RavenClawRoot;
     public GameObject Shadowberry;
+    public GameObject SilverSeed;
+    public GameObject SparkleSprig;
+    public GameObject StarlightBerry;
+    public GameObject SunstoneSeed;
+    public GameObject Veilwort;
+    public GameObject WhimsyWillow;
     public GameObject Whisperwood;
-    public GameObject Sunstone_Seed;
-    public GameObject Emberleaf;
-    public GameObject Starlight_Berry;
+
+    private List<GameObject> commonCollectables = new List<GameObject>();
+    private List<GameObject> rareCollectables = new List<GameObject>();
+    private List<GameObject> ultraRareCollectables = new List<GameObject>();
     
     private List<GameObject> collectableList = new List<GameObject>();
     public string collectableTag = "Collectable";
 
     private int numMonsterAreas;
     private int numCollectableAreas;
+
+    [Header("All Item Scriptable Objects")]
+    public Item DragonsBreathObject;
+    public Item DreamLeafObject;
+    public Item EmberLeafObject;
+    public Item FairyFlaxObject;
+    public Item GrimalkinsClawObject;
+    public Item HolySanctumObject;
+    public Item MoonBloomObject;
+    public Item MoonpetalBlossomObject;
+    public Item NightWhisperObject;
+    public Item NightshadeBloomObject;
+    public Item RainbowRootObject;
+    public Item RavenClawRootObject;
+    public Item ShadowberryObject;
+    public Item SilverSeedObject;
+    public Item SparkleSprigObject;
+    public Item StarlightBerryObject;
+    public Item SunstoneSeedObject;
+    public Item VeilwortObject;
+    public Item WhimsyWillowObject;
+    public Item WhisperwoodObject;
 
     [Header("All Non-collectable Item Prefabs")]
     public GameObject grassSpawn;
@@ -77,12 +138,58 @@ public class GenerateGrid : MonoBehaviour
     public GameObject toNextArea;
     private List<GameObject> allItems = new List<GameObject>();
 
+    private Dictionary<GameObject, EnemyStats> monsterDictionary;
+    private Dictionary<GameObject, Item> collectableDictionary;
+
     public List<GameObject> getAllObjects() {
         return allItems;
     }
 
     public Vector3 getPlayerSpawnCoords() {
         return playerSpawn;
+    }
+
+    // void Start()
+    // {
+    //     // Assign the dictionaries
+    //     // assign the levels of the monsters based on Liora's level
+    // }
+
+    void Update()
+    {
+        float xMin = float.MaxValue;
+        float xMax = float.MinValue;
+        float zMin = float.MaxValue;
+        float zMax = float.MinValue;
+
+        foreach (Vector3 border in borderPositions)
+        {
+            xMin = Mathf.Min(xMin, border.x);
+            xMax = Mathf.Max(xMax, border.x);
+            zMin = Mathf.Min(zMin, border.z);
+            zMax = Mathf.Max(zMax, border.z);
+        }
+
+        if (player.transform.position.x > xMax)
+        {
+            player.transform.position = new Vector3(xMax, player.transform.position.y, player.transform.position.z);
+            Debug.Log("out of range in xMax based on borderPositions");
+        }
+        if (player.transform.position.x < xMin)
+        {
+            player.transform.position = new Vector3(xMin, player.transform.position.y, player.transform.position.z);
+            Debug.Log("out of range in xMin based on borderPositions");
+        }
+        if (player.transform.position.z > zMax)
+        {
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, zMax);
+            Debug.Log("out of range in zMax based on borderPositions");
+        }
+        if (player.transform.position.z < zMin)
+        {
+            player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, zMin);
+            Debug.Log("out of range in zMin based on borderPositions");
+        }
     }
 
     public void Destroy() {
@@ -349,18 +456,45 @@ public class GenerateGrid : MonoBehaviour
 
     private void SpawnCollectables() {
         // adding in the collectable objects to the list
-        collectableList.Add(Moonpetal_Blossom);
-        collectableList.Add(Shadowberry);
-        collectableList.Add(Whisperwood);
-        collectableList.Add(Sunstone_Seed);
-        collectableList.Add(Emberleaf);
-        collectableList.Add(Starlight_Berry);
+        commonCollectables.Add(Whisperwood);
+        commonCollectables.Add(SunstoneSeed);
+        commonCollectables.Add(StarlightBerry);
+        commonCollectables.Add(Shadowberry);
+        commonCollectables.Add(MoonpetalBlossom);
+        commonCollectables.Add(EmberLeaf);
 
+        rareCollectables.Add(WhimsyWillow);
+        rareCollectables.Add(Veilwort);
+        rareCollectables.Add(SparkleSprig);
+        rareCollectables.Add(RavenClawRoot);
+        rareCollectables.Add(RainbowRoot);
+        rareCollectables.Add(NightshadeBloom);
+        rareCollectables.Add(GrimalkinsClaw);
+        rareCollectables.Add(DreamLeaf);
+
+        ultraRareCollectables.Add(SilverSeed);
+        ultraRareCollectables.Add(NightWhisper);
+        ultraRareCollectables.Add(MoonBloom);
+        ultraRareCollectables.Add(HolySanctum);
+        ultraRareCollectables.Add(FairyFlax);
+        ultraRareCollectables.Add(DragonsBreath);
 
         numCollectableAreas = Random.Range(3, 7);
         
         // how many collectable item areas total of this level
         for (int i = 0; i < numCollectableAreas; i++) {
+
+            int whichCollectable = Random.Range(1, 11);
+
+            if (whichCollectable <= 6)
+            {
+                collectableList = commonCollectables;
+            } else if (whichCollectable > 6 && whichCollectable < 10) {
+                collectableList = rareCollectables;
+            } else {
+                collectableList = ultraRareCollectables;
+            }
+
             int randCollectableIndex = Random.Range(0, collectableList.Count);
             int randNumOfCollectable = Random.Range(2, 6);
             int index = Random.Range(0, floorPositions.Count);

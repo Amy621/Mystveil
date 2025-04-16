@@ -31,6 +31,8 @@ public class GameController : MonoBehaviour
         worldCamera.gameObject.SetActive(false);
         healthGlobes.gameObject.SetActive(false);
         minimap.SetActive(false);
+
+        battleSystem.StartBattle();
     }
 
     void EndBattle(bool won)

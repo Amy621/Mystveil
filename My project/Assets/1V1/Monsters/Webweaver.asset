@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Webweaver
   description: A common spider that prowls the woods. It sticks to the shadows and
     ensnares its prey in webs.
+  isSpecialBoss: 0
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
   monster: {fileID: 9142914784956254517, guid: 0944f503952b2a9449e56b423a400296, type: 3}
@@ -24,6 +25,7 @@ MonoBehaviour:
   specialAttackPoints: 20
   specialDefensePoints: 35
   speed: 75
+  expYield: 64
   moves:
   - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
   - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}

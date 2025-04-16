@@ -29,6 +29,8 @@ public class EnemyStats : ScriptableObject
     [SerializeField] int specialDefensePoints;
     [SerializeField] int speed;
 
+    [SerializeField] int expYield;
+
     // Moves
     [SerializeField] List<LearnableMove> moves;
     [SerializeField] List<DropStat> dropStats;
@@ -48,6 +50,8 @@ public class EnemyStats : ScriptableObject
     public int SPD { get { return specialDefensePoints; }}
     public int SPE { get { return speed; }}
     public List<LearnableMove> LearnableMoves { get { return moves; }}
+
+    public int ExpYield => expYield;
 
     public List<DropStat> DropStats { get { return dropStats; }}
 

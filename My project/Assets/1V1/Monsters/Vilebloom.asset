@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Vilebloom
   description: A hibernating plant that photosynthesizes with the purple-hued light.
     If anything gets close they awaken and roam around for a better resting place.
+  isSpecialBoss: 0
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
   monster: {fileID: 2209719044981663562, guid: d4ba42fbac64c9140bb6849f820d6485, type: 3}
@@ -24,6 +25,7 @@ MonoBehaviour:
   specialAttackPoints: 35
   specialDefensePoints: 75
   speed: 55
+  expYield: 64
   moves:
   - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
   - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}

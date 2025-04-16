@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Player
@@ -7,6 +8,7 @@ public class Player
     public PlayerStats Base {get; set; }
     public int Level {get; set; }
 
+    public int Exp { get; set; }
     public int HP {get; set;}
     public int MANA {get; set;}
     public List<PlayerSpell> Spells { get; set; }
@@ -21,6 +23,8 @@ public class Player
     public bool HpChanged { get; set; }
     public event System.Action OnStatusChanged;
 
+    public static int MaxNumOfMoves { get; set; } = 4;
+
     public Player(PlayerStats pBase, int pLevel)
     {
         Base = pBase;
@@ -32,13 +36,19 @@ public class Player
         {
             if (spell.Level <= Level) {
                 Spells.Add(new PlayerSpell(spell.Base));
+                spell.Base.IsLearned = true;
             }
 
-            if (Spells.Count >= 4)
+            if (Spells.Count >= MaxNumOfMoves)
                 break;
         }
 
+        // TODO: Make a variable to save this to the player stats maybe? also to get from the player stats to have a running value
+        Exp = Base.GetExpForLevel(Level);
+
         CalculateStats();
+
+        // TODO: Edit this to take from the health and mana globes in overworld
         HP = MaxHp;
         MANA = MaxMana;
 
@@ -155,6 +165,30 @@ public class Player
         }
 
         return false;
+    }
+
+    public bool CheckForLevelUp()
+    {
+        if (Exp > Base.GetExpForLevel(Level + 1))
+        {
+            ++Level;
+            return true;
+        }
+
+        return false;
+    }
+
+    public LearnableSpell GetLearnableSpelleAtCurrentLevel()
+    {
+        return Base.LearnableSpells.Where(x => x.Level == Level).FirstOrDefault();
+    }
+
+    public void LearnSpell(LearnableSpell moveToLearn)
+    {
+        if (Spells.Count > MaxNumOfMoves)
+            return;
+
+        Spells.Add(new PlayerSpell(moveToLearn.Base));
     }
 
     public void UpdateHP(int damage)

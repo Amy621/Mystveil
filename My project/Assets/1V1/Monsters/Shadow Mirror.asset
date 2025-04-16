@@ -16,6 +16,7 @@ MonoBehaviour:
   description: No one knows why the mirror shows up within the forest. Maybe it is
     a curse left from a mad witch in the past. Shadowy tendrils erupt from its surface
     and have the ability to reflect certain memories...
+  isSpecialBoss: 0
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
   monster: {fileID: 5118737223336919839, guid: 68b62b39e87bc9045a5a3cc1765a674f, type: 3}
@@ -25,6 +26,7 @@ MonoBehaviour:
   specialAttackPoints: 0
   specialDefensePoints: 0
   speed: 0
+  expYield: 300
   moves: []
   dropStats: 
   monsterDrops: []

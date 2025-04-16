@@ -21,7 +21,16 @@ MonoBehaviour:
   category: 2
   effects:
     boosts: []
-    multiHit: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 7
+  secondaryEffects: []
   target: 0
   power: 0
   accuracy: 100
+  alwaysHits: 0

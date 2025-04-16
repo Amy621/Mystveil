@@ -52,8 +52,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlowerBomberman Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7323056662491347271, guid: fc6c08f6d2ae41e47b14db800dbbedd2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3210520025072873658, guid: fc6c08f6d2ae41e47b14db800dbbedd2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2412796146604399390}
   m_SourcePrefab: {fileID: 100100000, guid: fc6c08f6d2ae41e47b14db800dbbedd2, type: 3}
+--- !u!1 &897914681983412173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3210520025072873658, guid: fc6c08f6d2ae41e47b14db800dbbedd2, type: 3}
+  m_PrefabInstance: {fileID: 2375655773037762423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &2412796146604399390
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897914681983412173}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.39593697
+  m_Height: 1.430507
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.21525347, z: 0.18830681}

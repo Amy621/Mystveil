@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Odosapling
   description: A smily flower that likes to dance. If you interrupt their dance,
     they get angry.
+  isSpecialBoss: 0
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
   monster: {fileID: 897914681983412173, guid: 000693bf22b754349bd91152400b4458, type: 3}
@@ -24,6 +25,7 @@ MonoBehaviour:
   specialAttackPoints: 40
   specialDefensePoints: 50
   speed: 60
+  expYield: 64
   moves:
   - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
   - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}

@@ -16,6 +16,7 @@ MonoBehaviour:
   description: An Odosapling that stopped dancing and took root a long time ago.
     Has since grown a second brain. Terrorizes all other plants by stealing the nutrients
     from the soil.
+  isSpecialBoss: 0
   monsterIconImage: {fileID: 21300000, guid: 0de79dc5509504942a6492ae11bc48e5, type: 3}
   bossImage: {fileID: 21300000, guid: 0de79dc5509504942a6492ae11bc48e5, type: 3}
   monster: {fileID: 7312613196272549119, guid: 2acff99c1dfb64f44bee7d280ae8da03, type: 3}
@@ -25,6 +26,7 @@ MonoBehaviour:
   specialAttackPoints: 65
   specialDefensePoints: 80
   speed: 75
+  expYield: 236
   moves:
   - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
   - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}

@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Dionaeant
   description: A plant-like ant that ambushes those who enter their jaws. They can
     even hunt while asleep due to the sensory hairs that trigger a reflexive snap.
+  isSpecialBoss: 0
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
   monster: {fileID: 3224831612347486579, guid: 6915f9fd12ca3f4468abec49255ed9e4, type: 3}
@@ -24,6 +25,7 @@ MonoBehaviour:
   specialAttackPoints: 45
   specialDefensePoints: 60
   speed: 40
+  expYield: 55
   moves:
   - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
   - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}

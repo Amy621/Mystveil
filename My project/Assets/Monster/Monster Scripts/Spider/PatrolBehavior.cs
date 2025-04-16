@@ -54,43 +54,44 @@ public class PatrolBehavior : StateMachineBehaviour
        agent.SetDestination(agent.transform.position);
     }
 
+    // TODO: Edit for capsule collider
     void CheckForSpiderCollision(Animator animator)
     {
-        // Get the BoxCollider of the current spider.
-        BoxCollider boxCollider = animator.GetComponent<BoxCollider>();
+        // // Get the BoxCollider of the current spider.
+        // BoxCollider boxCollider = animator.GetComponent<BoxCollider>();
 
-        if (boxCollider == null)
-        {
-            Debug.LogError("Spider does not have a BoxCollider!");
-            return;
-        }
+        // if (boxCollider == null)
+        // {
+        //     Debug.LogError("Spider does not have a BoxCollider!");
+        //     return;
+        // }
 
-        // Get the size and center of the BoxCollider.
-        Vector3 boxSize = boxCollider.size;
-        Vector3 boxCenter = boxCollider.center;
+        // // Get the size and center of the BoxCollider.
+        // Vector3 boxSize = boxCollider.size;
+        // Vector3 boxCenter = boxCollider.center;
 
-        // Get the transform of the current spider.
-        Transform spiderTransform = animator.transform;
+        // // Get the transform of the current spider.
+        // Transform spiderTransform = animator.transform;
 
-        // Calculate the world-space center of the box.
-        Vector3 worldCenter = spiderTransform.TransformPoint(boxCenter);
+        // // Calculate the world-space center of the box.
+        // Vector3 worldCenter = spiderTransform.TransformPoint(boxCenter);
 
-        // Calculate the world-space rotation of the box.
-        Quaternion worldRotation = spiderTransform.rotation;
+        // // Calculate the world-space rotation of the box.
+        // Quaternion worldRotation = spiderTransform.rotation;
 
-        // Use OverlapBox to detect collisions.
-        Collider[] hitColliders = Physics.OverlapBox(worldCenter, boxSize / 2f, worldRotation); // Divide by 2, as OverlapBox uses half extents.
+        // // Use OverlapBox to detect collisions.
+        // Collider[] hitColliders = Physics.OverlapBox(worldCenter, boxSize / 2f, worldRotation); // Divide by 2, as OverlapBox uses half extents.
 
-        foreach (Collider hitCollider in hitColliders)
-        {
-            if (hitCollider.CompareTag("Monster") && hitCollider.gameObject != animator.gameObject)
-            {
-                // Another spider is detected. Turn around.
-                Debug.Log("Another monster detected!");
-                GoToNewWaypoint(animator);
-                break; // Stop checking after turning around.
-            }
-        }
+        // foreach (Collider hitCollider in hitColliders)
+        // {
+        //     if (hitCollider.CompareTag("Monster") && hitCollider.gameObject != animator.gameObject)
+        //     {
+        //         // Another spider is detected. Turn around.
+        //         Debug.Log("Another monster detected!");
+        //         GoToNewWaypoint(animator);
+        //         break; // Stop checking after turning around.
+        //     }
+        // }
     }
 
     void GoToNewWaypoint(Animator animator)

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Cotton-Tail
   description: A common rabbit. Is easily startled.
+  isSpecialBoss: 0
   monsterIconImage: {fileID: 0}
   bossImage: {fileID: 0}
   monster: {fileID: 7964420510053311654, guid: ed3091baa4cae9443bf3a35604373cd7, type: 3}
@@ -23,6 +24,7 @@ MonoBehaviour:
   specialAttackPoints: 20
   specialDefensePoints: 20
   speed: 80
+  expYield: 50
   moves: []
   dropStats: 05000000
   monsterDrops:
