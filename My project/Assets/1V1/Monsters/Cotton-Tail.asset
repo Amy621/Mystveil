@@ -25,7 +25,8 @@ MonoBehaviour:
   specialDefensePoints: 20
   speed: 80
   expYield: 50
-  moves: []
+  moves:
+  - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
   dropStats: 05000000
   monsterDrops:
   - {fileID: 11400000, guid: 665b7fc84a181441fa0707ad33d995b4, type: 2}

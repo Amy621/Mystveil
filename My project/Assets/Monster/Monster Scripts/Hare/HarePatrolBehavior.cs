@@ -44,7 +44,7 @@ public class HarePatrolBehavior : StateMachineBehaviour
             animator.SetBool("isRunning", true);
         }
 
-        CheckForSpiderCollision(animator);
+       // CheckForSpiderCollision(animator);
     }
 
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state

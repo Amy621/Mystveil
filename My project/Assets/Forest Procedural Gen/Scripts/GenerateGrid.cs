@@ -7,13 +7,11 @@ using System.Linq;
 
 public class GenerateGrid : MonoBehaviour
 {
-    // generating player spawn
+    [Header("Player Settings")]
     private Vector3 playerSpawn;
-
-    [Header("Border Settings")]
     public GameObject player;
     public PlayerStats playerObject;
-    public int playerLevel;
+    public PlayerDB playerDB;
 
     [Header("Floor/Ground Settings")]
     public GameObject grassFloorObject;
@@ -58,6 +56,8 @@ public class GenerateGrid : MonoBehaviour
     public GameObject waypointPrefab;
     public string monsterTag = "Monster";
 
+    private List<GameObject> allMonstersList = new List<GameObject>();
+
     [Header("All Monster Scriptable Objects")]
     public EnemyStats GuardianOfTheWellObject;
     public EnemyStats LunarFenrirObject;
@@ -72,6 +72,8 @@ public class GenerateGrid : MonoBehaviour
     public EnemyStats BriarheartObject;
     public EnemyStats OdosaplingObject;
     public EnemyStats VilebloomObject;
+
+    private List<EnemyStats> monsterScriptableObjects = new List<EnemyStats>();
 
     [Header("All Collectable Prefabs")]
     public GameObject DragonsBreath;
@@ -138,8 +140,8 @@ public class GenerateGrid : MonoBehaviour
     public GameObject toNextArea;
     private List<GameObject> allItems = new List<GameObject>();
 
-    private Dictionary<GameObject, EnemyStats> monsterDictionary;
-    private Dictionary<GameObject, Item> collectableDictionary;
+    private Dictionary<GameObject, EnemyBase> monsterDictionary = new Dictionary<GameObject, EnemyBase>();
+    private Dictionary<GameObject, Item> collectableDictionary = new Dictionary<GameObject, Item>();
 
     public List<GameObject> getAllObjects() {
         return allItems;
@@ -148,12 +150,6 @@ public class GenerateGrid : MonoBehaviour
     public Vector3 getPlayerSpawnCoords() {
         return playerSpawn;
     }
-
-    // void Start()
-    // {
-    //     // Assign the dictionaries
-    //     // assign the levels of the monsters based on Liora's level
-    // }
 
     void Update()
     {
@@ -209,7 +205,123 @@ public class GenerateGrid : MonoBehaviour
 
         if(!isFirstLevel) {
             Destroy();
+        } else {
+            // Find PlayerDB
+            playerDB = FindObjectOfType<PlayerDB>();
+
+            // Assign the dictionaries
+            monsterList.Add(CottonTail);
+            monsterList.Add(Webweaver);
+            monsterList.Add(AsterEye);
+            monsterList.Add(Dionaeant);
+            monsterList.Add(Stranterry);
+            monsterList.Add(Bantboo);
+            monsterList.Add(Pollant);
+            monsterList.Add(Briarheart);
+            monsterList.Add(Odosapling);
+            monsterList.Add(Vilebloom);
+
+            bossEnemyList.Add(GuardianOfTheWell);
+            bossEnemyList.Add(RootboundTyrant);
+            bossEnemyList.Add(LunarFenrir);
+
+            //bossEnemyList.Add(ShadowMirror);
+            // make a different script for the shadow mirror
+
+            // must be the same order!!
+            allMonstersList.Add(GuardianOfTheWell);
+            allMonstersList.Add(LunarFenrir);
+            allMonstersList.Add(RootboundTyrant);
+            allMonstersList.Add(CottonTail);
+            allMonstersList.Add(Webweaver);
+            allMonstersList.Add(AsterEye);
+            allMonstersList.Add(Dionaeant);
+            allMonstersList.Add(Stranterry);
+            allMonstersList.Add(Bantboo);
+            allMonstersList.Add(Pollant);
+            allMonstersList.Add(Briarheart);
+            allMonstersList.Add(Odosapling);
+            allMonstersList.Add(Vilebloom);
+
+            monsterScriptableObjects.Add(GuardianOfTheWellObject);
+            monsterScriptableObjects.Add(LunarFenrirObject);
+            monsterScriptableObjects.Add(RootboundTyrantObject);
+            monsterScriptableObjects.Add(CottonTailObject);
+            monsterScriptableObjects.Add(WebweaverObject);
+            monsterScriptableObjects.Add(AsterEyeObject);
+            monsterScriptableObjects.Add(DionaeantObject);
+            monsterScriptableObjects.Add(StranterryObject);
+            monsterScriptableObjects.Add(BantbooObject);
+            monsterScriptableObjects.Add(PollantObject);
+            monsterScriptableObjects.Add(BriarheartObject);
+            monsterScriptableObjects.Add(OdosaplingObject);
+            monsterScriptableObjects.Add(VilebloomObject);
+
+            int index = 0;
+            foreach(EnemyStats monster in monsterScriptableObjects)
+            {
+                int randomLevel = Random.Range(1, 11);
+                randomLevel = playerDB.Player.Level - randomLevel;
+
+                if (randomLevel <= 0)
+                    randomLevel = 1;
+
+                EnemyBase monsterToAdd = new EnemyBase(monster, randomLevel);
+                monsterDictionary.Add(allMonstersList[index], monsterToAdd);
+
+                index++;
+            }
+
+            collectableDictionary = new Dictionary<GameObject, Item>()
+            {
+                {DragonsBreath, DragonsBreathObject},
+                {DreamLeaf, DreamLeafObject},
+                {EmberLeaf, EmberLeafObject},
+                {FairyFlax, FairyFlaxObject},
+                {GrimalkinsClaw, GrimalkinsClawObject},
+                {HolySanctum, HolySanctumObject},
+                {MoonBloom, MoonBloomObject},
+                {MoonpetalBlossom, MoonpetalBlossomObject},
+                {NightWhisper, NightWhisperObject},
+                {NightshadeBloom, NightshadeBloomObject},
+                {RainbowRoot, RainbowRootObject},
+                {RavenClawRoot, RavenClawRootObject},
+                {Shadowberry, ShadowberryObject},
+                {SilverSeed, SilverSeedObject},
+                {SparkleSprig, SparkleSprigObject},
+                {StarlightBerry, StarlightBerryObject},
+                {SunstoneSeed, SunstoneSeedObject},
+                {Veilwort, VeilwortObject},
+                {WhimsyWillow, WhimsyWillowObject},
+                {Whisperwood, WhisperwoodObject},
+            };
+
+             // adding in the collectable objects to the list
+            commonCollectables.Add(Whisperwood);
+            commonCollectables.Add(SunstoneSeed);
+            commonCollectables.Add(StarlightBerry);
+            commonCollectables.Add(Shadowberry);
+            commonCollectables.Add(MoonpetalBlossom);
+            commonCollectables.Add(EmberLeaf);
+
+            rareCollectables.Add(WhimsyWillow);
+            rareCollectables.Add(Veilwort);
+            rareCollectables.Add(SparkleSprig);
+            rareCollectables.Add(RavenClawRoot);
+            rareCollectables.Add(RainbowRoot);
+            rareCollectables.Add(NightshadeBloom);
+            rareCollectables.Add(GrimalkinsClaw);
+            rareCollectables.Add(DreamLeaf);
+
+            ultraRareCollectables.Add(SilverSeed);
+            ultraRareCollectables.Add(NightWhisper);
+            ultraRareCollectables.Add(MoonBloom);
+            ultraRareCollectables.Add(HolySanctum);
+            ultraRareCollectables.Add(FairyFlax);
+            ultraRareCollectables.Add(DragonsBreath);
         }
+
+        /**    MAKING THE WORLD     **/
 
         for(int x = 0; x < worldSizeX; x++) 
         {
@@ -455,29 +567,6 @@ public class GenerateGrid : MonoBehaviour
     
 
     private void SpawnCollectables() {
-        // adding in the collectable objects to the list
-        commonCollectables.Add(Whisperwood);
-        commonCollectables.Add(SunstoneSeed);
-        commonCollectables.Add(StarlightBerry);
-        commonCollectables.Add(Shadowberry);
-        commonCollectables.Add(MoonpetalBlossom);
-        commonCollectables.Add(EmberLeaf);
-
-        rareCollectables.Add(WhimsyWillow);
-        rareCollectables.Add(Veilwort);
-        rareCollectables.Add(SparkleSprig);
-        rareCollectables.Add(RavenClawRoot);
-        rareCollectables.Add(RainbowRoot);
-        rareCollectables.Add(NightshadeBloom);
-        rareCollectables.Add(GrimalkinsClaw);
-        rareCollectables.Add(DreamLeaf);
-
-        ultraRareCollectables.Add(SilverSeed);
-        ultraRareCollectables.Add(NightWhisper);
-        ultraRareCollectables.Add(MoonBloom);
-        ultraRareCollectables.Add(HolySanctum);
-        ultraRareCollectables.Add(FairyFlax);
-        ultraRareCollectables.Add(DragonsBreath);
 
         numCollectableAreas = Random.Range(3, 7);
         
@@ -572,17 +661,6 @@ public class GenerateGrid : MonoBehaviour
     }
 
     private void SpawnMonsters() {
-        //monsterList.Add(CottonTail);
-        monsterList.Add(Webweaver);
-        monsterList.Add(AsterEye);
-        monsterList.Add(Dionaeant);
-        monsterList.Add(Stranterry);
-        monsterList.Add(Bantboo);
-        monsterList.Add(Pollant);
-        // monsterList.Add(Briarheart);
-        // monsterList.Add(Odosapling);
-        // monsterList.Add(Vilebloom);
-
         numMonsterAreas = Random.Range(2, 8);
 
         // how many collectable item areas total of this level
@@ -597,7 +675,9 @@ public class GenerateGrid : MonoBehaviour
             );
 
             // Random.Range(0, monsterList.Count)
-            GameObject monster = Instantiate(monsterList[Random.Range(0, monsterList.Count)],
+
+            GameObject monsterPrefab = monsterList[Random.Range(0, monsterList.Count)];
+            GameObject monster = Instantiate(monsterPrefab,
             newPos,
             Quaternion.identity);
             allItems.Add(monster);
@@ -617,6 +697,15 @@ public class GenerateGrid : MonoBehaviour
                 Debug.LogError($"Layer not found. Please check your Tag and Layers settings.");
             }
 
+            Debug.Log("Passing dictionary value to Enemy cs script...");
+            Debug.Log("monster stat value = " + monsterDictionary[monsterPrefab].Base);
+            Debug.Log("monster level value = " + monsterDictionary[monsterPrefab].Level);
+            Debug.Log("=============================================");
+
+            Enemy enemyComponent = monster.GetComponent<Enemy>();
+
+            enemyComponent.monster = monsterDictionary[monsterPrefab];
+
             monster.transform.SetParent(this.transform);
 
             floorPositions.RemoveAt(index);
@@ -624,11 +713,6 @@ public class GenerateGrid : MonoBehaviour
     }
 
     private void SpawnBossMonster() {
-        bossEnemyList.Add(GuardianOfTheWell);
-        bossEnemyList.Add(RootboundTyrant);
-        bossEnemyList.Add(LunarFenrir);
-        //bossEnemyList.Add(ShadowMirror);
-        // make a different script for the shadow mirror
 
         // select the boss for the boss level
         int index = Random.Range(0, bossEnemyList.Count);
@@ -639,6 +723,7 @@ public class GenerateGrid : MonoBehaviour
             bossPosition.z
         );
 
+        GameObject monsterPrefab = bossEnemyList[index];
         GameObject monster = Instantiate(bossEnemyList[index],
         newPos,
         Quaternion.identity);
@@ -646,6 +731,16 @@ public class GenerateGrid : MonoBehaviour
 
         monster.tag = bossMonsterTag;
         monster.AddComponent<LookAtPlayer>();
+        BossMonster bossMonsterComponent = monster.AddComponent<BossMonster>();
+        bossMonsterComponent.Base = monsterDictionary[monsterPrefab];
+
+        int randLevel = Random.Range(0, 9);
+        randLevel = playerDB.Player.Level - randLevel;
+        if (randLevel < 1)
+            randLevel = 1;
+        bossMonsterComponent.Level = randLevel;
+
+
         monster.transform.SetParent(this.transform);
     }
 

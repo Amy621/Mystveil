@@ -2861,16 +2861,16 @@ MonoBehaviour:
   nameText: {fileID: 994578008700861037}
   levelText: {fileID: 3018005400464323412}
   statusBox: {fileID: 5728833004809896798}
-  statusText: {fileID: 0}
+  statusText: {fileID: 6175386490880342421}
   hpBar: {fileID: 3492284185614561742}
   manaBar: {fileID: 3110199602168145871}
   expBar: {fileID: 1992186404829779882}
-  psnColor: {r: 0, g: 0, b: 0, a: 0}
-  badpsnColor: {r: 0, g: 0, b: 0, a: 0}
-  brnColor: {r: 0, g: 0, b: 0, a: 0}
-  swmColor: {r: 0, g: 0, b: 0, a: 0}
-  parColor: {r: 0, g: 0, b: 0, a: 0}
-  slpColor: {r: 0, g: 0, b: 0, a: 0}
+  psnColor: {r: 0.6784314, g: 0.4156863, b: 0.909804, a: 1}
+  badpsnColor: {r: 0.6784314, g: 0.4156863, b: 0.909804, a: 1}
+  brnColor: {r: 0.9528302, g: 0.25618547, b: 0.29172605, a: 1}
+  swmColor: {r: 0.504717, g: 1, b: 0.5919608, a: 1}
+  parColor: {r: 0.9156791, g: 0.9528302, b: 0.46293166, a: 1}
+  slpColor: {r: 0.5887772, g: 0.7623682, b: 0.9528302, a: 1}
 --- !u!1 &3369399438460739521
 GameObject:
   m_ObjectHideFlags: 0
@@ -6129,14 +6129,14 @@ MonoBehaviour:
   nameText: {fileID: 809579430162113461}
   levelText: {fileID: 3753875037814004455}
   statusBox: {fileID: 1064235426402196976}
-  statusText: {fileID: 0}
+  statusText: {fileID: 9164978221469555122}
   hpBar: {fileID: 4189569045933070788}
-  psnColor: {r: 0, g: 0, b: 0, a: 0}
-  badpsnColor: {r: 0, g: 0, b: 0, a: 0}
-  brnColor: {r: 0, g: 0, b: 0, a: 0}
-  swmColor: {r: 0, g: 0, b: 0, a: 0}
-  parColor: {r: 0, g: 0, b: 0, a: 0}
-  slpColor: {r: 0, g: 0, b: 0, a: 0}
+  psnColor: {r: 0.6784314, g: 0.4156863, b: 0.909804, a: 1}
+  badpsnColor: {r: 0.6784314, g: 0.4156863, b: 0.909804, a: 1}
+  brnColor: {r: 0.9528302, g: 0.25618547, b: 0.29172605, a: 1}
+  swmColor: {r: 0.504717, g: 1, b: 0.5919608, a: 1}
+  parColor: {r: 0.9156791, g: 0.9528302, b: 0.46293166, a: 1}
+  slpColor: {r: 0.5887772, g: 0.7623682, b: 0.9528302, a: 1}
 --- !u!1 &6747738850806526586
 GameObject:
   m_ObjectHideFlags: 0
@@ -6225,8 +6225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c24ec2d10c337a4192747238572d281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: {fileID: 11400000, guid: 47f63341928869b40afdc4c10be56ae9, type: 2}
-  level: 5
 --- !u!1 &6759085256769362980
 GameObject:
   m_ObjectHideFlags: 0
@@ -6347,9 +6345,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d3504028200e049833502b8300bedc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveButtons: []
-  highlightedColor: {r: 0, g: 0, b: 0, a: 0}
-  normalColor: {r: 0, g: 0, b: 0, a: 1}
+  moveButtons:
+  - {fileID: 4915933447167110521}
+  - {fileID: 2976107113512520092}
+  - {fileID: 2967949317436998257}
+  - {fileID: 3093033729234525371}
+  - {fileID: 6502604919895664078}
+  highlightedColor: {r: 0.6320754, g: 0.5560475, b: 0.17590779, a: 1}
+  normalColor: {r: 0.9339623, g: 0.8441489, b: 0.39208794, a: 1}
 --- !u!1 &6861541531668816677
 GameObject:
   m_ObjectHideFlags: 0
@@ -7113,8 +7116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4df09e6d89f4445952daf37166d4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: {fileID: 11400000, guid: 535b66459efdd64488e74cb8f6a4acaf, type: 2}
-  level: 2
 --- !u!1 &7659884931521354925
 GameObject:
   m_ObjectHideFlags: 0

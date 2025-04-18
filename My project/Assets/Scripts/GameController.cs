@@ -5,13 +5,14 @@ using UnityEngine;
 public enum GameState { FreeRoam, Battle }
 public class GameController : MonoBehaviour
 {
-    [SerializeField] PlayerController2 playerController;
+    [SerializeField] PlayerController playerController;
     [SerializeField] Battle battleSystem;
     [SerializeField] HealthSystem healthGlobes;
     [SerializeField] GameObject minimap;
     [SerializeField] Camera worldCamera;
 
     GameState state;
+    private MonoBehaviour[] playerScripts;
 
     private void Awake()
     {
@@ -22,6 +23,11 @@ public class GameController : MonoBehaviour
     {
         playerController.onEncountered += StartBattle;
         battleSystem.OnBattleOver += EndBattle;
+
+        playerScripts = playerController.GetComponents<MonoBehaviour>();
+        List<MonoBehaviour> scriptsToDisable = new List<MonoBehaviour>(playerScripts);
+        scriptsToDisable.Remove(playerController);
+        playerScripts = scriptsToDisable.ToArray();
     }
 
     void StartBattle()
@@ -31,6 +37,11 @@ public class GameController : MonoBehaviour
         worldCamera.gameObject.SetActive(false);
         healthGlobes.gameObject.SetActive(false);
         minimap.SetActive(false);
+
+        foreach (var script in playerScripts)
+        {
+            script.enabled = false;
+        }
 
         battleSystem.StartBattle();
     }
@@ -45,6 +56,11 @@ public class GameController : MonoBehaviour
         worldCamera.gameObject.SetActive(true);
         healthGlobes.gameObject.SetActive(true);
         minimap.SetActive(true);
+
+        foreach (var script in playerScripts)
+        {
+            script.enabled = true;
+        }
     }
 
     private void Update()

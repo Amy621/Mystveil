@@ -5,14 +5,12 @@ using UnityEngine.UI;
 
 public class EnemyUnit : MonoBehaviour
 {
-    [SerializeField] EnemyStats _base;
-    [SerializeField] int level;
-
     public EnemyBase Enemy { get; set;}
 
     public void Setup()
     {
-        Enemy = new EnemyBase(_base, level);
-        GetComponent<Image>().sprite = Enemy.Base.BossImage;
+        BossMonster boss = FindObjectOfType<BossMonster>();
+        Enemy = boss.Base;
+        GetComponent<Image>().sprite = boss.Base.Base.BossImage;
     }
 }

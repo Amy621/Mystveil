@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class RangedAttackBehavior : StateMachineBehaviour
 {
+    // for monster moves
+    // overworld monster has max of 2 moves, 1 physical, 1 ranged
+    // use the RANGED for this one, which should be index 1 (2nd move)
+    public EnemyBase enemy { get; private set; }
     Transform player;
     HealthSystem playerHealth;
 
-    public float attackDamage = 5f;
+    // public float attackDamage = 5f;
     public float attackInterval = 2f;
     private float lastAttackTime;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        enemy = animator.GetComponent<Enemy>().monster;
+
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<HealthSystem>();
         lastAttackTime = Time.time - attackInterval;
@@ -41,7 +47,7 @@ public class RangedAttackBehavior : StateMachineBehaviour
 
             if (Time.time >= lastAttackTime + attackInterval)
             {
-                playerHealth.TakeDamage(attackDamage);
+                playerHealth.TakeDamage(enemy, enemy.Moves[1]);
                 lastAttackTime = Time.time;
             }
         }

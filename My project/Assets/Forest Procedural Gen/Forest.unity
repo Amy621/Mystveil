@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc396bb84ccc9f4d90ddaaabeb80bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 760406991}
+  playerController: {fileID: 760406999}
   battleSystem: {fileID: 455567468}
   healthGlobes: {fileID: 1743363790}
   minimap: {fileID: 651020378}
@@ -526,17 +526,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3194942607083776512, guid: 8e0d7064a65fc414ebecd172afd50303, type: 3}
   m_PrefabInstance: {fileID: 68363221901978755}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &760406991 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1415016408850400164, guid: 8e0d7064a65fc414ebecd172afd50303, type: 3}
+--- !u!143 &760406992 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 4785833828707621602, guid: 8e0d7064a65fc414ebecd172afd50303, type: 3}
   m_PrefabInstance: {fileID: 68363221901978755}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &760406999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760406982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a31bbc351700b04185caa793cbe75a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f3063b7ecafdb94684f75c741de1556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterController: {fileID: 760406992}
 --- !u!1001 &871983036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2234,6 +2241,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1458080938957312460, guid: 8e0d7064a65fc414ebecd172afd50303, type: 3}
+      propertyPath: acceleration
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2386557439102810950, guid: 8e0d7064a65fc414ebecd172afd50303, type: 3}
       propertyPath: Ability1Canvas
       value: 
@@ -2350,6 +2361,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3385250601655167145, guid: 8e0d7064a65fc414ebecd172afd50303, type: 3}
+      propertyPath: movementSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3618911843873643131, guid: 8e0d7064a65fc414ebecd172afd50303, type: 3}
       propertyPath: m_RenderMode
       value: 2
@@ -2423,6 +2438,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1066673802}
     - target: {fileID: 6113387414328642742, guid: 8e0d7064a65fc414ebecd172afd50303, type: 3}
+      propertyPath: Regenerate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113387414328642742, guid: 8e0d7064a65fc414ebecd172afd50303, type: 3}
       propertyPath: healthText
       value: 
       objectReference: {fileID: 19468279}
@@ -2494,10 +2513,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2818523236223774906, guid: 8e0d7064a65fc414ebecd172afd50303, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 760406999}
   m_SourcePrefab: {fileID: 100100000, guid: 8e0d7064a65fc414ebecd172afd50303, type: 3}
 --- !u!114 &68363221901978756 stripped
 MonoBehaviour:
@@ -2622,7 +2645,7 @@ PrefabInstance:
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: Veilwort
       value: 
-      objectReference: {fileID: 110140, guid: afe2818fc38e1c44ea0e9758dd1992d2, type: 3}
+      objectReference: {fileID: 105638, guid: eb1084389c6861649a52c10577c7d77e, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: Werewolf
       value: 
@@ -2634,11 +2657,11 @@ PrefabInstance:
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: DreamLeaf
       value: 
-      objectReference: {fileID: 168714, guid: 999200afe6b45cc4da2c0bda41570269, type: 3}
+      objectReference: {fileID: 135202, guid: 888a19a6a2e12e240b806f77f4d0ed07, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: EmberLeaf
       value: 
-      objectReference: {fileID: 114718, guid: 03c9d794d270d6a42a8617eaebbd1558, type: 3}
+      objectReference: {fileID: 185154, guid: bd797f8b461dda044840c3a0bd197fe7, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: FairyFlax
       value: 
@@ -2646,7 +2669,7 @@ PrefabInstance:
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: MoonBloom
       value: 
-      objectReference: {fileID: 135202, guid: 888a19a6a2e12e240b806f77f4d0ed07, type: 3}
+      objectReference: {fileID: 145914, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: Vilebloom
       value: 
@@ -2702,7 +2725,7 @@ PrefabInstance:
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: HolySanctum
       value: 
-      objectReference: {fileID: 105602, guid: 8f91512376d75e54a9b57ea29926599d, type: 3}
+      objectReference: {fileID: 188336, guid: 3d7bdd799a8760f4d81f2adf2391268c, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: LunarFenrir
       value: 
@@ -2710,10 +2733,14 @@ PrefabInstance:
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: RainbowRoot
       value: 
-      objectReference: {fileID: 128762, guid: 9afff6499b68a0e49a880ea03cce605f, type: 3}
+      objectReference: {fileID: 144238, guid: e56f1fbea0219724398a7942c07f3618, type: 3}
+    - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
+      propertyPath: Shadowberry
+      value: 
+      objectReference: {fileID: 161528, guid: 8f3253cb70543aa46b0b8912fa09f8a3, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: playerLevel
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: CorpseFlower
@@ -2726,7 +2753,7 @@ PrefabInstance:
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: NightWhisper
       value: 
-      objectReference: {fileID: 145914, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
+      objectReference: {fileID: 110038, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: ShadowMirror
       value: 
@@ -2734,11 +2761,11 @@ PrefabInstance:
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: SparkleSprig
       value: 
-      objectReference: {fileID: 151234, guid: 390c2bf1514a09e49a2aa0361d9e314c, type: 3}
+      objectReference: {fileID: 110140, guid: afe2818fc38e1c44ea0e9758dd1992d2, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: SunstoneSeed
       value: 
-      objectReference: {fileID: 110038, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
+      objectReference: {fileID: 199514, guid: 626f1b816ba1ee64a9f7cea6ceb529cd, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: WhimsyWillow
       value: 
@@ -2762,7 +2789,7 @@ PrefabInstance:
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: RavenClawRoot
       value: 
-      objectReference: {fileID: 144238, guid: e56f1fbea0219724398a7942c07f3618, type: 3}
+      objectReference: {fileID: 168714, guid: 999200afe6b45cc4da2c0bda41570269, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: AsterEyeObject
       value: 
@@ -2774,7 +2801,7 @@ PrefabInstance:
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: StarlightBerry
       value: 
-      objectReference: {fileID: 185154, guid: bd797f8b461dda044840c3a0bd197fe7, type: 3}
+      objectReference: {fileID: 131238, guid: 13bc7e8dc4a1fce4fb5bd7665ebc3013, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: VeilwortObject
       value: 
@@ -2806,7 +2833,7 @@ PrefabInstance:
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: NightshadeBloom
       value: 
-      objectReference: {fileID: 110038, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
+      objectReference: {fileID: 191548, guid: 122f65ce20a93d54d9dcba16303e0785, type: 3}
     - target: {fileID: 4696209732549427476, guid: c26f0aef19fe0a840868d8498119152a, type: 3}
       propertyPath: RootboundTyrant
       value: 

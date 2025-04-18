@@ -25,6 +25,18 @@ PrefabInstance:
       value: PlantMonster Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6888678902052531593, guid: 33a2dcb6c920058418708d7da7a97ef8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888678902052531593, guid: 33a2dcb6c920058418708d7da7a97ef8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888678902052531593, guid: 33a2dcb6c920058418708d7da7a97ef8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888678902052531593, guid: 33a2dcb6c920058418708d7da7a97ef8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 43.049698
       objectReference: {fileID: 0}

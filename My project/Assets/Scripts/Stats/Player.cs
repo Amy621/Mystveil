@@ -65,7 +65,7 @@ public class Player
         Stats.Add(Stat.Speed, Mathf.FloorToInt((Base.SPE * Level) / 100f) + 5);
 
         MaxHp = Mathf.FloorToInt((Base.HP * Level) / 100f) + 10 + Level;
-        MaxMana = Mathf.FloorToInt((Base.MANA * Level) / 100f) + 10 + Level;
+        MaxMana = Mathf.FloorToInt((Base.MANA * Level) / 100f) + 200 + Level;
     }
 
     public void ResetStatBoost()

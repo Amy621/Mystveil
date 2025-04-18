@@ -5,14 +5,21 @@ using UnityEngine.UI;
 
 public class PlayerUnit : MonoBehaviour
 {
-    [SerializeField] PlayerStats _base;
-    [SerializeField] int level;
-
-    public Player Player {get; set;}
+    public Player Player {get; private set;}
 
     public void Setup()
     {
-        Player = new Player(_base, level);
-        GetComponent<Image>().sprite = Player.Base.Image;
+        PlayerDB playerDB = FindObjectOfType<PlayerDB>();
+
+        if (playerDB != null)
+        {
+            Player = playerDB.Player;
+            GetComponent<Image>().sprite = Player.Base.Image;
+        }
+        else
+        {
+            Debug.LogError("PlayerDB not found in the scene. PlayerUnit cannot be set up.");
+            enabled = false;
+        }
     }
 }

@@ -1,8 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+    For now the attack is like this:
+        whatever the player has in the 1st slot of the 1v1 -> CONE
+        whatever the player has in the 2nd slot of the 1v1 -> CIRCLE
+**/
 public class AttackArea : MonoBehaviour
 {
+    public Player player { get; private set; }
+
+    public HealthSystem healthSystem { get; private set; }
+
     [Header("UI Elements")]
     public Canvas Ability1Canvas; // circle
     public Image Ability1Skillshot;
@@ -15,7 +24,6 @@ public class AttackArea : MonoBehaviour
     public float ability1Radius = 3f; // Radius for the circle ability
     public float ability2Angle = 60f; // Angle of the cone in degrees
     public float ability2Range = 5f; // Range of the cone
-    public int attackDamage = 20;
     public LayerMask enemyLayer;
 
     [Header("Audio")]
@@ -38,6 +46,27 @@ public class AttackArea : MonoBehaviour
 
         Ability2Canvas.enabled = false;
         Ability2Skillshot.enabled = false;
+
+        Ability2Canvas.transform.Rotate(0, 180f, 0);
+
+        // get player DB stuff
+        PlayerDB playerDB = FindObjectOfType<PlayerDB>();
+
+        if (playerDB != null)
+        {
+            player = playerDB.Player;
+        }
+        else
+        {
+            Debug.LogError("PlayerDB not found in the scene. PlayerUnit cannot be set up.");
+            enabled = false;
+        }
+
+        // find health system and attach to use mana system
+        healthSystem = FindObjectOfType<HealthSystem>();
+
+        // Debug.Log("Getting Cone spell: " + player.Spells[0].Base.Name + " POW: " + player.Spells[0].Base.Power);
+        // Debug.Log("Getting Circle spell: " + player.Spells[1].Base.Name + " POW: " + player.Spells[1].Base.Power);
     }
 
     void Update()
@@ -129,7 +158,7 @@ public class AttackArea : MonoBehaviour
         float rotationAmount = mouseDelta.x * rotationSpeed;
 
         // Rotate the Ability2Canvas around the player's up axis (local Y)
-        Ability2Canvas.transform.Rotate(Vector3.up, rotationAmount, Space.Self);
+        Ability2Canvas.transform.Rotate(Vector3.up, mouseDelta.x * rotationSpeed, Space.World);
 
         lastMousePosition = Input.mousePosition;
     }
@@ -137,18 +166,27 @@ public class AttackArea : MonoBehaviour
     void CastAbility1(Vector3 center)
     {
         Debug.Log("Casting Circle Ability at: " + center);
-        Collider[] hitColliders = Physics.OverlapSphere(center, ability1Radius, enemyLayer);
-        foreach (Collider hitCollider in hitColliders)
+
+        if (healthSystem.manaPoint < 1)
         {
-            Enemy enemy = hitCollider.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                Debug.Log("Hit Enemy: " + enemy.name);
-                enemy.TakeDamage(attackDamage);
-                // Destroy(enemy.gameObject); // Consider if you want to destroy immediately
-            }
+            Debug.Log("No mana left, cannot cast spell!");
         }
-        PlayAttackSound();
+        else
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(center, ability1Radius, enemyLayer);
+            foreach (Collider hitCollider in hitColliders)
+            {
+                Enemy enemy = hitCollider.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    healthSystem.UseMana((float) player.Spells[1].Base.ManaPoints);
+                    Debug.Log("Hit Enemy: " + enemy.name);
+                    enemy.TakeDamage(player.Spells[1]);
+                    // Destroy(enemy.gameObject); // Consider if you want to destroy immediately
+                }
+            }
+            PlayAttackSound();
+        }
     }
 
     void CastAbility2()
@@ -168,12 +206,20 @@ public class AttackArea : MonoBehaviour
 
             if (angleToTarget <= ability2Angle / 2f)
             {
-                Enemy enemy = hit.collider.GetComponent<Enemy>();
-                if (enemy != null)
+                if (healthSystem.manaPoint < 1)
                 {
-                    Debug.Log("Hit Enemy with Cone: " + enemy.name);
-                    enemy.TakeDamage(attackDamage);
-                    // Destroy(enemy.gameObject); // Consider if you want to destroy immediately
+                    Debug.Log("No mana left, cannot cast spell!");
+                }
+                else
+                {
+                    Enemy enemy = hit.collider.GetComponent<Enemy>();
+                    if (enemy != null)
+                    {
+                        healthSystem.UseMana((float) player.Spells[0].Base.ManaPoints);
+                        Debug.Log("Hit Enemy with Cone: " + enemy.name);
+                        enemy.TakeDamage(player.Spells[0]);
+                        // Destroy(enemy.gameObject); // Consider if you want to destroy immediately
+                    }
                 }
             }
         }

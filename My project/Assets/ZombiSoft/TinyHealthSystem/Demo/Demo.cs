@@ -11,7 +11,7 @@ public class Demo : MonoBehaviour
 {
     public void Button1()
     {
-        HealthSystem.Instance.TakeDamage(10f); // Take damage 10 points
+        // HealthSystem.Instance.TakeDamage(10f); // Take damage 10 points
     }
     public void Button2()
     {

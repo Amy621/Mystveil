@@ -4,8 +4,13 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
+    public EnemyBase monster { get; set; }
+
+    // the only thing you need this for is the spell's attack
+    public Player player { get; private set; }
+
     [Header("Health Settings")]
-    public int maxHP = 100;
+    public int maxHP;
     private int currentHP;
 
     [Header("Projectile Settings")]
@@ -36,18 +41,34 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        maxHP = monster.HP;
+        Debug.Log("this monster has this much HP: " + maxHP);
+
         currentHP = maxHP;
         enemyCollider = GetComponent<Collider>();
         navAgent = GetComponent<NavMeshAgent>();
+
+        // get player DB stuff
+        PlayerDB playerDB = FindObjectOfType<PlayerDB>();
+
+        if (playerDB != null)
+        {
+            player = playerDB.Player;
+        }
+        else
+        {
+            Debug.LogError("PlayerDB not found in the scene. PlayerUnit cannot be set up.");
+            enabled = false;
+        }
     }
 
     void Update()
     {
         // For testing purposes: press F to damage the enemy.
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            TakeDamage(20);
-        }
+        // if (Input.GetKeyDown(KeyCode.F))
+        // {
+        //     TakeDamage(20);
+        // }
     }
 
     public void Shoot()
@@ -56,6 +77,7 @@ public class Enemy : MonoBehaviour
         Rigidbody rb = instantiatedProjectile.GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * 10f, ForceMode.Impulse);
         rb.AddForce(transform.up * 12f, ForceMode.Impulse);
+        instantiatedProjectile.transform.SetParent(this.transform);
         StartCoroutine(DisappearProjectile(instantiatedProjectile, projectileDisappearDelay));
     }
 
@@ -68,6 +90,7 @@ public class Enemy : MonoBehaviour
     public void Claw()
     {
         GameObject instantiatedClawmark = Instantiate(clawmark, clawmarkPoint.position, clawmarkPoint.rotation);
+        instantiatedClawmark.transform.SetParent(this.transform);
         StartCoroutine(DisappearClawmark(instantiatedClawmark, clawDisappearDelay));
     }
 
@@ -77,10 +100,22 @@ public class Enemy : MonoBehaviour
         if (clawmarkObject) Destroy(clawmarkObject);
     }
 
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(PlayerSpell spell)
     {
         Debug.Log("Enemy taking damage!");
-        currentHP -= damageAmount;
+
+        // adding in formula for damage calculation of monster
+        float attack = (spell.Base.Category == MoveCategory.Special)? player.SpAttack : player.Attack;
+        float defense = (spell.Base.Category == MoveCategory.Special)? monster.SpDefense : monster.Defense;
+
+        float modifiers = Random.Range(0.85f, 1f);
+        float a = (2 * player.Level + 10) / 250f;
+        float d = a * spell.Base.Power * ((float) attack / defense) + 2;
+        int damage = Mathf.FloorToInt(d * modifiers);
+
+        Debug.Log("Monster took: " + damage + " damage");
+
+        currentHP -= damage;
 
         // Play damage sound if assigned
         if (damageClip != null && audioSource != null)
@@ -118,6 +153,13 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject, 3f);
 
             // Add a gaining exp function
+            int expYield = monster.Base.ExpYield;
+            int enemyLevel = monster.Level;
+
+            int expGain = Mathf.FloorToInt((expYield * enemyLevel) / 7);
+            player.Exp += expGain;
+            Debug.Log("player new exp: " + player.Exp);
+            Debug.Log("player level: " + player.Level);
         }
         else
         {

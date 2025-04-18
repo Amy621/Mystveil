@@ -10,7 +10,8 @@ public class ButtonScene : MonoBehaviour
 
     void Start()
     {
-        yourButton.onClick.AddListener(() => MoveToScene(1));
+        // supposed to be the intro level which is 1 but this is for testing purposes!
+        yourButton.onClick.AddListener(() => MoveToScene(2));
     }
 
     public void MoveToScene(int sceneID) {
