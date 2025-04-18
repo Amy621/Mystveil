@@ -23,7 +23,8 @@ public class GoingToNextForestLv : MonoBehaviour
         
         if (ForestBase.curLevel == ForestBase.numLevels) {
             Debug.Log("Back to town");
-            MoveToScene("Town");
+            ForestBase.onCreateBossLevel();
+            // MoveToScene("Town");
         } else if (ForestBase.curLevel + 1 == ForestBase.numLevels) {
             Debug.Log("Boss battle");
             ForestBase.curLevel++;

@@ -70,7 +70,7 @@ public class MonsterMoves : ScriptableObject
 public class MoveEffects
 {
     [SerializeField] List<StatBoost> boosts;
-    [SerializeField] NumHit numHit;
+    [SerializeField] NumHit numHit = new NumHit();
     [SerializeField] int restoreHP;
     [SerializeField] int restoreMP;
     [SerializeField] bool removeAllStatusChanges;

@@ -2994,7 +2994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.12, y: 206}
+  m_AnchoredPosition: {x: 1.12, y: 192}
   m_SizeDelta: {x: 615.31, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2547281473471364577
@@ -5134,8 +5134,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200.86, y: 64.03}
-  m_SizeDelta: {x: 739.52, y: 578.35}
+  m_AnchoredPosition: {x: 200.86, y: 27.932}
+  m_SizeDelta: {x: 739.52, y: 470.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1937486782270340181
 CanvasRenderer:
@@ -5165,7 +5165,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85a0c760d1e1546239fa90768e7c8f0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1802ef1a2030aab4eb02b7326332dc22, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6351,8 +6351,8 @@ MonoBehaviour:
   - {fileID: 2967949317436998257}
   - {fileID: 3093033729234525371}
   - {fileID: 6502604919895664078}
-  highlightedColor: {r: 0.6320754, g: 0.5560475, b: 0.17590779, a: 1}
-  normalColor: {r: 0.9339623, g: 0.8441489, b: 0.39208794, a: 1}
+  highlightedColor: {r: 0.26666668, g: 0.050980397, b: 0.57254905, a: 1}
+  normalColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &6861541531668816677
 GameObject:
   m_ObjectHideFlags: 0

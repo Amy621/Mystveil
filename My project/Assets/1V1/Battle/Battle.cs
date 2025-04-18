@@ -540,8 +540,10 @@ public class Battle : MonoBehaviour
                 }
                 else
                 {
-                    yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} is trying to learn {newMove.Base.Name}!");  
+                    yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} is trying to learn {newMove.Base.Name}!"); 
+                    yield return new WaitForSeconds(1f); 
                     yield return dialogBox.TypeDialog($"But she cannot learn more than {Player.MaxNumOfMoves} moves :(");
+                    yield return new WaitForSeconds(1f); 
                     // Forget a move
                     yield return ChooseMoveToForget(playerUnit.Player, newMove.Base);
                 }
