@@ -6,8 +6,6 @@ using TMPro;
 using Ink.Runtime;
 using System;
 
-// created and saved as a gameobject that is not destroyed
-// along with the dialogue game object with the UI
 public class DialogueManager : MonoBehaviour
 {
     public TextAsset inkFile;
@@ -18,7 +16,6 @@ public class DialogueManager : MonoBehaviour
     static Story story;
     TMP_Text nametag;
     TMP_Text message;
-    List<string> tags;
     int indexOfChoiceSelected;
     static Choice choiceSelected;
 
@@ -28,12 +25,11 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typeCoroutine;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         story = new Story(inkFile.text);
         nametag = textBox.transform.GetChild(0).GetComponent<TMP_Text>();
         message = textBox.transform.GetChild(1).GetComponent<TMP_Text>();
-        tags = new List<string>();
         choiceSelected = null;
 
         AdvanceDialogue(); // Start the first line of dialogue
@@ -111,13 +107,6 @@ public class DialogueManager : MonoBehaviour
         for (int i = 0; i < _choices.Count; i++)
         {
             Button optionButton = optionButtons[i];
-
-            tags = story.currentTags;
-            foreach (string t in tags)
-            {
-                Debug.Log("tag: " + t);
-            }
-
             optionButton.gameObject.SetActive(true);
             optionButton.GetComponentInChildren<TMP_Text>().text = _choices[i].text; // Access TMP_Text in children
             Selectable selectable = optionButton.gameObject.AddComponent<Selectable>();
