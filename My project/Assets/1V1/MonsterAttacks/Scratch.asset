@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
+  m_Name: Scratch
+  m_EditorClassIdentifier: 
+  name: Scratch
+  levelLearned: 0
+  description: A quick, raking attack with sharp claws, leaving shallow lacerations.
+  nextEvolveMove: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects: []
+  target: 0
+  power: 40
+  accuracy: 100
+  alwaysHits: 0

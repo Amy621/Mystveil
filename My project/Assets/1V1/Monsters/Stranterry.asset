@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcda90c83557204db396376b0f2a66f, type: 3}
+  m_Name: Stranterry
+  m_EditorClassIdentifier: 
+  name: Stranterry
+  description: An ant with woody limbs and antenna. They keep extra food and nutrients
+    in the jelly-like sap around their strawberry-like abdomen.
+  isSpecialBoss: 0
+  monsterIconImage: {fileID: 0}
+  bossImage: {fileID: 0}
+  monster: {fileID: 3794567830541398488, guid: fe238e213a1e9994d910576d3114ade5, type: 3}
+  healthPoints: 65
+  attackPoints: 40
+  defensePoints: 40
+  specialAttackPoints: 85
+  specialDefensePoints: 85
+  speed: 60
+  expYield: 55
+  moves:
+  - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
+  - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}
+  - moveBase: {fileID: 11400000, guid: af44f82b19d8c6c4eb7dd105c4c43b79, type: 2}
+  - moveBase: {fileID: 11400000, guid: a5861f7d957c62d42b3f2d36d5407f28, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5921a59e0821d134c8bb8a7a20c36b9a, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5573fcf90bcbeae459ea39019c1bb9ea, type: 2}
+  - moveBase: {fileID: 11400000, guid: 8a7b689939ae250459e2718fe9aada67, type: 2}
+  - moveBase: {fileID: 11400000, guid: e906caebe16c04d4ebc16ae0b8835801, type: 2}
+  - moveBase: {fileID: 11400000, guid: 11a1d8806865baa47bfc981f440acfd6, type: 2}
+  - moveBase: {fileID: 11400000, guid: 82f568a54f5ef11489102a03626a3e42, type: 2}
+  dropStats: 03000000
+  monsterDrops:
+  - {fileID: 11400000, guid: 4932cd8be5f53410891fe85e7cd416e4, type: 2}
+  - {fileID: 11400000, guid: e44d12baebc7f46fd9616ae194619de1, type: 2}
+  - {fileID: 11400000, guid: c356fbdb332c74792866ee74ea9d4fe1, type: 2}
+  dropRates:
+  - 0.3
+  - 0.3
+  - 0.15

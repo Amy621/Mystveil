@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
+  m_Name: Radiant Orb
+  m_EditorClassIdentifier: 
+  name: Radiant Orb
+  levelLearned: 0
+  description: A sphere of pure, brilliant light forms and drifts towards the target,
+    searing their eyes.
+  nextEvolveMove: {fileID: 11400000, guid: cd0ac05c6c3c72e4d9b41a59a8b3d51e, type: 2}
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
+  power: 40
+  accuracy: 100

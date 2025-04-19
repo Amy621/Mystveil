@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcda90c83557204db396376b0f2a66f, type: 3}
+  m_Name: Circe
+  m_EditorClassIdentifier: 
+  name: Circe
+  description: A transmutation mage who turns humans into her army of animals. Became
+    obessed with power once she was appointed as the Court Magician.
+  isSpecialBoss: 1
+  monsterIconImage: {fileID: 0}
+  bossImage: {fileID: 0}
+  monster: {fileID: 0}
+  healthPoints: 100
+  attackPoints: 40
+  defensePoints: 85
+  specialAttackPoints: 100
+  specialDefensePoints: 90
+  speed: 85
+  expYield: 320
+  moves:
+  - moveBase: {fileID: 11400000, guid: b8c3a508545f0cb46b5968c83436e7fe, type: 2}
+  - moveBase: {fileID: 11400000, guid: 6abf7321175afba49b71dcde3c8bfda4, type: 2}
+  - moveBase: {fileID: 11400000, guid: 7575793e7d32ff549bf21778d3b0f80b, type: 2}
+  - moveBase: {fileID: 11400000, guid: 66b8d033d1b83b548bdfd34aad7b9f70, type: 2}
+  - moveBase: {fileID: 11400000, guid: c4ea681f76ff2584fb6ea2de4bd1b175, type: 2}
+  - moveBase: {fileID: 11400000, guid: aa997e0f907f0464cade9d4b862b48c0, type: 2}
+  - moveBase: {fileID: 11400000, guid: 735d00436057d954e84ac25867cdce0a, type: 2}
+  - moveBase: {fileID: 11400000, guid: ebc459d36fcdedc48b5a135c6a1d82d9, type: 2}
+  - moveBase: {fileID: 11400000, guid: cd0ac05c6c3c72e4d9b41a59a8b3d51e, type: 2}
+  - moveBase: {fileID: 11400000, guid: df1e9c9659f66754c9b31e6046f75420, type: 2}
+  - moveBase: {fileID: 11400000, guid: 95dc785a045dd234c8d50eeefc27d048, type: 2}
+  - moveBase: {fileID: 11400000, guid: 6b38af987f4c35c44867f3755946ac28, type: 2}
+  - moveBase: {fileID: 11400000, guid: 7a7cb59ab28f26d429d3303be9f05d50, type: 2}
+  - moveBase: {fileID: 11400000, guid: 7497493d4224f034a802b905967aaf73, type: 2}
+  - moveBase: {fileID: 11400000, guid: f81c6a82344194048b512f0455d10d68, type: 2}
+  - moveBase: {fileID: 11400000, guid: a02d94ae13f2c5d4199326ca7a60b47d, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5a97febdb87dac641a009932982c5519, type: 2}
+  - moveBase: {fileID: 11400000, guid: 1cff343c310e812409a611d5d912f5a2, type: 2}
+  - moveBase: {fileID: 11400000, guid: 450179ef05b207b45867c368047ad882, type: 2}
+  - moveBase: {fileID: 11400000, guid: c5ae2cc905464cd4d87a048267426c65, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5635a9c94ac3f1b4cb0e9189a5539658, type: 2}
+  - moveBase: {fileID: 11400000, guid: ee09b6f641b5aef4c89f5c1d62caf0dc, type: 2}
+  - moveBase: {fileID: 11400000, guid: 6c1d7967e44231041aa96a2bba0db44c, type: 2}
+  - moveBase: {fileID: 11400000, guid: 59e5b40a6d2bb4e4487a675b33aa4966, type: 2}
+  - moveBase: {fileID: 11400000, guid: 1d059e7f385b16246896a5b1d04c29ce, type: 2}
+  - moveBase: {fileID: 11400000, guid: 562854eb68ee73e4c9cdb6702ba2b976, type: 2}
+  - moveBase: {fileID: 11400000, guid: 159445a7567f03748ac373264e543b09, type: 2}
+  - moveBase: {fileID: 11400000, guid: 337ebafc1cab9524d800a7328c2ce74d, type: 2}
+  - moveBase: {fileID: 11400000, guid: 8b7f56e6883c8dc48ad68c3d07e42451, type: 2}
+  - moveBase: {fileID: 11400000, guid: 65b073c2e2af45c48a71cf29e01a7c03, type: 2}
+  - moveBase: {fileID: 11400000, guid: 3d7f85d839e05e745a9ba8c267c239a4, type: 2}
+  - moveBase: {fileID: 11400000, guid: b723ab81754712b46af7c002e7767be2, type: 2}
+  - moveBase: {fileID: 11400000, guid: 495d4422244e69c499fe7b0718a7917d, type: 2}
+  - moveBase: {fileID: 11400000, guid: 281c51a7913243c408c84451b8620d69, type: 2}
+  - moveBase: {fileID: 11400000, guid: d50b73a7768ee8446a2ebd51fe70889d, type: 2}
+  - moveBase: {fileID: 11400000, guid: d0e8c176852c56a41a8a17e745c78341, type: 2}
+  - moveBase: {fileID: 11400000, guid: bf7674458dc5d4f49a8eb5c48d62433a, type: 2}
+  - moveBase: {fileID: 11400000, guid: c539d8ad745a9a142868ecadf2b2d05a, type: 2}
+  - moveBase: {fileID: 11400000, guid: a3306c8fde27e5f4c8329e3934c0b7ed, type: 2}
+  - moveBase: {fileID: 11400000, guid: e52ef679ad6cd6b46be6dc791dacedbf, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5963378472abddb45a93b385036c8665, type: 2}
+  - moveBase: {fileID: 11400000, guid: 46230a07cfda5ad449db637e7285e169, type: 2}
+  - moveBase: {fileID: 11400000, guid: 1de8eec22a00fe447984d7423458cd93, type: 2}
+  - moveBase: {fileID: 11400000, guid: 10c00d42f39f893468dd484678eff453, type: 2}
+  - moveBase: {fileID: 11400000, guid: 89569bfac81c1f94b8a4700c2a3336f2, type: 2}
+  - moveBase: {fileID: 11400000, guid: 3558906bbc860c04782ad77333a099e9, type: 2}
+  - moveBase: {fileID: 11400000, guid: 4f2cf7c13660ccc45b8301a2ed64d206, type: 2}
+  - moveBase: {fileID: 11400000, guid: 814b48512fe00554a81e3d5ba91c1161, type: 2}
+  - moveBase: {fileID: 11400000, guid: 8659190938ffece4fb85bf609c75c919, type: 2}
+  - moveBase: {fileID: 11400000, guid: d9e2627059263cc478e3693231ba5fb0, type: 2}
+  - moveBase: {fileID: 11400000, guid: ee1b974ac669afe40bbcfcb89413fa04, type: 2}
+  dropStats: 000000000100000002000000030000000400000005000000
+  monsterDrops:
+  - {fileID: 11400000, guid: 0550ae3d1b08043b79cb599c7e4b2488, type: 2}
+  - {fileID: 11400000, guid: dff1c2b1be79b4451be421620084e085, type: 2}
+  - {fileID: 11400000, guid: e50dafa355fdd4baeb190ce06d165606, type: 2}
+  - {fileID: 11400000, guid: 8152980da57034bbea8288b0a1ceda53, type: 2}
+  dropRates:
+  - 1
+  - 1
+  - 1
+  - 1

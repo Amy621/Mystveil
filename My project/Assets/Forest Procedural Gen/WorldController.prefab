@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1655340577105987862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3396915054449142690}
+  - component: {fileID: 4696209732549427476}
+  - component: {fileID: 5683517390231247286}
+  m_Layer: 0
+  m_Name: WorldController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3396915054449142690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655340577105987862}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.214351, y: 1.4908552, z: -13.080453}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4696209732549427476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655340577105987862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180177a94502160418f9484e1b3d5bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grassFloorObject: {fileID: 146614, guid: 9154d83fdcda70f4f84028ccd30286a2, type: 3}
+  nonWalkFloorObject: {fileID: 146614, guid: 9154d83fdcda70f4f84028ccd30286a2, type: 3}
+  bossEnemy: {fileID: 184458, guid: bba9610331c8e5040a9ed5720d33f7c5, type: 3}
+  Spider: {fileID: 9142914784956254517, guid: 0944f503952b2a9449e56b423a400296, type: 3}
+  waypointPrefab: {fileID: 7881377277137965884, guid: 7189b23596330574f854cceab9541bab, type: 3}
+  monsterTag: Monster
+  Moonpetal_Blossom: {fileID: 145914, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
+  Shadowberry: {fileID: 150346, guid: 160967ba76f9fb64980281b24fd0dbb0, type: 3}
+  Whisperwood: {fileID: 128762, guid: 9afff6499b68a0e49a880ea03cce605f, type: 3}
+  Sunstone_Seed: {fileID: 185154, guid: bd797f8b461dda044840c3a0bd197fe7, type: 3}
+  Emberleaf: {fileID: 110140, guid: afe2818fc38e1c44ea0e9758dd1992d2, type: 3}
+  Starlight_Berry: {fileID: 151234, guid: 390c2bf1514a09e49a2aa0361d9e314c, type: 3}
+  grassSpawn: {fileID: 107084, guid: 9ad607532c614c54ebd43e913aaf8857, type: 3}
+  rock1Spawn: {fileID: 157752, guid: bc69307c2f84e9748bd3cedb18c6e7fa, type: 3}
+  rock2Spawn: {fileID: 142132, guid: 13af20cb32cfaab428901a23183d2ca1, type: 3}
+  tree1Spawn: {fileID: 103806, guid: 4f9f93a8642a3d547926f4ccd6ff4aea, type: 3}
+  tree2Spawn: {fileID: 146544, guid: cc890b11e6968444bbb9050c8b78e8eb, type: 3}
+  treeBorderSpawn: {fileID: 117190, guid: 6593f1a0b8ab64a47bc3038147d84d46, type: 3}
+  logSpawn: {fileID: 114594, guid: e0bcb36554be1124b8a89d63037350be, type: 3}
+  toNextArea: {fileID: 7577409053495835603, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
+--- !u!114 &5683517390231247286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655340577105987862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ee40859f3265847ad3e72e1f49dd76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridGenerator: {fileID: 0}

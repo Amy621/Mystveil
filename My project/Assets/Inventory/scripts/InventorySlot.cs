@@ -36,7 +36,7 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         if(!isEmpty) //slot contains an item
         {
             Debug.Log("this slot already contains " + myItem);
-            if(myTag != SlotTag.None && item.myItem.itemTag != myTag){ Debug.Log("cant place "+item+" here. this slot is "+myTag+" and you cant place "+item.myItem.itemTag);return; }//check if item is equippable in slot
+            if(myTag != SlotTag.None && item.myItem.slotTag != myTag){ Debug.Log("cant place "+item+" here. this slot is "+myTag+" and you cant place "+item.myItem.slotTag);return; }//check if item is equippable in slot
             if(myItem.myItem == item.myItem && myItem.myItem.stackable) //if item is already in slot, stack
             {
                 

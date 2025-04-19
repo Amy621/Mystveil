@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac77876e2c52ad49b738d0be8d95c70, type: 3}
+  m_Name: Ray of Light
+  m_EditorClassIdentifier: 
+  name: Ray of Light
+  levelLearned: 25
+  description: A focused beam of intense light shoots forth, piercing through shadows
+    and damaging the target.
+  isLearned: 0
+  hasBranchingEvo: 0
+  nextEvolveSpell: {fileID: 11400000, guid: 9dd35e1a87f6d6a45b7f4c01666740c4, type: 2}
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
+  power: 55
+  accuracy: 100
+  mp: 15

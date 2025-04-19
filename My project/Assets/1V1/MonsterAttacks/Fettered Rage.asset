@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
+  m_Name: Fettered Rage
+  m_EditorClassIdentifier: 
+  name: Fettered Rage
+  description: The user attacks with reckless abandon.
+  effect: Recoil on user 1/16 of Max HP
+  hasEffect: 1
+  nextEvolveMove: {fileID: 11400000, guid: ac948b266964ac04cb9a41965277e125, type: 2}
+  type: Physical
+  power: 45
+  accuracy: 100

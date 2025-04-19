@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcda90c83557204db396376b0f2a66f, type: 3}
+  m_Name: Lunar Fenrir
+  m_EditorClassIdentifier: 
+  name: Lunar Fenrir
+  description: A lone wolf that has lived through many moons. People have learned
+    to never traverse the forest on the night of a full moon else face the wrath
+    of this creature.
+  isSpecialBoss: 0
+  monsterIconImage: {fileID: 0}
+  bossImage: {fileID: 0}
+  monster: {fileID: 7167274764742379470, guid: 37c21f455ce3dcc4284d39d72fe96143, type: 3}
+  healthPoints: 90
+  attackPoints: 100
+  defensePoints: 65
+  specialAttackPoints: 60
+  specialDefensePoints: 70
+  speed: 90
+  expYield: 236
+  moves:
+  - moveBase: {fileID: 11400000, guid: 23e71e918885352418d8d02635f89eb9, type: 2}
+  - moveBase: {fileID: 11400000, guid: 1baaa93216ae4bc43a76e0bf9c92fe6c, type: 2}
+  - moveBase: {fileID: 11400000, guid: af44f82b19d8c6c4eb7dd105c4c43b79, type: 2}
+  - moveBase: {fileID: 11400000, guid: a5861f7d957c62d42b3f2d36d5407f28, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5921a59e0821d134c8bb8a7a20c36b9a, type: 2}
+  - moveBase: {fileID: 11400000, guid: 5573fcf90bcbeae459ea39019c1bb9ea, type: 2}
+  - moveBase: {fileID: 11400000, guid: 8a7b689939ae250459e2718fe9aada67, type: 2}
+  - moveBase: {fileID: 11400000, guid: e906caebe16c04d4ebc16ae0b8835801, type: 2}
+  - moveBase: {fileID: 11400000, guid: 11a1d8806865baa47bfc981f440acfd6, type: 2}
+  - moveBase: {fileID: 11400000, guid: 82f568a54f5ef11489102a03626a3e42, type: 2}
+  - moveBase: {fileID: 11400000, guid: 3847bd5b4e13cd348a8db4e31c811c23, type: 2}
+  - moveBase: {fileID: 11400000, guid: 895b02c6a74ac704c8e8d1bafc78940d, type: 2}
+  - moveBase: {fileID: 11400000, guid: 082f10fbd1955f34eba498788a641d19, type: 2}
+  - moveBase: {fileID: 11400000, guid: 1df0c8be1978c9a479af92693282f4d6, type: 2}
+  - moveBase: {fileID: 11400000, guid: 29a62e29478ef3e4bbe54ff0d8ae0c35, type: 2}
+  - moveBase: {fileID: 11400000, guid: 52c01892d88f4e549848a5e4ce52d6fb, type: 2}
+  - moveBase: {fileID: 11400000, guid: 43a197c3dfd6db84fb2de46827bd7c64, type: 2}
+  - moveBase: {fileID: 11400000, guid: 7e923683d91a54f4f8e8908a1475de36, type: 2}
+  - moveBase: {fileID: 11400000, guid: 7e10c5bc384b42e4a8de8195c8f33261, type: 2}
+  - moveBase: {fileID: 11400000, guid: 59d2aeb0e103699499f6628e5ed69395, type: 2}
+  - moveBase: {fileID: 11400000, guid: 0e95f963c160b4c419acab5e2bcce18c, type: 2}
+  - moveBase: {fileID: 11400000, guid: 173402839b2fe2f46b63f2b20a65e61f, type: 2}
+  - moveBase: {fileID: 11400000, guid: ce5fa9263b9750d48aa354274a483d31, type: 2}
+  - moveBase: {fileID: 11400000, guid: f37b4b8699a31d342bd9462ad788e5d7, type: 2}
+  - moveBase: {fileID: 11400000, guid: 4d9f8cbd18b40e5458ae05bf54c63b0a, type: 2}
+  - moveBase: {fileID: 11400000, guid: f800db3a49b122e4f8096c8e04db383c, type: 2}
+  - moveBase: {fileID: 11400000, guid: e9039b6f5419d764a9b82af19b15d336, type: 2}
+  - moveBase: {fileID: 11400000, guid: 6dab890df7689004f8c5dce7c1d56bf6, type: 2}
+  - moveBase: {fileID: 11400000, guid: 7392532ed3c2ce546b7432cc039d331e, type: 2}
+  - moveBase: {fileID: 11400000, guid: ac948b266964ac04cb9a41965277e125, type: 2}
+  - moveBase: {fileID: 11400000, guid: 04df8ce384f0e0641bb93872104c3d97, type: 2}
+  dropStats: 0100000005000000
+  monsterDrops:
+  - {fileID: 11400000, guid: 51a32bd3a765e47cf9be86bb9dbdc3e9, type: 2}
+  - {fileID: 11400000, guid: 665b7fc84a181441fa0707ad33d995b4, type: 2}
+  - {fileID: 11400000, guid: b2c7f80ab09bd4340936ba9be7a0dc52, type: 2}
+  dropRates:
+  - 0.5
+  - 0.15
+  - 0.05

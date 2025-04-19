@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
+  m_Name: Particle Missle
+  m_EditorClassIdentifier: 
+  name: Particle Missle
+  levelLearned: 0
+  description: A high-speed projectile composed of concentrated energy particles.
+  nextEvolveMove: {fileID: 11400000, guid: 495d4422244e69c499fe7b0718a7917d, type: 2}
+  category: 1
+  effects:
+    boosts: []
+    multiHit: []
+  target: 0
+  power: 68
+  accuracy: 90

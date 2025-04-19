@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
+  m_Name: Leaping Swipe
+  m_EditorClassIdentifier: 
+  name: Leaping Swipe
+  levelLearned: 50
+  description: The user lunges forward with surprising agility, slashing with its
+    claws in a wide arc.
+  effect: 
+  hasEffect: 0
+  nextEvolveMove: {fileID: 11400000, guid: a5861f7d957c62d42b3f2d36d5407f28, type: 2}
+  type: PHYSICAL
+  power: 70
+  accuracy: 100

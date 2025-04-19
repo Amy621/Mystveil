@@ -13,15 +13,18 @@ public class AnimationandMovementController : MonoBehaviour
     bool isMovementPressed;
 
     float rotationFactorPerFrame = 15.0f;
-    float movementSpeed = 6.0f; // Adjust this value as needed
+   [SerializeField] float movementSpeed = 6.0f; 
+[SerializeField] float gravity = -9.81f;
+
 
     void Awake()
     {
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+
         playerInput.CharacterControls.Move.started += onMovementInput;
-            playerInput.CharacterControls.Move.performed += onMovementInput;
+        playerInput.CharacterControls.Move.performed += onMovementInput;
         playerInput.CharacterControls.Move.canceled += onMovementInput;
     }
 
@@ -29,13 +32,13 @@ public class AnimationandMovementController : MonoBehaviour
     {
         currentMovementInput = context.ReadValue<Vector2>();
         currentMovement.x = currentMovementInput.x;
-        currentMovement.z = currentMovementInput.y;  // Invert the Y-axis to fix forward/backward swap
-       // currentMovement.z = -currentMovement.z;
-       
-        isMovementPressed = currentMovementInput.magnitude > 0.1f; // Check if movement input is significant
+        currentMovement.z = currentMovementInput.y; // invert the Y-axis to fix forward/backward swap
+        // currentMovement.z = -currentMovement.z;
+
+        isMovementPressed = currentMovementInput.magnitude > 0.1f; // check if movement input is significant
     }
 
-   void handleRotation()
+    void handleRotation()
     {
         if (isMovementPressed)
         {
@@ -45,8 +48,6 @@ public class AnimationandMovementController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, rotationFactorPerFrame * Time.deltaTime);
         }
     }
-
-
 
     void handleAnimation()
     {
@@ -60,7 +61,6 @@ public class AnimationandMovementController : MonoBehaviour
         {
             animator.SetBool("is_Running", false);
         }
-        
     }
 
     void Update()
@@ -68,7 +68,13 @@ public class AnimationandMovementController : MonoBehaviour
         handleRotation();
         handleAnimation();
 
-        // Apply movement with speed
+        // apply gravity
+        if (!characterController.isGrounded)
+        {
+            currentMovement.y += gravity * Time.deltaTime;
+        }
+
+        // apply movement with speed
         characterController.Move(currentMovement.normalized * movementSpeed * Time.deltaTime);
     }
 
@@ -82,6 +88,3 @@ public class AnimationandMovementController : MonoBehaviour
         playerInput.CharacterControls.Disable();
     }
 }
-
-
-

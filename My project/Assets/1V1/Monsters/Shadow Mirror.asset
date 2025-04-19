@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcda90c83557204db396376b0f2a66f, type: 3}
+  m_Name: Shadow Mirror
+  m_EditorClassIdentifier: 
+  name: Shadow Mirror
+  description: No one knows why the mirror shows up within the forest. Maybe it is
+    a curse left from a mad witch in the past. Shadowy tendrils erupt from its surface
+    and have the ability to reflect certain memories...
+  isSpecialBoss: 0
+  monsterIconImage: {fileID: 0}
+  bossImage: {fileID: 0}
+  monster: {fileID: 5118737223336919839, guid: 68b62b39e87bc9045a5a3cc1765a674f, type: 3}
+  healthPoints: 0
+  attackPoints: 0
+  defensePoints: 0
+  specialAttackPoints: 0
+  specialDefensePoints: 0
+  speed: 0
+  expYield: 300
+  moves: []
+  dropStats: 
+  monsterDrops: []
+  dropRates: []

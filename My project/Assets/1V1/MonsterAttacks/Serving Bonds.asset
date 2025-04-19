@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4172a4ff1f01d2a43bbd159f8509d27d, type: 3}
+  m_Name: Serving Bonds
+  m_EditorClassIdentifier: 
+  name: Serving Bonds
+  description: The user summons magical chains to bind up its foes.
+  nextEvolveMove: {fileID: 11400000, guid: f800db3a49b122e4f8096c8e04db383c, type: 2}
+  type: PHYSICAL
+  power: 45
+  accuracy: 100

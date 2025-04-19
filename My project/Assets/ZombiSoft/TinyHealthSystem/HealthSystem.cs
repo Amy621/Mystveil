@@ -19,14 +19,22 @@ public class HealthSystem : MonoBehaviour
 	public Image currentHealthBar;
 	public Image currentHealthGlobe;
 	public Text healthText;
-	public float hitPoint = 100f;
-	public float maxHitPoint = 100f;
+
+	// keeping track of how much HP the player has
+	public float hitPoint;
+	// max HP
+	private float maxHitPoint;
 
 	public Image currentManaBar;
 	public Image currentManaGlobe;
 	public Text manaText;
-	public float manaPoint = 100f;
-	public float maxManaPoint = 100f;
+
+	// keeping track of how much MP the player has
+	public float manaPoint;
+	// max MP
+	private float maxManaPoint;
+
+	public Player player { get; private set; }
 
 	//==============================================================
 	// Regenerate Health & Mana
@@ -51,6 +59,19 @@ public class HealthSystem : MonoBehaviour
 	//==============================================================
 	void Start()
 	{
+		PlayerDB playerDB = FindObjectOfType<PlayerDB>();
+
+		if (playerDB != null)
+		{
+			player = playerDB.Player;
+
+			hitPoint = player.HP;
+			maxHitPoint = player.MaxHp;
+
+			manaPoint = player.MANA;
+			maxManaPoint = player.MaxMana;
+		}
+
 		UpdateGraphics();
 		timeleft = regenUpdateInterval; 
 	}
@@ -108,13 +129,31 @@ public class HealthSystem : MonoBehaviour
 		healthText.text = hitPoint.ToString("0") + "/" + maxHitPoint.ToString("0");
 	}
 
-	public void TakeDamage(float Damage)
+	public void TakeDamage(EnemyBase monster, MonsterMove move)
 	{
-		hitPoint -= Damage;
+		Debug.Log("Player taking damage!");
+
+		// adding in formula for damage calculation of monster
+		float attack = (move.Base.Category == MoveCategory.Special)? player.SpAttack : player.Attack;
+        float defense = (move.Base.Category == MoveCategory.Special)? monster.SpDefense : monster.Defense;
+
+        float modifiers = Random.Range(0.85f, 1f);
+        float a = (2 * player.Level + 10) / 250f;
+        float d = a * move.Base.Power * ((float) attack / defense) + 2;
+        int damage = Mathf.FloorToInt(d * modifiers);
+
+        Debug.Log("Player took: " + damage + " damage");
+
+		hitPoint -= damage;
 		if (hitPoint < 1)
 			hitPoint = 0;
 
 		UpdateGraphics();
+
+		// change it in the DB too for 1v1 to reflect
+		player.HP -= Mathf.FloorToInt(damage);
+		if (player.HP < 1)
+			player.HP = 0;
 
 		StartCoroutine(PlayerHurts());
 	}
@@ -124,6 +163,10 @@ public class HealthSystem : MonoBehaviour
 		hitPoint += Heal;
 		if (hitPoint > maxHitPoint) 
 			hitPoint = maxHitPoint;
+
+		player.HP += Mathf.FloorToInt(Heal);
+		if (player.HP > player.MaxHp)
+			player.HP = player.MaxHp;
 
 		UpdateGraphics();
 	}
@@ -156,6 +199,10 @@ public class HealthSystem : MonoBehaviour
 		manaPoint -= Mana;
 		if (manaPoint < 1) // Mana is Zero!!
 			manaPoint = 0;
+		
+		player.MANA -= Mathf.FloorToInt(Mana);
+		if (player.MANA < 1)
+			player.MANA = 0;
 
 		UpdateGraphics();
 	}
@@ -165,6 +212,10 @@ public class HealthSystem : MonoBehaviour
 		manaPoint += Mana;
 		if (manaPoint > maxManaPoint) 
 			manaPoint = maxManaPoint;
+		
+		player.MANA += Mathf.FloorToInt(Mana);
+		if (player.MANA > player.MaxMana)
+			player.MANA = player.MaxMana;
 
 		UpdateGraphics();
 	}
