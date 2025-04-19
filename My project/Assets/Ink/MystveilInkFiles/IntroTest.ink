@@ -31,4 +31,17 @@ WALTER: I dunno Liora, this seems a bit larger than your average problem. I've s
 LIORA: Don't worry! Just trust me.
 WALTER: Well okay, just don't hurt yourself. I saw three gem-looking things fly out from the gate.  
 LIORA: Maybe looking closer at the seal can give me more clues.
+    + [Inspect gate]
+        -> inspect_gate
+    + [Go home]
+        -> go_home
+
+== inspect_gate ==
+#down
+Liora: Testing inspecting gate.
+-> END
+
+== go_home ==
+#up
+Liora: Testing going home.
 -> END
