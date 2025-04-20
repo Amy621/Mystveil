@@ -1,19 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
-using TMPro;
+using System.IO;
 
 public class TitleScreenManager : MonoBehaviour
 {
     [Header("Main Menu")]
-    [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private Button startButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button quitButton;
-
+    
     [Header("Save/Load Menu")]
-    [SerializeField] private GameObject saveLoadPanel;
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button backButton;
     [SerializeField] private GameObject noSavesMessage;
@@ -23,20 +22,10 @@ public class TitleScreenManager : MonoBehaviour
     
     private List<SaveSlotUI> saveSlotUIs = new List<SaveSlotUI>();
     private bool hasSaves = false;
-
+    
     private void Awake()
     {
-        // Ensure SaveManager is created
-        if (SaveManager.Instance == null)
-        {
-            GameObject saveManagerObj = new GameObject("SaveManager");
-            saveManagerObj.AddComponent<SaveManager>();
-        }
-    }
-
-    private void Start()
-    {
-        // Set up button listeners
+        // Add button listeners
         if (startButton != null)
             startButton.onClick.AddListener(OnStartButtonClicked);
             
@@ -46,60 +35,91 @@ public class TitleScreenManager : MonoBehaviour
         if (quitButton != null)
             quitButton.onClick.AddListener(QuitGame);
             
-        if (newGameButton != null)
-            newGameButton.onClick.AddListener(StartNewGame);
-            
         if (backButton != null)
             backButton.onClick.AddListener(ShowMainMenu);
             
-        // Initialize UI state
-        ShowMainMenu();
+        if (newGameButton != null)
+            newGameButton.onClick.AddListener(StartNewGame);
     }
-
+    
+    private void Start()
+    {
+        // Initialize save system if not already present
+        if (SimpleSaveSystem.Instance == null)
+        {
+            Debug.LogWarning("SimpleSaveSystem not found in the scene. Create it using Tools > Save System > Create Simple Save System");
+        }
+        
+        // Start with main menu active
+        ShowMainMenu();
+        
+        // Check for save files
+        CheckForSaveFiles();
+    }
+    
     public void ShowMainMenu()
     {
-        if (mainMenuPanel != null)
-            mainMenuPanel.SetActive(true);
+        // Toggle UI elements for main menu
+        if (startButton != null)
+            startButton.gameObject.SetActive(true);
             
-        if (saveLoadPanel != null)
-            saveLoadPanel.SetActive(false);
+        // Hide save slot UI
+        foreach (SaveSlotUI slot in saveSlotUIs)
+        {
+            if (slot != null)
+                Destroy(slot.gameObject);
+        }
+        saveSlotUIs.Clear();
     }
-
+    
     public void OnStartButtonClicked()
     {
-        // Show save/load menu
-        if (mainMenuPanel != null)
-            mainMenuPanel.SetActive(false);
+        // Show save slots or go directly to new game
+        if (startButton != null)
+            startButton.gameObject.SetActive(false);
             
-        if (saveLoadPanel != null)
+        // If no saves, just start new game
+        if (!hasSaves)
         {
-            saveLoadPanel.SetActive(true);
-            
-            // Check for save files
-            CheckForSaveFiles();
+            StartNewGame();
+            return;
         }
+        
+        // Otherwise show save slots
+        CheckForSaveFiles();
     }
     
     private void CheckForSaveFiles()
     {
         // Clear previous save slots
-        foreach (var slotUI in saveSlotUIs)
+        foreach (SaveSlotUI slot in saveSlotUIs)
         {
-            Destroy(slotUI.gameObject);
+            if (slot != null)
+                Destroy(slot.gameObject);
         }
         saveSlotUIs.Clear();
         
-        // Get save slots from SaveManager
-        List<SaveSlot> saveSlots = SaveManager.Instance.GetSaveSlots();
         hasSaves = false;
         
-        // Create UI for each save slot
-        foreach (var saveSlot in saveSlots)
+        // Check if SimpleSaveSystem has a save
+        string savePath = Path.Combine(Application.persistentDataPath, "save.json");
+        if (File.Exists(savePath))
         {
-            if (saveSlot.exists)
+            try
             {
+                string json = File.ReadAllText(savePath);
+                SimpleSaveData saveData = JsonUtility.FromJson<SimpleSaveData>(json);
+                
+                // Create a fake SaveSlot for compatibility
+                SaveSlot saveSlot = new SaveSlot(0);
+                saveSlot.UpdateFromSimpleSaveData(saveData);
+                
                 hasSaves = true;
                 CreateSaveSlotUI(saveSlot);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError("Error reading save file: " + e.Message);
             }
         }
         
@@ -131,20 +151,17 @@ public class TitleScreenManager : MonoBehaviour
         if (loadingIndicator != null)
             loadingIndicator.SetActive(true);
             
-        // Load game data
-        PlayerData playerData = SaveManager.Instance.LoadGame(slotIndex);
-        
-        if (playerData != null)
+        // Load game data using SimpleSaveSystem
+        if (SimpleSaveSystem.Instance != null)
         {
-            // Store the loaded data in a static variable or pass to the game scene
-            GameManager.LoadedPlayerData = playerData;
+            SimpleSaveSystem.Instance.LoadGame();
             
-            // Load the game scene
-            SceneManager.LoadScene("GameScene");
+            // Since SimpleSaveSystem loads directly, we just need to switch to the game scene
+            SceneManager.LoadScene(SimpleSaveSystem.Instance.GetLastLoadedScene());
         }
         else
         {
-            Debug.LogError("Failed to load save data from slot " + slotIndex);
+            Debug.LogError("SimpleSaveSystem not found when trying to load game");
             if (loadingIndicator != null)
                 loadingIndicator.SetActive(false);
         }
@@ -152,20 +169,7 @@ public class TitleScreenManager : MonoBehaviour
     
     private void StartNewGame()
     {
-        // Create a new player data
-        PlayerData newPlayerData = new PlayerData
-        {
-            playerName = "New Player",
-            level = 1,
-            health = 100,
-            maxHealth = 100,
-            experiencePoints = 0
-        };
-        
-        // Store in static variable or save to a slot
-        GameManager.LoadedPlayerData = newPlayerData;
-        
-        // Load the game scene
+        // For new game, just load the starting scene
         SceneManager.LoadScene("GameScene");
     }
     

@@ -8,6 +8,7 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField] private string playerName = "Hero";
     
     [Header("Stats")]
+    [SerializeField] private PlayerStats playerStats;
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float currentHealth;
     [SerializeField] private int charisma = 10;
@@ -113,9 +114,9 @@ public class PlayerCharacter : MonoBehaviour
         OnLevelChanged?.Invoke();
         
         // Save on level up
-        if (SaveManager.Instance != null)
+        if (SimpleSaveSystem.Instance != null)
         {
-            SaveManager.Instance.SavePlayerData(PlayerPrefs.GetString("ActivePlayerID", "defaultPlayer"));
+            SimpleSaveSystem.Instance.SaveGame();
         }
     }
     
@@ -146,9 +147,9 @@ public class PlayerCharacter : MonoBehaviour
         OnStatsChanged?.Invoke();
         
         // Save after charisma increase
-        if (SaveManager.Instance != null)
+        if (SimpleSaveSystem.Instance != null)
         {
-            SaveManager.Instance.SavePlayerData(PlayerPrefs.GetString("ActivePlayerID", "defaultPlayer"));
+            SimpleSaveSystem.Instance.SaveGame();
         }
     }
     
@@ -160,5 +161,11 @@ public class PlayerCharacter : MonoBehaviour
                $"Experience: {experiencePoints}/{experienceToNextLevel}\n" +
                $"Charisma: {charisma}\n" +
                $"Gold: {gold}";
+    }
+
+    // Add this method to access the PlayerStats scriptable object
+    public PlayerStats GetPlayerStats()
+    {
+        return playerStats;
     }
 } 

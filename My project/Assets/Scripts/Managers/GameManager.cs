@@ -16,9 +16,9 @@ public class GameManager : MonoBehaviour
         set 
         { 
             hasCompletedGame = value;
-            if (value && SaveManager.Instance != null)
+            if (value && SimpleSaveSystem.Instance != null)
             {
-                SaveManager.Instance.SavePlayerData(PlayerPrefs.GetString("ActivePlayerID", "defaultPlayer"));
+                SimpleSaveSystem.Instance.SaveGame();
             }
         } 
     }
@@ -39,10 +39,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         // Initialize systems
-        if (SaveManager.Instance == null)
+        if (SimpleSaveSystem.Instance == null)
         {
-            GameObject saveManagerObj = new GameObject("SaveManager");
-            saveManagerObj.AddComponent<SaveManager>();
+            Debug.LogWarning("SimpleSaveSystem not found. Make sure it's added to your title screen.");
+            // SimpleSave system should be added to the title screen as a prefab
         }
     }
     
@@ -58,9 +58,9 @@ public class GameManager : MonoBehaviour
             UnlockCompletionRewards();
             
             // Save game completion
-            if (SaveManager.Instance != null)
+            if (SimpleSaveSystem.Instance != null)
             {
-                SaveManager.Instance.SavePlayerData(PlayerPrefs.GetString("ActivePlayerID", "defaultPlayer"));
+                SimpleSaveSystem.Instance.SaveGame();
             }
         }
     }
@@ -100,14 +100,11 @@ public class GameManager : MonoBehaviour
     }
     
     // New save game functionality
-    public void SaveGame(int slotIndex)
+    public void SaveGame()
     {
-        if (LoadedPlayerData != null)
+        if (SimpleSaveSystem.Instance != null)
         {
-            // Update any runtime data that might have changed
-            // For example, playtime, current position, etc.
-            
-            SaveManager.Instance.SaveGame(slotIndex, LoadedPlayerData);
+            SimpleSaveSystem.Instance.SaveGame();
         }
     }
 } 

@@ -65,9 +65,9 @@ public class QuestManager : MonoBehaviour
         OnQuestStarted?.Invoke(newQuest);
         
         // When a quest starts, save player data
-        if (SaveManager.Instance != null)
+        if (SimpleSaveSystem.Instance != null)
         {
-            SaveManager.Instance.OnQuestUpdated();
+            SimpleSaveSystem.Instance.SaveGame();
         }
         
         return true;
@@ -94,9 +94,9 @@ public class QuestManager : MonoBehaviour
             }
             
             // Save after any quest update
-            if (SaveManager.Instance != null)
+            if (SimpleSaveSystem.Instance != null)
             {
-                SaveManager.Instance.OnQuestUpdated();
+                SimpleSaveSystem.Instance.SaveGame();
             }
         }
     }
@@ -120,9 +120,9 @@ public class QuestManager : MonoBehaviour
         OnQuestCompleted?.Invoke(quest);
         
         // Save after quest completion
-        if (SaveManager.Instance != null)
+        if (SimpleSaveSystem.Instance != null)
         {
-            SaveManager.Instance.OnQuestUpdated();
+            SimpleSaveSystem.Instance.SaveGame();
         }
     }
     

@@ -45,9 +45,9 @@ public class EnemyDropManager : MonoBehaviour
         Debug.Log($"Recorded drop for {enemyID}, value: {dropValue}, total: {enemyDropStats[enemyID]}");
         
         // Trigger save after recording drop
-        if (SaveManager.Instance != null)
+        if (SimpleSaveSystem.Instance != null)
         {
-            SaveManager.Instance.SavePlayerData(PlayerPrefs.GetString("ActivePlayerID", "defaultPlayer"));
+            SimpleSaveSystem.Instance.SaveGame();
         }
     }
     

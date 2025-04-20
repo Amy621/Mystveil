@@ -224,6 +224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7d0f162659733340bbc1794bfa9b011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 6
+  gravity: -9.81
 --- !u!143 &7426822
 CharacterController:
   m_ObjectHideFlags: 0
@@ -266,12 +268,10 @@ MonoBehaviour:
   currentHealthGlobe: {fileID: 1972403613990787666}
   healthText: {fileID: 5510382442414846343}
   hitPoint: 100
-  maxHitPoint: 100
   currentManaBar: {fileID: 5510382442269482179}
   currentManaGlobe: {fileID: 1972403613490192540}
   manaText: {fileID: 5510382441713028049}
   manaPoint: 100
-  maxManaPoint: 100
   Regenerate: 1
   regen: 0.1
   regenUpdateInterval: 1
@@ -410,15 +410,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bc1642bf7684143bdb247d07ff638a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 5
-  attackDamage: 20
+  Ability1Canvas: {fileID: 0}
+  Ability1Skillshot: {fileID: 0}
+  Ability2Canvas: {fileID: 0}
+  Ability2Skillshot: {fileID: 0}
+  maxAbilityDistance: 7
+  ability1Radius: 3
+  ability2Angle: 60
+  ability2Range: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
-  attackPoint: {fileID: 0}
   audioSource: {fileID: 0}
   attackSound: {fileID: 0}
-  attackCooldown: 1
 --- !u!54 &7426828
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -458,10 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f3063b7ecafdb94684f75c741de1556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.2
-  _jumpForce: 200
-  _rb: {fileID: 7426828}
-  _groundCheckDistance: 1
+  characterController: {fileID: 0}
 --- !u!136 &7426830
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -525,6 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: Liora
+  playerStats: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
   charisma: 10
@@ -532,6 +534,19 @@ MonoBehaviour:
   experiencePoints: 0
   experienceToNextLevel: 100
   gold: 0
+--- !u!114 &7426834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7426819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1770154a9234fbea254dda56efaabc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerProvider: {fileID: 0}
 --- !u!1001 &7872254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5954,53 +5969,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b83247e7d4e0a3349a19ac9ceb4ab3ba, type: 3}
---- !u!1 &284037466
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 284037468}
-  - component: {fileID: 284037467}
-  m_Layer: 0
-  m_Name: SaveSystemSetup
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &284037467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 284037466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01afded94c20444dfa82c62e83e9f3ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saveSystemPrefab: {fileID: 5220886350948592928, guid: db60149937f4f402a965239b9343f99e, type: 3}
-  autoLoadOnStart: 1
-  defaultPlayerID: Player
---- !u!4 &284037468
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 284037466}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &286772566
 GameObject:
   m_ObjectHideFlags: 0
@@ -7384,15 +7352,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bc1642bf7684143bdb247d07ff638a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 5
-  attackDamage: 20
+  Ability1Canvas: {fileID: 0}
+  Ability1Skillshot: {fileID: 0}
+  Ability2Canvas: {fileID: 0}
+  Ability2Skillshot: {fileID: 0}
+  maxAbilityDistance: 7
+  ability1Radius: 3
+  ability2Angle: 60
+  ability2Range: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
-  attackPoint: {fileID: 406738007}
   audioSource: {fileID: 645318968}
   attackSound: {fileID: 8300000, guid: c1acb8a97187f4683b0c4959b999f791, type: 3}
-  attackCooldown: 1
 --- !u!135 &406738009
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -17764,6 +17736,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6cea7c77251e6fc41ad355a32f75f3ee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7426831}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6cea7c77251e6fc41ad355a32f75f3ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7426834}
   m_SourcePrefab: {fileID: 100100000, guid: 6cea7c77251e6fc41ad355a32f75f3ee, type: 3}
 --- !u!1001 &959498719
 PrefabInstance:
@@ -28611,7 +28586,6 @@ GameObject:
   - component: {fileID: 1571678237}
   - component: {fileID: 1571678236}
   - component: {fileID: 1571678235}
-  - component: {fileID: 1571678239}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -28705,21 +28679,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1571678239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571678234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 261f48970ffb140a4861acc330cc19ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questLogList: {fileID: 451638629}
-  questListContent: {fileID: 832790839}
-  questEntryPrefab: {fileID: 2765823148026134158, guid: 5306eed869ff749049b14850aed4e2b4, type: 3}
 --- !u!4 &1571833217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4166737424974280, guid: c77201b26fc729742973d2d4e601743f, type: 3}
@@ -39757,7 +39716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3824698432876452195, guid: 167bd003a5c0a49eab2a285a2c79188d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4854193261144390206, guid: 167bd003a5c0a49eab2a285a2c79188d, type: 3}
       propertyPath: m_IsActive
@@ -39844,4 +39803,3 @@ SceneRoots:
   - {fileID: 1705511213}
   - {fileID: 2167628273240383716}
   - {fileID: 1381691875}
-  - {fileID: 284037468}
