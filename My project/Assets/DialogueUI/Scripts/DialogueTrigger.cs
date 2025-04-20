@@ -14,9 +14,10 @@ public class DialogueTrigger : MonoBehaviour
 
     private Story currentStory;
     private DialogueManager dialogueManager;
-    private bool isTyping = false;
+    private bool isTyping;
     private Coroutine typeCoroutine;
     private float typingSpeed = 0.04f;
+    private bool waitingForInput = false;
 
     void Start()
     {
@@ -58,11 +59,22 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
+    private bool canAdvanceDialogue = false;
     public void StartDialogueInternal(Story story)
     {
+        Debug.Log("DialogueTrigger: StartDialogueInternal called");
         currentStory = story;
         dialoguePanel.SetActive(true);
+        waitingForInput = true;
+        // Introduce a small delay or set a flag after a frame
+        StartCoroutine(SetCanAdvanceDialogue());
         DisplayNextLine();
+    }
+
+    System.Collections.IEnumerator SetCanAdvanceDialogue()
+    {
+        yield return null; // Wait for one frame
+        canAdvanceDialogue = true;
     }
 
     void EndDialogueInternal()
@@ -95,6 +107,7 @@ public class DialogueTrigger : MonoBehaviour
             }
             else if (currentStory != null && !isTyping)
             {
+                waitingForInput = false;
                 if (currentStory.canContinue && currentStory.currentChoices.Count == 0)
                 {
                     DisplayNextLine();
@@ -116,7 +129,9 @@ public class DialogueTrigger : MonoBehaviour
 
     void DisplayNextLine()
     {
+        Debug.Log("In display next line");
         currentFullStoryLine = currentStory.Continue();
+        Debug.Log(currentFullStoryLine);
         string speaker = "";
         int colonIndex = currentFullStoryLine.IndexOf(':');
         if (colonIndex > 0)
@@ -139,6 +154,7 @@ public class DialogueTrigger : MonoBehaviour
             if (button != null)
             {
                 button.gameObject.SetActive(false);
+                button.onClick.RemoveAllListeners();
             }
         }
         //choiceButtons.Clear();

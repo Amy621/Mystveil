@@ -97,8 +97,6 @@ public class GameController : MonoBehaviour
         worldCamera.gameObject.SetActive(true);
         healthGlobes.gameObject.SetActive(false);
         minimap.SetActive(false);
-        dialogueTrigger.dialoguePanel.SetActive(true); // Make sure the dialogue UI is visible
-        dialogueTrigger.StartDialogueInternal(currentStory); // Tell the trigger to start displaying
     }
 
     void OnDialogueEnded()
