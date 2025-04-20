@@ -76,6 +76,25 @@ public class HealthSystem : MonoBehaviour
 		timeleft = regenUpdateInterval; 
 	}
 
+	public void UpdateHealthOutsideOneVOne()
+	{
+		PlayerDB playerDB = FindObjectOfType<PlayerDB>();
+
+		if (playerDB != null)
+		{
+			player = playerDB.Player;
+
+			hitPoint = player.HP;
+			maxHitPoint = player.MaxHp;
+
+			manaPoint = player.MANA;
+			maxManaPoint = player.MaxMana;
+		}
+
+		UpdateGraphics();
+		timeleft = regenUpdateInterval; 
+	}
+
 	//==============================================================
 	// Update
 	//==============================================================

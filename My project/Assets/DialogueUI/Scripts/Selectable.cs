@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Selectable : MonoBehaviour
 {
-    //public bool affectsCharisma { get; set; }
     public object element;
     public void Decide()
     {
-        DialogueManager.SetDecision(element);
+        DialogueTrigger.SetDecision(element);
     }
 }

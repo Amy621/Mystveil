@@ -55,6 +55,7 @@ public class GameController : MonoBehaviour
         battleSystem.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true);
         healthGlobes.gameObject.SetActive(true);
+        healthGlobes.UpdateHealthOutsideOneVOne();
         minimap.SetActive(true);
 
         foreach (var script in playerScripts)
