@@ -120,15 +120,5 @@ public class RecipeDisplay : MonoBehaviour
         Debug.Log("Crafted: " + item.name);
         UpdateRecipeDisplay(item);
     }
-    else
-    {
-        Debug.Log("Not enough ingredients to craft: " + item.name);
-        Debug.Log("Have: " + Inventory.Singleton.itemAmts[recipe.ingredient1] + " of " + recipe.ingredient1.name + ", " + Inventory.Singleton.itemAmts[recipe.ingredient1] + " of " + recipe.ingredient2.name);
-        if (recipe.amount3 > 0)
-        {
-            Debug.Log("Need: " + recipe.amount3 + " of " + recipe.ingredient3.name);
-        }
-        
-    }
 }
 }

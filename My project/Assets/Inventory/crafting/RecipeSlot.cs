@@ -53,4 +53,5 @@ public class RecipeSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         else
             recipeDisplay.UpdateRecipeDisplay(Crafting.instance.curSelected);
     }
+    
 }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +10,7 @@ public class Inventory : MonoBehaviour
     public Dictionary<Item, int> itemAmts = new Dictionary<Item, int>(); //all items in the inventory and their amounts
     public static Inventory Singleton; //only one instance of the inventory can exist
     public static InventoryItem carriedItem; //item currently being dragged in inventory
-    [SerializeField] InventorySlot[] inventorySlots; //all slots in the inventory/armor/hotbar
+    [SerializeField] public InventorySlot[] inventorySlots; //all slots in the inventory/armor/hotbar
 
     [SerializeField] Transform curCarryingTransform; //no clue, transform is a ui thing idk
     [SerializeField] InventoryItem itemPrefab;
@@ -23,8 +22,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] Button giveItemButton; //button to give item for testing
 
     public GameObject obj;
-
-    private bool isActive = false;
+    public Sprite highlightSprite;
+    public bool isActive = false;
 
     void Awake()
     {
@@ -86,7 +85,6 @@ public class Inventory : MonoBehaviour
             isActive = !isActive;
             obj.SetActive(isActive);
         }
-
     }
 
     public int getSlotNum(){
@@ -95,7 +93,8 @@ public class Inventory : MonoBehaviour
     //set carried item to be the item in the slot
     public void SetCarriedItem(InventoryItem item) //"item" is the item in the slot to be carried
     {
-
+        if(item != null && item.activeSlot.myTag != SlotTag.None)
+            item.amountText.gameObject.SetActive(true); 
         if (carriedItem != null)
         {
             if (item.activeSlot.myTag != SlotTag.None && item.activeSlot.myTag != carriedItem.myItem.slotTag)
@@ -128,6 +127,8 @@ public class Inventory : MonoBehaviour
             carriedItem.activeSlot.myItem = null; 
             carriedItem.canvasGroup.blocksRaycasts = false; //disable raycasting for carried item
             carriedItem.transform.SetParent(curCarryingTransform); //set carried item to follow cursor
+            if(item.activeSlot != null && item.activeSlot.myTag != SlotTag.None)
+                item.activeSlot.changeImage();
             Debug.Log("now carrying " + carriedItem.amount + " of " + carriedItem.myItem); //debug log to show carried item
         }
     }
@@ -136,8 +137,16 @@ public class Inventory : MonoBehaviour
     public void EquipEquipment(SlotTag tagm, InventoryItem item = null)
     {
         //null item means take it off
-
-
+        if(item == null){
+            //remove stat
+            //activate text
+            
+        }
+        else{
+            //add stat
+            //deactivate text
+            item.amountText.gameObject.SetActive(false);
+        }
 
         //apply stats
     }
@@ -219,7 +228,7 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        if(item){
+        if(item && slotNum == -1){ //crafting
             itemAmts[item] -= numRemove;
             for(int i = 0; i < inventorySlots.Length; i++){
                 if(inventorySlots[i].myItem != null && inventorySlots[i].myItem.myItem == item){
@@ -237,7 +246,84 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
+
+        if(slotNum > -1){ //use item
+            if(item == null)
+                item = inventorySlots[slotNum].myItem.myItem;
+            //invalid range
+            if(slotNum >= inventorySlots.Length || slotNum < 0){ 
+                Debug.Log("slotNum out of range");
+                return;
+            }
+            //slot is empty
+            if(inventorySlots[slotNum].myItem == null){
+                Debug.Log("slot is empty");
+                return;
+            }
+            //item not usable
+            if(item.itemType != ItemType.Potion){
+                Debug.Log("item not usable");
+                return;
+            }
+            InventorySlot slot = inventorySlots[slotNum];
+            if(numRemove == -1) numRemove = 1;
+
+            //not enough items to remove
+            if(!itemAmts.ContainsKey(item) || itemAmts[item] < numRemove){
+                Debug.Log("not enough items to remove");
+                return;
+            }
+            
+            itemAmts[item] -= numRemove;
+            if(slot.myItem.amount > numRemove){
+                slot.myItem.amount-= numRemove;
+                slot.myItem.SetText();
+            }else{
+                slot.myItem.transform.SetParent(null);
+                Destroy(slot.myItem);
+                slot.myItem = null;
+            }
+        }
     }
 
+    public void view1v1(){
+        isActive = !isActive;
+        if(isActive){ //now active
+            obj.SetActive(isActive);
+            for(int i = 0; i < inventorySlots.Length; i++){
+                if(inventorySlots[i].myItem != null){
+                    //make all unusable items transparent
+                    if(inventorySlots[i].myItem.myItem.itemType != ItemType.Potion){
+                        Image icon = inventorySlots[i].myItem.itemIcon;
+                        Color c = icon.color;
+                        c.a = 0.25f; // Set to 25% opacity
+                        icon.color = c;
+                    }
+                    //change background of usable items
+                    else{
+                        Image slotImage = inventorySlots[i].GetComponentInChildren<Image>();
+                        slotImage.sprite = highlightSprite; 
+                    }
+                }
+            }
+        }
+        else{ //make inactive, everything back to normal
+            for(int i = 0; i < inventorySlots.Length; i++){
+                if(inventorySlots[i].myItem != null){
+                    if(inventorySlots[i].myItem.myItem.itemType != ItemType.Potion){
+                        Image icon = inventorySlots[i].myItem.itemIcon;
+                        Color c = icon.color;
+                        c.a = 1f; // Full opacity
+                        icon.color = c;
+                    }
+                    else{
+                        Image slotImage = inventorySlots[i].GetComponentInChildren<Image>();
+                        slotImage.sprite = inventorySlots[i].defaultSprite; 
+                    }
+                }
+            }
+            obj.SetActive(isActive);
+        }
+    }
 
 }

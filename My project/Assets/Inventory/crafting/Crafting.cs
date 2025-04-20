@@ -48,6 +48,7 @@ public class Crafting : MonoBehaviour
     public void categorizeCraftable(){
         foreach (Item item in items)
         {
+            craftable[item] = false;
             Recipe recipe = item.recipe;
             if(Inventory.Singleton.itemAmts.ContainsKey(recipe.ingredient1) && recipe.amount1 <= Inventory.Singleton.itemAmts[recipe.ingredient1])
             {
@@ -56,17 +57,8 @@ public class Crafting : MonoBehaviour
                     if((recipe.amount3 == 0)|| (Inventory.Singleton.itemAmts.ContainsKey(recipe.ingredient3) && recipe.amount3 <= Inventory.Singleton.itemAmts[recipe.ingredient3]))
                     {
                         craftable[item] = true;
-                    }else
-                    {
-                        craftable[item] = false;
                     }
-                }else
-                {
-                    craftable[item] = false;
                 }
-            }else
-            {
-                craftable[item] = false;
             }
         }
     }
