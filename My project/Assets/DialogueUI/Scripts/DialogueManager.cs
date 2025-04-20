@@ -24,7 +24,7 @@ public class DialogueManager : MonoBehaviour
         if (mainInkFile != null)
         {
             mainStory = new Story(mainInkFile.text);
-            mainStory.variablesState["player_charisma"] = player_charisma;
+            player_charisma = (int) mainStory.variablesState["player_charisma"];
         }
         else
         {
@@ -37,9 +37,9 @@ public class DialogueManager : MonoBehaviour
         return mainStory;
     }
 
-    public void UpdateGlobalVariable(string variableName, int newValue)
+    public void UpdateGlobalVariable()
     {
-        mainStory.variablesState[variableName] = newValue;
-        Debug.Log($"Ink variable '{variableName}' updated to: {newValue}");
+        player_charisma = (int) mainStory.variablesState["player_charisma"];
+        Debug.Log($"Ink variable updated to: {player_charisma}");
     }
 }

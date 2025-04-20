@@ -25,6 +25,7 @@ public class DialogueTrigger : MonoBehaviour
 
     public void Start()
     {
+        gameObject.SetActive(true);
         story = new Story(inkFile.text);
         nametag = textBox.transform.GetChild(0).GetComponent<TMP_Text>();
         message = textBox.transform.GetChild(1).GetComponent<TMP_Text>();
@@ -65,6 +66,7 @@ public class DialogueTrigger : MonoBehaviour
     private void FinishDialogue()
     {
         Debug.Log("End of Dialogue!");
+        gameObject.SetActive(false);
     }
 
     void AdvanceDialogue()

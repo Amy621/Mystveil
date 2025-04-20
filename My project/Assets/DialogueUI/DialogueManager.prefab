@@ -287,7 +287,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2174870035564011343
 RectTransform:
   m_ObjectHideFlags: 0
@@ -384,16 +384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45401a30965a82f4d91f1b580c9a081e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainInkFile: {fileID: 0}
-  inkFile: {fileID: 4900000, guid: 5bd789f87a57f214daae069c917ac753, type: 3}
-  textBox: {fileID: 8706614140917958674}
-  optionPanel: {fileID: 4803423165461460998}
-  optionButtons:
-  - {fileID: 1166962810233308072}
-  - {fileID: 2109030917607189536}
-  - {fileID: 5383293210083454610}
+  mainInkFile: {fileID: 4900000, guid: 8b837b5a3b820734fb25d46861369a86, type: 3}
   player_charisma: 0
-  textSpeed: 0.04
 --- !u!1 &3350666784375235589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,13 +1352,14 @@ GameObject:
   - component: {fileID: 6726353058193867090}
   - component: {fileID: 2582104272180394007}
   - component: {fileID: 4027608523281526691}
+  - component: {fileID: 3338541543134795099}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6726353058193867090
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1427,3 +1420,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3338541543134795099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8706614140917958674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fba1dbcefe86b545948a41117e214fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inkFile: {fileID: 0}
+  textBox: {fileID: 4411516561185104702}
+  optionPanel: {fileID: 4803423165461460998}
+  optionButtons:
+  - {fileID: 1166962810233308072}
+  - {fileID: 2109030917607189536}
+  - {fileID: 5383293210083454610}
+  textSpeed: 0.04
