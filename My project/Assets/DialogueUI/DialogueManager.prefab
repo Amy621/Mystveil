@@ -385,7 +385,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainInkFile: {fileID: 4900000, guid: 8b837b5a3b820734fb25d46861369a86, type: 3}
-  player_charisma: 0
 --- !u!1 &3350666784375235589
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,7 +672,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2729760018716074464
 RectTransform:
   m_ObjectHideFlags: 0
@@ -794,7 +793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7880320681863891821
 RectTransform:
   m_ObjectHideFlags: 0
@@ -912,7 +911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8147162884469993558
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1029,7 +1028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5690785926663517231
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1359,7 +1358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6726353058193867090
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1432,11 +1431,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fba1dbcefe86b545948a41117e214fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkFile: {fileID: 0}
-  textBox: {fileID: 4411516561185104702}
-  optionPanel: {fileID: 4803423165461460998}
-  optionButtons:
+  dialoguePanel: {fileID: 8706614140917958674}
+  nametagText: {fileID: 3771028272308449476}
+  messageText: {fileID: 1823140385711463362}
+  choicesPanel: {fileID: 4803423165461460998}
+  choiceButtons:
   - {fileID: 1166962810233308072}
   - {fileID: 2109030917607189536}
   - {fileID: 5383293210083454610}
-  textSpeed: 0.04

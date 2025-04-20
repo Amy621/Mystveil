@@ -63,6 +63,7 @@ public class Camera_pan : MonoBehaviour
         _camera = GetComponentInChildren<Camera>();
         // Ensure near clipping plane is appropriate for camera height
         _camera.nearClipPlane = -30f; // Prevents nearby clipping
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()

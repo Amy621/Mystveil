@@ -1,146 +1,208 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
-using System;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public TextAsset inkFile;
-    public GameObject textBox;
-    public GameObject optionPanel;
-    public List<Button> optionButtons;
-    static Story story;
-    TMP_Text nametag;
-    TMP_Text message;
-    int indexOfChoiceSelected;
-    static Choice choiceSelected;
+    public GameObject dialoguePanel;
+    public TMP_Text nametagText;
+    public TMP_Text messageText;
+    public GameObject choicesPanel;
+    public Button[] choiceButtons = new Button[3];
 
-    public float textSpeed = 0.04f;
+    private Story currentStory;
+    private DialogueManager dialogueManager;
     private bool isTyping = false;
-    private string currentFullSentence = "";
     private Coroutine typeCoroutine;
+    private float typingSpeed = 0.04f;
 
-    public void Start()
+    void Start()
     {
-        gameObject.SetActive(true);
-        story = new Story(inkFile.text);
-        nametag = textBox.transform.GetChild(0).GetComponent<TMP_Text>();
-        message = textBox.transform.GetChild(1).GetComponent<TMP_Text>();
-        choiceSelected = null;
+        dialoguePanel.SetActive(false);
+        choicesPanel.SetActive(false);
+        dialogueManager = FindObjectOfType<DialogueManager>();
 
-        AdvanceDialogue(); // Start the first line of dialogue
+        if (dialogueManager != null)
+        {
+            dialogueManager.OnDialogueStarted += StartDialogueInternal;
+            dialogueManager.OnDialogueEnded += EndDialogueInternal;
+        }
+        else
+        {
+            Debug.LogError("DialogueManager not found in the scene!");
+        }
+
+        // Ensure the choices panel is initially inactive
+        if (choicesPanel != null)
+        {
+            choicesPanel.SetActive(false);
+        }
+
+        // Initially hide all assigned choice buttons
+        foreach (var button in choiceButtons)
+        {
+            if (button != null)
+            {
+                button.gameObject.SetActive(false);
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TriggerDialogue(string interactionName)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (dialogueManager != null)
         {
-            if (isTyping)
-            {
-                // If currently typing, finish the sentence immediately
-                StopCoroutine(typeCoroutine);
-                message.text = currentFullSentence.Substring(currentFullSentence.IndexOf(":", StringComparison.Ordinal) + 1);
-                isTyping = false;
-            }
-            else if (story.canContinue)
-            {
-                AdvanceDialogue();
+            dialogueManager.StartDialogue(interactionName);
+        }
+    }
 
-                // Are there any choices?
-                if (story.currentChoices.Count != 0)
+    public void StartDialogueInternal(Story story)
+    {
+        currentStory = story;
+        dialoguePanel.SetActive(true);
+        DisplayNextLine();
+    }
+
+    void EndDialogueInternal()
+    {
+        Debug.Log("Dialogue Trigger: EndDialogueInteral called");
+        currentStory = null;
+        dialoguePanel.SetActive(false);
+        choicesPanel.SetActive(false);
+        // Hide all assigned choice buttons on dialogue end
+        foreach (var button in choiceButtons)
+        {
+            if (button != null)
+            {
+                button.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void Update()
+    {
+        if (dialoguePanel.activeSelf && Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isTyping && typeCoroutine != null)
+            {
+                // Auto-complete the current line
+                StopCoroutine(typeCoroutine);
+                messageText.text = currentFullStoryLine;
+                isTyping = false;
+                DisplayChoices();
+            }
+            else if (currentStory != null && !isTyping)
+            {
+                if (currentStory.canContinue && currentStory.currentChoices.Count == 0)
                 {
-                    StartCoroutine(ShowChoices());
+                    DisplayNextLine();
+                }
+                else if (currentStory.currentChoices.Count > 0)
+                {
+                    // Do nothing here, choices are being displayed
+                }
+                else if (!currentStory.canContinue && currentStory.currentChoices.Count == 0)
+                {
+                    // Dialogue has ended
+                    dialogueManager.EndDialogue();
                 }
             }
-            else
-            {
-                FinishDialogue();
-            }
         }
     }
 
-    private void FinishDialogue()
-    {
-        Debug.Log("End of Dialogue!");
-        gameObject.SetActive(false);
-    }
+    private string currentFullStoryLine;
 
-    void AdvanceDialogue()
+    void DisplayNextLine()
     {
-        currentFullSentence = story.Continue();
-        nametag.text = currentFullSentence.Substring(0, currentFullSentence.IndexOf(":", StringComparison.Ordinal));
+        currentFullStoryLine = currentStory.Continue();
+        string speaker = "";
+        int colonIndex = currentFullStoryLine.IndexOf(':');
+        if (colonIndex > 0)
+        {
+            speaker = currentFullStoryLine.Substring(0, colonIndex).Trim();
+            currentFullStoryLine = currentFullStoryLine.Substring(colonIndex + 1).Trim();
+        }
 
+        nametagText.text = speaker;
         StopAllCoroutines();
-        typeCoroutine = StartCoroutine(TypeSentence(currentFullSentence.Substring(currentFullSentence.IndexOf(":", StringComparison.Ordinal) + 1)));
-    }
-
-    IEnumerator TypeSentence(string sentence)
-    {
-        message.text = "";
-        isTyping = true;
-
-        int currentCharacter = 0;
-        while (currentCharacter < sentence.Length)
+        messageText.text = ""; // Clear previous text before starting to type
+        typeCoroutine = StartCoroutine(TypeText(currentFullStoryLine));
+        choicesPanel.SetActive(false);
+        if (choicesPanel != null)
         {
-            string visibleText = sentence.Substring(0, currentCharacter);
-            string invisibleText = sentence.Substring(currentCharacter, 1);
-            message.text = visibleText + "<color=#00000000>" + invisibleText + "</color>";
-
-            currentCharacter++;
-            yield return new WaitForSeconds(textSpeed);
+            choicesPanel.SetActive(false);
         }
-
-        message.text = sentence;
-        isTyping = false;
-        yield return null;
-    }
-
-    IEnumerator ShowChoices()
-    {
-        Debug.Log("There are choices that need to be made here!");
-        List<Choice> _choices = story.currentChoices;
-
-        for (int i = 0; i < _choices.Count; i++)
+        foreach (var button in choiceButtons)
         {
-            Button optionButton = optionButtons[i];
-            optionButton.gameObject.SetActive(true);
-            optionButton.GetComponentInChildren<TMP_Text>().text = _choices[i].text; // Access TMP_Text in children
-            Selectable selectable = optionButton.gameObject.AddComponent<Selectable>();
-            selectable.element = _choices[i];
-            optionButton.onClick.AddListener(() => { selectable.Decide(); });
-        }
-
-        optionPanel.SetActive(true);
-        yield return new WaitUntil(() => { return choiceSelected != null; });
-        AdvanceFromDecision();
-    }
-
-    public static void SetDecision(object element)
-    {
-        choiceSelected = (Choice)element;
-        story.ChooseChoiceIndex(choiceSelected.index);
-    }
-
-    void AdvanceFromDecision()
-    {
-        optionPanel.SetActive(false);
-        for (int i = 0; i < optionButtons.Count; i++)
-        {
-            Button optionButton = optionButtons[i];
-            optionButton.gameObject.SetActive(false);
-            Selectable script = optionButton.GetComponent<Selectable>();
-            if (script != null)
+            if (button != null)
             {
-                Destroy(script);
+                button.gameObject.SetActive(false);
             }
-            optionButton.onClick.RemoveAllListeners(); // Clean up listeners
         }
+        //choiceButtons.Clear();
+    }
 
-        choiceSelected = null;
-        AdvanceDialogue();
+    System.Collections.IEnumerator TypeText(string line)
+    {
+        messageText.text = "";
+        isTyping = true;
+        foreach (char character in line.ToCharArray())
+        {
+            messageText.text += character;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        isTyping = false;
+        DisplayChoices();
+    }
+
+    void DisplayChoices()
+    {
+        List<Choice> currentChoices = currentStory.currentChoices;
+        if (currentChoices.Count > 0 && choicesPanel != null && choiceButtons.Length == 3)
+        {
+            choicesPanel.SetActive(true);
+
+            for (int i = 0; i < choiceButtons.Length; i++)
+            {
+                if (i < currentChoices.Count && choiceButtons[i] != null)
+                {
+                    Choice choice = currentChoices[i];
+                    TMP_Text buttonText = choiceButtons[i].GetComponentInChildren<TMP_Text>();
+                    if (buttonText != null)
+                    {
+                        buttonText.text = choice.text;
+                    }
+                    int choiceIndex = i; // Capture the index for the listener
+                    choiceButtons[i].onClick.AddListener(() => MakeChoice(choiceIndex));
+                    choiceButtons[i].gameObject.SetActive(true);
+                }
+                else if (choiceButtons[i] != null)
+                {
+                    choiceButtons[i].gameObject.SetActive(false); // Hide unused buttons
+                    choiceButtons[i].onClick.RemoveAllListeners(); // Clear listeners for unused buttons
+                }
+            }
+        }
+        else if (choicesPanel != null)
+        {
+            choicesPanel.SetActive(false); // Hide the panel if no choices or not enough buttons
+            // Ensure all buttons are hidden if no choices
+            foreach (var button in choiceButtons)
+            {
+                if (button != null)
+                {
+                    button.gameObject.SetActive(false);
+                    button.onClick.RemoveAllListeners();
+                }
+            }
+        }
+    }
+
+    public void MakeChoice(object choiceIndex)
+    {
+        currentStory.ChooseChoiceIndex((int)choiceIndex);
+        DisplayNextLine();
     }
 }

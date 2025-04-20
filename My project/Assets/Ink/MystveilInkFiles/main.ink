@@ -3,8 +3,8 @@ INCLUDE ask_about_gate.ink
 INCLUDE back_to_town.ink
 INCLUDE close_book.ink
 INCLUDE found_intro_herb.ink
-INCLUDE talk_to_gate.ink
 INCLUDE put_gem_in_gate.ink
+INCLUDE talk_to_gate.ink
 INCLUDE NPC_gale.ink
 INCLUDE NPC_hecuba.ink
 INCLUDE NPC_hecate.ink
@@ -45,3 +45,4 @@ INCLUDE after_boss_battle.ink
 
 // Global Variables
 VAR player_charisma = 10
+VAR current_interaction = "start"
