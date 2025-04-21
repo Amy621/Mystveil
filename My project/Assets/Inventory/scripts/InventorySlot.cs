@@ -26,7 +26,6 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
                 else if(myItem != null)
                 Inventory.Singleton.SetCarriedItem(myItem); 
             }
-            
         }
     }
 

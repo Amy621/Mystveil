@@ -27,7 +27,6 @@ public class Inventory : MonoBehaviour
 
     void Awake()
     {
-        //itempos = new Dictionary<InventoryItem, List<InventorySlot>>(); //initialize item positions
         Singleton = this; //init single inventory
         giveItemButton.onClick.AddListener(delegate { SpawnInventoryItem(); });
         obj.SetActive(isActive);
@@ -84,6 +83,41 @@ public class Inventory : MonoBehaviour
 
             isActive = !isActive;
             obj.SetActive(isActive);
+        }
+        if(!Inventory.Singleton.isActive){
+            if(Input.GetKeyDown(KeyCode.Alpha1)){
+            removeItems(null, 1, inventorySlots[42]);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha2)){
+            removeItems(null, 1, inventorySlots[43]);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha3)){
+            removeItems(null, 1, inventorySlots[44]);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha4)){
+            removeItems(null, 1, inventorySlots[45]);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha5)){
+            removeItems(null, 1, inventorySlots[46]);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha6)){
+            removeItems(null, 1, inventorySlots[47]);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha7)){
+            removeItems(null, 1, inventorySlots[48]);
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha8)){
+            removeItems(null, 1, inventorySlots[49]);
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha9)){
+            removeItems(null, 1, inventorySlots[50]);
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha0)){
+            removeItems(null, 1, inventorySlots[51]);
+            }
         }
     }
 
@@ -154,31 +188,62 @@ public class Inventory : MonoBehaviour
 
     //on shift click, combine items in slot with like items in inv
     public void Combine(InventorySlot slot){
-        if(slot == null || slot.myItem == null || slot.myItem.myItem.stackable == false || slot.myTag != SlotTag.None) return; //cant combine empty or non-stackable items
+        if(slot == null || slot.myItem == null) return; //cant combine empty or non-stackable items
         Item item = slot.myItem.myItem;
+
         int firstEmpty = -1;
-        for(int i = 0; i < inventorySlots.Length; i++){
+        int firstEmptyHb = -1;
+        //equip armor
+        if(item.itemType == ItemType.Armor && slot.myTag == SlotTag.None){
+            int armorSlot = -1;
+            if(item.slotTag == SlotTag.Head && inventorySlots[52].myItem == null)
+                armorSlot = 52;
+            else if(item.slotTag == SlotTag.Body && inventorySlots[53].myItem == null)
+                armorSlot = 53;
+            else if(item.slotTag == SlotTag.Wand && inventorySlots[54].myItem == null)
+                armorSlot = 54;
+            else if(item.slotTag == SlotTag.Accessory && inventorySlots[55].myItem == null)
+                armorSlot = 55;
+
+            if(armorSlot != -1){
+                inventorySlots[armorSlot].SetItem(slot.myItem);
+                return;
+            }
+        }
+        int slotNum = -1;
+        for(int i = 0; i < 52; i++){
+            if(slot == inventorySlots[i]){
+                slotNum = i;
+                continue;
+            }
             if(inventorySlots[i].myItem != null && inventorySlots[i].myItem.myItem == item && inventorySlots[i] != slot){
+                //cant stack multiple in armor slots
+                if(inventorySlots[i].myTag != SlotTag.None && slot.myTag == SlotTag.None)
+                    continue;
                 //stack in found slot
                 inventorySlots[i].myItem.amount += slot.myItem.amount;
                 inventorySlots[i].myItem.SetText();
                 slot.myItem.transform.SetParent(null);
                 Destroy(slot.myItem); 
                 slot.myItem = null;
+                if(inventorySlots[i].myTag != SlotTag.None) 
+                    inventorySlots[i].changeImage();
+                if(slot.myTag != SlotTag.None) 
+                    slot.changeImage();
                 return;
-            }else if(firstEmpty == -1 &&inventorySlots[i].myItem == null){
+            }else if(i >= 42 && inventorySlots[i].myItem == null && firstEmptyHb == -1)
+                firstEmptyHb = i; //find first empty hotbar slot
+            else if(firstEmpty == -1 &&inventorySlots[i].myItem == null){
                 firstEmpty = i;
             }
         }
-        if(firstEmpty == -1) return;
+        if(firstEmpty == -1 && firstEmptyHb == -1) return;
+        if(firstEmptyHb != -1 && slotNum < 42)
+            firstEmpty = firstEmptyHb;
         InventorySlot newSlot = inventorySlots[firstEmpty];
-        newSlot.myItem = slot.myItem;
-        newSlot.myItem.activeSlot = newSlot;
-        newSlot.myItem.transform.SetParent(newSlot.transform);
-        newSlot.myItem.SetText();
-        //slot.myItem.transform.SetParent(null);
-        //Destroy(slot.myItem);
-        slot.myItem = null;
+        newSlot.SetItem(slot.myItem); //create item in slot
+        if(slot.myTag != SlotTag.None) 
+            slot.changeImage();
     }
 
     public void updateCount(){
@@ -193,17 +258,17 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-    public void removeItems(Item item = null, int numRemove = -1, int slotNum = -1){
+    public void removeItems(Item item = null, int numRemove = -1, InventorySlot slot = null){
         if(item && (!itemAmts.ContainsKey(item) || itemAmts[item] < numRemove)){
             Debug.Log("not enough items to remove");
             return;
         }
-        if(item == null){ //find item(s) to remove
+        if(item == null && slot == null){ //find item(s) to remove
             List<Item> removed = new List<Item>();
             int starting = Random.Range(0, inventorySlots.Length-4);
             for(int i = 0; i < inventorySlots.Length-4 && numRemove > 0;i++){
                 if(inventorySlots[i].myItem != null){
-                    InventorySlot slot = inventorySlots[i];
+                    slot = inventorySlots[i];
                     removed.Add(slot.myItem.myItem);
                     itemAmts[slot.myItem.myItem] -= slot.myItem.amount;
                     numRemove--;
@@ -228,11 +293,11 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        if(item && slotNum == -1){ //crafting
+        if(item && slot == null){ //crafting
             itemAmts[item] -= numRemove;
             for(int i = 0; i < inventorySlots.Length; i++){
                 if(inventorySlots[i].myItem != null && inventorySlots[i].myItem.myItem == item){
-                    InventorySlot slot = inventorySlots[i];
+                    slot = inventorySlots[i];
                     itemAmts[slot.myItem.myItem] -= numRemove;
                     if(slot.myItem.amount > numRemove){
                         slot.myItem.amount-= numRemove;
@@ -247,25 +312,19 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if(slotNum > -1){ //use item
-            if(item == null)
-                item = inventorySlots[slotNum].myItem.myItem;
-            //invalid range
-            if(slotNum >= inventorySlots.Length || slotNum < 0){ 
-                Debug.Log("slotNum out of range");
-                return;
-            }
-            //slot is empty
-            if(inventorySlots[slotNum].myItem == null){
+        if(slot != null){ //use item
+            //slot empty
+            if(slot.myItem == null){
                 Debug.Log("slot is empty");
                 return;
             }
+            if(item == null)
+                item = slot.myItem.myItem;
             //item not usable
             if(item.itemType != ItemType.Potion){
                 Debug.Log("item not usable");
                 return;
             }
-            InventorySlot slot = inventorySlots[slotNum];
             if(numRemove == -1) numRemove = 1;
 
             //not enough items to remove
@@ -326,4 +385,12 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public bool hasPotions(){
+        for(int i = 0; i < inventorySlots.Length; i++){
+            if(inventorySlots[i].myItem != null && inventorySlots[i].myItem.myItem.itemType == ItemType.Potion){
+                return true;
+            }
+        }
+        return false;
+    }
 }
