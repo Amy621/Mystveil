@@ -12,10 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Obsidian Heart Mantle
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 2
+  sprite: {fileID: 21300000, guid: cfd5fff1224124167a9f557ddbb52c54, type: 3}
+  slotTag: 2
   itemType: 3
   stackable: 0
-  descripton: A pitch black armor with scales protruding from the sides. Once donned,
+  craftable: 0
+  description: A pitch black armor with scales protruding from the sides. Once donned,
     the user will feel a chilling sensation.
-  prefab: {fileID: 0}
+  recipe: {fileID: 0}
+  hp: 0
+  spe: 0
+  spd: 15
+  def: 12
+  spa: 0
+  atk: 0
+  mana: 0

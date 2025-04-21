@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Grimalkin's Claw
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 0
+  sprite: {fileID: 21300000, guid: 268c82f53dac841ffb874da0b06dddb3, type: 3}
+  slotTag: 0
   itemType: 0
   stackable: 1
   craftable: 0
-  descripton: A woody herb that grows as tall as a vine. Has curved thorns that resemble
-    claws. The bark is harvested for potion making.
+  description: A woody herb that grows as tall as a vine. Has curved thorns that
+    resemble claws. The bark is harvested for potion making.
   recipe: {fileID: 0}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

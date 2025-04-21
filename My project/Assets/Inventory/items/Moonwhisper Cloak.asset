@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Moonwhisper Cloak
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 2
+  sprite: {fileID: 21300000, guid: 03e16689c0daf433eb40a485ee96fd45, type: 3}
+  slotTag: 2
   itemType: 3
   stackable: 0
   craftable: 0
-  descripton: A cloak with ruffles made of pure silk. Gives off a pure and silvery
+  description: A cloak with ruffles made of pure silk. Gives off a pure and silvery
     aura.
   recipe: {fileID: 0}
+  hp: 0
+  spe: 0
+  spd: 5
+  def: 2
+  spa: 0
+  atk: 0
+  mana: 0

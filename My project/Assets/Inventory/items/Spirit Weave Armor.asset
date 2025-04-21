@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Spirit Weave Armor
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 2
+  sprite: {fileID: 21300000, guid: 7c0248c78a9bb47b5a72c32eff3a3d9d, type: 3}
+  slotTag: 2
   itemType: 3
   stackable: 0
   craftable: 0
-  descripton: A spirit-woven armor infused with both spiritual energy and magical
+  description: A spirit-woven armor infused with both spiritual energy and magical
     energy. It is said that the armor can grant the user endless luck.
   recipe: {fileID: 0}
+  hp: 0
+  spe: 0
+  spd: 13
+  def: 10
+  spa: 0
+  atk: 0
+  mana: 0

@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Dream Weaver's Earrings
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 4
+  sprite: {fileID: 21300000, guid: f6f09386a75cf4b39ac86c47d47d29c6, type: 3}
+  slotTag: 4
   itemType: 3
   stackable: 0
   craftable: 1
-  descripton: A pair of earrings with dreamcatchers attached. People say that sleeping
+  description: A pair of earrings with dreamcatchers attached. People say that sleeping
     with these on keep away the nightmares.
-  recipe: {fileID: 0}
+  recipe: {fileID: 11400000, guid: 11dc10907800f433aaa1fd13127ffd37, type: 2}
+  hp: 0
+  spe: 9
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

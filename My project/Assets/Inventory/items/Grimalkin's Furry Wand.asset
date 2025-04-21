@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Grimalkin's Furry Wand
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 3
+  sprite: {fileID: 21300000, guid: a1a0446d79844493292c1c3cd39235ca, type: 3}
+  slotTag: 3
   itemType: 3
   stackable: 0
   craftable: 1
-  descripton: "A short wand that you can somehow hold using cat\u2019s paws. Extremely
+  description: "A short wand that you can somehow hold using cat\u2019s paws. Extremely
     soft, it's hard to let go of it."
-  recipe: {fileID: 0}
+  recipe: {fileID: 11400000, guid: 5cc4cbef245ff41b696271c1b8f860b3, type: 2}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 7
+  atk: 4
+  mana: 0

@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Obsidian Heart Crown
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 1
+  sprite: {fileID: 21300000, guid: 3df68e83135074a309fd4e0400485660, type: 3}
+  slotTag: 1
   itemType: 3
   stackable: 0
   craftable: 0
-  descripton: A jagged and frozen-cold crown, its centerpiece shaped like a broken
+  description: A jagged and frozen-cold crown, its centerpiece shaped like a broken
     heart.
   recipe: {fileID: 0}
+  hp: 15
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

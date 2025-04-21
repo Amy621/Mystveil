@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Sunstone Seed
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 0
+  sprite: {fileID: 21300000, guid: 9fbc837d6a1894c0eaafa228863bbc65, type: 3}
+  slotTag: 0
   itemType: 0
   stackable: 1
   craftable: 0
-  descripton: A hard-shelled, orange seed. Gives off a little warmth.
+  description: A hard-shelled, orange seed. Gives off a little warmth.
   recipe: {fileID: 0}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

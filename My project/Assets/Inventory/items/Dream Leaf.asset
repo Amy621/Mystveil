@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Dream Leaf
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 0
+  sprite: {fileID: 21300000, guid: 12234115e1bd34b6e9d1cebdbe8aab76, type: 3}
+  slotTag: 0
   itemType: 0
   stackable: 1
   craftable: 0
-  descripton: A thin plant with small, white flowers. Drinking tea made with this
+  description: A thin plant with small, white flowers. Drinking tea made with this
     herb is said to give one happy dreams.
   recipe: {fileID: 0}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

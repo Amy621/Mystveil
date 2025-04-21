@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Nightshade Bloom
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 0
+  sprite: {fileID: 21300000, guid: f03dab965843f40868c42a674bad48c8, type: 3}
+  slotTag: 0
   itemType: 0
   stackable: 1
   craftable: 0
-  descripton: A cluster of purple petals that tend to grow in shaded places. When
+  description: A cluster of purple petals that tend to grow in shaded places. When
     consumed, lowers HP by 10.
   recipe: {fileID: 0}
+  hp: 10
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

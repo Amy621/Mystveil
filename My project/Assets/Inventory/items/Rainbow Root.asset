@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Rainbow Root
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 0
+  sprite: {fileID: 21300000, guid: 871cc9fd31e8b4d74b50f1520d4d5d4d, type: 3}
+  slotTag: 0
   itemType: 0
   stackable: 1
   craftable: 0
-  descripton: The skin is grey but the inside is rainbow-colored. If it gets on clothing,
-    dyes it a random color. This often angers those who use this plant for medicinal
-    purposes.
+  description: The skin is grey but the inside is rainbow-colored. If it gets on
+    clothing, dyes it a random color. This often angers those who use this plant
+    for medicinal purposes.
   recipe: {fileID: 0}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

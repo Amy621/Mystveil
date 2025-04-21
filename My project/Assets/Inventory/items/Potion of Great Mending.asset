@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Potion of Great Mending
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 0
+  sprite: {fileID: 21300000, guid: a6c4ba3ccbb97410799ce7bd56189bf9, type: 3}
+  slotTag: 0
   itemType: 1
   stackable: 1
   craftable: 1
-  descripton: A dark red liquid with small flecks of gold. Restores 50% HP.
-  recipe: {fileID: 0}
+  description: A dark red liquid with small flecks of gold. Restores 50% HP.
+  recipe: {fileID: 11400000, guid: a161d022f14824aa7933e724271315fc, type: 2}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

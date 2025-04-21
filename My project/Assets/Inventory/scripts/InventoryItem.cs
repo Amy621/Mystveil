@@ -7,7 +7,7 @@ using TMPro;
 
 public class InventoryItem : MonoBehaviour, IPointerClickHandler
 {
-    Image itemIcon;
+    public Image itemIcon;
     public CanvasGroup canvasGroup { get; private set; }
 
     public Item myItem { get; set; }

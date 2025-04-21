@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Rugged Leaf
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: a3d1db29800974a06b8e60dd893d4d69, type: 3}
+  sprite: {fileID: 21300000, guid: 9ead44e5732064694a314016246bbb22, type: 3}
   slotTag: 0
   itemType: 2
   stackable: 1
   craftable: 0
-  descripton: A tattered leaf that still keeps its shape. People are able to take
+  description: A tattered leaf that still keeps its shape. People are able to take
     the individual plant fibers and spool thread.
   recipe: {fileID: 0}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0

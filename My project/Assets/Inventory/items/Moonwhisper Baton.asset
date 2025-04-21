@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
   m_Name: Moonwhisper Baton
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemTag: 3
+  sprite: {fileID: 21300000, guid: df4ef8354aaf948559bf25edd30f2b5a, type: 3}
+  slotTag: 3
   itemType: 3
   stackable: 0
   craftable: 0
-  descripton: A short baton with a crystal at the top shaped like a crescent moon.
+  description: A short baton with a crystal at the top shaped like a crescent moon.
   recipe: {fileID: 0}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 5
+  atk: 2
+  mana: 0
