@@ -131,8 +131,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stranterry Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 193064366870917861, guid: 2b15b727283c2c242866b8bc476f042f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7203947968849788568, guid: 2b15b727283c2c242866b8bc476f042f, type: 3}

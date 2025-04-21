@@ -52,8 +52,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hare Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7164525769353679671, guid: ed3091baa4cae9443bf3a35604373cd7, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

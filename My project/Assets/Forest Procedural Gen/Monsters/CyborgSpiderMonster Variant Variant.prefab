@@ -84,8 +84,7 @@ PrefabInstance:
       propertyPath: projectilePoint
       value: 
       objectReference: {fileID: 1156930205086263816}
-    m_RemovedComponents:
-    - {fileID: 3454075899511710864, guid: f7319612b03bb364280d8a90cca39aaf, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

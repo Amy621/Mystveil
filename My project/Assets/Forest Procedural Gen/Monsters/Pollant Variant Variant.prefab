@@ -109,13 +109,16 @@ PrefabInstance:
       value: 0.21775627
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 7972407511818697127, guid: 5f5a597daedd6774dbd496aa611ec1c2, type: 3}
+    - {fileID: 6538742578705516017, guid: 5f5a597daedd6774dbd496aa611ec1c2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2903750578398982389, guid: 5f5a597daedd6774dbd496aa611ec1c2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5939311377358390097}
+    - targetCorrespondingSourceObject: {fileID: 2903750578398982389, guid: 5f5a597daedd6774dbd496aa611ec1c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 347556986206294603}
   m_SourcePrefab: {fileID: 100100000, guid: 5f5a597daedd6774dbd496aa611ec1c2, type: 3}
 --- !u!1 &979611114234332388 stripped
 GameObject:
@@ -145,6 +148,31 @@ CapsuleCollider:
   m_Height: 5.4807663
   m_Direction: 1
   m_Center: {x: 0, y: 1.944992, z: 0.19479752}
+--- !u!114 &347556986206294603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979611114234332388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca83fc7475626949ab1850767a8734f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 0
+  projectile: {fileID: 0}
+  projectilePoint: {fileID: 6579955511059605710}
+  projectileDisappearDelay: 3
+  clawmark: {fileID: 0}
+  clawmarkPoint: {fileID: 6579955511059605710}
+  clawDisappearDelay: 2
+  animator: {fileID: 0}
+  audioSource: {fileID: 0}
+  damageClip: {fileID: 0}
+  deathClip: {fileID: 0}
+  deathPrefab: {fileID: 0}
+  explosionClip: {fileID: 0}
 --- !u!4 &6579955511059605710 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9116627559854693599, guid: 5f5a597daedd6774dbd496aa611ec1c2, type: 3}
