@@ -159,7 +159,7 @@ public class HealthSystem : MonoBehaviour
 		float attack = (move.Base.Category == MoveCategory.Special)? player.SpAttack : player.Attack;
         float defense = (move.Base.Category == MoveCategory.Special)? monster.SpDefense : monster.Defense;
 
-        float modifiers = Random.Range(0.85f, 1f);
+        float modifiers = UnityEngine.Random.Range(0.85f, 1f);
         float a = (2 * player.Level + 10) / 250f;
         float d = a * move.Base.Power * ((float) attack / defense) + 2;
         int damage = Mathf.FloorToInt(d * modifiers);
@@ -300,7 +300,5 @@ public class HealthSystem : MonoBehaviour
 			}
 			yield return null;
 		}
-
-
 	}
 }
