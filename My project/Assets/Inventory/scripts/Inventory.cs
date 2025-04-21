@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
@@ -193,11 +195,13 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+    
     public void removeItems(Item item = null, int numRemove = -1, int slotNum = -1){
         if(item && (!itemAmts.ContainsKey(item) || itemAmts[item] < numRemove)){
             Debug.Log("not enough items to remove");
             return;
         }
+        
         if(item == null){ //find item(s) to remove
             List<Item> removed = new List<Item>();
             int starting = Random.Range(0, inventorySlots.Length-4);
@@ -325,5 +329,6 @@ public class Inventory : MonoBehaviour
             obj.SetActive(isActive);
         }
     }
-
 }
+
+
