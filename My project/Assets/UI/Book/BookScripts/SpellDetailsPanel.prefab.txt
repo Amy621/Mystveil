@@ -1,0 +1,169 @@
+SpellDetailsPanel Prefab Configuration:
+
+1. Create a new GameObject named "SpellDetailsPanel"
+2. Add the following components:
+   - RectTransform
+     * Width: 400
+     * Height: 500
+     * Anchors: Center
+   - Image
+     * Color: RGBA(0.1, 0.1, 0.15, 0.95)
+     * Source Image: None (or a panel background if available)
+
+3. Create a child GameObject named "Header"
+   - Add the following components:
+     - RectTransform
+       * Height: 60
+       * Anchors: Stretch horizontally, top aligned
+     - Image
+       * Color: RGBA(0.15, 0.15, 0.25, 1)
+       
+   - Create a child GameObject named "SpellName"
+     - Add TextMeshProUGUI component
+       * Text: "Spell Name"
+       * Font Size: 24
+       * Font Style: Bold
+       * Color: White
+       * Alignment: Middle Center
+     - RectTransform
+       * Anchors: Stretch in both directions
+       * Left: 10, Right: -10, Top: 0, Bottom: 0
+
+4. Create a child GameObject named "SpellIcon"
+   - Add Image component
+     * Source Image: None (will be set at runtime)
+     * Color: White
+   - RectTransform
+     * Width: 80
+     * Height: 80
+     * Anchors: Top Center
+     * Position: X: 0, Y: -90, Z: 0
+
+5. Create a child GameObject named "SpellType"
+   - Add TextMeshProUGUI component
+     * Text: "Type: Fire"
+     * Font Size: 16
+     * Color: RGBA(1, 0.8, 0.2, 1)
+     * Alignment: Middle Center
+   - RectTransform
+     * Height: 30
+     * Anchors: Top Center
+     * Width: 200
+     * Position: X: 0, Y: -150, Z: 0
+
+6. Create a child GameObject named "SpellCost"
+   - Add TextMeshProUGUI component
+     * Text: "Cost: 25 MP"
+     * Font Size: 16
+     * Color: RGBA(0.4, 0.7, 1, 1)
+     * Alignment: Middle Center
+   - RectTransform
+     * Height: 30
+     * Anchors: Top Center
+     * Width: 200
+     * Position: X: 0, Y: -180, Z: 0
+
+7. Create a child GameObject named "Description"
+   - Add the following components:
+     - RectTransform
+       * Anchors: Stretch horizontally
+       * Left: 20, Right: -20
+       * Top: -220, Height: 150
+     - Image
+       * Color: RGBA(0.2, 0.2, 0.25, 0.8)
+     
+   - Create a child GameObject named "SpellDescription"
+     - Add TextMeshProUGUI component
+       * Text: "Spell description goes here with details about what the spell does in the game."
+       * Font Size: 14
+       * Color: White
+       * Alignment: Top Left
+       * Wrapping: Enabled
+     - RectTransform
+       * Anchors: Stretch in both directions
+       * Left: 10, Right: -10, Top: 10, Bottom: -10
+
+8. Create a child GameObject named "ButtonContainer"
+   - Add RectTransform component
+     * Anchors: Stretch horizontally, bottom aligned
+     * Left: 0, Right: 0
+     * Bottom: 30, Height: 80
+     
+   - Create a child GameObject named "EquipButton"
+     - Add the following components:
+       - RectTransform
+         * Width: 150
+         * Height: 50
+         * Anchors: Bottom Left
+         * Position: X: 70, Y: 0, Z: 0
+       - Image
+         * Color: RGBA(0.2, 0.6, 0.2, 1)
+       - Button
+         * Normal Color: RGBA(0.2, 0.6, 0.2, 1)
+         * Highlighted Color: RGBA(0.3, 0.7, 0.3, 1)
+         * Pressed Color: RGBA(0.1, 0.5, 0.1, 1)
+         
+       - Create a child GameObject named "Text"
+         - Add TextMeshProUGUI component
+           * Text: "Equip"
+           * Font Size: 18
+           * Font Style: Bold
+           * Color: White
+           * Alignment: Middle Center
+         - RectTransform
+           * Anchors: Stretch in both directions
+           
+   - Create a child GameObject named "UnequipButton"
+     - Add the following components:
+       - RectTransform
+         * Width: 150
+         * Height: 50
+         * Anchors: Bottom Right
+         * Position: X: -70, Y: 0, Z: 0
+       - Image
+         * Color: RGBA(0.6, 0.2, 0.2, 1)
+       - Button
+         * Normal Color: RGBA(0.6, 0.2, 0.2, 1)
+         * Highlighted Color: RGBA(0.7, 0.3, 0.3, 1)
+         * Pressed Color: RGBA(0.5, 0.1, 0.1, 1)
+         
+       - Create a child GameObject named "Text"
+         - Add TextMeshProUGUI component
+           * Text: "Unequip"
+           * Font Size: 18
+           * Font Style: Bold
+           * Color: White
+           * Alignment: Middle Center
+         - RectTransform
+           * Anchors: Stretch in both directions
+
+9. Create a child GameObject named "CloseButton"
+   - Add the following components:
+     - RectTransform
+       * Width: 40
+       * Height: 40
+       * Anchors: Top Right
+       * Position: X: -10, Y: -10, Z: 0
+     - Image
+       * Color: RGBA(0.8, 0.2, 0.2, 1)
+     - Button
+       * Normal Color: RGBA(0.8, 0.2, 0.2, 1)
+       * Highlighted Color: RGBA(1, 0.3, 0.3, 1)
+       * Pressed Color: RGBA(0.6, 0.1, 0.1, 1)
+       
+     - Create a child GameObject named "X"
+       - Add TextMeshProUGUI component
+         * Text: "X"
+         * Font Size: 20
+         * Font Style: Bold
+         * Color: White
+         * Alignment: Middle Center
+       - RectTransform
+         * Anchors: Stretch in both directions
+
+Implementation Notes:
+- The SpellDetailsPanel prefab should start as inactive (SetActive(false)) and be activated when a spell is selected
+- The CloseButton should hide the panel when clicked
+- The EquipButton and UnequipButton should call EquipSelectedSpell and UnequipSelectedSpell methods respectively
+- Only one of the Equip/Unequip buttons should be visible at a time, depending on the spell's equipped status
+- All text fields and the spell icon should be updated when ShowSpellDetails is called 

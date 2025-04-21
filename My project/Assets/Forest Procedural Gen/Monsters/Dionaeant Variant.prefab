@@ -91,6 +91,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 135867056867634291, guid: 988b8af7d1c6dac47bc13d2fd2d9de17, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1429162849617758099}
+    - targetCorrespondingSourceObject: {fileID: 135867056867634291, guid: 988b8af7d1c6dac47bc13d2fd2d9de17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4661110148841203211}
   m_SourcePrefab: {fileID: 100100000, guid: 988b8af7d1c6dac47bc13d2fd2d9de17, type: 3}
 --- !u!1 &3224831612347486579 stripped
 GameObject:
@@ -145,6 +148,22 @@ MonoBehaviour:
   deathClip: {fileID: 0}
   deathPrefab: {fileID: 0}
   explosionClip: {fileID: 0}
+--- !u!114 &4661110148841203211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3224831612347486579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a565171025e5543a7bdc3dce443ffb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterName: Dionaeant
+  discoverOnDeath: 1
+  discoverOnSight: 0
+  sightRange: 10
 --- !u!4 &5136244122808168210 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7666762418508452370, guid: 988b8af7d1c6dac47bc13d2fd2d9de17, type: 3}

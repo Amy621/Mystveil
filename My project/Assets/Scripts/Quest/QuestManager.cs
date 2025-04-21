@@ -16,6 +16,10 @@ public class QuestManager : MonoBehaviour
     public event QuestUpdatedEvent OnQuestStarted;
     public event QuestUpdatedEvent OnQuestUpdated;
     public event QuestUpdatedEvent OnQuestCompleted;
+    public event QuestUpdatedEvent OnQuestFailed;
+    
+    // Currently tracked quest for UI
+    private string trackedQuestId;
     
     private void Awake()
     {
@@ -27,6 +31,41 @@ public class QuestManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+    
+    // Sets the currently tracked quest for UI purposes
+    public void SetTrackedQuest(string questId)
+    {
+        trackedQuestId = questId;
+        Debug.Log($"Now tracking quest: {questId}");
+    }
+    
+    // Gets the currently tracked quest
+    public string GetTrackedQuest()
+    {
+        return trackedQuestId;
+    }
+    
+    // Mark a quest as failed
+    public void FailQuest(string questId)
+    {
+        if (!activeQuests.ContainsKey(questId))
+            return;
+            
+        QuestInstance quest = activeQuests[questId];
+        
+        // Move from active to completed (but as failed)
+        activeQuests.Remove(questId);
+        completedQuests.Add(questId, quest);
+        
+        Debug.Log($"Failed quest: {quest.QuestData.QuestName}");
+        OnQuestFailed?.Invoke(quest);
+        
+        // Save after quest failure
+        if (SimpleSaveSystem.Instance != null)
+        {
+            SimpleSaveSystem.Instance.SaveGame();
         }
     }
     

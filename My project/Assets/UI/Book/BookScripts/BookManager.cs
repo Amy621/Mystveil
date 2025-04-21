@@ -3,52 +3,110 @@ using UnityEngine.UI;
 
 public class BookManager : MonoBehaviour
 {
-    public static BookManager Instance;
+    [Header("Book UI")]
+    [SerializeField] private GameObject bookCanvas;
+    [SerializeField] private KeyCode bookToggleKey = KeyCode.B;
 
     [Header("Book Panels")]
-    public GameObject introductionPanel;
-    public GameObject lorePanel;
-    public GameObject monstersPanel;
-    public GameObject spellsPanel;
-    public GameObject itemsPanel;
-    public GameObject questsPanel;
+    [SerializeField] private GameObject introductionPanel;
+    [SerializeField] private GameObject lorePanel;
+    [SerializeField] private GameObject monstersPanel;
+    [SerializeField] private GameObject spellsPanel;
+    [SerializeField] private GameObject itemsPanel;
+    [SerializeField] private GameObject questsPanel;
 
     [Header("Tab Buttons")]
-    public Button introductionButton;
-    public Button loreButton;
-    public Button monstersButton;
-    public Button spellsButton;
-    public Button itemsButton;
-    public Button questsButton;
+    [SerializeField] private Button introductionButton;
+    [SerializeField] private Button loreButton;
+    [SerializeField] private Button monstersButton;
+    [SerializeField] private Button spellsButton;
+    [SerializeField] private Button itemsButton;
+    [SerializeField] private Button questsButton;
 
     [Header("Settings")]
-    public bool startWithAllTabsLocked = true;
-    public bool introductionUnlockedByDefault = true;
+    [SerializeField] private bool startWithAllTabsLocked = true;
+    [SerializeField] private bool introductionUnlockedByDefault = true;
+    
+    // Book state
+    private bool isBookOpen = false;
+    private string lastOpenSection = "Introduction";
+
+    // Property accessors for BookSystem
+    public KeyCode BookToggleKey { get => bookToggleKey; set => bookToggleKey = value; }
+    public bool StartWithAllTabsLocked { get => startWithAllTabsLocked; set => startWithAllTabsLocked = value; }
+    public bool IntroductionUnlockedByDefault { get => introductionUnlockedByDefault; set => introductionUnlockedByDefault = value; }
+    
+    // Panel accessors
+    public GameObject IntroductionPanel { get => introductionPanel; }
+    public GameObject LorePanel { get => lorePanel; }
+    public GameObject MonstersPanel { get => monstersPanel; }
+    public GameObject SpellsPanel { get => spellsPanel; }
+    public GameObject ItemsPanel { get => itemsPanel; }
+    public GameObject QuestsPanel { get => questsPanel; }
 
     private void Awake()
     {
-        if (Instance == null)
+        // Automatically find the canvas reference if it's not set
+        if (bookCanvas == null)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            // First try to get the canvas component on this GameObject
+            Canvas canvasComponent = GetComponent<Canvas>();
+            if (canvasComponent != null)
+            {
+                bookCanvas = gameObject;
+                Debug.Log("BookManager: Automatically set canvas reference to this GameObject");
+            }
+            else
+            {
+                // If there's no Canvas component on this GameObject, use the parent
+                bookCanvas = transform.parent?.gameObject;
+                Debug.Log("BookManager: Automatically set canvas reference to parent GameObject");
+            }
+            
+            if (bookCanvas == null)
+            {
+                Debug.LogError("BookManager: Could not find a canvas reference automatically");
+            }
         }
     }
 
     private void Start()
     {
         // Set up button listeners
-        introductionButton.onClick.AddListener(() => OpenSection("Introduction"));
-        loreButton.onClick.AddListener(() => OpenSection("Lore"));
-        monstersButton.onClick.AddListener(() => OpenSection("Monsters"));
-        spellsButton.onClick.AddListener(() => OpenSection("Spells"));
-        itemsButton.onClick.AddListener(() => OpenSection("Items"));
-        questsButton.onClick.AddListener(() => OpenSection("Quests"));
+        SetupButtonListeners();
 
         // Initialize tab states
+        InitializeTabStates();
+
+        // Start with book closed
+        CloseBook();
+        
+        Debug.Log("BookManager started - Press " + bookToggleKey + " to toggle the book");
+    }
+    
+    private void SetupButtonListeners()
+    {
+        if (introductionButton != null)
+            introductionButton.onClick.AddListener(() => OpenSection("Introduction"));
+        
+        if (loreButton != null)
+            loreButton.onClick.AddListener(() => OpenSection("Lore"));
+        
+        if (monstersButton != null)
+            monstersButton.onClick.AddListener(() => OpenSection("Monsters"));
+        
+        if (spellsButton != null)
+            spellsButton.onClick.AddListener(() => OpenSection("Spells"));
+        
+        if (itemsButton != null)
+            itemsButton.onClick.AddListener(() => OpenSection("Items"));
+        
+        if (questsButton != null)
+            questsButton.onClick.AddListener(() => OpenSection("Quests"));
+    }
+    
+    private void InitializeTabStates()
+    {
         if (startWithAllTabsLocked)
         {
             // Lock all tabs except introduction if specified
@@ -67,20 +125,68 @@ public class BookManager : MonoBehaviour
                 SetTabLocked(introductionButton, true);
             }
         }
-
-        // Start with introduction panel if it's unlocked
-        if (introductionUnlockedByDefault)
+    }
+    
+    private void Update()
+    {
+        // Toggle book visibility with key press
+        if (Input.GetKeyDown(bookToggleKey))
         {
-            OpenSection("Introduction");
+            Debug.Log("Book toggle key pressed");
+            ToggleBook();
+        }
+    }
+    
+    public void ToggleBook()
+    {
+        if (isBookOpen)
+        {
+            Debug.Log("Closing book");
+            CloseBook();
         }
         else
         {
-            HideAllSections();
+            Debug.Log("Opening book");
+            OpenBook();
+        }
+    }
+    
+    public void OpenBook()
+    {
+        isBookOpen = true;
+        if (bookCanvas != null)
+        {
+            bookCanvas.SetActive(true);
+            Debug.Log("Book opened");
+        }
+        else
+        {
+            Debug.LogWarning("Book canvas reference is missing");
+        }
+        
+        // Open the last section that was open
+        OpenSection(lastOpenSection);
+    }
+    
+    public void CloseBook()
+    {
+        isBookOpen = false;
+        if (bookCanvas != null)
+        {
+            bookCanvas.SetActive(false);
+            Debug.Log("Book closed");
+        }
+        else
+        {
+            Debug.LogWarning("Book canvas reference is missing");
         }
     }
 
     public void OpenSection(string sectionName)
     {
+        // Save the last open section
+        lastOpenSection = sectionName;
+        
         // Hide all panels first
         HideAllSections();
 
@@ -88,34 +194,40 @@ public class BookManager : MonoBehaviour
         switch (sectionName)
         {
             case "Introduction":
-                introductionPanel.SetActive(true);
+                if (introductionPanel != null)
+                    introductionPanel.SetActive(true);
                 break;
             case "Lore":
-                lorePanel.SetActive(true);
+                if (lorePanel != null)
+                    lorePanel.SetActive(true);
                 break;
             case "Monsters":
-                monstersPanel.SetActive(true);
+                if (monstersPanel != null)
+                    monstersPanel.SetActive(true);
                 break;
             case "Spells":
-                spellsPanel.SetActive(true);
+                if (spellsPanel != null)
+                    spellsPanel.SetActive(true);
                 break;
             case "Items":
-                itemsPanel.SetActive(true);
+                if (itemsPanel != null)
+                    itemsPanel.SetActive(true);
                 break;
             case "Quests":
-                questsPanel.SetActive(true);
+                if (questsPanel != null)
+                    questsPanel.SetActive(true);
                 break;
         }
     }
 
     private void HideAllSections()
     {
-        introductionPanel.SetActive(false);
-        lorePanel.SetActive(false);
-        monstersPanel.SetActive(false);
-        spellsPanel.SetActive(false);
-        itemsPanel.SetActive(false);
-        questsPanel.SetActive(false);
+        if (introductionPanel != null) introductionPanel.SetActive(false);
+        if (lorePanel != null) lorePanel.SetActive(false);
+        if (monstersPanel != null) monstersPanel.SetActive(false);
+        if (spellsPanel != null) spellsPanel.SetActive(false);
+        if (itemsPanel != null) itemsPanel.SetActive(false);
+        if (questsPanel != null) questsPanel.SetActive(false);
     }
 
     public void UnlockTab(string tabName)
@@ -145,6 +257,8 @@ public class BookManager : MonoBehaviour
 
     private void SetTabLocked(Button button, bool locked)
     {
+        if (button == null) return;
+        
         button.interactable = !locked;
         
         // Optional: Change the appearance of locked buttons

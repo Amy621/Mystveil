@@ -1,0 +1,97 @@
+BookCanvas Prefab Configuration:
+
+1. Create a new GameObject named "BookCanvas"
+2. Add the following components:
+   - Canvas
+     * Render Mode: Screen Space - Overlay
+     * Pixel Perfect: Checked
+     * Sort Order: 10 (to appear above other UI)
+   - Canvas Scaler
+     * UI Scale Mode: Scale With Screen Size
+     * Reference Resolution: 1920x1080
+     * Screen Match Mode: Match Width or Height
+     * Match: 0.5 (balanced)
+   - GraphicRaycaster
+   - BookManager
+
+3. Create a child GameObject named "BookBackground"
+   - Add Image component
+     * Color: RGBA(0, 0, 0, 0.85)
+     * RectTransform: Stretch to fill entire canvas
+
+4. Create a child GameObject named "BookContainer"
+   - Add RectTransform
+     * Anchors: Center of screen
+     * Width: 1600
+     * Height: 900
+
+5. Inside BookContainer, create:
+   
+   A. "TabsPanel" GameObject
+     - RectTransform
+       * Anchors: Top of BookContainer
+       * Height: 50
+     - Add 6 Button children for the tabs:
+       * "IntroductionTab"
+       * "LoreTab"
+       * "MonstersTab"
+       * "SpellsTab"
+       * "ItemsTab" 
+       * "QuestsTab"
+     - Each tab should have a Text/TextMeshPro component
+
+   B. "ContentPanel" GameObject
+     - RectTransform
+       * Anchors: Stretch to fill rest of BookContainer below TabsPanel
+     - Create 6 panel GameObjects as children:
+       * "IntroductionPanel"
+       * "LorePanel"
+       * "MonstersPanel"
+       * "SpellsPanel"
+       * "ItemsPanel"
+       * "QuestsPanel"
+
+6. For the SpellsPanel:
+   - Add SpellPanelManager component
+   - Create two children:
+     
+     A. "SpellListScrollView" (ScrollRect)
+       * RectTransform: Left side, ~30% width
+       * ScrollRect:
+         - Content: Reference to a child GameObject with VerticalLayoutGroup
+         - Vertical: true, Horizontal: false
+         - Movement Type: Elastic
+       * Assign the content transform to SpellPanelManager.spellListContent
+     
+     B. "EquippedSpellsScrollView" (ScrollRect)
+       * RectTransform: Right side, ~70% width
+       * ScrollRect:
+         - Content: Reference to a child GameObject with VerticalLayoutGroup
+         - Vertical: true, Horizontal: false
+         - Movement Type: Elastic
+       * Assign the content transform to SpellPanelManager.equippedSpellsContent
+
+7. Set BookManager references:
+   - Book Canvas: Reference to the Canvas GameObject
+   - Book Toggle Key: B
+   - Introduction Panel: Reference to IntroductionPanel
+   - Lore Panel: Reference to LorePanel
+   - Monsters Panel: Reference to MonstersPanel
+   - Spells Panel: Reference to SpellsPanel
+   - Items Panel: Reference to ItemsPanel
+   - Quests Panel: Reference to QuestsPanel
+   - Introduction Button: Reference to IntroductionTab Button
+   - Lore Button: Reference to LoreTab Button
+   - Monsters Button: Reference to MonstersTab Button
+   - Spells Button: Reference to SpellsTab Button
+   - Items Button: Reference to ItemsTab Button
+   - Quests Button: Reference to QuestsTab Button
+
+8. Ensure the BookCanvas GameObject is inactive by default.
+
+Implementation Notes:
+- Make sure to set up all panels with appropriate layout groups and content
+- The BookCanvas prefab will be automatically instantiated by the BookSystem
+- All tab buttons should be configured to look the same with similar styling
+- Each panel may need its own manager script (like SpellPanelManager)
+- Only the SpellPanelManager needs to be set up - the BookSystem will handle connecting the prefabs 

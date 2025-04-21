@@ -94,6 +94,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1030211062733746593, guid: c8f63c6949b0ce5498b179469b205ddc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7134788043805709465}
+    - targetCorrespondingSourceObject: {fileID: 1030211062733746593, guid: c8f63c6949b0ce5498b179469b205ddc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5062488443316814946}
   m_SourcePrefab: {fileID: 100100000, guid: c8f63c6949b0ce5498b179469b205ddc, type: 3}
 --- !u!1 &2217097468135323642 stripped
 GameObject:
@@ -144,3 +147,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5062488443316814946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2217097468135323642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a565171025e5543a7bdc3dce443ffb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterName: Bantboo
+  discoverOnDeath: 1
+  discoverOnSight: 0
+  sightRange: 10

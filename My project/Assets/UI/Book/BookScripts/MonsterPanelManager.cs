@@ -8,7 +8,7 @@ public class MonsterPanelManager : MonoBehaviour
     public static MonsterPanelManager Instance;
 
     [Header("Monster Grid")]
-    public List<MonsterEntry> allMonsters = new List<MonsterEntry>();
+    public List<BookMonsterEntry> allMonsters = new List<BookMonsterEntry>();
     public GameObject monsterEntryPrefab;
     public Transform monsterGridContent;
     public GridLayoutGroup gridLayout;
@@ -56,13 +56,13 @@ public class MonsterPanelManager : MonoBehaviour
         }
 
         // Create entries for all monsters
-        foreach (MonsterEntry monster in allMonsters)
+        foreach (BookMonsterEntry monster in allMonsters)
         {
             CreateMonsterEntry(monster);
         }
     }
 
-    void CreateMonsterEntry(MonsterEntry monster)
+    void CreateMonsterEntry(BookMonsterEntry monster)
     {
         GameObject entry = Instantiate(monsterEntryPrefab, monsterGridContent);
         MonsterEntryUI entryUI = entry.GetComponent<MonsterEntryUI>();
@@ -72,7 +72,7 @@ public class MonsterPanelManager : MonoBehaviour
         }
     }
 
-    public void SelectMonster(MonsterEntry monster)
+    public void SelectMonster(BookMonsterEntry monster)
     {
         // Deselect previous
         if (currentlySelected != null)
@@ -120,7 +120,7 @@ public class MonsterPanelManager : MonoBehaviour
 
     public void DiscoverMonster(string monsterName)
     {
-        MonsterEntry monster = allMonsters.Find(m => m.monsterName == monsterName);
+        BookMonsterEntry monster = allMonsters.Find(m => m.monsterName == monsterName);
         if (monster != null && !monster.isDiscovered)
         {
             monster.isDiscovered = true;

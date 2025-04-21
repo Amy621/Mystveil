@@ -103,10 +103,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3381262692628573563, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5728918799298041751}
   m_SourcePrefab: {fileID: 100100000, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
 --- !u!95 &4118029481167503644 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8264417074987913368, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
   m_PrefabInstance: {fileID: 5446882147543585156}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7312613196272549119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3381262692628573563, guid: 2fe7ed64eb8554541a8eac7e1d97cd4b, type: 3}
+  m_PrefabInstance: {fileID: 5446882147543585156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5728918799298041751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312613196272549119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a565171025e5543a7bdc3dce443ffb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterName: Aster-Eye
+  discoverOnDeath: 1
+  discoverOnSight: 0
+  sightRange: 10

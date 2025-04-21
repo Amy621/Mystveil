@@ -91,6 +91,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4421700021729577071, guid: f7319612b03bb364280d8a90cca39aaf, type: 3}
       insertIndex: -1
       addedObject: {fileID: -4066244363042508763}
+    - targetCorrespondingSourceObject: {fileID: 4421700021729577071, guid: f7319612b03bb364280d8a90cca39aaf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4131208577819831771}
   m_SourcePrefab: {fileID: 100100000, guid: f7319612b03bb364280d8a90cca39aaf, type: 3}
 --- !u!4 &1156930205086263816 stripped
 Transform:
@@ -130,3 +133,19 @@ CapsuleCollider:
   m_Height: 1.348629
   m_Direction: 1
   m_Center: {x: -0.004190445, y: 0, z: 0.019651413}
+--- !u!114 &4131208577819831771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5397620819738880905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a565171025e5543a7bdc3dce443ffb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterName: Aster-Eye
+  discoverOnDeath: 1
+  discoverOnSight: 0
+  sightRange: 10

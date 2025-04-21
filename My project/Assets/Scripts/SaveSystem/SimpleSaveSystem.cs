@@ -27,6 +27,12 @@ public class SimpleSaveSystem : MonoBehaviour
         set { _saveMenuUI = value; }
     }
     
+    // Public property to access the save file path
+    public string SaveFilePath 
+    {
+        get { return savePath; }
+    }
+    
     private string savePath;
     private bool isSaveMenuOpen = false;
     
@@ -192,10 +198,30 @@ public class SimpleSaveSystem : MonoBehaviour
         if (playerLevel != null)
         {
             saveData.level = playerLevel.CurrentLevel;
+            
+            // Try to get experience points from the PlayerLevel component
+            if (playerLevel.GetType().GetProperty("ExperiencePoints") != null)
+            {
+                var expProperty = playerLevel.GetType().GetProperty("ExperiencePoints");
+                saveData.experiencePoints = (int)expProperty.GetValue(playerLevel);
+            }
         }
         else if (playerScriptableObject != null)
         {
             saveData.level = 1; // Default level if no component
+        }
+        
+        // Also try to get experience from the Player instance (from Player.cs)
+        var playerInstance = player.GetComponent<MonoBehaviour>();
+        if (playerInstance != null)
+        {
+            var playerType = playerInstance.GetType();
+            var expProperty = playerType.GetProperty("Exp");
+            if (expProperty != null)
+            {
+                saveData.experiencePoints = (int)expProperty.GetValue(playerInstance);
+                Debug.Log($"Saved player EXP: {saveData.experiencePoints}");
+            }
         }
         
         // Save combat stats
@@ -351,6 +377,26 @@ public class SimpleSaveSystem : MonoBehaviour
         if (playerLevel != null)
         {
             playerLevel.CurrentLevel = saveData.level;
+            
+            // Try to load experience points to the PlayerLevel component
+            if (playerLevel.GetType().GetProperty("ExperiencePoints") != null)
+            {
+                var expProperty = playerLevel.GetType().GetProperty("ExperiencePoints");
+                expProperty.SetValue(playerLevel, saveData.experiencePoints);
+            }
+        }
+        
+        // Also try to load experience to the Player instance (from Player.cs)
+        var playerInstance = player.GetComponent<MonoBehaviour>();
+        if (playerInstance != null)
+        {
+            var playerType = playerInstance.GetType();
+            var expProperty = playerType.GetProperty("Exp");
+            if (expProperty != null)
+            {
+                expProperty.SetValue(playerInstance, saveData.experiencePoints);
+                Debug.Log($"Loaded player EXP: {saveData.experiencePoints}");
+            }
         }
         
         // Apply combat stats

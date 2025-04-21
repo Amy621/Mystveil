@@ -1,0 +1,56 @@
+EquippedSpellSlot Prefab Configuration:
+
+1. Create a new GameObject named "EquippedSpellSlot"
+2. Add the following components:
+   - RectTransform
+     * Width: 200
+     * Height: 60
+     * Anchors: Stretch horizontally, top aligned
+   - Image
+     * Color: RGBA(0.2, 0.2, 0.3, 0.8)
+     * Source Image: None (or a slot background if available)
+   - Button
+     * Normal Color: RGBA(1, 1, 1, 1)
+     * Highlighted Color: RGBA(0.9, 0.9, 1, 1)
+     * Pressed Color: RGBA(0.7, 0.7, 0.9, 1)
+     * Transition: Color Tint
+
+3. Create a child GameObject named "SlotLabel"
+   - Add TextMeshProUGUI component
+     * Text: "Slot 1"
+     * Font Size: 12
+     * Color: RGBA(0.7, 0.7, 1, 1)
+     * Alignment: Top Left
+     * Margins: Left 5, Right 5, Top 3, Bottom 0
+   - RectTransform
+     * Anchors: Stretch horizontally, top aligned
+     * Height: 20
+     * Left: 5, Right: -5, Top: 0
+
+4. Create a child GameObject named "SpellName"
+   - Add TextMeshProUGUI component
+     * Text: "Empty"
+     * Font Size: 14
+     * Color: White
+     * Alignment: Middle Left
+     * Margins: Left 5, Right 5, Top 0, Bottom 0
+   - RectTransform
+     * Anchors: Stretch in both directions
+     * Left: 5, Right: -5, Top: 20, Bottom: 0
+
+5. Optional: Create a child GameObject named "SpellIcon"
+   - Add Image component
+     * Source Image: None (will be set at runtime)
+     * Color: White
+   - RectTransform
+     * Width: 40
+     * Height: 40
+     * Anchors: Middle Right
+     * Position: X: -25, Y: 0, Z: 0
+
+Implementation Notes:
+- The EquippedSpellSlot prefab should be instantiated in the equippedSpellsContent parent in SpellPanelManager
+- Clicking the slot should trigger the OnSlotClicked method
+- The slot should visually indicate when it's selected for spell equipping
+- Empty slots should display "Empty" as the spell name
+- When a spell is equipped to the slot, update the SpellName text component with the spell's name 

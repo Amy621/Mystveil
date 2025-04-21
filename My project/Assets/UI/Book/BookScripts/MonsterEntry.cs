@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 [System.Serializable]
-public class MonsterEntry
+public class BookMonsterEntry
 {
     public string monsterName;
     public string description;
@@ -20,13 +20,13 @@ public class MonsterEntryUI : MonoBehaviour, IPointerClickHandler
     public Color discoveredColor = Color.white;
     public Color undiscoveredColor = Color.gray;
     
-    private MonsterEntry monsterData;
+    private BookMonsterEntry monsterData;
     private bool isSelected;
 
     // Public property to access monster data
-    public MonsterEntry MonsterData => monsterData;
+    public BookMonsterEntry MonsterData => monsterData;
 
-    public void Initialize(MonsterEntry monster)
+    public void Initialize(BookMonsterEntry monster)
     {
         monsterData = monster;
         UpdateVisuals();

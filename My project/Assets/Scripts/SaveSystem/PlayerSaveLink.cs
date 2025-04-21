@@ -148,6 +148,7 @@ public class PlayerSaveLink : MonoBehaviour
             saveData.mana = player.MANA;
             saveData.maxMana = player.MaxMana;
             saveData.level = player.Level;
+            saveData.experiencePoints = player.Exp;
             
             // Save combat stats
             saveData.attackPoints = player.Attack;
@@ -159,8 +160,22 @@ public class PlayerSaveLink : MonoBehaviour
             // Save charisma
             saveData.charisma = player.Charisma;
             
+            // Save status conditions
+            if (player.Status != null)
+            {
+                saveData.statusCondition = player.Status.Id.ToString();
+                saveData.statusTime = player.StatusTime;
+            }
+            
+            if (player.VolatileStatus != null)
+            {
+                saveData.volatileStatus = player.VolatileStatus.Id.ToString();
+                saveData.volatileStatusTime = player.VolatileStatusTime;
+            }
+            
             Debug.Log($"Saved player data: HP={saveData.health}/{saveData.maxHealth}, " +
-                      $"MP={saveData.mana}/{saveData.maxMana}, Level={saveData.level}");
+                      $"MP={saveData.mana}/{saveData.maxMana}, Level={saveData.level}, " +
+                      $"EXP={saveData.experiencePoints}");
                       
             // NEW IMPROVED SPELL SAVING CODE
             if (player.Spells != null)
@@ -274,10 +289,31 @@ public class PlayerSaveLink : MonoBehaviour
             // Load basic stats
             player.HP = saveData.health;
             player.MANA = saveData.mana;
+            player.Exp = saveData.experiencePoints;
             // We don't update MaxHp and MaxMana as those are typically calculated from level and base stats
             
+            // Load status conditions if available
+            if (!string.IsNullOrEmpty(saveData.statusCondition))
+            {
+                if (System.Enum.TryParse<ConditionID>(saveData.statusCondition, out ConditionID conditionId))
+                {
+                    player.SetStatus(conditionId);
+                    player.StatusTime = saveData.statusTime;
+                }
+            }
+            
+            if (!string.IsNullOrEmpty(saveData.volatileStatus))
+            {
+                if (System.Enum.TryParse<ConditionID>(saveData.volatileStatus, out ConditionID conditionId))
+                {
+                    player.SetVolatileStatus(conditionId);
+                    player.VolatileStatusTime = saveData.volatileStatusTime;
+                }
+            }
+            
             Debug.Log($"Loaded player data: HP={saveData.health}/{saveData.maxHealth}, " +
-                      $"MP={saveData.mana}/{saveData.maxMana}, Level={saveData.level}");
+                      $"MP={saveData.mana}/{saveData.maxMana}, Level={saveData.level}, " +
+                      $"EXP={saveData.experiencePoints}");
                       
             // We might need to handle spell loading later if the systems change
         }

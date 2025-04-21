@@ -1,5 +1,5 @@
-# PlayerSaveLink Component
 
+# PlayerSaveLink Component
 This component connects the `Player` class (from `Player.cs`) to the save system, allowing you to save and load player health, mana, and spells.
 
 ## Setup Instructions

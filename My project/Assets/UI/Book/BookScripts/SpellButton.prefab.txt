@@ -1,0 +1,43 @@
+SpellButton Prefab Configuration:
+
+1. Create a new GameObject named "SpellButton"
+2. Add the following components:
+   - RectTransform
+     * Width: 200
+     * Height: 40
+     * Anchors: Stretch horizontally, top aligned
+   - Image
+     * Color: White (RGBA: 1,1,1,1)
+     * Source Image: None (can use a button background if available)
+   - Button
+     * Normal Color: RGBA(0.9, 0.9, 0.9, 1)
+     * Highlighted Color: RGBA(1, 1, 1, 1)
+     * Pressed Color: RGBA(0.8, 0.8, 0.8, 1)
+     * Transition: Color Tint
+
+3. Create a child GameObject named "SpellName"
+   - Add TextMeshProUGUI component
+     * Text: "Spell Name"
+     * Font Size: 14
+     * Color: Black
+     * Alignment: Middle Left
+     * Margins: Left 10, Right 10, Top 0, Bottom 0
+   - RectTransform
+     * Anchors: Stretch in both directions
+     * Left: 5, Right: -5, Top: 0, Bottom: 0
+
+4. Optional: Create a child GameObject named "SpellIcon"
+   - Add Image component
+     * Source Image: None (will be set at runtime)
+     * Color: White
+   - RectTransform
+     * Width: 32
+     * Height: 32
+     * Anchors: Left aligned, vertically centered
+     * Position: X: 5, Y: 0, Z: 0
+
+Implementation Notes:
+- The SpellButton prefab should be instantiated in the spellListContent parent in SpellPanelManager
+- Ensure the Button component's onClick event calls the ShowSpellDetails method
+- The TextMeshProUGUI component should be accessible to set the spell name
+- The Image component on the root object should change color when the spell is equipped 
