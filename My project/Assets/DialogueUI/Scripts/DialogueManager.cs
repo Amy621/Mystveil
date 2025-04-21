@@ -1,157 +1,112 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
-using System;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
-// created and saved as a gameobject that is not destroyed
-// along with the dialogue game object with the UI
 public class DialogueManager : MonoBehaviour
 {
-    public TextAsset inkFile;
-    public GameObject textBox;
-    public GameObject optionPanel;
-    public List<Button> optionButtons;
+    public TextAsset mainInkFile;
+    private Story currentStory;
 
-    static Story story;
-    TMP_Text nametag;
-    TMP_Text message;
-    List<string> tags;
-    int indexOfChoiceSelected;
-    static Choice choiceSelected;
-
-    public float textSpeed = 0.04f;
-    private bool isTyping = false;
-    private string currentFullSentence = "";
-    private Coroutine typeCoroutine;
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        story = new Story(inkFile.text);
-        nametag = textBox.transform.GetChild(0).GetComponent<TMP_Text>();
-        message = textBox.transform.GetChild(1).GetComponent<TMP_Text>();
-        tags = new List<string>();
-        choiceSelected = null;
-
-        AdvanceDialogue(); // Start the first line of dialogue
+        DontDestroyOnLoad(gameObject);
+        InitializeStory();
     }
 
-    // Update is called once per frame
-    void Update()
+    void InitializeStory()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (mainInkFile != null)
         {
-            if (isTyping)
-            {
-                // If currently typing, finish the sentence immediately
-                StopCoroutine(typeCoroutine);
-                message.text = currentFullSentence.Substring(currentFullSentence.IndexOf(":", StringComparison.Ordinal) + 1);
-                isTyping = false;
-            }
-            else if (story.canContinue)
-            {
-                AdvanceDialogue();
-
-                // Are there any choices?
-                if (story.currentChoices.Count != 0)
-                {
-                    StartCoroutine(ShowChoices());
-                }
-            }
-            else
-            {
-                FinishDialogue();
-            }
+            currentStory = new Story(mainInkFile.text);
+        }
+        else
+        {
+            Debug.LogError("Main Ink file not assigned in the Inspector!");
         }
     }
 
-    private void FinishDialogue()
+    public void StartDialogue(string interactionToStart)
     {
-        Debug.Log("End of Dialogue!");
-    }
-
-    void AdvanceDialogue()
-    {
-        currentFullSentence = story.Continue();
-        nametag.text = currentFullSentence.Substring(0, currentFullSentence.IndexOf(":", StringComparison.Ordinal));
-
-        StopAllCoroutines();
-        typeCoroutine = StartCoroutine(TypeSentence(currentFullSentence.Substring(currentFullSentence.IndexOf(":", StringComparison.Ordinal) + 1)));
-    }
-
-    IEnumerator TypeSentence(string sentence)
-    {
-        message.text = "";
-        isTyping = true;
-
-        int currentCharacter = 0;
-        while (currentCharacter < sentence.Length)
+        if (currentStory == null)
         {
-            string visibleText = sentence.Substring(0, currentCharacter);
-            string invisibleText = sentence.Substring(currentCharacter, 1);
-            message.text = visibleText + "<color=#00000000>" + invisibleText + "</color>";
-
-            currentCharacter++;
-            yield return new WaitForSeconds(textSpeed);
+            Debug.LogError("Ink story is not initialized. Make sure the main Ink file is assigned.");
+            return;
         }
+        Debug.Log(interactionToStart);
+        // Set the global variable to control the starting point
+        currentStory.variablesState["current_interaction"] = interactionToStart;
 
-        message.text = sentence;
-        isTyping = false;
-        yield return null;
-    }
+        // Divert to the starting knot based on the variable (optional, can also be handled in Ink directly)
+        currentStory.ChoosePathString(interactionToStart);
 
-    IEnumerator ShowChoices()
-    {
-        Debug.Log("There are choices that need to be made here!");
-        List<Choice> _choices = story.currentChoices;
-
-        for (int i = 0; i < _choices.Count; i++)
+        // Signal that dialogue has started (you might want to handle UI activation here or in GameController)
+        if (OnDialogueStarted != null)
         {
-            Button optionButton = optionButtons[i];
-
-            tags = story.currentTags;
-            foreach (string t in tags)
-            {
-                Debug.Log("tag: " + t);
-            }
-
-            optionButton.gameObject.SetActive(true);
-            optionButton.GetComponentInChildren<TMP_Text>().text = _choices[i].text; // Access TMP_Text in children
-            Selectable selectable = optionButton.gameObject.AddComponent<Selectable>();
-            selectable.element = _choices[i];
-            optionButton.onClick.AddListener(() => { selectable.Decide(); });
+            OnDialogueStarted.Invoke(currentStory); // Pass the story object
         }
-
-        optionPanel.SetActive(true);
-        yield return new WaitUntil(() => { return choiceSelected != null; });
-        AdvanceFromDecision();
     }
 
-    public static void SetDecision(object element)
+    public bool CanContinueStory()
     {
-        choiceSelected = (Choice)element;
-        story.ChooseChoiceIndex(choiceSelected.index);
+        return currentStory != null && currentStory.canContinue;
     }
 
-    void AdvanceFromDecision()
+    public string GetNextStoryLine()
     {
-        optionPanel.SetActive(false);
-        for (int i = 0; i < optionButtons.Count; i++)
+        if (CanContinueStory())
         {
-            Button optionButton = optionButtons[i];
-            optionButton.gameObject.SetActive(false);
-            Selectable script = optionButton.GetComponent<Selectable>();
-            if (script != null)
-            {
-                Destroy(script);
-            }
-            optionButton.onClick.RemoveAllListeners(); // Clean up listeners
+            return currentStory.Continue();
         }
+        return null;
+    }
 
-        choiceSelected = null;
-        AdvanceDialogue();
+    public List<Choice> GetCurrentChoices()
+    {
+        if (currentStory != null)
+        {
+            return currentStory.currentChoices;
+        }
+        return new List<Choice>();
+    }
+
+    public void MakeChoice(int choiceIndex)
+    {
+        if (currentStory != null && currentStory.currentChoices.Count > choiceIndex)
+        {
+            currentStory.ChooseChoiceIndex(choiceIndex);
+        }
+        else
+        {
+            Debug.LogError($"Invalid choice index: {choiceIndex}");
+        }
+    }
+
+    public void SetVariable(string variableName, object value)
+    {
+        if (currentStory != null)
+        {
+            currentStory.variablesState[variableName] = value;
+        }
+        else
+        {
+            Debug.LogError("Ink story is not initialized.");
+        }
+    }
+
+    public object GetVariable(string variableName)
+    {
+        return currentStory.variablesState[variableName];
+    }
+
+    public event System.Action<Story> OnDialogueStarted;
+    public event System.Action OnDialogueEnded;
+
+    public void EndDialogue()
+    {
+        currentStory = null; // Clean up the story
+        OnDialogueEnded?.Invoke();
+        InitializeStory(); // Re-initialize for the next dialogue
     }
 }

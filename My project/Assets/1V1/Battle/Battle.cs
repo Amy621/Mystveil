@@ -9,6 +9,7 @@ public enum BattleState { Start, PlayerAction, PlayerMove, EnemyMove, BattlePhas
 
 public class Battle : MonoBehaviour
 {
+    [SerializeField] PlayerDB playerDB { get; set; }
     [SerializeField] PlayerUnit playerUnit;
     [SerializeField] PlayerHud playerHud;
     [SerializeField] EnemyUnit enemyUnit;
@@ -28,6 +29,8 @@ public class Battle : MonoBehaviour
 
     public void StartBattle()
     {
+        playerDB = FindObjectOfType<PlayerDB>();
+
         StartCoroutine(SetupBattle());
     }
 
@@ -528,9 +531,6 @@ public class Battle : MonoBehaviour
 
             if (newMove != null && !newMove.Base.IsLearned)
             {
-                // add another if statement that goes through all the player's current moves
-                // and if the evolve spell for one of them equals newMove, then evolve that current
-                // move and remove it (similar to the forgetting a move but automatic)
                 if (playerUnit.Player.Spells.Count < Player.MaxNumOfMoves)
                 {
                     playerUnit.Player.LearnSpell(newMove);
@@ -540,12 +540,9 @@ public class Battle : MonoBehaviour
                 }
                 else
                 {
-                    yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} is trying to learn {newMove.Base.Name}!"); 
+                    yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} has learned a new spell!"); 
+                    newMove.Base.IsLearned = true;
                     yield return new WaitForSeconds(1f); 
-                    yield return dialogBox.TypeDialog($"But she cannot learn more than {Player.MaxNumOfMoves} moves :(");
-                    yield return new WaitForSeconds(1f); 
-                    // Forget a move
-                    yield return ChooseMoveToForget(playerUnit.Player, newMove.Base);
                 }
             }
             
