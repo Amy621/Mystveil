@@ -14,7 +14,8 @@ public class ForestBase : MonoBehaviour
     void Start()
     {
         // getting number of levels
-        numLevels = Random.Range(3, 6);
+        //numLevels = Random.Range(3, 6);
+        numLevels = 2;
         Debug.Log("Number of levels: " + numLevels);
         gridGenerator.GenerateLevel(true);
         //gridGenerator.GenerateBossLevel();

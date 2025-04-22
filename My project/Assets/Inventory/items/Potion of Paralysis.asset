@@ -20,6 +20,17 @@ MonoBehaviour:
   description: A bright yellow liquid that constantly crackles with energy. Lowers
     enemy speed by 20% of your speed or causes the enemy to lose a turn.
   recipe: {fileID: 11400000, guid: c8517c8fe231841f7b5eeff798600625, type: 2}
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 5
+  target: 0
   hp: 0
   spe: 0
   spd: 0

@@ -12,7 +12,7 @@ public class CollectableItem : MonoBehaviour
     
     private AudioSource audioSource;
     
-    private void Awake()
+    private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null && pickupSound != null)

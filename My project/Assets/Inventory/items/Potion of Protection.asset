@@ -20,6 +20,17 @@ MonoBehaviour:
   description: A metallic, grey potion with a high viscosity. Makes the witch invincible
     for a limited amount of time or protected from attack for one turn.
   recipe: {fileID: 11400000, guid: 084b6cfbe9a0943b8840572dee8e8c8a, type: 2}
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 7
+  target: 0
   hp: 0
   spe: 0
   spd: 0

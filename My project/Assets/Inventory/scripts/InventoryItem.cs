@@ -39,15 +39,27 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     {
         if(eventData.button == PointerEventData.InputButton.Left)
         {
-            Debug.Log("clicked on item " + myItem);
-            if(Input.GetKey(KeyCode.LeftShift)){
-                //shift click
-                Inventory.Singleton.Combine(activeSlot);
+            if (Inventory.Singleton.isIn1v1)
+            {
+                Inventory.Singleton.battle.useItem = myItem;
+                Debug.Log("Inventory Item my item: " + myItem);
+                Inventory.Singleton.removeItems(null, 1, activeSlot);
+                Inventory.Singleton.view1v1();
+                
+                // Invoke the action to signal Battle to use the item
+                Inventory.Singleton.battle.onUseItemRequested?.Invoke();
             }
-            else{
-                Inventory.Singleton.SetCarriedItem(this); 
+            else 
+            {
+                Debug.Log("clicked on item " + myItem);
+                if(Input.GetKey(KeyCode.LeftShift)){
+                    //shift click
+                    Inventory.Singleton.Combine(activeSlot);
+                }
+                else{
+                    Inventory.Singleton.SetCarriedItem(this); 
+                }
             }
-            
         }
     }
     public void SetText()

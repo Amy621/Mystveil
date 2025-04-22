@@ -130,6 +130,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1357955887592199081, guid: ab4d6ea058e258a48a7aae8782052121, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+    - target: {fileID: 1357955887592199081, guid: ab4d6ea058e258a48a7aae8782052121, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+    - target: {fileID: 1357955887592199081, guid: ab4d6ea058e258a48a7aae8782052121, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3686587745326215722, guid: ab4d6ea058e258a48a7aae8782052121, type: 3}
       propertyPath: m_Name
       value: BattleSystem 1

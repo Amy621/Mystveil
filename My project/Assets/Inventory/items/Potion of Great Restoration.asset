@@ -19,6 +19,17 @@ MonoBehaviour:
   craftable: 1
   description: A blue liquid with spots of yellow. Restores 50% MP
   recipe: {fileID: 11400000, guid: 4316e70ae1efb4fa297bff6d473d33b0, type: 2}
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 50
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 0
+  target: 1
   hp: 0
   spe: 0
   spd: 0

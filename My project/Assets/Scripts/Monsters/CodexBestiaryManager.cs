@@ -41,10 +41,10 @@ public class CodexBestiaryManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         
         // Auto-populate monster list in editor
-        if (autoPopulateInEditor && allMonsters.Count == 0 && Application.isEditor)
-        {
-            PopulateMonsterList();
-        }
+        // if (autoPopulateInEditor && allMonsters.Count == 0 && Application.isEditor)
+        // {
+        //     PopulateMonsterList();
+        // }
         
         // Load saved bestiary data
         LoadBestiaryData();

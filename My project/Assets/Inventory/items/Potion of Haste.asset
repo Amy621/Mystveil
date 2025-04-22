@@ -20,6 +20,19 @@ MonoBehaviour:
   description: A constantly bubbling, mustard yellow liquid. Increases movement speed
     by 20% for a limited amount of time or one turn.
   recipe: {fileID: 11400000, guid: e6bd56430337049a38085386b8317a68, type: 2}
+  effects:
+    boosts:
+    - stat: 4
+      boost: 1
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 0
+  target: 1
   hp: 0
   spe: 0
   spd: 0

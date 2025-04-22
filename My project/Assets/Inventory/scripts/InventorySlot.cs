@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Linq;
+using System;
 
 public class InventorySlot : MonoBehaviour, IPointerClickHandler
 {
     public InventoryItem myItem { get; set; } //cur item in slot
     public SlotTag myTag;
     public Sprite defaultSprite;
+    public Action OnItemClickedInBattle;
 
     
     public void OnPointerClick(PointerEventData eventData)
@@ -16,17 +19,29 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
         //on left click, place item in slot
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            Debug.Log("clicked on slot");
-            if(Input.GetKey(KeyCode.LeftShift)){
-                //shift click
-                Inventory.Singleton.Combine(this);
-            }else{
-                if(myItem == null && Inventory.carriedItem != null) //place carried into empty slot
-                    SetItem(Inventory.carriedItem);
-                else if(myItem != null)
-                Inventory.Singleton.SetCarriedItem(myItem); 
+            if (Inventory.Singleton.isIn1v1)
+            {
+                Inventory.Singleton.battle.useItem = myItem.myItem;
+                Debug.Log("Inventory slot my item: " + myItem.myItem);
+                Inventory.Singleton.removeItems(null, 1, this);
+                Inventory.Singleton.view1v1();
+
+                // Invoke the action to signal Battle to use the item
+                Inventory.Singleton.battle.onUseItemRequested?.Invoke();
             }
-            
+            else
+            {
+                Debug.Log("clicked on slot");
+                if(Input.GetKey(KeyCode.LeftShift)){
+                    //shift click
+                    Inventory.Singleton.Combine(this);
+                }else{
+                    if(myItem == null && Inventory.carriedItem != null) //place carried into empty slot
+                        SetItem(Inventory.carriedItem);
+                    else if(myItem != null)
+                    Inventory.Singleton.SetCarriedItem(myItem); 
+                }
+            }            
         }
     }
 

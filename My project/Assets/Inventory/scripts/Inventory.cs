@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting.Dependencies.Sqlite;
-using UnityEditor.Search;
+//using Unity.VisualScripting.Dependencies.Sqlite;
+//using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-
+    // public PlayerController playerController { get; private set; }
+    public GameController gameController { get; private set; }
+    public Battle battle { get; set; }
+    // public GameState state { get; set; }
     public Dictionary<Item, int> itemAmts = new Dictionary<Item, int>(); //all items in the inventory and their amounts
     public static Inventory Singleton; //only one instance of the inventory can exist
     public static InventoryItem carriedItem; //item currently being dragged in inventory
@@ -26,6 +29,7 @@ public class Inventory : MonoBehaviour
     public GameObject obj;
     public Sprite highlightSprite;
     public bool isActive = false;
+    public bool isIn1v1 = false;
 
     void Awake()
     {
@@ -33,6 +37,30 @@ public class Inventory : MonoBehaviour
         Singleton = this; //init single inventory
         giveItemButton.onClick.AddListener(delegate { SpawnInventoryItem(); });
         obj.SetActive(isActive);
+    }
+
+    // void Start()
+    // {
+    //     gameController = FindObjectOfType<GameController>();
+    // }
+
+    // public void ChangeGameState()
+    // {
+    //     Debug.Log(gameController);
+    //     gameController = FindObjectOfType<GameController>();
+    //     state = gameController.getState;
+    //     Debug.Log("after: " + state);
+    //     battle = FindObjectOfType<Battle>();
+    // }
+
+    // put in inventory, call hasPotions() when the user presses item:
+    public bool hasPotions(){
+        for(int i = 0; i < inventorySlots.Length; i++){
+            if(inventorySlots[i].myItem != null && inventorySlots[i].myItem.myItem.itemType == ItemType.Potion){
+                return true;
+            }
+        }
+        return false;
     }
 
     //spawn an item in the inventory for testing
@@ -66,7 +94,7 @@ public class Inventory : MonoBehaviour
             obj.SetActive(false);
     }
 
-    void Update() //item follow cursor
+    public void HandleUpdate() //item follow cursor
     {
         if (carriedItem != null)
         {
@@ -86,6 +114,42 @@ public class Inventory : MonoBehaviour
 
             isActive = !isActive;
             obj.SetActive(isActive);
+        }
+
+        if(!Inventory.Singleton.isActive){
+            if(Input.GetKeyDown(KeyCode.Alpha1)){
+            removeItems(null, 1, inventorySlots[42]);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha2)){
+            removeItems(null, 1, inventorySlots[43]);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha3)){
+            removeItems(null, 1, inventorySlots[44]);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha4)){
+            removeItems(null, 1, inventorySlots[45]);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha5)){
+            removeItems(null, 1, inventorySlots[46]);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha6)){
+            removeItems(null, 1, inventorySlots[47]);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha7)){
+            removeItems(null, 1, inventorySlots[48]);
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha8)){
+            removeItems(null, 1, inventorySlots[49]);
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha9)){
+            removeItems(null, 1, inventorySlots[50]);
+            }
+
+            if(Input.GetKeyDown(KeyCode.Alpha0)){
+            removeItems(null, 1, inventorySlots[51]);
+            }
         }
     }
 
@@ -196,18 +260,17 @@ public class Inventory : MonoBehaviour
         }
     }
     
-    public void removeItems(Item item = null, int numRemove = -1, int slotNum = -1){
+    public void removeItems(Item item = null, int numRemove = -1, InventorySlot slot = null){
         if(item && (!itemAmts.ContainsKey(item) || itemAmts[item] < numRemove)){
             Debug.Log("not enough items to remove");
             return;
         }
-        
-        if(item == null){ //find item(s) to remove
+        if(item == null && slot == null){ //find item(s) to remove
             List<Item> removed = new List<Item>();
             int starting = Random.Range(0, inventorySlots.Length-4);
             for(int i = 0; i < inventorySlots.Length-4 && numRemove > 0;i++){
                 if(inventorySlots[i].myItem != null){
-                    InventorySlot slot = inventorySlots[i];
+                    slot = inventorySlots[i];
                     removed.Add(slot.myItem.myItem);
                     itemAmts[slot.myItem.myItem] -= slot.myItem.amount;
                     numRemove--;
@@ -232,11 +295,11 @@ public class Inventory : MonoBehaviour
             return;
         }
 
-        if(item && slotNum == -1){ //crafting
+        if(item && slot == null){ //crafting
             itemAmts[item] -= numRemove;
             for(int i = 0; i < inventorySlots.Length; i++){
                 if(inventorySlots[i].myItem != null && inventorySlots[i].myItem.myItem == item){
-                    InventorySlot slot = inventorySlots[i];
+                    slot = inventorySlots[i];
                     itemAmts[slot.myItem.myItem] -= numRemove;
                     if(slot.myItem.amount > numRemove){
                         slot.myItem.amount-= numRemove;
@@ -251,25 +314,19 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        if(slotNum > -1){ //use item
-            if(item == null)
-                item = inventorySlots[slotNum].myItem.myItem;
-            //invalid range
-            if(slotNum >= inventorySlots.Length || slotNum < 0){ 
-                Debug.Log("slotNum out of range");
-                return;
-            }
-            //slot is empty
-            if(inventorySlots[slotNum].myItem == null){
+        if(slot != null){ //use item
+            //slot empty
+            if(slot.myItem == null){
                 Debug.Log("slot is empty");
                 return;
             }
+            if(item == null)
+                item = slot.myItem.myItem;
             //item not usable
             if(item.itemType != ItemType.Potion){
                 Debug.Log("item not usable");
                 return;
             }
-            InventorySlot slot = inventorySlots[slotNum];
             if(numRemove == -1) numRemove = 1;
 
             //not enough items to remove
@@ -290,9 +347,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
+
+
     public void view1v1(){
+        Debug.Log("inside view 1v1");
         isActive = !isActive;
         if(isActive){ //now active
+            Debug.Log("inside isActive");
+            isIn1v1 = true;
             obj.SetActive(isActive);
             for(int i = 0; i < inventorySlots.Length; i++){
                 if(inventorySlots[i].myItem != null){
@@ -312,6 +374,7 @@ public class Inventory : MonoBehaviour
             }
         }
         else{ //make inactive, everything back to normal
+            Debug.Log("Not isActive");
             for(int i = 0; i < inventorySlots.Length; i++){
                 if(inventorySlots[i].myItem != null){
                     if(inventorySlots[i].myItem.myItem.itemType != ItemType.Potion){
@@ -327,6 +390,7 @@ public class Inventory : MonoBehaviour
                 }
             }
             obj.SetActive(isActive);
+            isIn1v1 = false;
         }
     }
 }

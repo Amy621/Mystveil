@@ -16,6 +16,8 @@ public class Item : ScriptableObject
     public string description;
     [Header("If the item can be crafted")]
     public Recipe recipe;
+    public MoveEffects effects;
+    public MoveTarget target;
     
     public int hp = 0;
     public int spe = 0;

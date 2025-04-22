@@ -12,6 +12,7 @@ TagManager:
   - Collectable
   - NextScene
   - BossMonster
+  - Hotbar
   layers:
   - Default
   - TransparentFX

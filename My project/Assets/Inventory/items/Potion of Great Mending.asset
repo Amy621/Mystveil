@@ -19,6 +19,17 @@ MonoBehaviour:
   craftable: 1
   description: A dark red liquid with small flecks of gold. Restores 50% HP.
   recipe: {fileID: 11400000, guid: a161d022f14824aa7933e724271315fc, type: 2}
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 50
+    restoreMP: 0
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 0
+  target: 1
   hp: 0
   spe: 0
   spd: 0

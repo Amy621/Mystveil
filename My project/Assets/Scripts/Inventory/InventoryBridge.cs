@@ -13,7 +13,7 @@ public class InventoryBridge : MonoBehaviour
     private InventoryManager inventoryManager;
     private ItemDatabase itemDatabase;
     
-    private void Awake()
+    private void Start()
     {
         // Try to get or create an InventoryManager
         inventoryManager = FindObjectOfType<InventoryManager>();

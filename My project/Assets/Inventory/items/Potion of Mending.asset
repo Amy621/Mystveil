@@ -19,6 +19,17 @@ MonoBehaviour:
   craftable: 1
   description: "A light red liquid that\u2019s cold to the touch. Restores 25% HP."
   recipe: {fileID: 11400000, guid: f10b786a3a474401e8df16744d7fc8ee, type: 2}
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 25
+    restoreMP: 0
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 0
+  target: 1
   hp: 0
   spe: 0
   spd: 0

@@ -7,7 +7,7 @@ public class InventorySaveAdapter : MonoBehaviour
 {
     private InventoryManager inventoryManager;
 
-    private void Awake()
+    private void Start()
     {
         inventoryManager = GetComponent<InventoryManager>();
     }

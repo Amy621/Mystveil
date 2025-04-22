@@ -20,6 +20,17 @@ MonoBehaviour:
   description: A dark blue liquid with areas of glowing yellow spots reminiscent
     of the night sky. Restores one to full MP.
   recipe: {fileID: 11400000, guid: 052f6ef846fc34809a0247b955e85667, type: 2}
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 100
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 0
+  target: 1
   hp: 0
   spe: 0
   spd: 0

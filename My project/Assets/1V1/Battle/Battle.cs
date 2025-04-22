@@ -17,19 +17,26 @@ public class Battle : MonoBehaviour
     [SerializeField] BattleDialogueBox dialogBox;
     [SerializeField] MoveSelectionUI moveSelectionUI;
     [SerializeField] MoveInfo moveInfo;
+    [SerializeField] Inventory inventory { get; set; }
 
     public event Action<bool> OnBattleOver;
+    public Action onUseItemRequested;
+    public static Battle Instance;
 
     BattleState state;
     int currentAction;
     int currentMove;
     private bool isShowingError = false;
+    private bool isUsingItem;
     int escapeAttempts;
     bool willDropItems;
+    public Item useItem { get; set; }
 
     public void StartBattle()
     {
         playerDB = FindObjectOfType<PlayerDB>();
+        //inventory = FindObjectOfType<Inventory>();
+        Instance = this;
 
         StartCoroutine(SetupBattle());
     }
@@ -87,69 +94,100 @@ public class Battle : MonoBehaviour
 
         yield return ShowPlayerStatusChanges(playerUnit.Player);
 
-        var spell = playerUnit.Player.Spells[currentMove];
-        yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} used {spell.Base.Name}!");
+        // using item
+        if (isUsingItem)
+        {
+            yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} used {useItem.name}!");
+            yield return new WaitForSeconds(1f);
 
-        yield return new WaitForSeconds(1f);
+            yield return RunPlayerMoveEffects(useItem.effects , playerUnit.Player, enemyUnit.Enemy, useItem.target);
+            yield return new WaitForSeconds(1f);
 
-        if (CheckIfPlayerSpellHits(spell, playerUnit.Player, enemyUnit.Enemy)) {
-            if (spell.Base.Category == MoveCategory.Status)
-            {
-                yield return RunPlayerMoveEffects(spell.Base.Effects, playerUnit.Player, enemyUnit.Enemy, spell.Base.Target);
-
-                yield return playerHud.UpdateMana();
-                yield return new WaitForSeconds(1f);
-
-            } else if (spell.Base.Effects.NumberOfHits.MinNum != 0) {
-                
-                var multiHit = spell.Base.Effects.NumberOfHits;
-                int numTimes = 0;
-                for (int start = multiHit.MinNum; start <= multiHit.MaxNum; start++) 
-                {
-                    bool isDefeated = enemyUnit.Enemy.TakeDamage(spell, playerUnit.Player);
-                    numTimes++;
-
-                    yield return enemyHud.UpdateHP();
-                    yield return playerHud.UpdateMana();
-
-                    yield return new WaitForSeconds(1f);
-                    
-                    if (isDefeated) {
-                        break;
-                    }
-                }
-                
-                yield return dialogBox.TypeDialog($"{spell.Base.Name} hit {numTimes} times!");
-
-                yield return new WaitForSeconds(1f);
-
-            } else {
-                bool isDefeated = enemyUnit.Enemy.TakeDamage(spell, playerUnit.Player);
-                yield return enemyHud.UpdateHP();
-                yield return playerHud.UpdateMana();
-            }
-
-            if (spell.Base.SecondaryEffects != null && spell.Base.SecondaryEffects.Count > 0 && enemyUnit.Enemy.HP > 0)
-            {
-                foreach (var secondary in spell.Base.SecondaryEffects)
-                {
-                    var rnd = UnityEngine.Random.Range(1, 101);
-                    if (rnd <= secondary.Chance)
-                        yield return RunPlayerMoveEffects(secondary, playerUnit.Player, enemyUnit.Enemy, secondary.Target);
-                }
-            }
+            yield return enemyHud.UpdateHP();
+            yield return playerHud.UpdateMana();
 
             if (enemyUnit.Enemy.HP <= 0)
             {
-               yield return HandleEnemyFainted(enemyUnit);
+                yield return HandleEnemyFainted(enemyUnit);
 
             } else { StartCoroutine(EnemyMove()); }
         }
-        else 
+        else
         {
-            yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name}'s spell missed!");
+            // use spell
+            var spell = playerUnit.Player.Spells[currentMove];
+            yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name} used {spell.Base.Name}!");
+
             yield return new WaitForSeconds(1f);
-            StartCoroutine(EnemyMove());
+
+            // does the spell hit
+            if (CheckIfPlayerSpellHits(spell, playerUnit.Player, enemyUnit.Enemy)) {
+
+                // is it a status spell
+                if (spell.Base.Category == MoveCategory.Status)
+                {
+                    yield return RunPlayerMoveEffects(spell.Base.Effects, playerUnit.Player, enemyUnit.Enemy, spell.Base.Target);
+
+                    yield return playerHud.UpdateMana();
+                    yield return new WaitForSeconds(1f);
+
+                // is it a multi-hit spell
+                } else if (spell.Base.Effects.NumberOfHits.MinNum != 0) {
+                    
+                    var multiHit = spell.Base.Effects.NumberOfHits;
+                    int numTimes = 0;
+                    for (int start = multiHit.MinNum; start <= multiHit.MaxNum; start++) 
+                    {
+                        bool isDefeated = enemyUnit.Enemy.TakeDamage(spell, playerUnit.Player);
+                        numTimes++;
+
+                        yield return enemyHud.UpdateHP();
+                        yield return playerHud.UpdateMana();
+
+                        yield return new WaitForSeconds(1f);
+                        
+                        if (isDefeated) {
+                            break;
+                        }
+                    }
+                    
+                    yield return dialogBox.TypeDialog($"{spell.Base.Name} hit {numTimes} times!");
+
+                    yield return new WaitForSeconds(1f);
+
+
+                // every other spell
+                } else {
+                    bool isDefeated = enemyUnit.Enemy.TakeDamage(spell, playerUnit.Player);
+                    yield return enemyHud.UpdateHP();
+                    yield return playerHud.UpdateMana();
+                }
+
+                // secondary effects
+                if (spell.Base.SecondaryEffects != null && spell.Base.SecondaryEffects.Count > 0 && enemyUnit.Enemy.HP > 0)
+                {
+                    foreach (var secondary in spell.Base.SecondaryEffects)
+                    {
+                        var rnd = UnityEngine.Random.Range(1, 101);
+                        if (rnd <= secondary.Chance)
+                            yield return RunPlayerMoveEffects(secondary, playerUnit.Player, enemyUnit.Enemy, secondary.Target);
+                    }
+                }
+
+                if (enemyUnit.Enemy.HP <= 0)
+                {
+                yield return HandleEnemyFainted(enemyUnit);
+
+                } else { StartCoroutine(EnemyMove()); }
+            }
+            // spell missed
+            else 
+            {
+                yield return dialogBox.TypeDialog($"{playerUnit.Player.Base.Name}'s spell missed!");
+                yield return new WaitForSeconds(1f);
+                StartCoroutine(EnemyMove());
+            }
+
         }
     }
 
@@ -171,7 +209,14 @@ public class Battle : MonoBehaviour
             else if (currentAction == 1)
             {
                 // Item
-                Debug.Log("Item selected (not implemented)");
+                // if (inventory.hasPotions())
+                // {
+                //     OpenInventory();
+                // }
+                // else
+                // {
+                //     StartCoroutine(ErrorPotionPopUp());
+                // }
             }
             else if (currentAction == 2)
             {
@@ -221,6 +266,24 @@ public class Battle : MonoBehaviour
         dialogBox.EnableMoveSelector(true);
         dialogBox.EnableDialogText(false);
         isShowingError = false;
+    }
+
+    IEnumerator ErrorPotionPopUp()
+    {
+        dialogBox.EnableActionSelector(false);
+        dialogBox.OnActionSelected -= HandleActionSelectionClick;
+        dialogBox.EnableDialogText(true);
+        
+        dialogBox.TypeDialog("No potions to use!");
+        yield return new WaitForSeconds(1f);
+
+        dialogBox.SetDialog("");
+        dialogBox.EnableDialogText(false);
+        isShowingError = false;
+
+        yield return new WaitForSeconds(1f);
+
+        PlayerAction();
     }
 
     IEnumerator EnemyMove()
@@ -627,6 +690,26 @@ public class Battle : MonoBehaviour
                 PlayerAction();
             }
         }
+    }
+
+    void OpenInventory()
+    {
+        state = BattleState.Busy;
+        Instance.onUseItemRequested += UseItem;
+        Inventory.Singleton.view1v1();
+    }
+
+    void UseItem()
+    {
+        // using item
+        isUsingItem = true;
+
+        Debug.Log("Open inventory item: " + useItem);
+
+        StartCoroutine(PerformPlayerMove());
+        // yield return null; // Added a yield to make it a proper coroutine
+        //isUsingItem = false; // Reset the flag
+        //Instance.onUseItemRequested -= UseItem;
     }
 
     IEnumerator ChooseMoveToForget(Player player, PlayerSpells newMove)

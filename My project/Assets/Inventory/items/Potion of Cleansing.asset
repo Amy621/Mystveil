@@ -19,6 +19,17 @@ MonoBehaviour:
   craftable: 1
   description: A light yellow liquid that smells like lemons. Heals any status condition.
   recipe: {fileID: 11400000, guid: 14db0ab00928e403b9019c2f1367f030, type: 2}
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatusChanges: 1
+    removeAllStatChanges: 0
+    status: 0
+  target: 1
   hp: 0
   spe: 0
   spd: 0

@@ -20,6 +20,19 @@ MonoBehaviour:
   description: A reddish orange liquid that is warm to the touch. Increases attack
     by 20% for a limited amount of time or one turn.
   recipe: {fileID: 11400000, guid: 2c30930d443004e8988d8af46a96b692, type: 2}
+  effects:
+    boosts:
+    - stat: 0
+      boost: 1
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 0
+  target: 1
   hp: 0
   spe: 0
   spd: 0

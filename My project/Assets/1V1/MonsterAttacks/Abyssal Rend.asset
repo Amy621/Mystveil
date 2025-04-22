@@ -16,9 +16,20 @@ MonoBehaviour:
   levelLearned: 100
   description: Primal energy from within crackles around the user's claws as it tears
     a gaping wound, as if opening a rift in reality.
-  effect: 
-  hasEffect: 0
   nextEvolveMove: {fileID: 0}
-  type: PHYSICAL
+  category: 0
+  effects:
+    boosts: []
+    numHit:
+      minNum: 0
+      maxNum: 0
+    restoreHP: 0
+    restoreMP: 0
+    removeAllStatusChanges: 0
+    removeAllStatChanges: 0
+    status: 0
+  secondaryEffects: []
+  target: 0
   power: 100
   accuracy: 100
+  alwaysHits: 0
