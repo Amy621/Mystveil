@@ -12,7 +12,7 @@ public class Enter3D : MonoBehaviour
         if (other.CompareTag("Player"))  // Ensure your player object has the "Player" tag
         {
             // Call the scene change method, passing the scene name
-            MoveToScene("Town");  // Replace "YourSceneName" with the name of the scene you want to load
+            MoveToScene("Forest");  // Replace "YourSceneName" with the name of the scene you want to load
         }
     }
 

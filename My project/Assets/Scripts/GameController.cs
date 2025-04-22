@@ -38,6 +38,8 @@ public class GameController : MonoBehaviour
 
         playerScripts = playerController.GetComponents<MonoBehaviour>();
         List<MonoBehaviour> scriptsToDisable = new List<MonoBehaviour>(playerScripts);
+        dialogueManager = FindObjectOfType<DialogueManager>();
+        dialogueTrigger = FindObjectOfType<DialogueTrigger>();
         scriptsToDisable.Remove(playerController);
         playerScripts = scriptsToDisable.ToArray();
 

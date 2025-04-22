@@ -18,6 +18,8 @@ public class ForestBase : MonoBehaviour
         Debug.Log("Number of levels: " + numLevels);
         gridGenerator.GenerateLevel(true);
         //gridGenerator.GenerateBossLevel();
+
+        miniMapScript = FindObjectOfType<MiniMap>();
      }
 
     public static void onCreateLevel()
