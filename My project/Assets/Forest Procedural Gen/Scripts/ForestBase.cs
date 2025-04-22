@@ -11,7 +11,7 @@ public class ForestBase : MonoBehaviour
     [SerializeField] private MiniMap miniMapScript;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         // getting number of levels
         numLevels = Random.Range(3, 6);
@@ -21,6 +21,17 @@ public class ForestBase : MonoBehaviour
 
         miniMapScript = FindObjectOfType<MiniMap>();
      }
+
+    //  public void RestartForest()
+    //  {
+    //     // getting number of levels
+    //     numLevels = Random.Range(3, 6);
+    //     Debug.Log("Number of levels: " + numLevels);
+    //     gridGenerator.GenerateLevel(true);
+    //     //gridGenerator.GenerateBossLevel();
+
+    //     miniMapScript = FindObjectOfType<MiniMap>();
+    //  }
 
     public static void onCreateLevel()
     {

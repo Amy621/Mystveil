@@ -41,9 +41,10 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        maxHP = monster.HP;
-        Debug.Log("this monster has this much HP: " + maxHP);
+        // maxHP = monster.HP;
+        // Debug.Log("this monster has this much HP: " + maxHP);
 
+        maxHP = monster.HP;
         currentHP = maxHP;
         enemyCollider = GetComponent<Collider>();
         navAgent = GetComponent<NavMeshAgent>();
@@ -62,14 +63,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        // For testing purposes: press F to damage the enemy.
-        // if (Input.GetKeyDown(KeyCode.F))
-        // {
-        //     TakeDamage(20);
-        // }
-    }
+    // void Update()
+    // {
+    //     maxHP = monster.HP;
+    // }
 
     public void Shoot()
     {

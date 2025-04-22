@@ -19,6 +19,11 @@ public class DialogueTrigger : MonoBehaviour
     private float typingSpeed = 0.04f;
     private bool waitingForInput = false;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     void Start()
     {
         dialoguePanel.SetActive(false);

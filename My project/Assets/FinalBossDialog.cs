@@ -1,8 +1,8 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class IntroDialogue : MonoBehaviour
+public class FinalBossDialog : MonoBehaviour
 {
     public DialogueTrigger dialogueTrigger;
     void Start()
@@ -17,10 +17,9 @@ public class IntroDialogue : MonoBehaviour
         // Check if the object that collided is the player (or any other object you want to check)
         if (other.CompareTag("Player"))  // Ensure your player object has the "Player" tag
         {
-            dialogueTrigger.TriggerDialogue("intro");
+            dialogueTrigger.TriggerDialogue("enter_arena");
         }
 
         Destroy(gameObject);
     }
 }
-

@@ -16,8 +16,8 @@ MonoBehaviour:
   description: A transmutation mage who turns humans into her army of animals. Became
     obessed with power once she was appointed as the Court Magician.
   isSpecialBoss: 1
-  monsterIconImage: {fileID: 0}
-  bossImage: {fileID: 0}
+  monsterIconImage: {fileID: 21300000, guid: e598c7a169b1a9b4b97e50b95c9291e8, type: 3}
+  bossImage: {fileID: 21300000, guid: e598c7a169b1a9b4b97e50b95c9291e8, type: 3}
   monster: {fileID: 0}
   healthPoints: 100
   attackPoints: 40

@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
-  projectile: {fileID: 3049335455091704345, guid: df6c5ae69b6e0d54d84b5009f2daac3e, type: 3}
+  projectile: {fileID: 851210822445219171, guid: 96c16751baed1494690847d323ffda00, type: 3}
   projectilePoint: {fileID: 797769673079325006}
   projectileDisappearDelay: 3
   clawmark: {fileID: 0}

@@ -11,7 +11,7 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         InitializeStory();
     }
 

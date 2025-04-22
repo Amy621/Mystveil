@@ -23,7 +23,7 @@ public class HealthSystem : MonoBehaviour
 	// keeping track of how much HP the player has
 	public float hitPoint;
 	// max HP
-	private float maxHitPoint;
+	public float maxHitPoint;
 
 	public Image currentManaBar;
 	public Image currentManaGlobe;
@@ -32,7 +32,7 @@ public class HealthSystem : MonoBehaviour
 	// keeping track of how much MP the player has
 	public float manaPoint;
 	// max MP
-	private float maxManaPoint;
+	public float maxManaPoint;
 
 	public Player player { get; private set; }
 
