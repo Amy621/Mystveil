@@ -141,12 +141,20 @@ public class HealthSystem : MonoBehaviour
 		healthText.text = hitPoint.ToString ("0") + "/" + maxHitPoint.ToString ("0");
 	}
 
-	private void UpdateHealthGlobe()
+/*private void UpdateHealthGlobe()
 	{
 		float ratio = hitPoint / maxHitPoint;
 		currentHealthGlobe.rectTransform.localPosition = new Vector3(0, currentHealthGlobe.rectTransform.rect.height * ratio - currentHealthGlobe.rectTransform.rect.height, 0);
 		healthText.text = hitPoint.ToString("0") + "/" + maxHitPoint.ToString("0");
 	}
+*/
+
+private void UpdateHealthGlobe()
+{
+	float ratio = hitPoint / maxHitPoint;
+	currentHealthGlobe.fillAmount = ratio;
+	healthText.text = hitPoint.ToString("0") + "/" + maxHitPoint.ToString("0");
+}
 
 	public void TakeDamage(EnemyBase monster, MonsterMove move)
 	{
@@ -209,9 +217,12 @@ public class HealthSystem : MonoBehaviour
 	private void UpdateManaGlobe()
 	{
 		float ratio = manaPoint / maxManaPoint;
-		currentManaGlobe.rectTransform.localPosition = new Vector3(0, currentManaGlobe.rectTransform.rect.height * ratio - currentManaGlobe.rectTransform.rect.height, 0);
+		currentManaGlobe.fillAmount = ratio;
 		manaText.text = manaPoint.ToString("0") + "/" + maxManaPoint.ToString("0");
 	}
+
+
+
 
 	public void UseMana(float Mana)
 	{
