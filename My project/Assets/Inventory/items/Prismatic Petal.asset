@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724c8b02f4b124645b3cf2e93ffbafd7, type: 3}
+  m_Name: Prismatic Petal
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 0018059ba2b7b499c97d2fb885b1884d, type: 3}
+  slotTag: 0
+  itemType: 2
+  stackable: 1
+  craftable: 0
+  description: A petal glowing in rainbow colors. Somehow shines even in darkness.
+  recipe: {fileID: 0}
+  hp: 0
+  spe: 0
+  spd: 0
+  def: 0
+  spa: 0
+  atk: 0
+  mana: 0
