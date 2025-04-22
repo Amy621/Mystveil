@@ -11,7 +11,7 @@ public class HealPlayer : MonoBehaviour
     {
         healthSystem = FindObjectOfType<HealthSystem>();
 
-        healthSystem.HealDamage(healthSystem.maxHitPoint);
-        healthSystem.RestoreMana(healthSystem.maxManaPoint);
+        healthSystem.HealDamage(1000000000f);
+        healthSystem.RestoreMana(1000000000f);
     }
 }
