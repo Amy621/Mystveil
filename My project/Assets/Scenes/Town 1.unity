@@ -6197,6 +6197,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2131263938275266568, guid: c84da4e7aa3ca804591eaa96fd0114a8, type: 3}
+      propertyPath: regen
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5404882519253955862, guid: c84da4e7aa3ca804591eaa96fd0114a8, type: 3}
       propertyPath: m_Name
       value: UI
@@ -11164,6 +11168,10 @@ PrefabInstance:
       propertyPath: currentHealthGlobe
       value: 
       objectReference: {fileID: 393840990}
+    - target: {fileID: 7996636493649974503, guid: 23457f5ff780eab4aa626dedfe47ac8a, type: 3}
+      propertyPath: ability1VFXPrefab
+      value: 
+      objectReference: {fileID: 3377181292992421420, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21380,6 +21388,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 851285378464419266, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2282604387037768749, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -21427,6 +21439,18 @@ PrefabInstance:
     - target: {fileID: 7577409053495835603, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
       propertyPath: m_Name
       value: Scene Rock no scripts (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577409053495835603, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105173972251708152, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105173972251708152, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8105173972251708152, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -27355,7 +27379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5721047575498023931, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.9
+      value: 2.47
       objectReference: {fileID: 0}
     - target: {fileID: 5721047575498023931, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
       propertyPath: m_LocalRotation.w
@@ -27388,6 +27412,10 @@ PrefabInstance:
     - target: {fileID: 7577409053495835603, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
       propertyPath: m_Name
       value: Scene Rock no scripts (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105173972251708152, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8105173972251708152, guid: b11f999e9aba5fa4f9e529ade799c845, type: 3}
       propertyPath: m_BoundingSphereOverride.w

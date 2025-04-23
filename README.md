@@ -5,9 +5,9 @@ Run the project .exe file and it should be working. Click start to run the proce
 - Some of the monster state machines are not working correctly or are incomplete.
 - The Item button in the 1v1 does not work.
 - The player gets hurt whenever a monster attacks no matter if they dodge the attack or not.
-- There is no way to regain mana or health (still not working).
-- Minimap icons fail to appear occasionally.
-- Final boss battle not connected.
+- Minimap icons fail to appear on the first forest level.
+- Dialogue objects will always appear even if you have already read them.
+- Having the magic circle open while entering 1v1 battle will cause the mouse to not be visible.
 
 # 3rd Party Items #
 
@@ -30,14 +30,16 @@ https://sketchfab.com/3d-models/pollant-9942344f8f6c48bfa6b168179e689670
 - Plant Monster - Creative Commons https://sketchfab.com/3d-models/plant-monster-a38d264b77e148679b364543668eb405 
 - The Well Spider’s Portal - Creative Commons NonCommerical NoDerivatives https://sketchfab.com/3d-models/the-well-spiders-portal-3eb461d39e8d44b195f4788be530ae79
 - Corpse flower - Creative Commons https://sketchfab.com/3d-models/corpse-flower-8ad7ec24c14f474eada3de7f388394b5 
-- Full Moon Fears: Werewolf - Creative Commons NonCommercial NoDerivatives https://sketchfab.com/3d-models/full-moon-fears-werewolf-1bdf1c2acdcd4bab9c933885519d31db 
+- Full Moon Fears: Werewolf - Creative Commons NonCommercial NoDerivatives https://sketchfab.com/3d-models/full-moon-fears-werewolf-1bdf1c2acdcd4bab9c933885519d31db
+- Calamaramon Digimon - Creative Commons Attribution - https://sketchfab.com/models/e08e911d18344d3480439b387fc2ee3f/embed 
+- Calamaramon 2D image - wikimon.net/Calamaramon
 
 ### Environment and NPCs ###
 - Synty Studios POLYGON - Sampler Pack: https://assetstore.unity.com/packages/3d/environments/polygon-sampler-pack-207048 
 - Shokubutsu Studios: https://assetstore.unity.com/publishers/104322 
 
 ### Indicators ###
-- Magic effects: https://assetstore.unity.com/packages/vfx/particles/spells/magic-effects-free-247933 
+- Magic circle VFX: https://assetstore.unity.com/packages/vfx/particles/spells/magic-effects-free-247933 
 - Attack indicator: https://www.mediafire.com/file/yi0sit3cvs0wxdw/MOBA_2023_Series_UI_Ability_Indicators.zip/file 
 
 ## Textures ##

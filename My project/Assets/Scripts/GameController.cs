@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     [SerializeField] HealthSystem healthGlobes;
     [SerializeField] GameObject minimap;
     [SerializeField] Camera worldCamera;
+    [SerializeField] PlayerDeath playerDeath;
 
     GameState state;
     private MonoBehaviour[] playerScripts;
@@ -53,6 +54,8 @@ public class GameController : MonoBehaviour
         worldCamera.gameObject.SetActive(false);
         healthGlobes.gameObject.SetActive(false);
         minimap.SetActive(false);
+        playerDeath = FindObjectOfType<PlayerDeath>();
+        playerDeath.gameObject.SetActive(false);
 
         EnablePlayerControl(false);
 
@@ -70,6 +73,13 @@ public class GameController : MonoBehaviour
         healthGlobes.gameObject.SetActive(true);
         healthGlobes.UpdateHealthOutsideOneVOne();
         minimap.SetActive(true);
+
+        playerDeath.gameObject.SetActive(true);
+        
+        if (!won)
+        {
+            StartCoroutine(playerDeath.FadeOutThenLoad());
+        }
 
         EnablePlayerControl(true);
     }

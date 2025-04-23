@@ -282,20 +282,19 @@ public class HealthSystem : MonoBehaviour
 	//==============================================================
 	IEnumerator PlayerDied()
 	{
-
-	if (PopupText.Instance != null)
-	{
-		if (PopupText.Instance != null)
-		{
-			PopupText.Instance.Popup("You have died!", 1f, 1f); // Demo stuff!
-		}
-	}
-		// Player is dead. Do stuff.. play anim, sound..
-		PopupText.Instance.Popup("You have died!", 1f, 1f); // Demo stuff!
-
-		// Stop the application
-		Application.Quit();
-
-		yield return null;
-	}
+		Debug.Log("Player died. Fading out...");
+            //int numItems = UnityEngine.Random.Range(1,4); //items to take on death
+            //Inventory.Singleton.removeItems(null, numItems);
+            PlayerDeath fadeScript = FindObjectOfType<PlayerDeath>();
+            if (fadeScript != null)
+            {
+                StartCoroutine(fadeScript.FadeOutThenLoad());
+            }
+            else
+            {
+                Debug.LogError("No PlayerDeath script found in scene. Add fade prefab.");
+            }
+            yield return null;
+    }
+	
 }
