@@ -152,27 +152,43 @@ public class SimpleSaveSystem : MonoBehaviour
     
     private void SavePlayerStats(SimpleSaveData saveData)
     {
-        // Try to get player name
-        PlayerStats playerScriptableObject = null;
-        var playerCharacter = player.GetComponent<PlayerCharacter>();
-        if (playerCharacter != null)
+        // Get Player instance from PlayerDB
+        var playerDB = FindObjectOfType<PlayerDB>();
+        if (playerDB != null)
         {
-            saveData.playerName = playerCharacter.GetPlayerName();
-            playerScriptableObject = playerCharacter.GetPlayerStats();
+            var playerInstance = playerDB.Player;
+            if (playerInstance != null)
+            {
+                saveData.health = playerInstance.HP;
+                saveData.maxHealth = playerInstance.MaxHp;
+                saveData.mana = playerInstance.MANA;
+                saveData.maxMana = playerInstance.MaxMana;
+                saveData.level = playerInstance.Level;
+                saveData.attackPoints = playerInstance.Attack;
+                saveData.defensePoints = playerInstance.Defense;
+                saveData.specialAttackPoints = playerInstance.SpAttack;
+                saveData.specialDefensePoints = playerInstance.SpDefense;
+                saveData.speed = playerInstance.Speed;
+                saveData.charisma = playerInstance.Charisma;
+                saveData.playerName = playerInstance.Base.Name;
+                return;
+            }
+            else
+            {
+                Debug.LogError("Player instance is null in PlayerDB");
+            }
+        }
+        else
+        {
+            Debug.LogError("PlayerDB not found in scene");
         }
         
-        // Try to get health/mana/stats from components
+        // Fallback to individual components if PlayerDB not found
         var playerHealth = player.GetComponent<PlayerHealth>();
         if (playerHealth != null)
         {
             saveData.health = playerHealth.CurrentHealth;
             saveData.maxHealth = playerHealth.MaxHealth;
-        }
-        else if (playerScriptableObject != null)
-        {
-            // Fall back to scriptable object values
-            saveData.maxHealth = playerScriptableObject.HP;
-            saveData.health = saveData.maxHealth; // Assume full health if no component
         }
         
         var playerMana = player.GetComponent<PlayerMana>();
@@ -181,21 +197,11 @@ public class SimpleSaveSystem : MonoBehaviour
             saveData.mana = playerMana.CurrentMana;
             saveData.maxMana = playerMana.MaxMana;
         }
-        else if (playerScriptableObject != null)
-        {
-            // Fall back to scriptable object values
-            saveData.maxMana = playerScriptableObject.MANA;
-            saveData.mana = saveData.maxMana; // Assume full mana if no component
-        }
         
         var playerLevel = player.GetComponent<PlayerLevel>();
         if (playerLevel != null)
         {
             saveData.level = playerLevel.CurrentLevel;
-        }
-        else if (playerScriptableObject != null)
-        {
-            saveData.level = 1; // Default level if no component
         }
         
         // Save combat stats
@@ -208,26 +214,12 @@ public class SimpleSaveSystem : MonoBehaviour
             saveData.specialDefensePoints = playerCombatStats.SpecialDefensePoints;
             saveData.speed = playerCombatStats.Speed;
         }
-        else if (playerScriptableObject != null)
-        {
-            // Fall back to scriptable object values
-            saveData.attackPoints = playerScriptableObject.ATK;
-            saveData.defensePoints = playerScriptableObject.DEF;
-            saveData.specialAttackPoints = playerScriptableObject.SPA;
-            saveData.specialDefensePoints = playerScriptableObject.SPD;
-            saveData.speed = playerScriptableObject.SPE;
-        }
         
-        // If you have a charisma stat, save it
+        // Save charisma if available
         var playerAttributes = player.GetComponent<PlayerAttributesAdapter>();
         if (playerAttributes != null)
         {
             saveData.charisma = playerAttributes.Charisma;
-        }
-        else if (playerScriptableObject != null)
-        {
-            // Fall back to scriptable object values
-            saveData.charisma = playerScriptableObject.CHA;
         }
     }
     
@@ -331,8 +323,30 @@ public class SimpleSaveSystem : MonoBehaviour
     
     private void ApplyPlayerStats(SimpleSaveData saveData)
     {
-        // Apply health/mana/stats to various possible components
+        // Get Player instance from PlayerDB
+        var playerDB = FindObjectOfType<PlayerDB>();
+        if (playerDB != null)
+        {
+            var playerInstance = playerDB.Player;
+            if (playerInstance != null)
+            {
+                // Update player stats
+                playerInstance.HP = saveData.health;
+                playerInstance.MANA = saveData.mana;
+                playerInstance.Level = saveData.level;
+                return;
+            }
+            else
+            {
+                Debug.LogError("Player instance is null in PlayerDB");
+            }
+        }
+        else
+        {
+            Debug.LogError("PlayerDB not found in scene");
+        }
         
+        // Fallback to individual components if PlayerDB not found
         var playerHealth = player.GetComponent<PlayerHealth>();
         if (playerHealth != null)
         {
@@ -364,18 +378,11 @@ public class SimpleSaveSystem : MonoBehaviour
             playerCombatStats.Speed = saveData.speed;
         }
         
-        // If you have a charisma stat, load it
+        // Apply charisma if available
         var playerAttributes = player.GetComponent<PlayerAttributesAdapter>();
         if (playerAttributes != null)
         {
             playerAttributes.Charisma = saveData.charisma;
-        }
-        
-        // Set player name if applicable
-        var playerCharacter = player.GetComponent<PlayerCharacter>();
-        if (playerCharacter != null && !string.IsNullOrEmpty(saveData.playerName))
-        {
-            playerCharacter.SetPlayerName(saveData.playerName);
         }
     }
     
