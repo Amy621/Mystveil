@@ -16,8 +16,8 @@ MonoBehaviour:
   description: A crystalline-colored spider who guards a portal through the multiverse.
     Has seen many timelines and worlds through their years.
   isSpecialBoss: 0
-  monsterIconImage: {fileID: 21300000, guid: f661f0230b5ba204fa26727844282880, type: 3}
-  bossImage: {fileID: 21300000, guid: f661f0230b5ba204fa26727844282880, type: 3}
+  monsterIconImage: {fileID: 21300000, guid: 629bb529d0d796747b0341f8dbf31759, type: 3}
+  bossImage: {fileID: 21300000, guid: 629bb529d0d796747b0341f8dbf31759, type: 3}
   monster: {fileID: 2601236444922581843, guid: 2233e005366a6f24aa65a96ceeac5ce9, type: 3}
   healthPoints: 120
   attackPoints: 35

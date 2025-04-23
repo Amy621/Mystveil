@@ -17,8 +17,8 @@ MonoBehaviour:
     Has since grown a second brain. Terrorizes all other plants by stealing the nutrients
     from the soil.
   isSpecialBoss: 0
-  monsterIconImage: {fileID: 21300000, guid: 0de79dc5509504942a6492ae11bc48e5, type: 3}
-  bossImage: {fileID: 21300000, guid: 0de79dc5509504942a6492ae11bc48e5, type: 3}
+  monsterIconImage: {fileID: 21300000, guid: f85886b7cba46d34f8b59c520a2bd9aa, type: 3}
+  bossImage: {fileID: 21300000, guid: f85886b7cba46d34f8b59c520a2bd9aa, type: 3}
   monster: {fileID: 7312613196272549119, guid: 2acff99c1dfb64f44bee7d280ae8da03, type: 3}
   healthPoints: 110
   attackPoints: 80
