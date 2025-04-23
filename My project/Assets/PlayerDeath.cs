@@ -34,7 +34,7 @@ public class PlayerDeath : MonoBehaviour{
     public IEnumerator FadeOutThenLoad()
     {
         yield return StartCoroutine(FadeCanvasGroup(canvasGroup, canvasGroup.alpha, 1, fadeDuration));
-        SceneManager.LoadScene("Town 1");
+        SceneManager.LoadScene("Town 2");
     }
 }
 

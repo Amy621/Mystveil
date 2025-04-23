@@ -29,6 +29,7 @@ MonoBehaviour:
       maxNum: 0
     restoreHP: 0
     restoreMP: 0
+    removeAllStatusChanges: 0
     removeAllStatChanges: 0
     status: 0
   secondaryEffects: []

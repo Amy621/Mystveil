@@ -1,5 +1,10 @@
 # Instructions #
-Run the project .exe file and it should be working. Click start to run the procedural generation level and go through the gameplay loop of battling monsters. Each last level of the procedural gen is guaranteed to be a boss battle. 
+Run the project .exe file.
+Use WASD to move Liora around the isometric world of Mystveil!
+Hit ESC to open the save menu.
+Left click hold to aim physical attack and let go to use. Right click to open circle indicator ranged attack and right click to use.
+NPCs in the town can be interacted with when very close to the model and clicking E.
+Press space to continue the dialogue.
 
 ## Bugs ##
 - Some of the monster state machines are not working correctly or are incomplete.
@@ -7,7 +12,11 @@ Run the project .exe file and it should be working. Click start to run the proce
 - The player gets hurt whenever a monster attacks no matter if they dodge the attack or not.
 - Minimap icons fail to appear on the first forest level.
 - Dialogue objects will always appear even if you have already read them.
+- If you press space in the dialogue before it has completed, it will skip the rest of the sentence to the next line. It also may skip any choices the player has to make.
 - Having the magic circle open while entering 1v1 battle will cause the mouse to not be visible.
+- Magic circle doesn't disappear within the same forest loop.
+- Learned spells randomly get set into the 1v1 each battle.
+- There is no menu to quit the game.
 
 # 3rd Party Items #
 

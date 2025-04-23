@@ -8,7 +8,7 @@ public class ChangeToTown : MonoBehaviour
     public void MoveToScene() {
     string currentScene = SceneManager.GetActiveScene().name;
     Debug.Log($"Current Scene: {currentScene}");
-    Debug.Log("Attempting to load scene named 'Town 1'");
-    SceneManager.LoadScene("Town 1");
+    Debug.Log("Attempting to load scene named 'Town 2'");
+    SceneManager.LoadScene("Town 2");
     }
 }
